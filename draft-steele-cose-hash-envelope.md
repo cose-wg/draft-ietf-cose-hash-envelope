@@ -50,17 +50,17 @@ For large payloads this is a problem. This draft addresses this problem by descr
 ## Usage
 
 ~~~~ cbor-diag
-{      
-  / Algorithm                           /                        
-  1: -35,                        
+{
+  / Algorithm                           /
+  1: -35,
   / Key identifier                      /
-  4: h'75726e3a...32636573',     
+  4: h'75726e3a...32636573',
   / typ of the envelope                 /
-  TBD 0: application/hashed+cose 
+  TBD 0: application/hashed+cose
   / Hash algorithm of the payload       /
-  TBD 1: sha-256                  
+  TBD 1: sha-256
   / cty of the preimage of the payload  /
-  TBD 2: application/jwk+json    
+  TBD 2: application/jwk+json
 }
 ~~~~
 
