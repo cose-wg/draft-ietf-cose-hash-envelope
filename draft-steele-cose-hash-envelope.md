@@ -62,7 +62,7 @@ This draft defines a mechanism for signing hashes of payloads along with hints a
 
 # Introduction
 
-COSE defined detached payloads in rfc9052#section-2. 
+COSE defined detached payloads in rfc9052#section-2.
 However, a detached payload cose sign 1 still requires the payload content to be availble in order to verify.
 
 For large payloads this is a problem. This draft addresses this problem by describing a simply way to sign hashes of large payloads while maintaining information about their content type.
