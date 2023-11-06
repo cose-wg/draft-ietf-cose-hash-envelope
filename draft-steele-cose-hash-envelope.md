@@ -9,19 +9,19 @@ number:
 date:
 consensus: true
 v: 3
-area: Security
-workgroup: COSE
+area: "Security"
+workgroup: "CBOR Object Signing and Encryption"
 keyword:
  - next generation
  - unicorn
  - sparkling distributed ledger
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: OR13/draft-steele-cose-hash-envelope
-  latest: https://example.com/LATEST
+  group: "CBOR Object Signing and Encryption"
+  type: "Working Group"
+  mail: "cose@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/cose/"
+  github: "OR13/draft-steele-cose-hash-envelope"
+  latest: "https://OR13.github.io/draft-steele-cose-hash-envelope/draft-steele-cose-hash-envelope.html"
 
 author:
  -
