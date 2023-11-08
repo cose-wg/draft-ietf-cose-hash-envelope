@@ -119,7 +119,7 @@ It is RECOMMENDED to align the strength of the chosen hash function to the stren
 
 # IANA Considerations
 
-#### COSE Header Algorithm Parameters
+## COSE Header Algorithm Parameters
 
 * Name: payload hash algorithm
 * Label: TBD_1
@@ -127,7 +127,7 @@ It is RECOMMENDED to align the strength of the chosen hash function to the stren
 * Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
 * Description: Hash algorithm used to produce the payload.
 
-#### Named Information Hash Algorithm Registry
+## Named Information Hash Algorithm Registry
 
 * Name: SHAKE256
 * Label: TBD_2
