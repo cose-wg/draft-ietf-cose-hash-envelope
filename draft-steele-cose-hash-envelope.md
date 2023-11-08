@@ -54,7 +54,7 @@ This draft addresses this challenge by describing a simply way to protect hashes
 
 ### Protected Header
 
-TBD 0 (typ), TBD 1 (payload has alg) and TBD 2 (payload content type) are MUST be present in the protected header and MUST NOT be present in the unprotected header.
+TBD 0 (typ), TBD 1 (payload has alg) and TBD 2 (payload content type) MUST be present in the protected header and MUST NOT be present in the unprotected header.
 
 ~~~~ cbor-diag
 {
