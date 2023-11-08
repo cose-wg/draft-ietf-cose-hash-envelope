@@ -49,6 +49,7 @@ For large payloads this is a problem. This draft addresses this problem by descr
 
 ## Usage
 
+### Protected Header
 ~~~~ cbor-diag
 {
   / Algorithm                           /
@@ -58,10 +59,36 @@ For large payloads this is a problem. This draft addresses this problem by descr
   / typ of the envelope                 /
   TBD 0: application/hashed+cose
   / Hash algorithm of the payload       /
-  TBD 1: sha-256
+  TBD 1: 1 / sha-256 /
   / cty of the preimage of the payload  /
   TBD 2: application/jwk+json
 }
+~~~~
+
+### Attached Payload
+
+~~~~ cbor-diag
+18(                                 / COSE Sign 1                   /
+    [
+      h'a4013822...3a616263',       / Protected                     /
+      {}                            / Unprotected                   /
+      h'317cedc7...c494e772',       / Payload                       /
+      h'15280897...93ef39e5'        / Signature                     /
+    ]
+)
+~~~~
+
+### Detached Payload
+
+~~~~ cbor-diag
+18(                                 / COSE Sign 1                   /
+    [
+      h'a4013822...3a616263',       / Protected                     /
+      {}                            / Unprotected                   /
+      nil,                          / Detached payload              /
+      h'15280897...93ef39e5'        / Signature                     /
+    ]
+)
 ~~~~
 
 
@@ -73,11 +100,19 @@ For large payloads this is a problem. This draft addresses this problem by descr
 
 TODO Security
 
+## Choice of Hash Function
+
+Choose a good one.
 
 # IANA Considerations
 
-This document has no IANA actions.
+#### COSE Header Algorithm Parameters
 
+* Name: payload hash algorithm
+* Label: TBD_1
+* Value type: int
+* Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
+* Description: Hash algorithm used to produce the payload.
 
 --- back
 
