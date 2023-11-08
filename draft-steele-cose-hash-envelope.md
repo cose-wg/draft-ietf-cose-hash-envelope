@@ -115,7 +115,7 @@ TODO Security
 
 ## Choice of Hash Function
 
-It is RECOMMENDED to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
+It is RECOMMENDED to align the strength of the chosen hash function to the strength of the chosen signature algorithm. For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.
 
 # IANA Considerations
 
