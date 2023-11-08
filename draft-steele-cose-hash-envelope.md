@@ -47,9 +47,12 @@ However, a detached payload cose sign 1 still requires the payload content to be
 
 For large payloads this is a problem. This draft addresses this problem by describing a simply way to sign hashes of large payloads while maintaining information about their content type.
 
-## Usage
+## Signed Hashes
 
 ### Protected Header
+
+TBD 0 (typ), TBD 1 (payload has alg) and TBD 2 (payload content type) are MUST be present in the protected header and MUST NOT be present in the unprotected header.
+
 ~~~~ cbor-diag
 {
   / Algorithm                           /
@@ -67,6 +70,8 @@ For large payloads this is a problem. This draft addresses this problem by descr
 
 ### Attached Payload
 
+The payload MAY be attached.
+
 ~~~~ cbor-diag
 18(                                 / COSE Sign 1                   /
     [
@@ -80,6 +85,8 @@ For large payloads this is a problem. This draft addresses this problem by descr
 
 ### Detached Payload
 
+The payload MAY be detached.
+
 ~~~~ cbor-diag
 18(                                 / COSE Sign 1                   /
     [
@@ -92,6 +99,10 @@ For large payloads this is a problem. This draft addresses this problem by descr
 ~~~~
 
 
+## Encrypted Hashes
+
+Should we define this?
+
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
@@ -102,7 +113,7 @@ TODO Security
 
 ## Choice of Hash Function
 
-Choose a good one.
+It is RECOMMENDED to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
 
 # IANA Considerations
 
@@ -113,6 +124,22 @@ Choose a good one.
 * Value type: int
 * Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
 * Description: Hash algorithm used to produce the payload.
+
+#### Named Information Hash Algorithm Registry
+
+* Name: SHAKE256
+* Label: TBD_2
+* Value type: int
+* Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
+* Description: SHAKE256 a described in https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
+
+
+* Name: ASCON128
+* Label: TBD_3
+* Value type: int
+* Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
+* Description: ASCON128 a described in https://csrc.nist.gov/CSRC/media/Projects/lightweight-cryptography/documents/round-2/spec-doc-rnd2/ascon-spec-round2.pdf
+
 
 --- back
 
