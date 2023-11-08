@@ -30,6 +30,7 @@ author:
     email: orie@transmute.industries
 
 normative:
+  RFC9052: RFC9052
 
 informative:
 
@@ -42,10 +43,12 @@ This draft defines a mechanism for signing hashes of payloads along with hints a
 
 # Introduction
 
-COSE defined detached payloads in rfc9052#section-2.
-However, a detached payload cose sign 1 still requires the payload content to be availble in order to verify.
+COSE defined detached payloads in {{-RFC9052}} in Section 2.
+However, in order to verify a detached payload the payload content needs to availble.
 
-For large payloads this is a problem. This draft addresses this problem by describing a simply way to sign hashes of large payloads while maintaining information about their content type.
+This is challenging for large payload, which can not be easily be transported.
+
+This draft addresses this challenge by describing a simply way to protect hashes of payloads while maintaining information about their content type.
 
 ## Signed Hashes
 
@@ -97,7 +100,6 @@ The payload MAY be detached.
     ]
 )
 ~~~~
-
 
 ## Encrypted Hashes
 
