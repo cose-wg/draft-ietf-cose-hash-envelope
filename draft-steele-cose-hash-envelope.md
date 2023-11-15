@@ -1,20 +1,15 @@
 ---
+v: 3
 title: "COSE Hash Envelope"
 abbrev: "CHE"
-category: info
-
+cat: std
 docname: draft-steele-cose-hash-envelope-latest
-submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
+stream: IETF
 number:
-date:
+date: 2023
 consensus: true
-v: 3
 area: "Security"
-workgroup: "CBOR Object Signing and Encryption"
-keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+keyword: Internet-Draft
 venue:
   group: "CBOR Object Signing and Encryption"
   type: "Working Group"
@@ -31,12 +26,9 @@ author:
 
 normative:
   RFC9052: RFC9052
-  I-D.ietf-cose-type-parameter: COSE-TYP
-
-
+  I-D.ietf-cose-typ-header-parameter: COSE-TYP
 
 informative:
-
 
 --- abstract
 
@@ -60,9 +52,6 @@ This draft addresses this challenge by describing a simply way to protect hashes
 TBD 0 (typ), TBD 1 (payload hash alg) and TBD 2 (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
 
 TBD 0 will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
-
-
-
 
 ~~~~ cbor-diag
 {
@@ -152,13 +141,11 @@ It is RECOMMENDED to align the strength of the chosen hash function to the stren
 * Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
 * Description: SHAKE256 a described in https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
 
-
 * Name: ASCON128
 * Label: TBD_3
 * Value type: int
 * Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
 * Description: ASCON128 a described in https://csrc.nist.gov/CSRC/media/Projects/lightweight-cryptography/documents/round-2/spec-doc-rnd2/ascon-spec-round2.pdf
-
 
 --- back
 
