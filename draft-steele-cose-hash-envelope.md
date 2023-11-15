@@ -39,13 +39,71 @@ This draft defines a mechanism for signing hashes of payloads along with hints a
 # Introduction
 
 COSE defined detached payloads in {{-RFC9052}} in Section 2.
-However, in order to verify a detached payload the payload content needs to availble.
 
-This is challenging for large payload, which can not be easily be transported.
+However, in order to verify a signature over a detached payload the payload content needs to availble to the verifier.
 
-This draft addresses this challenge by describing a simply way to protect hashes of payloads while maintaining information about their content type.
+Pre-hashing the content, allows for small signatures, that are easy to transport.
 
-## Signed Hashes
+Additional hints in the protected header, ensure cryptographic agility for the hashing and signing algorithms, and discoverability for the original content, which could be too large to move over a network.
+
+# Conventions and Definitions
+
+{::boilerplate bcp14-tagged}
+
+TBD 0:
+  : will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
+
+TBD 1:
+  : the hash algorithm used to generate the hash about the payload
+
+TBD 2:
+  : the content type of the payload the hash represents
+
+## Signed Hash Envelopes
+
+~~~ cddl
+
+Hash_Envelope_Protected_Header = {
+    ; Cryptographic algorithm to use
+    ? &(alg: 1) => int,
+
+    ; Type of the envelope
+    ? &(typ: TBD_0) => int / tstr
+
+    ; Hash algorithm used to produce the payload from content
+    ; -16 for SHA-256, see https://www.iana.org/assignments/cose/cose.xhtml 
+    &(payload_hash_alg: TBD_1) => int
+
+    ; Content type of the preimage of the payload
+    ; 50 for application/json, see https://datatracker.ietf.org/doc/html/rfc7252#section-12.3
+    &(payload_preimage_content_type: TBD_2) => int
+
+    ; Type of Verifiable Data Structure, e.g. RFC9162_SHA256
+    ; ? &(verifiable-data-structure: -111) => int,
+    ; ... other optional protected header values are still allowed here.
+
+}
+
+Verifiable_Data_Proofs = {
+  ? &(inclusion-proofs: -1) => [ bstr .cbor inclusion-proof ]
+  ? &(consistency-proofs: -2) => [ bstr .cbor consistency-proof ]
+  ; ... other proofs are allowed here.
+}
+
+Hash_Envelope_Unprotected_Header = {
+  ; ? &(verifiable-data-proofs: 222) => Verifiable_Data_Proofs
+  ; ... other unprotected header values are still allowed here.
+}
+
+Hash_Envelope_as_COSE_Sign1 = [
+    protected : bstr .cbor Hash_Envelope_Protected_Header,
+    unprotected : Hash_Envelope_Unprotected_Header,
+    payload: bstr / nil,
+    signature : bstr
+]
+
+Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
+~~~
 
 ### Protected Header
 
@@ -55,16 +113,11 @@ TBD 0 will be assinged by {{-COSE-TYP}}, it represents the content type of the c
 
 ~~~~ cbor-diag
 {
-  / Algorithm                           /
-  1: -35,
-  / Key identifier                      /
-  4: h'75726e3a...32636573',
-  / typ of the envelope                 /
-  TBD 0: application/hashed+cose
-  / Hash algorithm of the payload       /
-  TBD 1: 1 / sha-256 /
-  / cty of the preimage of the payload  /
-  TBD 2: application/jwk+json
+  / alg : ES384 / 1: -35,
+  / kid / 4: h'75726e3a...32636573',
+  / typ / TBD 0: application/hashed+cose
+  / payload_hash_alg sha-256 / TBD 1: 1 
+  / payload_preimage_content_type / TBD 2: application/jwk+json
 }
 ~~~~
 
@@ -102,18 +155,7 @@ The payload MAY be detached.
 
 Should we define this?
 
-# Conventions and Definitions
 
-{::boilerplate bcp14-tagged}
-
-TBD 0:
-  : will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
-
-TBD 1:
-  : the hash algorithm used to generate the hash about the payload
-
-TBD 2:
-  : the content type of the payload the hash represents
 
 # Security Considerations
 
