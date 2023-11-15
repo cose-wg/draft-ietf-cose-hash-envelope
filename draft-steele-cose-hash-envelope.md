@@ -74,7 +74,7 @@ Hash_Envelope_Protected_Header = {
     ? &(typ: TBD_0) => int / tstr
 
     ; Hash algorithm used to produce the payload from content
-    ; -16 for SHA-256, see https://www.iana.org/assignments/cose/cose.xhtml 
+    ; -16 for SHA-256, see https://www.iana.org/assignments/cose/cose.xhtml
     &(payload_hash_alg: TBD_1) => int
 
     ; Content type of the preimage of the payload
@@ -123,7 +123,7 @@ TBD 0 will be assinged by {{-COSE-TYP}}, it represents the content type of the c
   / alg : ES384 / 1: -35,
   / kid / 4: h'75726e3a...32636573',
   / typ / TBD 0: application/hashed+cose
-  / payload_hash_alg sha-256 / TBD 1: 1 
+  / payload_hash_alg sha-256 / TBD 1: 1
   / payload_preimage_content_type / TBD 2: application/jwk+json
 }
 ~~~~
