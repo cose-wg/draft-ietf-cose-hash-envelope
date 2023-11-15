@@ -59,6 +59,9 @@ TBD 1:
 TBD 2:
   : the content type of the payload the hash represents
 
+TBD 3:
+  : an identifier enabling a verifier to retrieve the full payload preimage
+
 ## Signed Hash Envelopes
 
 ~~~ cddl
@@ -77,6 +80,10 @@ Hash_Envelope_Protected_Header = {
     ; Content type of the preimage of the payload
     ; 50 for application/json, see https://datatracker.ietf.org/doc/html/rfc7252#section-12.3
     &(payload_preimage_content_type: TBD_2) => int
+
+    ; Identifier for an artifact repository
+    ; For example: pkg:container/customer/image@sha256:244fd47e07d1004f0aed9c?repository_url=vendor.example
+    ? &(artifact_repository: TBD) => tstr
 
     ; Type of Verifiable Data Structure, e.g. RFC9162_SHA256
     ; ? &(verifiable-data-structure: -111) => int,
