@@ -32,7 +32,8 @@ informative:
 
 --- abstract
 
-This draft defines a mechanism for signing hashes of payloads along with hints about their content format and availability.
+This document defines new COSE header parameters in support of a mechanism that uses hashes of detached payload as the COSE payload, which enables faster signature validation for detached payload as the availability of the original payload is not required for signature validation.
+Additionally, hints about the detached payload's content format and availability are defined.
 
 --- middle
 
@@ -110,10 +111,10 @@ TBD 0:
   : will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
 
 TBD 1:
-  : the hash algorithm used to generate the hash about the payload
+  : the hash algorithm used to generate the hash about the payload.
 
 TBD 2:
-  : the content type of the payload the hash represents
+  : the content type of the payload the hash represents.
 
 # Security Considerations
 
@@ -121,7 +122,8 @@ TODO Security
 
 ## Choice of Hash Function
 
-It is RECOMMENDED to align the strength of the chosen hash function to the strength of the chosen signature algorithm. For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.
+It is RECOMMENDED to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
+For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.
 
 # IANA Considerations
 
