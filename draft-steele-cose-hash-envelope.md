@@ -31,6 +31,9 @@ author:
 
 normative:
   RFC9052: RFC9052
+  I-D.ietf-cose-type-parameter: COSE-TYP
+
+
 
 informative:
 
@@ -54,7 +57,12 @@ This draft addresses this challenge by describing a simply way to protect hashes
 
 ### Protected Header
 
-TBD 0 (typ), TBD 1 (payload has alg) and TBD 2 (payload content type) MUST be present in the protected header and MUST NOT be present in the unprotected header.
+TBD 0 (typ), TBD 1 (payload hash alg) and TBD 2 (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
+
+TBD 0 will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
+
+
+
 
 ~~~~ cbor-diag
 {
@@ -108,6 +116,15 @@ Should we define this?
 # Conventions and Definitions
 
 {::boilerplate bcp14-tagged}
+
+TBD 0:
+  : will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
+
+TBD 1:
+  : the hash algorithm used to generate the hash about the payload
+
+TBD 2:
+  : the content type of the payload the hash represents
 
 # Security Considerations
 
