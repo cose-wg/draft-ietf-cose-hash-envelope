@@ -63,7 +63,7 @@ TBD 2:
 TBD 3:
   : an identifier enabling a verifier to retrieve the full payload preimage.
 
-## Signed Hash Envelopes
+# Signed Hash Envelopes
 
 ~~~ cddl
 
@@ -113,7 +113,7 @@ Hash_Envelope_as_COSE_Sign1 = [
 Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 ~~~
 
-### Protected Header
+## Protected Header
 
 TBD 0 (typ), TBD 1 (payload hash alg) and TBD 2 (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
 
@@ -129,7 +129,7 @@ TBD 0 will be assinged by {{-COSE-TYP}}, it represents the content type of the c
 }
 ~~~~
 
-### Attached Payload
+## Attached Payload
 
 The payload MAY be attached.
 
@@ -144,7 +144,7 @@ The payload MAY be attached.
 )
 ~~~~
 
-### Detached Payload
+## Detached Payload
 
 The payload MAY be detached.
 
@@ -159,11 +159,9 @@ The payload MAY be detached.
 )
 ~~~~
 
-## Encrypted Hashes
+# Encrypted Hashes
 
 Should we define this?
-
-
 
 # Security Considerations
 
