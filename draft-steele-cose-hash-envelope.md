@@ -117,7 +117,7 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 
 TBD 0 (typ), TBD 1 (payload hash alg) and TBD 2 (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
 
-TBD 0 will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
+For example:
 
 ~~~~ cbor-diag
 {
@@ -126,8 +126,15 @@ TBD 0 will be assinged by {{-COSE-TYP}}, it represents the content type of the c
   / typ / TBD 0: application/hashed+cose
   / payload_hash_alg sha-256 / TBD 1: 1
   / payload_preimage_content_type / TBD 2: application/jwk+json
+  / artifact_repository / TBD 3 : pkg:container/customer/image@sha256:244fd47e07d1004f0aed9c?repository_url=vendor.example
 }
 ~~~~
+
+TBD 0 will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
+
+TBD 1 will be assigned by this draft.
+TBD 2 will be assigned by this draft.
+TBD 3 will be assigned by this draft.
 
 ## Attached Payload
 
