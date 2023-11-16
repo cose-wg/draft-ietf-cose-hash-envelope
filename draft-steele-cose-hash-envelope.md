@@ -51,8 +51,6 @@ Additional hints in the protected header, ensure cryptographic agility for the h
 
 {::boilerplate bcp14-tagged}
 
-# Terminology
-
 TBD 0:
   : will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
 
