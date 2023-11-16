@@ -47,9 +47,11 @@ Pre-hashing the content, allows for small signatures, that are easy to transport
 
 Additional hints in the protected header, ensure cryptographic agility for the hashing and signing algorithms, and discoverability for the original content, which could be too large to move over a network.
 
-# Conventions and Definitions
+# Terminology
 
 {::boilerplate bcp14-tagged}
+
+# Conventions and Definitions
 
 TBD 0:
   : will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
