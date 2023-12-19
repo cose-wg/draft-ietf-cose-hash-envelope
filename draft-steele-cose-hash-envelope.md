@@ -32,38 +32,41 @@ informative:
 
 --- abstract
 
-This document defines new COSE header parameters in support of a mechanism that uses hashes of detached payload as the COSE payload, which enables faster signature validation for detached payload as the availability of the original payload is not required for signature validation.
-Additionally, hints about the detached payload's content format and availability are defined.
+This document defines new COSE header parameters supporting of hashes within the payload, representing a detached COSE payloads.
+This mechanism enables faster validation as access to the original payload is not required for signature validation.
+Additionally, hints of the detached payload's content format and availability are defined.
 
 --- middle
 
 # Introduction
 
-COSE defined detached payloads in {{-RFC9052}} in Section 2.
+COSE defined detached payloads in Section 2 of {{-RFC9052}}, using `nil` as the payload.
 
-However, in order to verify a signature over a detached payload the payload content needs to availble to the verifier.
+In order to verify a signature over a detached payload, the verifier must have access to the payload content. Storing a hash of the content allows for small signature envelopes, that are easy to transport and verify independently.
 
-Pre-hashing the content, allows for small signatures, that are easy to transport.
+Additional hints in the protected header ensure cryptographic agility for the hashing & signing algorithms, and discoverability for the original content which could be prohibitively large to move over a network.
 
-Additional hints in the protected header, ensure cryptographic agility for the hashing and signing algorithms, and discoverability for the original content, which could be too large to move over a network.
-
-# Terminology
+## Requirements Notation
 
 {::boilerplate bcp14-tagged}
 
+# Header Parameters
+
+To represent a hash of a detached payload, the following headers are defined:
+
 TBD 0:
-  : will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
+  : will be assigned by {{-COSE-TYP}}, represents the content type of the code envelope, including the protected header and payload
 
 TBD 1:
-  : the hash algorithm used to generate the hash about the payload.
+  : the hash algorithm used to generate the hash of the payload
 
 TBD 2:
-  : the content type of the payload the hash represents.
+  : the content type of the payload the hash represents
 
 TBD 3:
   : an identifier enabling a verifier to retrieve the full payload preimage.
 
-# Signed Hash Envelopes
+## Signed Hash Envelopes Example
 
 ~~~ cddl
 
@@ -209,5 +212,3 @@ For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to has
 {:numbered="false"}
 
 The following individuals provided input into the final form of the document: Carsten Bormann, Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet.
-
-
