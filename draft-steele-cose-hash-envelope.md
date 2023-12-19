@@ -32,7 +32,7 @@ informative:
 
 --- abstract
 
-This document defines new COSE header parameters supporting of hashes within the payload, representing a detached COSE payloads.
+This document defines new COSE header parameters for signaling that a payload is the output of a hash function.
 This mechanism enables faster validation as access to the original payload is not required for signature validation.
 Additionally, hints of the detached payload's content format and availability are defined.
 
