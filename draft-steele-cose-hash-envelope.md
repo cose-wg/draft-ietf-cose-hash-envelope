@@ -6,7 +6,7 @@ cat: std
 docname: draft-steele-cose-hash-envelope-latest
 stream: IETF
 number:
-date: 2023
+date: January 2024
 consensus: true
 area: "Security"
 keyword: Internet-Draft
@@ -133,7 +133,7 @@ For example:
 }
 ~~~~
 
-TBD 0 will be assinged by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
+TBD 0 will be assigned by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
 
 TBD 1 will be assigned by this draft.
 TBD 2 will be assigned by this draft.
