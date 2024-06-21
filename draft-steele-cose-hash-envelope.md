@@ -19,10 +19,15 @@ venue:
   latest: "https://OR13.github.io/draft-steele-cose-hash-envelope/draft-steele-cose-hash-envelope.html"
 
 author:
- -
-    fullname: Orie Steele
+
+  - fullname: Orie Steele
     organization: Transmute
     email: orie@transmute.industries
+
+  - fullname: Steve Lasker
+    organization: DataTrails
+    email: steve.lasker@datatrails.ai
+
 
 normative:
   RFC9052: RFC9052
