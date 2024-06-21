@@ -6,7 +6,6 @@ cat: std
 docname: draft-steele-cose-hash-envelope-latest
 stream: IETF
 number:
-date: January 2024
 consensus: true
 area: "Security"
 keyword: Internet-Draft
@@ -83,20 +82,24 @@ Hash_Envelope_Protected_Header = {
     ? &(typ: TBD_0) => int / tstr
 
     ; Hash algorithm used to produce the payload from content
-    ; -16 for SHA-256, see https://www.iana.org/assignments/cose/cose.xhtml
+    ; -16 for SHA-256,
+    ; See https://www.iana.org/assignments/cose/cose.xhtml
     &(payload_hash_alg: TBD_1) => int
 
     ; Content type of the preimage of the payload
-    ; 50 for application/json, see https://datatracker.ietf.org/doc/html/rfc7252#section-12.3
+    ; 50 for application/json,
+    ; See https://datatracker.ietf.org/doc/html/rfc7252#section-12.3
     &(payload_preimage_content_type: TBD_2) => int
 
     ; Identifier for an artifact repository
-    ; For example: pkg:container/customer/image@sha256:244fd47e07d1004f0aed9c?repository_url=vendor.example
+    ; For example:
+    ; pkg:container...image@sha256:244f...9c?repo..._url=dev.example
     ? &(artifact_repository: TBD) => tstr
 
     ; Type of Verifiable Data Structure, e.g. RFC9162_SHA256
     ; ? &(verifiable-data-structure: -111) => int,
-    ; ... other optional protected header values are still allowed here.
+
+    ; additional parameters allows.
 
 }
 
@@ -134,7 +137,8 @@ For example:
   / typ / TBD 0: application/hashed+cose
   / payload_hash_alg sha-256 / TBD 1: 1
   / payload_preimage_content_type / TBD 2: application/jwk+json
-  / artifact_repository / TBD 3 : pkg:container/customer/image@sha256:244fd47e07d1004f0aed9c?repository_url=vendor.example
+  / artifact_repository / TBD 3 : \
+  pkg:container/image@sha256:244f...?repository_url=dev.example
 }
 ~~~~
 
