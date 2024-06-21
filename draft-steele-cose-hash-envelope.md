@@ -1,7 +1,6 @@
 ---
 v: 3
 title: "COSE Hash Envelope"
-abbrev: "CHE"
 cat: std
 docname: draft-steele-cose-hash-envelope-latest
 stream: IETF
