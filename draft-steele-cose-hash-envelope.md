@@ -53,15 +53,55 @@ Additionally, hints of the detached payload's content format and availability ar
 # Introduction
 
 COSE defined detached payloads in Section 2 of {{-RFC9052}}, using `nil` as the payload.
-
 In order to verify a signature over a detached payload, the verifier must have access to the payload content.
 Storing a hash of the content allows for small signature envelopes, that are easy to transport and verify independently.
 
 Additional hints in the protected header ensure cryptographic agility for the hashing & signing algorithms, and discoverability for the original content which could be prohibitively large to move over a network.
 
-## Requirements Notation
+## Attached Payload
 
-{::boilerplate bcp14-tagged}
+COSE_sign1 envelope with an attached payload, providing for signature validation.
+
+~~~~ cbor-diag
+18(                                 / COSE Sign 1                   /
+    [
+      h'a4013822...3a616263',       / Protected                     /
+      {}                            / Unprotected                   /
+      h'317cedc7...c494e772',       / Payload                       /
+      h'15280897...93ef39e5'        / Signature                     /
+    ]
+)
+~~~~
+
+## Detached Payload
+
+COSE_sign1 envelope with a detached payload (`nil`), which is compact but the payload must be distributed out of band to validate the signature
+
+~~~~ cbor-diag
+18(                                 / COSE Sign 1                   /
+    [
+      h'a4013822...3a616263',       / Protected                     /
+      {}                            / Unprotected                   /
+      nil,                          / Detached Payload              /
+      h'15280897...93ef39e5'        / Signature                     /
+    ]
+)
+~~~~
+
+## Hashed Payload
+
+A hashed payload functions equivalently to an attached payload, with the benefits of being compact in size and providing the ability to validate the signature.
+
+~~~~ cbor-diag
+18(                                 / COSE Sign 1                   /
+    [
+      h'a4013822...3a616263',       / Protected                     /
+      {}                            / Unprotected                   /
+      h'935b5a91...e18a588a',       / Payload                       /
+      h'15280897...93ef39e5'        / Signature                     /
+    ]
+)
+~~~~
 
 # Header Parameters
 
@@ -82,7 +122,6 @@ TBD_3:
 ## Signed Hash Envelopes Example
 
 ~~~ cddl
-
 Hash_Envelope_Protected_Header = {
     ; Cryptographic algorithm to use
     ? &(alg: 1) => int,
@@ -138,55 +177,6 @@ For example:
   / payload_preimage_content_type / TBD_2: application/jwk+json
   / payload_location / TBD_3 : storage.example/244f...9c19
 }
-and payload.
-
-TBD_1 will be assigned by this draft.
-TBD_2 will be assigned by this draft.
-TBD_3 will be assigned by this draft.
-
-## Attached Payload
-
-COSE_sign1 envelope with an attached payload, providing for signature validation.
-
-~~~~ cbor-diag
-18(                                 / COSE Sign 1                   /
-    [
-      h'a4013822...3a616263',       / Protected                     /
-      {}                            / Unprotected                   /
-      h'317cedc7...c494e772',       / Payload                       /
-      h'15280897...93ef39e5'        / Signature                     /
-    ]
-)
-~~~~
-
-## Detached Payload
-
-COSE_sign1 detached payload (`nil`), which is compact, but the payload must be distributed out of band to validate the signature
-
-~~~~ cbor-diag
-18(                                 / COSE Sign 1                   /
-    [
-      h'a4013822...3a616263',       / Protected                     /
-      {}                            / Unprotected                   /
-      nil,                          / Detached payload              /
-      h'15280897...93ef39e5'        / Signature                     /
-    ]
-)
-~~~~
-
-## Hashed Payload
-
-A hashed payload functions equivalently to an attached payload, with the benefits of being compact in size and providing the ability to validate the signature.
-
-~~~~ cbor-diag
-18(                                 / COSE Sign 1                   /
-    [
-      h'a4013822...3a616263',       / Protected                     /
-      {}                            / Unprotected                   /
-      h'935b5a91...e18a588a',       / Payload                       /
-      h'15280897...93ef39e5'        / Signature                     /
-    ]
-)
 ~~~~
 
 # Encrypted Hashes
@@ -203,6 +193,10 @@ It is RECOMMENDED to align the strength of the chosen hash function to the stren
 For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.
 
 # IANA Considerations
+
+## Requirements Notation
+
+{::boilerplate bcp14-tagged}
 
 ## COSE Header Algorithm Parameters
 
