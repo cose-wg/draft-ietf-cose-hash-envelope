@@ -107,8 +107,6 @@ A hashed payload functions equivalently to an attached payload, with the benefit
 
 To represent a hash of a payload, the following headers are defined:
 
-typ 16:
-  : Assigned by {{-COSE-TYP}}, represents the content type of the code envelope, including the protected header and payload
 
 TBD_1:
   : the hash algorithm used to generate the hash of the payload
