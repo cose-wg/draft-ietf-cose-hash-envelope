@@ -37,16 +37,16 @@ author:
     country: Germany
 
 normative:
-  RFC9052: RFC9052
+  RFC9596: RFC9596
   I-D.ietf-cose-typ-header-parameter: COSE-TYP
 
 informative:
 
 --- abstract
 
-This document defines new COSE header parameters for signaling that a payload is the output of a hash function.
+This document defines new COSE header parameters for signaling a payload as an output of a hash function.
 This mechanism enables faster validation as access to the original payload is not required for signature validation.
-Additionally, hints of the detached payload's content format and availability are defined.
+Additionally, hints of the detached payload's content format and availability are defined providing optional discovery of the original payload content.
 
 --- middle
 
@@ -54,7 +54,8 @@ Additionally, hints of the detached payload's content format and availability ar
 
 COSE defined detached payloads in Section 2 of {{-RFC9052}}, using `nil` as the payload.
 
-In order to verify a signature over a detached payload, the verifier must have access to the payload content. Storing a hash of the content allows for small signature envelopes, that are easy to transport and verify independently.
+In order to verify a signature over a detached payload, the verifier must have access to the payload content.
+Storing a hash of the content allows for small signature envelopes, that are easy to transport and verify independently.
 
 Additional hints in the protected header ensure cryptographic agility for the hashing & signing algorithms, and discoverability for the original content which could be prohibitively large to move over a network.
 
@@ -64,18 +65,18 @@ Additional hints in the protected header ensure cryptographic agility for the ha
 
 # Header Parameters
 
-To represent a hash of a detached payload, the following headers are defined:
+To represent a hash of a payload, the following headers are defined:
 
-TBD 0:
-  : will be assigned by {{-COSE-TYP}}, represents the content type of the code envelope, including the protected header and payload
+typ 16:
+  : Assigned by {{-COSE-TYP}}, represents the content type of the code envelope, including the protected header and payload
 
-TBD 1:
+TBD_1:
   : the hash algorithm used to generate the hash of the payload
 
-TBD 2:
+TBD_2:
   : the content type of the payload the hash represents
 
-TBD 3:
+TBD_3:
   : an identifier enabling a verifier to retrieve the full payload preimage.
 
 ## Signed Hash Envelopes Example
@@ -87,39 +88,28 @@ Hash_Envelope_Protected_Header = {
     ? &(alg: 1) => int,
 
     ; Type of the envelope
-    ? &(typ: TBD_0) => int / tstr
+    ? &(typ: 16) => int / tstr
 
     ; Hash algorithm used to produce the payload from content
     ; -16 for SHA-256,
     ; See https://www.iana.org/assignments/cose/cose.xhtml
     &(payload_hash_alg: TBD_1) => int
 
-    ; Content type of the preimage of the payload
+    ; Content type of the preimage (content to be hashed) of the payload
     ; 50 for application/json,
     ; See https://datatracker.ietf.org/doc/html/rfc7252#section-12.3
     &(payload_preimage_content_type: TBD_2) => int
 
-    ; Identifier for an artifact repository
+    ; Location the content of the hashed payload is stored
     ; For example:
-    ; pkg:container...image@sha256:244f...9c?repo..._url=dev.example
-    ? &(artifact_repository: TBD) => tstr
+    ; storage.example/244f...9c19
+    ? &(payload_location: TBD_3) => tstr
 
-    ; Type of Verifiable Data Structure, e.g. RFC9162_SHA256
-    ; ? &(verifiable-data-structure: -111) => int,
-
-    ; additional parameters allows.
-
-}
-
-Verifiable_Data_Proofs = {
-  ? &(inclusion-proofs: -1) => [ bstr .cbor inclusion-proof ]
-  ? &(consistency-proofs: -2) => [ bstr .cbor consistency-proof ]
-  ; ... other proofs are allowed here.
+    * int => any
 }
 
 Hash_Envelope_Unprotected_Header = {
-  ; ? &(verifiable-data-proofs: 222) => Verifiable_Data_Proofs
-  ; ... other unprotected header values are still allowed here.
+    * int => any
 }
 
 Hash_Envelope_as_COSE_Sign1 = [
@@ -134,7 +124,8 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 
 ## Protected Header
 
-TBD 0 (typ), TBD 1 (payload hash alg) and TBD 2 (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
+16 (typ), TBD_1 (payload hash alg) and TBD_2 (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
+TBD_3 (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
 
 For example:
 
@@ -142,23 +133,22 @@ For example:
 {
   / alg : ES384 / 1: -35,
   / kid / 4: h'75726e3a...32636573',
-  / typ / TBD 0: application/hashed+cose
-  / payload_hash_alg sha-256 / TBD 1: 1
-  / payload_preimage_content_type / TBD 2: application/jwk+json
-  / artifact_repository / TBD 3 : \
-  pkg:container/image@sha256:244f...?repository_url=dev.example
+  / typ / 16: application/hashed+cose
+  / payload_hash_alg sha-256 / TBD_1: 1
+  / payload_preimage_content_type / TBD_2: application/jwk+json
+  / payload_location / TBD_3 : storage.example/244f...9c19
 }
 ~~~~
 
-TBD 0 will be assigned by {{-COSE-TYP}}, it represents the content type of the code envelope, which includes the protected header and payload.
+{{-COSE-TYP}} represents the content type of the code envelope, which includes the protected header and payload.
 
-TBD 1 will be assigned by this draft.
-TBD 2 will be assigned by this draft.
-TBD 3 will be assigned by this draft.
+TBD_1 will be assigned by this draft.
+TBD_2 will be assigned by this draft.
+TBD_3 will be assigned by this draft.
 
 ## Attached Payload
 
-The payload MAY be attached.
+COSE_sign1 envelope with an attached payload, providing for signature validation.
 
 ~~~~ cbor-diag
 18(                                 / COSE Sign 1                   /
@@ -173,7 +163,7 @@ The payload MAY be attached.
 
 ## Detached Payload
 
-The payload MAY be detached.
+COSE_sign1 detached payload (`nil`), which is compact, but the payload must be distributed out of band to validate the signature
 
 ~~~~ cbor-diag
 18(                                 / COSE Sign 1                   /
@@ -181,6 +171,21 @@ The payload MAY be detached.
       h'a4013822...3a616263',       / Protected                     /
       {}                            / Unprotected                   /
       nil,                          / Detached payload              /
+      h'15280897...93ef39e5'        / Signature                     /
+    ]
+)
+~~~~
+
+## Hashed Payload
+
+A hashed payload functions equivalently to an attached payload, with the benefits of being compact in size and providing the ability to validate the signature.
+
+~~~~ cbor-diag
+18(                                 / COSE Sign 1                   /
+    [
+      h'a4013822...3a616263',       / Protected                     /
+      {}                            / Unprotected                   /
+      h'935b5a91...e18a588a',       / Payload                       /
       h'15280897...93ef39e5'        / Signature                     /
     ]
 )
@@ -203,25 +208,25 @@ For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to has
 
 ## COSE Header Algorithm Parameters
 
-* Name: payload hash algorithm
-* Label: TBD_1
-* Value type: int
-* Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
-* Description: Hash algorithm used to produce the payload.
+- Name: payload hash algorithm
+- Label: TBD_1
+- Value type: int
+- Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
+- Description: Hash algorithm used to produce the payload.
 
 ## Named Information Hash Algorithm Registry
 
-* Name: SHAKE256
-* Label: TBD_2
-* Value type: int
-* Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
-* Description: SHAKE256 a described in https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
+- Name: SHAKE256
+- Label: TBD_2
+- Value type: int
+- Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
+- Description: SHAKE256 a described in https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
 
-* Name: ASCON128
-* Label: TBD_3
-* Value type: int
-* Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
-* Description: ASCON128 a described in https://csrc.nist.gov/CSRC/media/Projects/lightweight-cryptography/documents/round-2/spec-doc-rnd2/ascon-spec-round2.pdf
+- Name: ASCON128
+- Label: TBD_3
+- Value type: int
+- Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
+- Description: ASCON128 a described in https://csrc.nist.gov/CSRC/media/Projects/lightweight-cryptography/documents/round-2/spec-doc-rnd2/ascon-spec-round2.pdf
 
 --- back
 
