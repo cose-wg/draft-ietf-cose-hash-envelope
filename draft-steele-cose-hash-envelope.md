@@ -37,8 +37,8 @@ author:
     country: Germany
 
 normative:
-  RFC9596: RFC9596
-  I-D.ietf-cose-typ-header-parameter: COSE-TYP
+  RFC9052: RFC9052
+  RFC9596: COSE-TYP
 
 informative:
 
@@ -138,9 +138,7 @@ For example:
   / payload_preimage_content_type / TBD_2: application/jwk+json
   / payload_location / TBD_3 : storage.example/244f...9c19
 }
-~~~~
-
-{{-COSE-TYP}} represents the content type of the code envelope, which includes the protected header and payload.
+and payload.
 
 TBD_1 will be assigned by this draft.
 TBD_2 will be assigned by this draft.
