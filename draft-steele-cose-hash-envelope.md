@@ -46,7 +46,7 @@ informative:
 
 This document defines new COSE header parameters for signaling a payload as an output of a hash function.
 This mechanism enables faster validation as access to the original payload is not required for signature validation.
-Additionally, hints of the detached payload's content format and availability are defined providing optional discovery of the original payload content.
+Additionally, hints of the detached payload's content format and availability are defined providing references to optional discovery mechanisms that can help to find original payload content.
 
 --- middle
 
