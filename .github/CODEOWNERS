@@ -1,3 +1,3 @@
 # Automatically generated CODEOWNERS
 # Regenerate with `make update-codeowners`
-draft-steele-cose-hash-envelope.md orie@transmute.industries
+draft-steele-cose-hash-envelope.md orie@transmute.industries steve.lasker@datatrails.ai henk.birkholz@ietf.contact
