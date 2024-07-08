@@ -38,7 +38,6 @@ author:
 
 normative:
   RFC9052: RFC9052
-  RFC9596: COSE-TYP
 
 informative:
 
@@ -107,7 +106,6 @@ A hashed payload functions equivalently to an attached payload, with the benefit
 
 To represent a hash of a payload, the following headers are defined:
 
-
 TBD_1:
   : the hash algorithm used to generate the hash of the payload
 
@@ -132,7 +130,8 @@ Hash_Envelope_Protected_Header = {
     ; See https://www.iana.org/assignments/cose/cose.xhtml
     &(payload_hash_alg: TBD_1) => int
 
-    ; Content type of the preimage (content to be hashed) of the payload
+    ; Content type of the preimage
+    ; (content to be hashed) of the payload
     ; 50 for application/json,
     ; See https://datatracker.ietf.org/doc/html/rfc7252#section-12.3
     &(payload_preimage_content_type: TBD_2) => int
