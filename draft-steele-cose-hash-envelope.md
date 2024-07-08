@@ -1,5 +1,5 @@
 ---
-v: 0
+v: 3
 title: "COSE Hash Envelope"
 cat: std
 docname: draft-steele-cose-hash-envelope-latest
@@ -161,12 +161,12 @@ TBD 3 will be assigned by this draft.
 The payload MAY be attached.
 
 ~~~~ cbor-diag
-18(                                 / COSE Sign 1                   /
+18(                                 / COSE Sign 1  /
     [
-      h'a4013822...3a616263',       / Protected                     /
-      {}                            / Unprotected                   /
-      h'317cedc7...c494e772',       / Payload                       /
-      h'15280897...93ef39e5'        / Signature                     /
+      h'a4013822...3a616263',       / Protected    /
+      {}                            / Unprotected  /
+      h'317cedc7...c494e772',       / Payload      /
+      h'15280897...93ef39e5'        / Signature    /
     ]
 )
 ~~~~
@@ -176,12 +176,12 @@ The payload MAY be attached.
 The payload MAY be detached.
 
 ~~~~ cbor-diag
-18(                                 / COSE Sign 1                   /
+18(                                 / COSE Sign 1      /
     [
-      h'a4013822...3a616263',       / Protected                     /
-      {}                            / Unprotected                   /
-      nil,                          / Detached payload              /
-      h'15280897...93ef39e5'        / Signature                     /
+      h'a4013822...3a616263',       / Protected        /
+      {}                            / Unprotected      /
+      nil,                          / Detached payload /
+      h'15280897...93ef39e5'        / Signature        /
     ]
 )
 ~~~~
@@ -203,25 +203,25 @@ For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to has
 
 ## COSE Header Algorithm Parameters
 
-* Name: payload hash algorithm
-* Label: TBD_1
-* Value type: int
-* Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
-* Description: Hash algorithm used to produce the payload.
+- Name: payload hash algorithm
+- Label: TBD_1
+- Value type: int
+- Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
+- Description: Hash algorithm used to produce the payload.
 
 ## Named Information Hash Algorithm Registry
 
-* Name: SHAKE256
-* Label: TBD_2
-* Value type: int
-* Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
-* Description: SHAKE256 a described in https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
+- Name: SHAKE256
+- Label: TBD_2
+- Value type: int
+- Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
+- Description: SHAKE256 a described in https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
 
-* Name: ASCON128
-* Label: TBD_3
-* Value type: int
-* Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
-* Description: ASCON128 a described in https://csrc.nist.gov/CSRC/media/Projects/lightweight-cryptography/documents/round-2/spec-doc-rnd2/ascon-spec-round2.pdf
+- Name: ASCON128
+- Label: TBD_3
+- Value type: int
+- Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml
+- Description: ASCON128 a described in https://csrc.nist.gov/CSRC/media/Projects/lightweight-cryptography/documents/round-2/spec-doc-rnd2/ascon-spec-round2.pdf
 
 --- back
 
