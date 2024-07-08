@@ -1,5 +1,5 @@
 ---
-v: 3
+v: 0
 title: "COSE Hash Envelope"
 cat: std
 docname: draft-steele-cose-hash-envelope-latest
