@@ -1,0 +1,838 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2024-07-18T00:01:25.451753+00:00",
+  "repo": "OR13/draft-steele-cose-hash-envelope",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOKqKrRc52B13I",
+      "title": "something like",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/issues/1",
+      "state": "CLOSED",
+      "author": "OR13",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "## Usage\r\n\r\n~~~~ cbor-diag\r\n{      \r\n  / Algorithm                           /                        \r\n  1: -35,                        \r\n  / Key identifier                      /\r\n  4: h'75726e3a...32636573',     \r\n  / typ of the envelope                 /\r\n  TBD 0: application/hashed+cose \r\n  / Hash algorithm of the payload       /\r\n  TBD 1: sha-256                  \r\n  / cty of the preimage of the payload  /\r\n  TBD 2: application/jwk+json    \r\n}\r\n~~~~\r\n",
+      "createdAt": "2023-11-06T22:33:34Z",
+      "updatedAt": "2023-11-06T22:36:33Z",
+      "closedAt": "2023-11-06T22:36:33Z",
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOKqKrRc52Ptdt",
+      "title": "Follow composit sigs approach ",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/issues/2",
+      "state": "CLOSED",
+      "author": "OR13",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Pre-hash with domain binding.",
+      "createdAt": "2023-11-08T15:11:48Z",
+      "updatedAt": "2023-11-16T16:43:17Z",
+      "closedAt": "2023-11-16T16:43:16Z",
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "body": "I think we ommit this for now, doing this would break the cases where the payload hash is controlled by the artifact repo",
+          "createdAt": "2023-11-16T16:43:16Z",
+          "updatedAt": "2023-11-16T16:43:16Z"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOKqKrRc526DTn",
+      "title": "Add CDDL",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/issues/3",
+      "state": "CLOSED",
+      "author": "OR13",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-11-15T14:48:14Z",
+      "updatedAt": "2023-11-16T16:42:37Z",
+      "closedAt": "2023-11-16T16:42:37Z",
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "body": "done",
+          "createdAt": "2023-11-16T16:42:37Z",
+          "updatedAt": "2023-11-16T16:42:37Z"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOKqKrRc526H_h",
+      "title": "Need hint to discover payload content",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/issues/4",
+      "state": "CLOSED",
+      "author": "OR13",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "probably another header param",
+      "createdAt": "2023-11-15T14:58:07Z",
+      "updatedAt": "2023-11-16T16:42:45Z",
+      "closedAt": "2023-11-16T16:42:45Z",
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "body": "done",
+          "createdAt": "2023-11-16T16:42:45Z",
+          "updatedAt": "2023-11-16T16:42:45Z"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOKqKrRc56k2GX",
+      "title": "COSE_CertHash",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/issues/8",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "See if there is any aligning we can do, and add informative text relating the concepts\r\n\r\nhttps://datatracker.ietf.org/doc/html/draft-ietf-cose-x509-08",
+      "createdAt": "2023-12-26T14:52:02Z",
+      "updatedAt": "2023-12-26T14:52:26Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOKqKrRc57avxc",
+      "title": "Use `COSE_Hash_V`",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/issues/9",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Add a single header for an instance or set of `COSE_Hash_V`, instead of multiple headers... as discussed in https://github.com/OR13/draft-steele-cose-hash-envelope/pull/7#issuecomment-1879407221",
+      "createdAt": "2024-01-08T14:46:16Z",
+      "updatedAt": "2024-07-01T14:42:54Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "JeromySt",
+          "authorAssociation": "NONE",
+          "body": "> The main reasons is integrity protection, and being able to swap detached payload of hash of content for detached payload of content, in protocol messages that require COSE Sign 1.\r\n> \r\n> If   ? 4 : any   # object containing other details and things can be any object, then its totally possible we could simply put a cose sign 1 with detached payload there, but the structure of the signed statement would then become an OR type of special kinds of COSE_Hash_V and special kinds of COSE Sign 1.\r\n> \r\n> I do think its awkward that we can't directly use COSE_Hash_V in COSE sign 1 headers, perhaps registering a single header that is a COSE_Hash_V or set of COSE_Hash_V is a better approach?\r\n\r\nI wanted to continue this discussion here.\r\n\r\nI get the use case for indirect identification of content for COSE vrs direct identification of content.  Unfortunately, COSE was authored in such a way that indirect identification of content is considered an application layer concept and not a core concept within COSE explicitly.\r\n\r\nGiven the only way to validate a COSE message is to provide the content as part of the verification structure, we're left with needing application layer logic to manage expectations of indirect identification.  If we need application layer logic, then I'm not quite seeing how moving everything but the hash value into COSE protected headers solve this problem differently vrs using a `COSE_Hash_V` structure as the COSE message content for indirect identification of content and processing it as such via content-type of COSE_Hash_V identification.\r\n\r\nIt is also possible that there is another problem that moving fields into the COSE protected header is intended to solve, which may not have been fully articulated yet, beyond integrity protection?",
+          "createdAt": "2024-01-09T16:42:06Z",
+          "updatedAt": "2024-01-09T16:42:06Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "body": "A hash of content is just another app layer concern.\r\n\r\nIn https://github.com/cose-wg/draft-ietf-cose-merkle-tree-proofs\r\n\r\nWe have COSE Sign 1 payload that are merkle tree roots for a specific type of application cose sign 1 called a \"receipt\".\r\n\r\nWe discover the semantics necessary to process this payload, from the protected headers.\r\n\r\nThe approach taken here is essentially the same, except it is for \"signed statements\"\r\n\r\n( these terms, \"signed statements, and receipts\" come from SCITT, see https://datatracker.ietf.org/doc/html/draft-ietf-scitt-architecture-04#section-5 )\r\n\r\nThe reason it is desirable to have a signed hash and meta data, that is also a COSE Sign 1, is that a Verifier will have a policy that says:\r\n\r\n1. I only accept COSE Sign 1.\r\n2. I will accepts attached or detached payloads.\r\n3. When accepting detached payloads, I might accept hashes of content as opposed to content.\r\n\r\nThen the \"Issuer\" can register a tiny message, and the Verifier / TS can simply check to see if they trust they key... because the payload is a hash, there is nothing else to check.\r\n\r\n\r\n",
+          "createdAt": "2024-01-12T20:59:48Z",
+          "updatedAt": "2024-01-12T20:59:48Z"
+        },
+        {
+          "author": "JeromySt",
+          "authorAssociation": "NONE",
+          "body": "I'm guessing the issue lies in the use of \"detached\" vrs indirect.\r\n\r\nWhen working with this in the past, it was found that a COSE Sign 1 cannot be validated without access to what COSE calls the payload in bstr form.\r\n\r\nWhen looking at RFC 9052: CBOR Object Signing and Encryption (COSE): Structures and Process (rfc-editor.org)<https://www.rfc-editor.org/rfc/rfc9052#name-signing-and-verification-pr>, specifically 4.4's Sig_structure:\r\n\r\nSig_structure = [\r\n    context : \"Signature\" / \"Signature1\",\r\n    body_protected : empty_or_serialized_map,\r\n    ? sign_protected : empty_or_serialized_map,\r\n    external_aad : bstr,\r\n    payload : bstr\r\n]\r\n\r\nAs I understand it and have experienced thus far, the COSE payload must always be provided to perform verification (even in a detached COSE message). Without the payload, the COSE message cannot be verified and/or processed. This means that anything wanting to process a COSE message must always have access to the payload which was used to generate the COSE message. The issue with SCITT, along with other verifier scenarios, is they want to be able to verify the COSE message (and read headers etc) without needing access to the payload.  However to validate that COSE message hasn't been tampered with, they still must process a payload to satisfy the Sig_structure.\r\n\r\nUnless I am missing something major, it doesn't seem possible for a verifier to allow a detached COSE signature without the payload also being accessible. In the case where the hash is the COSE payload, an embedded COSE signature makes far more sense given the complexity of managing and dealing with the various pieces of a detached COSE signature for such a small payload provides little value.\r\n\r\nIn other words, I'm not sure there is a ton of value for a detached COSE signature to be used in the verifier use case of hashes. Once a verifier needs to support a detached COSE signature, they then must support the entity posting the COSE message to it, to also provide the payload and the choice of how large that payload can/should be is a function of the verifiers policy.\r\n\r\nI think the confusion may be stemming from the use of \"detached payloads\" which I'm interpreting as \"detached COSE signatures\" where it's quite possible others may be interpreting it as \"indirect content identification\".\r\n\r\nMy summary is as follows:\r\n\r\n  1.  COSE Verifiers must ALWAYS have access to COSE payloads either by only supporting embedded content, or detached COSE signature with associated payloads provided.\r\n  2.\r\nThose payloads provided for COSE verification could either be the raw content (of whatever size limits imposed by the verifier), or a hash of content, but that payload must still be provided to the verifier.\r\n\r\nI'm just not sure how one handles trying to support detached payloads as a verifier and still not want access to payloads. Access to payloads is simply a requirement of COSE.\r\n\r\n________________________________\r\nFrom: Orie Steele ***@***.***>\r\nSent: Friday, January 12, 2024 12:59 PM\r\nTo: OR13/draft-steele-cose-hash-envelope ***@***.***>\r\nCc: Comment ***@***.***>\r\nSubject: Re: [OR13/draft-steele-cose-hash-envelope] Use `COSE_Hash_V` (Issue #9)\r\n\r\n\r\nA hash of content is just another app layer concern.\r\n\r\nIn https://github.com/cose-wg/draft-ietf-cose-merkle-tree-proofs\r\n\r\nWe have COSE Sign 1 payload that are merkle tree roots for a specific type of application cose sign 1 called a \"receipt\".\r\n\r\nWe discover the semantics necessary to process this payload, from the protected headers.\r\n\r\nThe approach taken here is essentially the same, except it is for \"signed statements\"\r\n\r\n( these terms, \"signed statements, and receipts\" come from SCITT, see https://datatracker.ietf.org/doc/html/draft-ietf-scitt-architecture-04#section-5 )\r\n\r\nThe reason it is desirable to have a signed hash and meta data, that is also a COSE Sign 1, is that a Verifier will have a policy that says:\r\n\r\n  1.  I only accept COSE Sign 1.\r\n  2.  I will accepts attached or detached payloads.\r\n  3.  When accepting detached payloads, I might accept hashes of content as opposed to content.\r\n\r\nThen the \"Issuer\" can register a tiny message, and the Verifier / TS can simply check to see if they trust they key... because the payload is a hash, there is nothing else to check.\r\n\r\n\u2014\r\nReply to this email directly, view it on GitHub<https://github.com/OR13/draft-steele-cose-hash-envelope/issues/9#issuecomment-1889942444> or unsubscribe<https://github.com/notifications/unsubscribe-auth/AC7XYFMUD5NCWCNKTSPSKUTYOGP47BFKMF2HI4TJMJ2XIZLTSOBKK5TBNR2WLJDUOJ2WLJDOMFWWLO3UNBZGKYLEL5YGC4TUNFRWS4DBNZ2F6YLDORUXM2LUPGBKK5TBNR2WLJDUOJ2WLJDOMFWWLLTXMF2GG2C7MFRXI2LWNF2HTAVFOZQWY5LFUVUXG43VMWSG4YLNMWVXI2DSMVQWIX3UPFYGLLDTOVRGUZLDORPXI6LQMWWES43TOVSUG33NNVSW45FGORXXA2LDOOJIFJDUPFYGLKTSMVYG643JORXXE6NFOZQWY5LFVE3TCNJTGAZTONBZQKSHI6LQMWSWS43TOVS2K5TBNR2WLKRSGA3TANRQHA4TQOFHORZGSZ3HMVZKMY3SMVQXIZI>.\r\nYou are receiving this email because you commented on the thread.\r\n\r\nTriage notifications on the go with GitHub Mobile for iOS<https://apps.apple.com/app/apple-store/id1477376905?ct=notification-email&mt=8&pt=524675> or Android<https://play.google.com/store/apps/details?id=com.github.android&referrer=utm_campaign%3Dnotification-email%26utm_medium%3Demail%26utm_source%3Dgithub>.\r\n\r\n\r\n",
+          "createdAt": "2024-01-12T21:30:35Z",
+          "updatedAt": "2024-01-12T21:30:35Z"
+        },
+        {
+          "author": "briankr-ms",
+          "authorAssociation": "NONE",
+          "body": "I agree with Jeromy that, in the context of indirect signatures where the payload is a hash, it's confusing to discuss detached payloads. A primary benefit of an indirect signature is that a hash is small, so a verifier does not need access to a potentially large payload to verify the envelope's signature. Detached payloads are of course \"allowed\" and can be supported if the hash/payload is provided to a verifier out of band, but I don't see a strong use case.\r\n\r\nI also agree that it seems more straightforward to use the `COSE_Hash_V` structure as the payload, rather than in a new header (especially because the latter implies duplication of the hash bstr as both the payload and a required field in the header value). With this approach, the existing `content type: 3` header could be used to accurately describe the payload content as a `COSE_Hash_V` structure, and the application can process it accordingly. I'm not sure that the new `typ` header describing the type of the envelope is even necessary in this scenario.\r\n\r\nI actually think there's an opportunity to avoid needing to register any new header parameters at all, leveraging `content type`. Rather than using the new `payload_preimage_content_type` header parameter, we could register a `+cose-hash-v` media type suffix. This would concisely signal to an application that the payload is a `COSE_Hash_V` structure representing a preimage of the specified type, e.g. `application/json+cose-hash-v`, while requiring no special handling of the envelope or new semantics. It's also consistent with the principle Jeromy highlighted, that indirection is an application layer concept.\r\n\r\nAre there scenarios that this approach would be incompatible with?",
+          "createdAt": "2024-02-01T00:31:33Z",
+          "updatedAt": "2024-02-01T00:35:19Z"
+        },
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Are there scenarios that this approach would be incompatible with?\r\n\r\nHonestly (and maybe unsurprisingly so), I am having a hard time to envision usage scenarios where this would pose a problem. I'd even would go as far as to say that the \"indirection is dealt with by application layer\" approach was my preferred choice when the topic came up (sans the now solidifying details of `+cose-hash-v` and the corresponding `COSE_Hash_V`, which I totally can get behind at). I'd happily step up as contributor, if this proposal becomes the new direction,",
+          "createdAt": "2024-02-01T10:57:32Z",
+          "updatedAt": "2024-02-01T10:57:32Z"
+        },
+        {
+          "author": "ianjmcm",
+          "authorAssociation": "NONE",
+          "body": "Anyone have any other input here? We're going to put a working implementation and can come back to this group to share and discuss more as needed. ",
+          "createdAt": "2024-02-12T16:51:58Z",
+          "updatedAt": "2024-02-12T16:51:58Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@ianjmcm, have you made any progress on this? We're going to bring this draft to the COSE working group in Vancouver. More input would be really helpful.  ",
+          "createdAt": "2024-07-01T14:42:53Z",
+          "updatedAt": "2024-07-01T14:42:53Z"
+        }
+      ]
+    }
+  ],
+  "pulls": [
+    {
+      "number": 5,
+      "id": "PR_kwDOKqKrRc5fiDNg",
+      "title": "Augmented abstract",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/pull/5",
+      "state": "MERGED",
+      "author": "henkbirkholz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "...and made every sentence a new line.",
+      "createdAt": "2023-11-15T15:36:50Z",
+      "updatedAt": "2023-11-16T10:02:35Z",
+      "baseRepository": "OR13/draft-steele-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "2504ef31c284041e9796dd441be53276f201533a",
+      "headRepository": "OR13/draft-steele-cose-hash-envelope",
+      "headRefName": "some-abstract",
+      "headRefOid": "f14f28a50fd6f9234d7b1e48fec469404ca13bf9",
+      "closedAt": "2023-11-16T10:02:34Z",
+      "mergedAt": "2023-11-16T10:02:34Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "a05cda4e34d2dc9a9cfb21425249528a266732ac"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc5nTAD8",
+          "commit": {
+            "abbreviatedOid": "f14f28a"
+          },
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-15T21:38:26Z",
+          "updatedAt": "2023-11-15T21:38:26Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOKqKrRc5fjd4-",
+      "title": "Updates",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/pull/6",
+      "state": "MERGED",
+      "author": "OR13",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "- Add CDDL\r\n- formatting and text updates\r\n- add hint for artifact repo",
+      "createdAt": "2023-11-15T19:39:16Z",
+      "updatedAt": "2023-11-16T16:42:23Z",
+      "baseRepository": "OR13/draft-steele-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "a05cda4e34d2dc9a9cfb21425249528a266732ac",
+      "headRepository": "OR13/draft-steele-cose-hash-envelope",
+      "headRefName": "feat/cddl",
+      "headRefOid": "b7f9b285f84d2d58c04807b2fea29c5af7f9a977",
+      "closedAt": "2023-11-16T16:42:23Z",
+      "mergedAt": "2023-11-16T16:42:23Z",
+      "mergedBy": "OR13",
+      "mergeCommit": {
+        "oid": "26cb07e0797705af00e95a193ec22124fc220a80"
+      },
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "body": "I'm merging this, as I have applied the suggestions, and its still pre-00 draft",
+          "createdAt": "2023-11-16T16:42:19Z",
+          "updatedAt": "2023-11-16T16:42:19Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc5nWtW3",
+          "commit": {
+            "abbreviatedOid": "de74780"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-11-16T10:15:52Z",
+          "updatedAt": "2023-11-16T10:15:52Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc5nWuV7",
+          "commit": {
+            "abbreviatedOid": "de74780"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2023-11-16T10:16:59Z",
+          "updatedAt": "2023-11-16T10:17:19Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\r\n# Terminology\r\n\r\n{::boilerplate bcp14-tagged}\r\n\r\n# Conventions and Definitions\r\n```",
+              "createdAt": "2023-11-16T10:16:59Z",
+              "updatedAt": "2023-11-16T10:17:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc5nY7sg",
+          "commit": {
+            "abbreviatedOid": "de74780"
+          },
+          "author": "aj-stein-nist",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "I tested them and they look good to me, I hope the community enjoys like I do.",
+          "createdAt": "2023-11-16T14:46:28Z",
+          "updatedAt": "2023-11-16T14:46:28Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc5naONl",
+          "commit": {
+            "abbreviatedOid": "de74780"
+          },
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-11-16T16:41:48Z",
+          "updatedAt": "2023-11-16T16:41:48Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "applied",
+              "createdAt": "2023-11-16T16:41:48Z",
+              "updatedAt": "2023-11-16T16:41:49Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOKqKrRc5iUm4d",
+      "title": "Formatting and spec clarity updates",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/pull/7",
+      "state": "MERGED",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Adding a bit more formatting and clarity to the spec",
+      "createdAt": "2023-12-19T01:15:51Z",
+      "updatedAt": "2024-01-09T13:56:52Z",
+      "baseRepository": "OR13/draft-steele-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "a8fdde9d01a215c5c71ae95bb5f3de95858b5253",
+      "headRepository": null,
+      "headRefName": "spec-clarifications",
+      "headRefOid": "b772fdc5b304612207540d2e5a5b0e14d464ae9b",
+      "closedAt": "2024-01-09T13:56:52Z",
+      "mergedAt": "2024-01-09T13:56:52Z",
+      "mergedBy": "OR13",
+      "mergeCommit": {
+        "oid": "8908aaadc0e915901e9bc068a2954ed7a005bd28"
+      },
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "body": "I think the intro still needs some work",
+          "createdAt": "2023-12-19T01:30:13Z",
+          "updatedAt": "2023-12-19T01:30:13Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Yeah, this was a rough update that I wanted to save before wrapping up for the day.\r\nI'll have more time tomorrow",
+          "createdAt": "2023-12-19T03:37:10Z",
+          "updatedAt": "2023-12-19T03:37:10Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I changed the date to fix some kramdown warnings. Your call to revert, keep, change\r\nPR is now ready and passes kramdown tests. \r\n\r\nUltimately, we need to decide how we want to handle \"Too long lines...\" for CDDL. ",
+          "createdAt": "2024-01-04T00:44:13Z",
+          "updatedAt": "2024-01-04T00:44:13Z"
+        },
+        {
+          "author": "JeromySt",
+          "authorAssociation": "NONE",
+          "body": "Is there a reason that special COSE headers and specification are warranted rather than simply following the guidance from [RFC9054](https://www.rfc-editor.org/rfc/rfc9054.html)?  One could use the `COSE_Hash_V` structure easily enough within the embedded payload of a COSE message.  The arguments put forth in RFC9054 still hold true.\r\n\r\nAnother question that comes to mind is that hashing of content to represent and indirect immutable key for the original content isn't a unique COSE issue. As such might it be possible to consider a content-type extension approach in which the content-type can be augmented with something such as `+hash_sha256` to represent the `.Content` is in-fact a hash of the original content/type without needing any new headers?  Of course, this means we lose some of the application specific fields such as location and others proposed here, but we're left with a generic answer to a generic problem verse a COSE specific implementation.",
+          "createdAt": "2024-01-05T23:59:07Z",
+          "updatedAt": "2024-01-05T23:59:07Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "body": "```\r\nCOSE_Hash_V = (\r\n    1 : int / tstr, # Algorithm identifier\r\n    2 : bstr, # Hash value\r\n    ? 3 : tstr, # Location of object that was hashed\r\n    ? 4 : any   # object containing other details and things\r\n    )\r\n```\r\n- https://www.rfc-editor.org/rfc/rfc9054.html#section-2.1\r\n\r\n> Is there a reason that special COSE headers and specification are warranted rather than simply following the guidance from [RFC9054](https://www.rfc-editor.org/rfc/rfc9054.html)?\r\n\r\nThe main reasons is integrity protection, and being able to swap detached payload of hash of content for detached payload of content, in protocol messages that require COSE Sign 1.\r\n\r\nIf `  ? 4 : any   # object containing other details and things` can be any object, then its totally possible we could simply put a cose sign 1 with detached payload there, but the structure of the signed statement would then become an OR type of special kinds of `COSE_Hash_V` and special kinds of `COSE Sign 1`.\r\n\r\nI do think its awkward that we can't directly use `COSE_Hash_V` in COSE sign 1 headers, perhaps registering a single header that is a `COSE_Hash_V` or set of `COSE_Hash_V` is a better approach?",
+          "createdAt": "2024-01-08T14:42:56Z",
+          "updatedAt": "2024-01-08T14:44:52Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "body": "> As such might it be possible to consider a content-type extension approach in which the content-type can be augmented with something such as `+hash_sha256`\r\n\r\nThis would mean registering a new structured suffix for every hash algorithm?\r\n\r\nI think if we can, we should avoid creating new media types.\r\n\r\nWe might be able to encode content type of the preimage in:\r\n\r\n```\r\n? 3 : tstr, # Location of object that was hashed\r\n? 4 : any   # object containing other details and things\r\n```",
+          "createdAt": "2024-01-08T14:49:40Z",
+          "updatedAt": "2024-01-08T14:49:40Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc5qkfUX",
+          "commit": {
+            "abbreviatedOid": "a5186ee"
+          },
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-12-19T01:28:10Z",
+          "updatedAt": "2023-12-19T01:28:10Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc5qovoX",
+          "commit": {
+            "abbreviatedOid": "a5186ee"
+          },
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-12-19T15:02:12Z",
+          "updatedAt": "2023-12-19T15:02:12Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "```suggestion\r\nThis document defines new COSE header parameters for signaling that a payload is the output of a hash function.\r\n```",
+              "createdAt": "2023-12-19T15:02:12Z",
+              "updatedAt": "2023-12-19T15:02:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc5qrwCP",
+          "commit": {
+            "abbreviatedOid": "a5186ee"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-12-19T23:20:22Z",
+          "updatedAt": "2023-12-19T23:20:22Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "It likely needs a bit more tweaks for readability, but it's more accurate so merged into the PR for content tweaking later.",
+              "createdAt": "2023-12-19T23:20:22Z",
+              "updatedAt": "2023-12-19T23:20:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc5rdFXB",
+          "commit": {
+            "abbreviatedOid": "f252cce"
+          },
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-03T17:28:27Z",
+          "updatedAt": "2024-01-03T17:28:27Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOKqKrRc5zf5Td",
+      "title": "Editor Henk",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/pull/10",
+      "state": "MERGED",
+      "author": "henkbirkholz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "added @henkbirkholz as editor for WGAC",
+      "createdAt": "2024-06-25T13:18:09Z",
+      "updatedAt": "2024-06-26T07:26:02Z",
+      "baseRepository": "OR13/draft-steele-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "ba99942a2d3bb3fed447b7531966c683fdcdc469",
+      "headRepository": "OR13/draft-steele-cose-hash-envelope",
+      "headRefName": "editor-henk",
+      "headRefOid": "2cd496e6b31c2e15828f96c4defafd818a64883d",
+      "closedAt": "2024-06-26T07:26:01Z",
+      "mergedAt": "2024-06-26T07:26:01Z",
+      "mergedBy": "OR13",
+      "mergeCommit": {
+        "oid": "d102df6a162ca54a81c3a7838b87c7a8a6b3a5c8"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc5_nE3B",
+          "commit": {
+            "abbreviatedOid": "2cd496e"
+          },
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-06-26T07:25:58Z",
+          "updatedAt": "2024-06-26T07:25:58Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "PR_kwDOKqKrRc50kTz6",
+      "title": "Updates for 120 Submission",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/pull/11",
+      "state": "MERGED",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-05T21:18:01Z",
+      "updatedAt": "2024-07-06T16:39:56Z",
+      "baseRepository": "OR13/draft-steele-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "d102df6a162ca54a81c3a7838b87c7a8a6b3a5c8",
+      "headRepository": "OR13/draft-steele-cose-hash-envelope",
+      "headRefName": "steve/streamline",
+      "headRefOid": "0b62dcf79db5da3f417603d231d630826a791fc0",
+      "closedAt": "2024-07-06T16:39:55Z",
+      "mergedAt": "2024-07-06T16:39:55Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "b0500d1407ff8fc13390c2dc1386348aff0a72be"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6A0mS3",
+          "commit": {
+            "abbreviatedOid": "3c0cadf"
+          },
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-05T21:24:42Z",
+          "updatedAt": "2024-07-05T21:24:43Z",
+          "comments": [
+            {
+              "originalPosition": 84,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2024-07-05T21:24:42Z",
+              "updatedAt": "2024-07-05T21:24:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6A0mUx",
+          "commit": {
+            "abbreviatedOid": "3c0cadf"
+          },
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-05T21:24:57Z",
+          "updatedAt": "2024-07-05T21:24:57Z",
+          "comments": [
+            {
+              "originalPosition": 84,
+              "body": "We don't even need to define this anymore",
+              "createdAt": "2024-07-05T21:24:57Z",
+              "updatedAt": "2024-07-05T21:24:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6A0mYj",
+          "commit": {
+            "abbreviatedOid": "3c0cadf"
+          },
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-05T21:25:30Z",
+          "updatedAt": "2024-07-05T21:25:30Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6A0m5b",
+          "commit": {
+            "abbreviatedOid": "3c0cadf"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-05T21:29:14Z",
+          "updatedAt": "2024-07-05T21:29:14Z",
+          "comments": [
+            {
+              "originalPosition": 84,
+              "body": "The section says \"Header Parameters\", and these are the header parameters. One just happens to already have an assignment. As opposed to, \"Requested Header Parameters\".\r\n\r\nOnce these are assigned, they'd all have allocations. ",
+              "createdAt": "2024-07-05T21:29:14Z",
+              "updatedAt": "2024-07-05T21:29:14Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6A0njO",
+          "commit": {
+            "abbreviatedOid": "3c0cadf"
+          },
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-05T21:33:57Z",
+          "updatedAt": "2024-07-05T21:33:57Z",
+          "comments": [
+            {
+              "originalPosition": 84,
+              "body": "I think this suggestion should be applied because:\r\n\r\nhttps://github.com/OR13/draft-steele-cose-hash-envelope/pull/11/files#diff-939f0d001ab3ed3d6adaedfa8e4b077068e26edc5477607a69c04eb6b27e51a5R130\r\n\r\ntyp is optional in the CDDL and its defined in a different document.\r\n\r\n",
+              "createdAt": "2024-07-05T21:33:57Z",
+              "updatedAt": "2024-07-05T21:33:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6A1prZ",
+          "commit": {
+            "abbreviatedOid": "2bf4f90"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-06T15:56:17Z",
+          "updatedAt": "2024-07-06T16:01:03Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "liked the previous phraxing better. What problem was solved?",
+              "createdAt": "2024-07-06T15:56:17Z",
+              "updatedAt": "2024-07-06T16:01:03Z"
+            },
+            {
+              "originalPosition": 15,
+              "body": "Maybe:\r\n\r\n```suggestion\r\nAdditionally, hints of the detached payload's content format and availability are defined providing references to optional discovery mechanisms that can help to find original payload content.\r\n```",
+              "createdAt": "2024-07-06T15:58:59Z",
+              "updatedAt": "2024-07-06T16:01:03Z"
+            },
+            {
+              "originalPosition": 223,
+              "body": "* -> - seems non-consequential?",
+              "createdAt": "2024-07-06T16:00:43Z",
+              "updatedAt": "2024-07-06T16:01:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6A1pz3",
+          "commit": {
+            "abbreviatedOid": "2bf4f90"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "but let's \ud83d\udea2 it. Maybe check suggested changes, though.",
+          "createdAt": "2024-07-06T16:02:06Z",
+          "updatedAt": "2024-07-06T16:02:06Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6A1qfV",
+          "commit": {
+            "abbreviatedOid": "2bf4f90"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-06T16:31:23Z",
+          "updatedAt": "2024-07-06T16:31:23Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "I was applying feedback from Grammarly as part of the additional changes.",
+              "createdAt": "2024-07-06T16:31:23Z",
+              "updatedAt": "2024-07-06T16:31:23Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6A1qkS",
+          "commit": {
+            "abbreviatedOid": "0b62dcf"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-06T16:34:36Z",
+          "updatedAt": "2024-07-06T16:34:36Z",
+          "comments": [
+            {
+              "originalPosition": 223,
+              "body": "The only change here was * to - for markdown formatting validation.\r\n\r\nWas there another suggestion?",
+              "createdAt": "2024-07-06T16:34:36Z",
+              "updatedAt": "2024-07-06T16:34:36Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "PR_kwDOKqKrRc50tk3g",
+      "title": "Changing to v0 for 120 Submission",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/pull/12",
+      "state": "CLOSED",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-08T15:29:05Z",
+      "updatedAt": "2024-07-08T15:34:17Z",
+      "baseRepository": "OR13/draft-steele-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "b0500d1407ff8fc13390c2dc1386348aff0a72be",
+      "headRepository": "OR13/draft-steele-cose-hash-envelope",
+      "headRefName": "steve/120-submission",
+      "headRefOid": "d06a20335d60217df60c704a04b05da743286377",
+      "closedAt": "2024-07-08T15:31:22Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 13,
+      "id": "PR_kwDOKqKrRc50uy9P",
+      "title": "Formatting fixes for IETF Tools",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/pull/13",
+      "state": "CLOSED",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-08T18:43:00Z",
+      "updatedAt": "2024-07-08T18:44:23Z",
+      "baseRepository": "OR13/draft-steele-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "07d4efffa7d4efd4f9ec6cdf56396bf66c8935cb",
+      "headRepository": "OR13/draft-steele-cose-hash-envelope",
+      "headRefName": "steve/120-submission",
+      "headRefOid": "9b959dc49246e4a28eacb7aeff4a585b842e2be9",
+      "closedAt": "2024-07-08T18:44:17Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 14,
+      "id": "PR_kwDOKqKrRc50vFUL",
+      "title": "Fixes for 120 Submission",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/pull/14",
+      "state": "MERGED",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-08T19:24:47Z",
+      "updatedAt": "2024-07-08T19:25:28Z",
+      "baseRepository": "OR13/draft-steele-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "07d4efffa7d4efd4f9ec6cdf56396bf66c8935cb",
+      "headRepository": "OR13/draft-steele-cose-hash-envelope",
+      "headRefName": "steve/120-fixes",
+      "headRefOid": "c77328036f25f16a46655e3db1728dcaab28ba42",
+      "closedAt": "2024-07-08T19:25:28Z",
+      "mergedAt": "2024-07-08T19:25:28Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "a347463abbf41d37bd65f532946055006ad897b5"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}

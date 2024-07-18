@@ -1,0 +1,328 @@
+
+
+
+
+Network Working Group                                          O. Steele
+Internet-Draft                                                 Transmute
+Intended status: Standards Track                               S. Lasker
+Expires: 9 January 2025                                       DataTrails
+                                                             H. Birkholz
+                                                          Fraunhofer SIT
+                                                             8 July 2024
+
+
+                           COSE Hash Envelope
+                 draft-steele-cose-hash-envelope-latest
+
+Abstract
+
+   This document defines new COSE header parameters for signaling a
+   payload as an output of a hash function.  This mechanism enables
+   faster validation as access to the original payload is not required
+   for signature validation.  Additionally, hints of the detached
+   payload's content format and availability are defined providing
+   references to optional discovery mechanisms that can help to find
+   original payload content.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://OR13.github.io/draft-steele-cose-hash-envelope/draft-steele-
+   cose-hash-envelope.html.  Status information for this document may be
+   found at https://datatracker.ietf.org/doc/draft-steele-cose-hash-
+   envelope/.
+
+   Discussion of this document takes place on the CBOR Object Signing
+   and Encryption Working Group mailing list (mailto:cose@ietf.org),
+   which is archived at https://mailarchive.ietf.org/arch/browse/cose/.
+   Subscribe at https://www.ietf.org/mailman/listinfo/cose/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/OR13/draft-steele-cose-hash-envelope.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 9 January 2025.
+
+Copyright Notice
+
+   Copyright (c) 2024 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+     1.1.  Attached Payload
+     1.2.  Detached Payload
+     1.3.  Hashed Payload
+   2.  Header Parameters
+     2.1.  Signed Hash Envelopes Example
+     2.2.  Protected Header
+   3.  Encrypted Hashes
+   4.  Security Considerations
+     4.1.  Choice of Hash Function
+   5.  IANA Considerations
+     5.1.  Requirements Notation
+     5.2.  COSE Header Algorithm Parameters
+     5.3.  Named Information Hash Algorithm Registry
+   6.  Normative References
+   Acknowledgments
+   Authors' Addresses
+
+1.  Introduction
+
+   COSE defined detached payloads in Section 2 of [RFC9052], using nil
+   as the payload.  In order to verify a signature over a detached
+   payload, the verifier must have access to the payload content.
+   Storing a hash of the content allows for small signature envelopes,
+   that are easy to transport and verify independently.
+
+   Additional hints in the protected header ensure cryptographic agility
+   for the hashing & signing algorithms, and discoverability for the
+   original content which could be prohibitively large to move over a
+   network.
+
+1.1.  Attached Payload
+
+   COSE_sign1 envelope with an attached payload, providing for signature
+   validation.
+
+   18(                                 / COSE Sign 1                   /
+       [
+         h'a4013822...3a616263',       / Protected                     /
+         {}                            / Unprotected                   /
+         h'317cedc7...c494e772',       / Payload                       /
+         h'15280897...93ef39e5'        / Signature                     /
+       ]
+   )
+
+1.2.  Detached Payload
+
+   COSE_sign1 envelope with a detached payload (nil), which is compact
+   but the payload must be distributed out of band to validate the
+   signature
+
+   18(                                 / COSE Sign 1                   /
+       [
+         h'a4013822...3a616263',       / Protected                     /
+         {}                            / Unprotected                   /
+         nil,                          / Detached Payload              /
+         h'15280897...93ef39e5'        / Signature                     /
+       ]
+   )
+
+1.3.  Hashed Payload
+
+   A hashed payload functions equivalently to an attached payload, with
+   the benefits of being compact in size and providing the ability to
+   validate the signature.
+
+   18(                                 / COSE Sign 1                   /
+       [
+         h'a4013822...3a616263',       / Protected                     /
+         {}                            / Unprotected                   /
+         h'935b5a91...e18a588a',       / Payload                       /
+         h'15280897...93ef39e5'        / Signature                     /
+       ]
+   )
+
+2.  Header Parameters
+
+   To represent a hash of a payload, the following headers are defined:
+
+   TBD_1:  the hash algorithm used to generate the hash of the payload
+
+   TBD_2:  the content type of the payload the hash represents
+
+   TBD_3:  an identifier enabling a verifier to retrieve the full
+      payload preimage.
+
+2.1.  Signed Hash Envelopes Example
+
+   Hash_Envelope_Protected_Header = {
+       ; Cryptographic algorithm to use
+       ? &(alg: 1) => int,
+
+       ; Type of the envelope
+       ? &(typ: 16) => int / tstr
+
+       ; Hash algorithm used to produce the payload from content
+       ; -16 for SHA-256,
+       ; See https://www.iana.org/assignments/cose/cose.xhtml
+       &(payload_hash_alg: TBD_1) => int
+
+       ; Content type of the preimage
+       ; (content to be hashed) of the payload
+       ; 50 for application/json,
+       ; See https://datatracker.ietf.org/doc/html/rfc7252#section-12.3
+       &(payload_preimage_content_type: TBD_2) => int
+
+       ; Location the content of the hashed payload is stored
+       ; For example:
+       ; storage.example/244f...9c19
+       ? &(payload_location: TBD_3) => tstr
+
+       * int => any
+   }
+
+   Hash_Envelope_Unprotected_Header = {
+       * int => any
+   }
+
+   Hash_Envelope_as_COSE_Sign1 = [
+       protected : bstr .cbor Hash_Envelope_Protected_Header,
+       unprotected : Hash_Envelope_Unprotected_Header,
+       payload: bstr / nil,
+       signature : bstr
+   ]
+
+   Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
+
+2.2.  Protected Header
+
+   16 (typ), TBD_1 (payload hash alg) and TBD_2 (content type of the
+   preimage of the payload) MUST be present in the protected header and
+   MUST NOT be present in the unprotected header.  TBD_3
+   (payload_location) MAY be added to the protected header and MUST NOT
+   be presented in the unprotected header.
+
+   For example:
+
+   {
+     / alg : ES384 / 1: -35,
+     / kid / 4: h'75726e3a...32636573',
+     / typ / 16: application/hashed+cose
+     / payload_hash_alg sha-256 / TBD_1: 1
+     / payload_preimage_content_type / TBD_2: application/jwk+json
+     / payload_location / TBD_3 : storage.example/244f...9c19
+   }
+
+3.  Encrypted Hashes
+
+   Should we define this?
+
+4.  Security Considerations
+
+   TODO Security
+
+4.1.  Choice of Hash Function
+
+   It is RECOMMENDED to align the strength of the chosen hash function
+   to the strength of the chosen signature algorithm.  For example, when
+   signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the
+   payload.
+
+5.  IANA Considerations
+
+5.1.  Requirements Notation
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+5.2.  COSE Header Algorithm Parameters
+
+   *  Name: payload hash algorithm
+
+   *  Label: TBD_1
+
+   *  Value type: int
+
+   *  Value registry: https://www.iana.org/assignments/named-
+      information/named-information.xhtml
+
+   *  Description: Hash algorithm used to produce the payload.
+
+5.3.  Named Information Hash Algorithm Registry
+
+   *  Name: SHAKE256
+
+   *  Label: TBD_2
+
+   *  Value type: int
+
+   *  Value registry: https://www.iana.org/assignments/named-
+      information/named-information.xhtml
+
+   *  Description: SHAKE256 a described in
+      https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf
+
+   *  Name: ASCON128
+
+   *  Label: TBD_3
+
+   *  Value type: int
+
+   *  Value registry: https://www.iana.org/assignments/named-
+      information/named-information.xhtml
+
+   *  Description: ASCON128 a described in
+      https://csrc.nist.gov/CSRC/media/Projects/lightweight-
+      cryptography/documents/round-2/spec-doc-rnd2/ascon-spec-round2.pdf
+
+6.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [RFC9052]  Schaad, J., "CBOR Object Signing and Encryption (COSE):
+              Structures and Process", STD 96, RFC 9052,
+              DOI 10.17487/RFC9052, August 2022,
+              <https://www.rfc-editor.org/rfc/rfc9052>.
+
+Acknowledgments
+
+   The following individuals provided input into the final form of the
+   document: Carsten Bormann, Henk Birkholz, Antoine Delignat-Lavaud,
+   Cedric Fournet.
+
+Authors' Addresses
+
+   Orie Steele
+   Transmute
+   Email: orie@transmute.industries
+
+
+   Steve Lasker
+   DataTrails
+   Email: steve.lasker@datatrails.ai
+
+
+   Henk Birkholz
+   Fraunhofer SIT
+   Rheinstrasse 75
+   64295 Darmstadt
+   Germany
+   Email: henk.birkholz@ietf.contact
