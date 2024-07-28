@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-25T00:01:33.088777+00:00",
+  "timestamp": "2024-07-28T00:01:25.528314+00:00",
   "repo": "OR13/draft-steele-cose-hash-envelope",
   "labels": [
     {
@@ -219,6 +219,22 @@
           "updatedAt": "2024-07-01T14:42:53Z"
         }
       ]
+    },
+    {
+      "number": 15,
+      "id": "I_kwDOKqKrRc6QxJl4",
+      "title": "How to reconcile label 3 content type with TBD_2 pre-image content type",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/issues/15",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "label 3 content type is the type of the actual payload. This draft states the `content type` of the payload is a hash. \r\nThe TBD_2 pre-image content type (`applicatoin/json`) provides the formatting of the content of the un-hashed payload.\r\nWe also now have 16 typ ([RFC9596](https://datatracker.ietf.org/doc/rfc9596/), which would have something equivalent to `application/hashed+cose`\r\nWhen using hash payload, what values should/must be populated:\r\n\r\n```\r\n{\r\n  / alg : ES384 / 1: -35,\r\n  / kid / 4: h'75726e3a...32636573',\r\n  / typ / 16: application/hashed+cose\r\n  / payload_preimage_content_type / TBD_2: application/jwk+json\r\n  / content-type / 3: applicatoin/hashed+cose\r\n  / payload_hash_alg sha-256 / TBD_1: 1\r\n  / payload_location / TBD_3 : storage.example/244f...9c19\r\n}\r\n```\r\n\r\n- Since 3/content-type is optional, should 3 not be specified, as it's essentially duplicated by 16 + TBD_1\r\n- Should 3 be equal to /typ / 16: application/hashed+cose\r\n\r\nThe draft should specify the behavior, in the informative section at a minimum\r\n",
+      "createdAt": "2024-07-25T02:11:59Z",
+      "updatedAt": "2024-07-25T02:11:59Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
