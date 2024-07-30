@@ -176,10 +176,6 @@ For example:
 }
 ~~~~
 
-# Encrypted Hashes
-
-Should we define this?
-
 # Security Considerations
 
 TODO Security
