@@ -7,16 +7,17 @@
 <title>COSE Hash Envelope</title>
 <meta content="Orie Steele" name="author">
 <meta content="Steve Lasker" name="author">
+<meta content="Henk Birkholz" name="author">
 <meta content="
-       This document defines new COSE header parameters for signaling that a payload is the output of a hash function.
+       This document defines new COSE header parameters for signaling a payload as an output of a hash function.
 This mechanism enables faster validation as access to the original payload is not required for signature validation.
-Additionally, hints of the detached payload's content format and availability are defined. 
+Additionally, hints of the detached payload's content format and availability are defined providing references to optional discovery mechanisms that can help to find original payload content. 
     " name="description">
-<meta content="xml2rfc 3.21.0" name="generator">
+<meta content="xml2rfc 3.22.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-steele-cose-hash-envelope-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.21.0
+  xml2rfc 3.22.0
     Python 3.12.3
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
@@ -26,9 +27,8 @@ Additionally, hints of the detached payload's content format and availability ar
     platformdirs 4.2.2
     pycountry 22.3.5
     PyYAML 6.0.1
-    requests 2.31.0
+    requests 2.32.3
     setuptools 69.5.1
-    six 1.16.0
     wcwidth 0.2.13
 -->
 <link href="draft-steele-cose-hash-envelope.xml" rel="alternate" type="application/rfc+xml">
@@ -1028,11 +1028,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">COSE Hash Envelope</td>
-<td class="right">June 2024</td>
+<td class="right">July 2024</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Steele &amp; Lasker</td>
-<td class="center">Expires 23 December 2024</td>
+<td class="left">Steele, et al.</td>
+<td class="center">Expires 31 January 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1045,12 +1045,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-steele-cose-hash-envelope-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-06-21" class="published">21 June 2024</time>
+<time datetime="2024-07-30" class="published">30 July 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-12-23">23 December 2024</time></dd>
+<dd class="expires"><time datetime="2025-01-31">31 January 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1061,15 +1061,19 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <div class="author-name">S. Lasker</div>
 <div class="org">DataTrails</div>
 </div>
+<div class="author">
+      <div class="author-name">H. Birkholz</div>
+<div class="org">Fraunhofer SIT</div>
+</div>
 </dd>
 </dl>
 </div>
 <h1 id="title">COSE Hash Envelope</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document defines new COSE header parameters for signaling that a payload is the output of a hash function.
+<p id="section-abstract-1">This document defines new COSE header parameters for signaling a payload as an output of a hash function.
 This mechanism enables faster validation as access to the original payload is not required for signature validation.
-Additionally, hints of the detached payload's content format and availability are defined.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+Additionally, hints of the detached payload's content format and availability are defined providing references to optional discovery mechanisms that can help to find original payload content.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1106,7 +1110,7 @@ Additionally, hints of the detached payload's content format and availability ar
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 23 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 31 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1136,10 +1140,16 @@ Additionally, hints of the detached payload's content format and availability ar
         </h2>
 <nav class="toc"><ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
-            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+            <p id="section-toc.1-1.1.1"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
-                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-requirements-notation" class="internal xref">Requirements Notation</a></p>
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-attached-payload" class="internal xref">Attached Payload</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+                <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-detached-payload" class="internal xref">Detached Payload</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.3">
+                <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="auto internal xref">1.3</a>.  <a href="#name-hashed-payload" class="internal xref">Hashed Payload</a></p>
 </li>
             </ul>
 </li>
@@ -1147,49 +1157,43 @@ Additionally, hints of the detached payload's content format and availability ar
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-header-parameters" class="internal xref">Header Parameters</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-signed-hash-envelopes-examp" class="internal xref">Signed Hash Envelopes Example</a></p>
+                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-signed-hash-envelopes-examp" class="internal xref">Signed Hash Envelopes Example</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-protected-header" class="internal xref">Protected Header</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
-                <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-attached-payload" class="internal xref">Attached Payload</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
-                <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="auto internal xref">2.4</a>.  <a href="#name-detached-payload" class="internal xref">Detached Payload</a></p>
-</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-encrypted-hashes" class="internal xref">Encrypted Hashes</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-choice-of-hash-function" class="internal xref">Choice of Hash Function</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
-                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-choice-of-hash-function" class="internal xref">Choice of Hash Function</a></p>
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-requirements-notation" class="internal xref">Requirements Notation</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-cose-header-algorithm-param" class="internal xref">COSE Header Algorithm Parameters</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-named-information-hash-algo" class="internal xref">Named Information Hash Algorithm Registry</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-cose-header-algorithm-param" class="internal xref">COSE Header Algorithm Parameters</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-named-information-hash-algo" class="internal xref">Named Information Hash Algorithm Registry</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1200,18 +1204,68 @@ Additionally, hints of the detached payload's content format and availability ar
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">COSE defined detached payloads in Section 2 of <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>, using <code>nil</code> as the payload.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">In order to verify a signature over a detached payload, the verifier must have access to the payload content. Storing a hash of the content allows for small signature envelopes, that are easy to transport and verify independently.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">Additional hints in the protected header ensure cryptographic agility for the hashing &amp; signing algorithms, and discoverability for the original content which could be prohibitively large to move over a network.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<div id="requirements-notation">
+<p id="section-1-1">COSE defined detached payloads in Section 2 of <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>, using <code>nil</code> as the payload.
+In order to verify a signature over a detached payload, the verifier must have access to the payload content.
+Storing a hash of the content allows for small signature envelopes, that are easy to transport and verify independently.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">Additional hints in the protected header ensure cryptographic agility for the hashing &amp; signing algorithms, and discoverability for the original content which could be prohibitively large to move over a network.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<div id="attached-payload">
 <section id="section-1.1">
-        <h3 id="name-requirements-notation">
-<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-requirements-notation" class="section-name selfRef">Requirements Notation</a>
+        <h3 id="name-attached-payload">
+<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-attached-payload" class="section-name selfRef">Attached Payload</a>
         </h3>
-<p id="section-1.1-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
-"<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
-described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
-appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+<p id="section-1.1-1">COSE_sign1 envelope with an attached payload, providing for signature validation.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+<div class="lang-cbor-diag sourcecode" id="section-1.1-2">
+<pre>
+18(                                 / COSE Sign 1                   /
+    [
+      h'a4013822...3a616263',       / Protected                     /
+      {}                            / Unprotected                   /
+      h'317cedc7...c494e772',       / Payload                       /
+      h'15280897...93ef39e5'        / Signature                     /
+    ]
+)
+</pre><a href="#section-1.1-2" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="detached-payload">
+<section id="section-1.2">
+        <h3 id="name-detached-payload">
+<a href="#section-1.2" class="section-number selfRef">1.2. </a><a href="#name-detached-payload" class="section-name selfRef">Detached Payload</a>
+        </h3>
+<p id="section-1.2-1">COSE_sign1 envelope with a detached payload (<code>nil</code>), which is compact but the payload must be distributed out of band to validate the signature<a href="#section-1.2-1" class="pilcrow">¶</a></p>
+<div class="lang-cbor-diag sourcecode" id="section-1.2-2">
+<pre>
+18(                                 / COSE Sign 1                   /
+    [
+      h'a4013822...3a616263',       / Protected                     /
+      {}                            / Unprotected                   /
+      nil,                          / Detached Payload              /
+      h'15280897...93ef39e5'        / Signature                     /
+    ]
+)
+</pre><a href="#section-1.2-2" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="hashed-payload">
+<section id="section-1.3">
+        <h3 id="name-hashed-payload">
+<a href="#section-1.3" class="section-number selfRef">1.3. </a><a href="#name-hashed-payload" class="section-name selfRef">Hashed Payload</a>
+        </h3>
+<p id="section-1.3-1">A hashed payload functions equivalently to an attached payload, with the benefits of being compact in size and providing the ability to validate the signature.<a href="#section-1.3-1" class="pilcrow">¶</a></p>
+<div class="lang-cbor-diag sourcecode" id="section-1.3-2">
+<pre>
+18(                                 / COSE Sign 1                   /
+    [
+      h'a4013822...3a616263',       / Protected                     /
+      {}                            / Unprotected                   /
+      h'935b5a91...e18a588a',       / Payload                       /
+      h'15280897...93ef39e5'        / Signature                     /
+    ]
+)
+</pre><a href="#section-1.3-2" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
@@ -1221,26 +1275,21 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
       <h2 id="name-header-parameters">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-header-parameters" class="section-name selfRef">Header Parameters</a>
       </h2>
-<p id="section-2-1">To represent a hash of a detached payload, the following headers are defined:<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">To represent a hash of a payload, the following headers are defined:<a href="#section-2-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-2-2">
-        <dt id="section-2-2.1">TBD 0:</dt>
+        <dt id="section-2-2.1">TBD_1:</dt>
         <dd style="margin-left: 1.5em" id="section-2-2.2">
-          <p id="section-2-2.2.1">will be assigned by <span>[<a href="#I-D.ietf-cose-typ-header-parameter" class="cite xref">I-D.ietf-cose-typ-header-parameter</a>]</span>, represents the content type of the code envelope, including the protected header and payload<a href="#section-2-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-2-2.2.1">the hash algorithm used to generate the hash of the payload<a href="#section-2-2.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-2.3">TBD 1:</dt>
+<dt id="section-2-2.3">TBD_2:</dt>
         <dd style="margin-left: 1.5em" id="section-2-2.4">
-          <p id="section-2-2.4.1">the hash algorithm used to generate the hash of the payload<a href="#section-2-2.4.1" class="pilcrow">¶</a></p>
+          <p id="section-2-2.4.1">the content type of the payload the hash represents<a href="#section-2-2.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-2.5">TBD 2:</dt>
+<dt id="section-2-2.5">TBD_3:</dt>
         <dd style="margin-left: 1.5em" id="section-2-2.6">
-          <p id="section-2-2.6.1">the content type of the payload the hash represents<a href="#section-2-2.6.1" class="pilcrow">¶</a></p>
-</dd>
-        <dd class="break"></dd>
-<dt id="section-2-2.7">TBD 3:</dt>
-        <dd style="margin-left: 1.5em" id="section-2-2.8">
-          <p id="section-2-2.8.1">an identifier enabling a verifier to retrieve the full payload preimage.<a href="#section-2-2.8.1" class="pilcrow">¶</a></p>
+          <p id="section-2-2.6.1">an identifier enabling a verifier to retrieve the full payload preimage.<a href="#section-2-2.6.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1256,39 +1305,29 @@ Hash_Envelope_Protected_Header = {
     ? &amp;(alg: 1) =&gt; int,
 
     ; Type of the envelope
-    ? &amp;(typ: TBD_0) =&gt; int / tstr
+    ? &amp;(typ: 16) =&gt; int / tstr
 
     ; Hash algorithm used to produce the payload from content
     ; -16 for SHA-256,
     ; See https://www.iana.org/assignments/cose/cose.xhtml
     &amp;(payload_hash_alg: TBD_1) =&gt; int
 
-    ; Content type of the preimage of the payload
+    ; Content type of the preimage
+    ; (content to be hashed) of the payload
     ; 50 for application/json,
     ; See https://datatracker.ietf.org/doc/html/rfc7252#section-12.3
     &amp;(payload_preimage_content_type: TBD_2) =&gt; int
 
-    ; Identifier for an artifact repository
+    ; Location the content of the hashed payload is stored
     ; For example:
-    ; pkg:container...image@sha256:244f...9c?repo..._url=dev.example
-    ? &amp;(artifact_repository: TBD) =&gt; tstr
+    ; storage.example/244f...9c19
+    ? &amp;(payload_location: TBD_3) =&gt; tstr
 
-    ; Type of Verifiable Data Structure, e.g. RFC9162_SHA256
-    ; ? &amp;(verifiable-data-structure: -111) =&gt; int,
-
-    ; additional parameters allows.
-
-}
-
-Verifiable_Data_Proofs = {
-  ? &amp;(inclusion-proofs: -1) =&gt; [ bstr .cbor inclusion-proof ]
-  ? &amp;(consistency-proofs: -2) =&gt; [ bstr .cbor consistency-proof ]
-  ; ... other proofs are allowed here.
+    * int =&gt; any
 }
 
 Hash_Envelope_Unprotected_Header = {
-  ; ? &amp;(verifiable-data-proofs: 222) =&gt; Verifiable_Data_Proofs
-  ; ... other unprotected header values are still allowed here.
+    * int =&gt; any
 }
 
 Hash_Envelope_as_COSE_Sign1 = [
@@ -1308,158 +1347,117 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
         <h3 id="name-protected-header">
 <a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-protected-header" class="section-name selfRef">Protected Header</a>
         </h3>
-<p id="section-2.2-1">TBD 0 (typ), TBD 1 (payload hash alg) and TBD 2 (content type of the preimage of the payload) <span class="bcp14">MUST</span> be present in the protected header and <span class="bcp14">MUST NOT</span> be present in the unprotected header.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-1">16 (typ), TBD_1 (payload hash alg) and TBD_2 (content type of the preimage of the payload) <span class="bcp14">MUST</span> be present in the protected header and <span class="bcp14">MUST NOT</span> be present in the unprotected header.
+TBD_3 (payload_location) <span class="bcp14">MAY</span> be added to the protected header and <span class="bcp14">MUST NOT</span> be presented in the unprotected header.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
 <p id="section-2.2-2">For example:<a href="#section-2.2-2" class="pilcrow">¶</a></p>
 <div class="lang-cbor-diag sourcecode" id="section-2.2-3">
 <pre>
 {
   / alg : ES384 / 1: -35,
   / kid / 4: h'75726e3a...32636573',
-  / typ / TBD 0: application/hashed+cose
-  / payload_hash_alg sha-256 / TBD 1: 1
-  / payload_preimage_content_type / TBD 2: application/jwk+json
-  / artifact_repository / TBD 3 : \
-  pkg:container/image@sha256:244f...?repository_url=dev.example
+  / typ / 16: application/hashed+cose
+  / payload_hash_alg sha-256 / TBD_1: 1
+  / payload_preimage_content_type / TBD_2: application/jwk+json
+  / payload_location / TBD_3 : storage.example/244f...9c19
 }
 </pre><a href="#section-2.2-3" class="pilcrow">¶</a>
 </div>
-<p id="section-2.2-4">TBD 0 will be assigned by <span>[<a href="#I-D.ietf-cose-typ-header-parameter" class="cite xref">I-D.ietf-cose-typ-header-parameter</a>]</span>, it represents the content type of the code envelope, which includes the protected header and payload.<a href="#section-2.2-4" class="pilcrow">¶</a></p>
-<p id="section-2.2-5">TBD 1 will be assigned by this draft.
-TBD 2 will be assigned by this draft.
-TBD 3 will be assigned by this draft.<a href="#section-2.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="attached-payload">
-<section id="section-2.3">
-        <h3 id="name-attached-payload">
-<a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-attached-payload" class="section-name selfRef">Attached Payload</a>
-        </h3>
-<p id="section-2.3-1">The payload <span class="bcp14">MAY</span> be attached.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
-<div class="lang-cbor-diag sourcecode" id="section-2.3-2">
-<pre>
-18(                                 / COSE Sign 1                   /
-    [
-      h'a4013822...3a616263',       / Protected                     /
-      {}                            / Unprotected                   /
-      h'317cedc7...c494e772',       / Payload                       /
-      h'15280897...93ef39e5'        / Signature                     /
-    ]
-)
-</pre><a href="#section-2.3-2" class="pilcrow">¶</a>
-</div>
-</section>
-</div>
-<div id="detached-payload">
-<section id="section-2.4">
-        <h3 id="name-detached-payload">
-<a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-detached-payload" class="section-name selfRef">Detached Payload</a>
-        </h3>
-<p id="section-2.4-1">The payload <span class="bcp14">MAY</span> be detached.<a href="#section-2.4-1" class="pilcrow">¶</a></p>
-<div class="lang-cbor-diag sourcecode" id="section-2.4-2">
-<pre>
-18(                                 / COSE Sign 1                   /
-    [
-      h'a4013822...3a616263',       / Protected                     /
-      {}                            / Unprotected                   /
-      nil,                          / Detached payload              /
-      h'15280897...93ef39e5'        / Signature                     /
-    ]
-)
-</pre><a href="#section-2.4-2" class="pilcrow">¶</a>
-</div>
-</section>
-</div>
-</section>
-</div>
-<div id="encrypted-hashes">
-<section id="section-3">
-      <h2 id="name-encrypted-hashes">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-encrypted-hashes" class="section-name selfRef">Encrypted Hashes</a>
-      </h2>
-<p id="section-3-1">Should we define this?<a href="#section-3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-4">
+<section id="section-3">
       <h2 id="name-security-considerations">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-4-1">TODO Security<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">TODO Security<a href="#section-3-1" class="pilcrow">¶</a></p>
 <div id="choice-of-hash-function">
-<section id="section-4.1">
+<section id="section-3.1">
         <h3 id="name-choice-of-hash-function">
-<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-choice-of-hash-function" class="section-name selfRef">Choice of Hash Function</a>
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-choice-of-hash-function" class="section-name selfRef">Choice of Hash Function</a>
         </h3>
-<p id="section-4.1-1">It is <span class="bcp14">RECOMMENDED</span> to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
-For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-1">It is <span class="bcp14">RECOMMENDED</span> to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
+For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-5">
+<section id="section-4">
       <h2 id="name-iana-considerations">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
+<div id="requirements-notation">
+<section id="section-4.1">
+        <h3 id="name-requirements-notation">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-requirements-notation" class="section-name selfRef">Requirements Notation</a>
+        </h3>
+<p id="section-4.1-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+"<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
+described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
+appear in all capitals, as shown here.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 <div id="cose-header-algorithm-parameters">
-<section id="section-5.1">
+<section id="section-4.2">
         <h3 id="name-cose-header-algorithm-param">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-cose-header-algorithm-param" class="section-name selfRef">COSE Header Algorithm Parameters</a>
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-cose-header-algorithm-param" class="section-name selfRef">COSE Header Algorithm Parameters</a>
         </h3>
 <ul class="normal">
-<li class="normal" id="section-5.1-1.1">
-            <p id="section-5.1-1.1.1">Name: payload hash algorithm<a href="#section-5.1-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4.2-1.1">
+            <p id="section-4.2-1.1.1">Name: payload hash algorithm<a href="#section-4.2-1.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.1-1.2">
-            <p id="section-5.1-1.2.1">Label: TBD_1<a href="#section-5.1-1.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.2-1.2">
+            <p id="section-4.2-1.2.1">Label: TBD_1<a href="#section-4.2-1.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.1-1.3">
-            <p id="section-5.1-1.3.1">Value type: int<a href="#section-5.1-1.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.2-1.3">
+            <p id="section-4.2-1.3.1">Value type: int<a href="#section-4.2-1.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.1-1.4">
-            <p id="section-5.1-1.4.1">Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml<a href="#section-5.1-1.4.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.2-1.4">
+            <p id="section-4.2-1.4.1">Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml<a href="#section-4.2-1.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.1-1.5">
-            <p id="section-5.1-1.5.1">Description: Hash algorithm used to produce the payload.<a href="#section-5.1-1.5.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.2-1.5">
+            <p id="section-4.2-1.5.1">Description: Hash algorithm used to produce the payload.<a href="#section-4.2-1.5.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
 </div>
 <div id="named-information-hash-algorithm-registry">
-<section id="section-5.2">
+<section id="section-4.3">
         <h3 id="name-named-information-hash-algo">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-named-information-hash-algo" class="section-name selfRef">Named Information Hash Algorithm Registry</a>
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-named-information-hash-algo" class="section-name selfRef">Named Information Hash Algorithm Registry</a>
         </h3>
 <ul class="normal">
-<li class="normal" id="section-5.2-1.1">
-            <p id="section-5.2-1.1.1">Name: SHAKE256<a href="#section-5.2-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4.3-1.1">
+            <p id="section-4.3-1.1.1">Name: SHAKE256<a href="#section-4.3-1.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.2-1.2">
-            <p id="section-5.2-1.2.1">Label: TBD_2<a href="#section-5.2-1.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-1.2">
+            <p id="section-4.3-1.2.1">Label: TBD_2<a href="#section-4.3-1.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.2-1.3">
-            <p id="section-5.2-1.3.1">Value type: int<a href="#section-5.2-1.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-1.3">
+            <p id="section-4.3-1.3.1">Value type: int<a href="#section-4.3-1.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.2-1.4">
-            <p id="section-5.2-1.4.1">Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml<a href="#section-5.2-1.4.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-1.4">
+            <p id="section-4.3-1.4.1">Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml<a href="#section-4.3-1.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.2-1.5">
-            <p id="section-5.2-1.5.1">Description: SHAKE256 a described in https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf<a href="#section-5.2-1.5.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-1.5">
+            <p id="section-4.3-1.5.1">Description: SHAKE256 a described in https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf<a href="#section-4.3-1.5.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.2-1.6">
-            <p id="section-5.2-1.6.1">Name: ASCON128<a href="#section-5.2-1.6.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-1.6">
+            <p id="section-4.3-1.6.1">Name: ASCON128<a href="#section-4.3-1.6.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.2-1.7">
-            <p id="section-5.2-1.7.1">Label: TBD_3<a href="#section-5.2-1.7.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-1.7">
+            <p id="section-4.3-1.7.1">Label: TBD_3<a href="#section-4.3-1.7.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.2-1.8">
-            <p id="section-5.2-1.8.1">Value type: int<a href="#section-5.2-1.8.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-1.8">
+            <p id="section-4.3-1.8.1">Value type: int<a href="#section-4.3-1.8.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.2-1.9">
-            <p id="section-5.2-1.9.1">Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml<a href="#section-5.2-1.9.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-1.9">
+            <p id="section-4.3-1.9.1">Value registry: https://www.iana.org/assignments/named-information/named-information.xhtml<a href="#section-4.3-1.9.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-5.2-1.10">
-            <p id="section-5.2-1.10.1">Description: ASCON128 a described in https://csrc.nist.gov/CSRC/media/Projects/lightweight-cryptography/documents/round-2/spec-doc-rnd2/ascon-spec-round2.pdf<a href="#section-5.2-1.10.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-1.10">
+            <p id="section-4.3-1.10.1">Description: ASCON128 a described in https://csrc.nist.gov/CSRC/media/Projects/lightweight-cryptography/documents/round-2/spec-doc-rnd2/ascon-spec-round2.pdf<a href="#section-4.3-1.10.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1467,15 +1465,11 @@ For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to has
 </section>
 </div>
 <div id="sec-normative-references">
-<section id="section-6">
+<section id="section-5">
       <h2 id="name-normative-references">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
-<dt id="I-D.ietf-cose-typ-header-parameter">[I-D.ietf-cose-typ-header-parameter]</dt>
-      <dd>
-<span class="refAuthor">Jones, M. B.</span> and <span class="refAuthor">O. Steele</span>, <span class="refTitle">"COSE "typ" (type) Header Parameter"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-cose-typ-header-parameter-05</span>, <time datetime="2024-04-03" class="refDate">3 April 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-cose-typ-header-parameter-05">https://datatracker.ietf.org/doc/html/draft-ietf-cose-typ-header-parameter-05</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
       <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
@@ -1518,6 +1512,19 @@ For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to has
 <div class="email">
 <span>Email:</span>
 <a href="mailto:steve.lasker@datatrails.ai" class="email">steve.lasker@datatrails.ai</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Henk Birkholz</span></div>
+<div dir="auto" class="left"><span class="org">Fraunhofer SIT</span></div>
+<div dir="auto" class="left"><span class="street-address">Rheinstrasse 75</span></div>
+<div dir="auto" class="left">
+<span class="postal-code">64295</span> <span class="locality">Darmstadt</span>
+</div>
+<div dir="auto" class="left"><span class="country-name">Germany</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:henk.birkholz@ietf.contact" class="email">henk.birkholz@ietf.contact</a>
 </div>
 </address>
 </section>
