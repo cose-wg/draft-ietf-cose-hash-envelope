@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 31 January 2025                                      DataTrails
+Expires: 1 February 2025                                      DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                            30 July 2024
+                                                            31 July 2024
 
 
                            COSE Hash Envelope
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 January 2025.
+   This Internet-Draft will expire on 1 February 2025.
 
 Copyright Notice
 
@@ -82,13 +82,14 @@ Table of Contents
    2.  Header Parameters
      2.1.  Signed Hash Envelopes Example
      2.2.  Protected Header
-   3.  Security Considerations
-     3.1.  Choice of Hash Function
-   4.  IANA Considerations
-     4.1.  Requirements Notation
-     4.2.  COSE Header Algorithm Parameters
-     4.3.  Named Information Hash Algorithm Registry
-   5.  Normative References
+   3.  Encrypted Hashes
+   4.  Security Considerations
+     4.1.  Choice of Hash Function
+   5.  IANA Considerations
+     5.1.  Requirements Notation
+     5.2.  COSE Header Algorithm Parameters
+     5.3.  Named Information Hash Algorithm Registry
+   6.  Normative References
    Acknowledgments
    Authors' Addresses
 
@@ -220,20 +221,27 @@ Table of Contents
      / payload_location / TBD_3 : storage.example/244f...9c19
    }
 
-3.  Security Considerations
+3.  Encrypted Hashes
+
+   The cose headers defined in this document SHOULD NOT be used in
+   unprotected or protected headers associated with COSE_Encrypt, unless
+   the sender is comfortable disclosing metadata regarding the encrypted
+   payload.
+
+4.  Security Considerations
 
    TODO Security
 
-3.1.  Choice of Hash Function
+4.1.  Choice of Hash Function
 
    It is RECOMMENDED to align the strength of the chosen hash function
    to the strength of the chosen signature algorithm.  For example, when
    signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the
    payload.
 
-4.  IANA Considerations
+5.  IANA Considerations
 
-4.1.  Requirements Notation
+5.1.  Requirements Notation
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -241,7 +249,7 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-4.2.  COSE Header Algorithm Parameters
+5.2.  COSE Header Algorithm Parameters
 
    *  Name: payload hash algorithm
 
@@ -254,7 +262,7 @@ Table of Contents
 
    *  Description: Hash algorithm used to produce the payload.
 
-4.3.  Named Information Hash Algorithm Registry
+5.3.  Named Information Hash Algorithm Registry
 
    *  Name: SHAKE256
 
@@ -281,7 +289,7 @@ Table of Contents
       https://csrc.nist.gov/CSRC/media/Projects/lightweight-
       cryptography/documents/round-2/spec-doc-rnd2/ascon-spec-round2.pdf
 
-5.  Normative References
+6.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
