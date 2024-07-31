@@ -160,8 +160,11 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 
 ## Protected Header
 
-16 (typ), TBD_1 (payload hash alg) and TBD_2 (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
-TBD_3 (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
+Label `16` (typ), label `TBD_1` (payload hash alg) and label `TBD_2` (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
+
+Label `TBD_3` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
+
+Label `3` (content_type) SHOULD NOT be used as it is redundant with label `16` (typ), label `TBD_1` (payload_hash) and label `TBD_2` payload_preimage_content_type).
 
 For example:
 
