@@ -160,8 +160,11 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 
 ## Protected Header
 
-16 (typ), TBD_1 (payload hash alg) and TBD_2 (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
-TBD_3 (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
+Label `16` (typ), label `TBD_1` (payload hash alg) and label `TBD_2` (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
+
+Label `TBD_3` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
+
+Label `3` (Content_type) SHOULD be set, reflecting the payload is a hash with label TBD_1` (hash_algorithm).
 
 For example:
 
@@ -170,6 +173,7 @@ For example:
   / alg : ES384 / 1: -35,
   / kid / 4: h'75726e3a...32636573',
   / typ / 16: application/hashed+cose
+  / content_type / 3: application/hashed+sha256
   / payload_hash_alg sha-256 / TBD_1: 1
   / payload_preimage_content_type / TBD_2: application/jwk+json
   / payload_location / TBD_3 : storage.example/244f...9c19
