@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-30T00:01:29.801481+00:00",
+  "timestamp": "2024-08-01T00:01:33.332307+00:00",
   "repo": "OR13/draft-steele-cose-hash-envelope",
   "labels": [
     {
@@ -235,6 +235,30 @@
       "updatedAt": "2024-07-25T02:11:59Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 16,
+      "id": "I_kwDOKqKrRc6RVchQ",
+      "title": "Address COSE_Encrypt",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/issues/16",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/cose/pN_fwn5ting_gBIGU-ngYoQu3Ss/\r\n\r\nProvide guidance on headers when they appear in COSE_Encrypt, warn about metadata leaks",
+      "createdAt": "2024-07-30T17:19:26Z",
+      "updatedAt": "2024-07-30T18:32:14Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "body": "Consensus on the list to start with:\r\n\r\n```\r\nThe cose headers defined in this document SHOULD NOT be used in unprotected or protected headers associated with COSE_Encrypt, unless the sender is comfortable disclosing metadata regarding the encrypted payload.\r\n```",
+          "createdAt": "2024-07-30T18:32:13Z",
+          "updatedAt": "2024-07-30T18:32:13Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -847,6 +871,126 @@
       "mergeCommit": {
         "oid": "a347463abbf41d37bd65f532946055006ad897b5"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 17,
+      "id": "PR_kwDOKqKrRc5258vk",
+      "title": "Remove COSE Encrypt Section",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/pull/17",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #16 ",
+      "createdAt": "2024-07-30T17:48:06Z",
+      "updatedAt": "2024-07-31T18:24:10Z",
+      "baseRepository": "OR13/draft-steele-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "a347463abbf41d37bd65f532946055006ad897b5",
+      "headRepository": "OR13/draft-steele-cose-hash-envelope",
+      "headRefName": "issue-16",
+      "headRefOid": "094abb17b330fcd9fb7c0d30940dc4503de70321",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We can add the text from the thread if you felt that was better.\r\n\r\n> The cose headers defined in this document SHOULD NOT be used in unprotected or protected headers associated with COSE_Encrypt, unless the sender is comfortable disclosing metadata regarding the encrypted payload.\r\n\r\n",
+          "createdAt": "2024-07-30T18:41:26Z",
+          "updatedAt": "2024-07-30T18:41:26Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6DobY9",
+          "commit": {
+            "abbreviatedOid": "76f0d03"
+          },
+          "author": "OR13",
+          "authorAssociation": "OWNER",
+          "state": "CHANGES_REQUESTED",
+          "body": "Lets just add some useful text... the headers are not going away.",
+          "createdAt": "2024-07-30T18:38:43Z",
+          "updatedAt": "2024-07-30T18:38:43Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6Dxvv4",
+          "commit": {
+            "abbreviatedOid": "094abb1"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-31T18:23:50Z",
+          "updatedAt": "2024-07-31T18:23:50Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "If we wish to keep the second part about metadata, we should clarify what value is being added by merging these two.\r\nSuggest to remove the second part\r\n\r\n```suggestion\r\nThe cose headers defined in this document SHOULD NOT be used in unprotected or protected headers associated with COSE_Encrypt.\r\n```",
+              "createdAt": "2024-07-31T18:23:50Z",
+              "updatedAt": "2024-07-31T18:23:51Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "PR_kwDOKqKrRc53B4-4",
+      "title": "Option A for resolving #15",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/pull/18",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Resolves label 3, stating it SHOULD NOT be used with hash envelope\r\n\r\nSee #19 for an alternative\r\n\r\nfixes #15 ",
+      "createdAt": "2024-07-31T18:55:30Z",
+      "updatedAt": "2024-07-31T18:58:54Z",
+      "baseRepository": "OR13/draft-steele-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "a347463abbf41d37bd65f532946055006ad897b5",
+      "headRepository": "OR13/draft-steele-cose-hash-envelope",
+      "headRefName": "issue-15-opt-a",
+      "headRefOid": "3a529b97f71a6500d555de05309af9e4a32dc180",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 19,
+      "id": "PR_kwDOKqKrRc53B57U",
+      "title": "Option B for resolving #15",
+      "url": "https://github.com/OR13/draft-steele-cose-hash-envelope/pull/19",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Resolves label 3, stating how label 3 is set.\r\n\r\nSee #18 for an alternative\r\n\r\nFixes #15 ",
+      "createdAt": "2024-07-31T18:58:24Z",
+      "updatedAt": "2024-07-31T18:59:04Z",
+      "baseRepository": "OR13/draft-steele-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "a347463abbf41d37bd65f532946055006ad897b5",
+      "headRepository": "OR13/draft-steele-cose-hash-envelope",
+      "headRefName": "issue-15-opt-b",
+      "headRefOid": "e282b1633729864af8a69d98d44360f0b86be7e5",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
