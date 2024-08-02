@@ -1350,10 +1350,11 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
         <h3 id="name-protected-header">
 <a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-protected-header" class="section-name selfRef">Protected Header</a>
         </h3>
-<p id="section-2.2-1">16 (typ), TBD_1 (payload hash alg) and TBD_2 (content type of the preimage of the payload) <span class="bcp14">MUST</span> be present in the protected header and <span class="bcp14">MUST NOT</span> be present in the unprotected header.
-TBD_3 (payload_location) <span class="bcp14">MAY</span> be added to the protected header and <span class="bcp14">MUST NOT</span> be presented in the unprotected header.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-<p id="section-2.2-2">For example:<a href="#section-2.2-2" class="pilcrow">¶</a></p>
-<div class="lang-cbor-diag sourcecode" id="section-2.2-3">
+<p id="section-2.2-1">Label <code>16</code> (typ), label <code>TBD_1</code> (payload hash alg) and label <code>TBD_2</code> (content type of the preimage of the payload) <span class="bcp14">MUST</span> be present in the protected header and <span class="bcp14">MUST NOT</span> be present in the unprotected header.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-2">Label <code>TBD_3</code> (payload_location) <span class="bcp14">MAY</span> be added to the protected header and <span class="bcp14">MUST NOT</span> be presented in the unprotected header.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
+<p id="section-2.2-3">Label <code>3</code> (content_type) <span class="bcp14">MUST NOT</span> be used as it is easily confused with label <code>TBD_2</code> payload_preimage_content_type).<a href="#section-2.2-3" class="pilcrow">¶</a></p>
+<p id="section-2.2-4">For example:<a href="#section-2.2-4" class="pilcrow">¶</a></p>
+<div class="lang-cbor-diag sourcecode" id="section-2.2-5">
 <pre>
 {
   / alg : ES384 / 1: -35,
@@ -1363,7 +1364,7 @@ TBD_3 (payload_location) <span class="bcp14">MAY</span> be added to the protecte
   / payload_preimage_content_type / TBD_2: application/jwk+json
   / payload_location / TBD_3 : storage.example/244f...9c19
 }
-</pre><a href="#section-2.2-3" class="pilcrow">¶</a>
+</pre><a href="#section-2.2-5" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
