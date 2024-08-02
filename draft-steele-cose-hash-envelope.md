@@ -178,7 +178,7 @@ For example:
 
 # Encrypted Hashes
 
-The cose headers defined in this document SHOULD NOT be used in unprotected or protected headers associated with COSE_Encrypt, unless the sender is comfortable disclosing metadata regarding the encrypted payload.
+The cose headers defined in this document SHOULD NOT be used in unprotected or protected headers associated with COSE_Encrypt.
 
 # Security Considerations
 
