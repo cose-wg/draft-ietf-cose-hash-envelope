@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 1 February 2025                                      DataTrails
+Expires: 3 February 2025                                      DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                            31 July 2024
+                                                           2 August 2024
 
 
                            COSE Hash Envelope
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 February 2025.
+   This Internet-Draft will expire on 3 February 2025.
 
 Copyright Notice
 
@@ -211,9 +211,8 @@ Table of Contents
    Label TBD_3 (payload_location) MAY be added to the protected header
    and MUST NOT be presented in the unprotected header.
 
-   Label 3 (content_type) SHOULD NOT be used as it is redundant with
-   label 16 (typ), label TBD_1 (payload_hash) and label TBD_2
-   payload_preimage_content_type).
+   Label 3 (content_type) MUST NOT be used as it is easily confused with
+   label TBD_2 payload_preimage_content_type).
 
    For example:
 
