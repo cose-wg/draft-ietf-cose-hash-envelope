@@ -178,7 +178,7 @@ For example:
 
 # Encrypted Hashes
 
-Should we define this?
+The cose headers defined in this document SHOULD NOT be used in unprotected or protected headers associated with COSE_Encrypt.
 
 # Security Considerations
 
