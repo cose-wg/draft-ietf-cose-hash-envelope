@@ -164,7 +164,7 @@ Label `16` (typ), label `TBD_1` (payload hash alg) and label `TBD_2` (content ty
 
 Label `TBD_3` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
 
-Label `3` (content_type) SHOULD NOT be used as it is redundant with label `16` (typ), label `TBD_1` (payload_hash) and label `TBD_2` payload_preimage_content_type).
+Label `3` (content_type) MUST NOT be used as it is easily confused with label `TBD_2` payload_preimage_content_type).
 
 For example:
 
