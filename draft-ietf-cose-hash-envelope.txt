@@ -5,14 +5,14 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 3 February 2025                                      DataTrails
+Expires: 16 February 2025                                     DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                           2 August 2024
+                                                          15 August 2024
 
 
                            COSE Hash Envelope
-                 draft-steele-cose-hash-envelope-latest
+                  draft-ietf-cose-hash-envelope-latest
 
 Abstract
 
@@ -28,11 +28,10 @@ About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   The latest revision of this draft can be found at
-   https://OR13.github.io/draft-steele-cose-hash-envelope/draft-steele-
-   cose-hash-envelope.html.  Status information for this document may be
-   found at https://datatracker.ietf.org/doc/draft-steele-cose-hash-
-   envelope/.
+   The latest revision of this draft can be found at https://cose-
+   wg.github.io/draft-ietf-cose-hash-envelope/draft-ietf-cose-hash-
+   envelope.html.  Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-ietf-cose-hash-envelope/.
 
    Discussion of this document takes place on the CBOR Object Signing
    and Encryption Working Group mailing list (mailto:cose@ietf.org),
@@ -40,7 +39,7 @@ About This Document
    Subscribe at https://www.ietf.org/mailman/listinfo/cose/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/OR13/draft-steele-cose-hash-envelope.
+   https://github.com/cose-wg/draft-ietf-cose-hash-envelope.
 
 Status of This Memo
 
@@ -57,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 February 2025.
+   This Internet-Draft will expire on 16 February 2025.
 
 Copyright Notice
 
