@@ -74,7 +74,7 @@ COSE_sign1 envelope with an attached payload, providing for signature validation
 
 ## Detached Payload
 
-COSE_sign1 envelope with a detached payload (`nil`), which is compact but the payload must be distributed out of band to validate the signature.
+COSE_sign1 envelope with a detached payload (`nil`), which is compact but the payload must be distributed out of band to validate the signature
 
 ~~~~ cbor-diag
 18(                                 / COSE Sign 1                   /
@@ -160,8 +160,11 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 
 ## Protected Header
 
-16 (typ), TBD_1 (payload hash alg) and TBD_2 (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
-TBD_3 (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
+Label `16` (typ), label `TBD_1` (payload hash alg) and label `TBD_2` (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
+
+Label `TBD_3` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
+
+Label `3` (content_type) MUST NOT be used as it is easily confused with label `TBD_2` payload_preimage_content_type).
 
 For example:
 
@@ -178,7 +181,7 @@ For example:
 
 # Encrypted Hashes
 
-Should we define this?
+The cose headers defined in this document SHOULD NOT be used in unprotected or protected headers associated with COSE_Encrypt.
 
 # Security Considerations
 
