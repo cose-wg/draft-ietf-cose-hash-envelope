@@ -17,7 +17,7 @@
 /versioned/
 Gemfile.lock
 archive.json
-draft-steele-cose-hash-envelope.xml
+draft-ietf-cose-hash-envelope.xml
 package-lock.json
 report.xml
 !requirements.txt

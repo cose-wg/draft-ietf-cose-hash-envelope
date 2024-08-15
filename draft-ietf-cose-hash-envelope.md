@@ -2,7 +2,7 @@
 v: 3
 title: "COSE Hash Envelope"
 cat: std
-docname: draft-steele-cose-hash-envelope-latest
+docname: draft-ietf-cose-hash-envelope-latest
 stream: IETF
 number:
 consensus: true
@@ -13,8 +13,8 @@ venue:
   type: "Working Group"
   mail: "cose@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/cose/"
-  github: "OR13/draft-steele-cose-hash-envelope"
-  latest: "https://OR13.github.io/draft-steele-cose-hash-envelope/draft-steele-cose-hash-envelope.html"
+  github: "cose-wg/draft-ietf-cose-hash-envelope"
+  latest: "https://cose-wg.github.io/draft-ietf-cose-hash-envelope/draft-ietf-cose-hash-envelope.html"
 
 author:
 
