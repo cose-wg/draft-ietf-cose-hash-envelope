@@ -74,7 +74,7 @@ COSE_sign1 envelope with an attached payload, providing for signature validation
 
 ## Detached Payload
 
-COSE_sign1 envelope with a detached payload (`nil`), which is compact but the payload must be distributed out of band to validate the signature
+COSE_sign1 envelope with a detached payload (`nil`), which is compact but the payload must be distributed out of band to validate the signature.
 
 ~~~~ cbor-diag
 18(                                 / COSE Sign 1                   /
