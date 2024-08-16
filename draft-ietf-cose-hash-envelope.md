@@ -9,11 +9,11 @@ consensus: true
 area: "Security"
 keyword: Internet-Draft
 venue:
-  group: "CBOR Object Signing and Encryption"
-  type: "Working Group"
-  mail: "cose@ietf.org"
-  arch: "https://mailarchive.ietf.org/arch/browse/cose/"
-  github: "cose-wg/draft-ietf-cose-hash-envelope"
+  group: CBOR Object Signing and Encryption
+  type: Working Group
+  mail: cose@ietf.org"
+  arch: https://mailarchive.ietf.org/arch/browse/cose/
+  github: cose-wg/draft-ietf-cose-hash-envelope
   latest: "https://cose-wg.github.io/draft-ietf-cose-hash-envelope/draft-ietf-cose-hash-envelope.html"
 
 author:
