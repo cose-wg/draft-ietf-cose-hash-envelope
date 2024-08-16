@@ -37,7 +37,9 @@ author:
     country: Germany
 
 normative:
-  RFC9052: RFC9052
+  RFC9052: COSE
+  RFC8610: CDDL
+  I-D.draft-ietf-cbor-edn-literals: EDN
 
 informative:
   BCP205:
@@ -52,13 +54,13 @@ Additionally, hints of the detached payload's content format and availability ar
 
 # Introduction
 
-COSE defined detached payloads in Section 2 of {{-RFC9052}}, using `nil` as the payload.
+COSE defined detached payloads in Section 2 of {{-COSE}}, using `nil` as the payload.
 In order to verify a signature over a detached payload, the verifier must have access to the payload content.
 Storing a hash of the content allows for small signature envelopes, that are easy to transport and verify independently.
 
 Additional hints in the protected header ensure cryptographic agility for the hashing & signing algorithms, and discoverability for the original content which could be prohibitively large to move over a network.
 
-When producing COSE_sign1 with remote signing services, such as a signing api exposed over HTTPS and backed by an HSM, the "ToBeSigned" bytes as described in Section 4.4 of RFC 9052 need to be transmitted to the HSM in order to be signed.
+When producing COSE_sign1 with remote signing services, such as a signing api exposed over HTTPS and backed by an HSM, the "ToBeSigned" bytes as described in {{Section 4.4 of RFC9052}} need to be transmitted to the HSM in order to be signed.
 
 Some signature algorithms such as ES256 or ES384 allow the "ToBeSigned" to be hashed on the client and sent to the server along with metadata in order to produce a signature.
 
@@ -68,52 +70,11 @@ By producing the "ToBeSigned" on the client, and ensuring that the payload is al
 
 It is still possible for the protected header to be large, but the payload will always be of a fixed size, associated with the hash function chosen.
 
-## Attached Payload
+# Terminology
 
-COSE_sign1 envelope with an attached payload, providing for signature validation.
+{::boilerplate bcp14-tagged}
 
-~~~~ cbor-diag
-18(                                 / COSE Sign 1                   /
-    [
-      h'a4013822...3a616263',       / Protected                     /
-      {}                            / Unprotected                   /
-      h'317cedc7...c494e772',       / Payload                       /
-      h'15280897...93ef39e5'        / Signature                     /
-    ]
-)
-~~~~
-
-## Detached Payload
-
-COSE_sign1 envelope with a detached payload (`nil`), which is compact but the payload must be distributed out of band to validate the signature
-
-~~~~ cbor-diag
-18(                                 / COSE Sign 1                   /
-    [
-      h'a4013822...3a616263',       / Protected                     /
-      {}                            / Unprotected                   /
-      nil,                          / Detached Payload              /
-      h'15280897...93ef39e5'        / Signature                     /
-    ]
-)
-~~~~
-
-## Hashed Payload
-
-A hashed payload functions equivalently to an attached payload, with the benefits of being compact in size and providing the ability to validate the signature.
-
-~~~~ cbor-diag
-18(                                 / COSE Sign 1                   /
-    [
-      h'a4013822...3a616263',       / Protected                     /
-      {}                            / Unprotected                   /
-      h'935b5a91...e18a588a',       / Payload                       /
-      h'15280897...93ef39e5'        / Signature                     /
-    ]
-)
-~~~~
-
-# Header Parameters
+The terms COSE, CDDL, and EDN are defined in {{-COSE}}, {{-CDDL}}, {{-EDN}} respectively.
 
 To represent a hash of a payload, the following headers are defined:
 
@@ -126,7 +87,8 @@ TBD_2:
 TBD_3:
   : an identifier enabling a verifier to retrieve the bytes which were hashed to produce the payload.
 
-## Signed Hash Envelopes Example
+
+# Hash Envelope CDDL
 
 ~~~ cddl
 Hash_Envelope_Protected_Header = {
@@ -152,11 +114,11 @@ Hash_Envelope_Protected_Header = {
     ; storage.example/244f...9c19
     ? &(payload_location: TBD_3) => tstr
 
-    * int => any
+    * int / tstr => any
 }
 
 Hash_Envelope_Unprotected_Header = {
-    * int => any
+    * int / tstr => any
 }
 
 Hash_Envelope_as_COSE_Sign1 = [
@@ -169,8 +131,6 @@ Hash_Envelope_as_COSE_Sign1 = [
 Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 ~~~
 
-## Headers
-
 Label `16` (typ) MAY be used to assign a content format or media type to the entire hash envelope.
 Label `TBD_1` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
 Label `TBD_2` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.
@@ -179,22 +139,34 @@ Label `3` (content_type) MUST NOT be present in the protected or unprotected hea
 Label `3` is easily confused with label `TBD_2` payload_preimage_content_type.
 The difference between content_type (3) and payload_preimage_content_type (TBD2) is that content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
 
-For example:
+# Envelope EDN
+
+A hashed payload functions equivalently to an attached payload, with the benefits of being compact in size and providing the ability to validate the signature.
 
 ~~~~ cbor-diag
-{
-  / alg : ES384 / 1: -35,
-  / kid / 4: h'75726e3a...32636573',
-  / typ / 16: "application/example+cose"
-  / payload_hash_alg sha-256 / TBD_1: -16
-  / payload_preimage_content_type / TBD_2: "application/example+json"
-  / payload_location / TBD_3 : "https://storage.example/244f" + ... "9c19"
-}
+18(                                 / COSE Sign 1                   /
+    [
+      <<{
+        / alg : ES384 / 1: -35,
+        / kid / 4: h'75726e3a...32636573',
+        / typ / 16: "application/example+cose"
+        / payload_hash_alg /
+        TBD_1: -16 / sha-256 /
+        / payload_preimage_content_type /
+        TBD_2: "application/example+json"
+        / payload_location /
+        TBD_3 : "https://storage.example/244f" + ... "9c19"
+      }>>
+      {}                            / Unprotected                   /
+      h'935b5a91...e18a588a',       / Payload                       /
+      h'15280897...93ef39e5'        / Signature                     /
+    ]
+)
 ~~~~
 
 In this example, the sha256 hash algorithm (-16) is used to hash the payload, which is of content type "application/example+json".
 The full payload is located at "https://storage.example/244f...9c19".
-The entire cose sign1 is of type "application/example+cose".
+The COSE_sign1 is of type "application/example+cose".
 The sha256 hash is signed with ES384 which starts by taking the sha384 hash of the payload (which is a sha256 hash).
 
 # Encrypted Hashes
@@ -213,11 +185,9 @@ For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to has
 
 # IANA Considerations
 
-## Requirements Notation
-
-{::boilerplate bcp14-tagged}
-
 ## COSE Header Algorithm Parameters
+
+IANA is requested to add the following entries to the [COSE Header Algorithm Parameters Registry](https://www.iana.org/assignments/cose/cose.xhtml).
 
 ### Payload Hash Algorithm
 
@@ -226,7 +196,6 @@ For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to has
 - Value type: int
 - Value registry: https://www.iana.org/assignments/cose/cose.xhtml#algorithms
 - Description: Hash algorithm used to produce the payload.
-
 
 ### Payload Pre-image Content Type
 
