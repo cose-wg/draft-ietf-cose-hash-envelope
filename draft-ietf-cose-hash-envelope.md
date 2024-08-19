@@ -87,7 +87,6 @@ TBD_2:
 TBD_3:
   : an identifier enabling a verifier to retrieve the bytes which were hashed to produce the payload.
 
-
 # Hash Envelope CDDL
 
 ~~~ cddl
