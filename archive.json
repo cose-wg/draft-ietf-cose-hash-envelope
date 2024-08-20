@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-18T00:01:37.260230+00:00",
+  "timestamp": "2024-08-20T00:31:59.876768+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -310,7 +310,7 @@
       "labels": [],
       "body": "https://mailarchive.ietf.org/arch/msg/cose/PCJQ7S7IMnZLWxjI677Wv-qeLaI/",
       "createdAt": "2024-08-16T14:03:40Z",
-      "updatedAt": "2024-08-17T01:10:08Z",
+      "updatedAt": "2024-08-19T13:31:43Z",
       "closedAt": null,
       "comments": [
         {
@@ -319,6 +319,13 @@
           "body": "Does https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/23/files#diff-d760cfc872ca7eedc40666f385a0b41d3a8dbce96529e59fd0fc6ef3f58921f5R139-R140 address the feedback?",
           "createdAt": "2024-08-17T01:10:07Z",
           "updatedAt": "2024-08-17T01:10:07Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "No\r\n\r\n```\r\n- Should payload_hash_alg be required to be critical?\r\n```\r\n\r\nWe should write some text providing guidance for this... IMO better to say it MAY be marked critical.\r\n\r\n```\r\n- Assuming payload_hash_alg just causes content to be pre-hashed,\r\n  then how do payload_preimage_content_type and 'content type'\r\n  differ?\r\n```\r\n\r\nI think this one is addressed.\r\n\r\n\r\n```\r\n- Maybe add protected header for preimage length. So that applications\r\n  don't have to deal with over-large responses from HTTP servers (which\r\n  could cause problems).\r\n\r\n  Something like:\r\n\r\n  &(payload_preimage_content_length: TBD_4) => uint\r\n\r\n  If payload_hash_alg just causes prehashing, maybe call it\r\n  'content length' or something.\r\n```\r\n \r\n I don't understand this comment, we should get clarity on the list.\r\n \r\n ```\r\n - Picking the same hash function as the signature does not guarantee\r\n  equal strength, because some signatures have internal collision\r\n  mitigations (e.g., EdDSA, ML-DSA and SLH-DSA).\r\n```\r\n\r\nThis is missing the point of the original text, which just says \"align\" as in... dont use sha1 with P521... I tried to eleaborate on this with the ES384 example\r\n \r\n \r\n  ",
+          "createdAt": "2024-08-19T13:31:41Z",
+          "updatedAt": "2024-08-19T13:31:41Z"
         }
       ]
     }
@@ -1167,13 +1174,13 @@
       "labels": [],
       "body": "- remove named hash algorithm registry references\r\n- fix iana registrations\r\n- explain relationship to hash and then sign pre-protocol crypto.\r\n- add implementor report",
       "createdAt": "2024-08-16T23:06:12Z",
-      "updatedAt": "2024-08-17T01:07:26Z",
+      "updatedAt": "2024-08-19T13:35:21Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "9f7ab1009bbf5f933afab691402b44ad16e05c6a",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "pre-01-updates",
-      "headRefOid": "7fbf51149f0b96177779990179d120b9a188f076",
+      "headRefOid": "d62df6a76309a4be30407ff71cf5080a36cfa50f",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -1203,6 +1210,46 @@
               "body": "I did see the feedback on the close mailing list, but splitting the example into two appended values makes this noisy, IMO.  I don't see appending two parts of a unique identifier, with an ellipse in the middle, conveying anything more valuable of the brief attention span we have of readers.\r\n\r\n```suggestion\r\n        TBD_3 : \"https://storage.example/244f...9c19\"\r\n```",
               "createdAt": "2024-08-17T00:28:44Z",
               "updatedAt": "2024-08-17T01:07:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6F2JtS",
+          "commit": {
+            "abbreviatedOid": "7fbf511"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-19T13:33:30Z",
+          "updatedAt": "2024-08-19T13:33:30Z",
+          "comments": [
+            {
+              "originalPosition": 145,
+              "body": "@henkbirkholz fyi ",
+              "createdAt": "2024-08-19T13:33:30Z",
+              "updatedAt": "2024-08-19T13:33:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6F2Kl1",
+          "commit": {
+            "abbreviatedOid": "7fbf511"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-19T13:35:04Z",
+          "updatedAt": "2024-08-19T13:35:04Z",
+          "comments": [
+            {
+              "originalPosition": 145,
+              "body": "This syntax is EDN elision, it seems low effort to include it, and it eliminates ambiguity in EDN",
+              "createdAt": "2024-08-19T13:35:04Z",
+              "updatedAt": "2024-08-19T13:35:04Z"
             }
           ]
         }
