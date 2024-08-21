@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 20 February 2025                                     DataTrails
+Expires: 22 February 2025                                     DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                          19 August 2024
+                                                          21 August 2024
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 February 2025.
+   This Internet-Draft will expire on 22 February 2025.
 
 Copyright Notice
 
@@ -221,7 +221,7 @@ Table of Contents
            / payload_preimage_content_type /
            TBD_2: "application/example+json"
            / payload_location /
-           TBD_3 : "https://storage.example/244f" + ... "9c19"
+           TBD_3 : "https://storage.example/a24f9c19"
          }>>
          {}                            / Unprotected                   /
          h'935b5a91...e18a588a',       / Payload                       /
@@ -309,9 +309,9 @@ Table of Contents
    [I-D.draft-ietf-cbor-edn-literals]
               Bormann, C., "CBOR Extended Diagnostic Notation (EDN)",
               Work in Progress, Internet-Draft, draft-ietf-cbor-edn-
-              literals-10, 4 July 2024,
+              literals-11, 21 August 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-cbor-
-              edn-literals-10>.
+              edn-literals-11>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
