@@ -76,6 +76,8 @@ It is still possible for the protected header to be large, but the payload will 
 
 The terms COSE, CDDL, and EDN are defined in {{-COSE}}, {{-CDDL}}, {{-EDN}} respectively.
 
+# Header Parameters
+
 To represent a hash of a payload, the following headers are defined:
 
 TBD_1:
@@ -130,13 +132,14 @@ Hash_Envelope_as_COSE_Sign1 = [
 Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 ~~~
 
-Label `16` (typ) MAY be used to assign a content format or media type to the entire hash envelope.
-Label `TBD_1` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
-Label `TBD_2` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.
-Label `TBD_3` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
-Label `3` (content_type) MUST NOT be present in the protected or unprotected headers.
+- Label `16` (typ) MAY be used to assign a content format or media type to the entire hash envelope.
+- Label `TBD_1` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
+- Label `TBD_2` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.
+- Label `TBD_3` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
+- Label `3` (content_type) MUST NOT be present in the protected or unprotected headers.
+
 Label `3` is easily confused with label `TBD_2` payload_preimage_content_type.
-The difference between content_type (3) and payload_preimage_content_type (TBD2) is that content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
+The difference between content_type (3) and payload_preimage_content_type (TBD2) is content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
 
 # Envelope EDN
 
@@ -246,6 +249,41 @@ Implementation Experience: No interop testing has been done yet. The code works 
 
 Contact: Orie Steele (orie@transmute.industries)
 
+## DataTrails Preview
+
+Organization: DataTrails
+
+Name: https://github.com/datatrails/scitt-action
+
+Description: A GitHub Action for registering statements about artifacts on a transparency service.
+
+Maturity: Preview
+
+Coverage: The current version ('main') implements this specification and demonstrates hash envelope signing with DataTrails implementation of SCITT.
+
+License: MIT
+
+Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.
+
+Contact: Steve Lasker (steve.lasker@datatrails.ai)
+
+## DigiCert Preview
+
+Organization: DigiCert
+
+Name: https://github.com/digicert/scitt-action
+
+Description: A GitHub Action for remote signing and registering statements about artifacts on a transparency service.
+
+Maturity: Preview
+
+Coverage: The current version ('main') implements this specification and demonstrates hash envelope signing with DigiCert Software Trust Manager.
+
+License: MIT
+
+Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.
+
+Contact: Corey Bonnell (Corey.Bonnell@digicert.com>)
 # Acknowledgments
 {:numbered="false"}
 
