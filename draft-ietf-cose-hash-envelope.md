@@ -154,7 +154,7 @@ A hashed payload functions equivalently to an attached payload, with the benefit
         / payload_preimage_content_type /
         TBD_2: "application/example+json"
         / payload_location /
-        TBD_3 : "https://storage.example/244f" + ... "9c19"
+        TBD_3 : "https://storage.example/a24f9c19"
       }>>
       {}                            / Unprotected                   /
       h'935b5a91...e18a588a',       / Payload                       /
