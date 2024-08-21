@@ -284,6 +284,7 @@ License: MIT
 Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.
 
 Contact: Corey Bonnell (Corey.Bonnell@digicert.com>)
+
 # Acknowledgments
 {:numbered="false"}
 
