@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-20T00:31:59.876768+00:00",
+  "timestamp": "2024-08-22T00:31:57.760776+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -1167,24 +1167,26 @@
       "id": "PR_kwDOKqKrRc54n2zK",
       "title": "Cleanup before -01",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/23",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "OR13",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "- remove named hash algorithm registry references\r\n- fix iana registrations\r\n- explain relationship to hash and then sign pre-protocol crypto.\r\n- add implementor report",
       "createdAt": "2024-08-16T23:06:12Z",
-      "updatedAt": "2024-08-19T13:35:21Z",
+      "updatedAt": "2024-08-21T22:37:23Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "9f7ab1009bbf5f933afab691402b44ad16e05c6a",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "pre-01-updates",
-      "headRefOid": "d62df6a76309a4be30407ff71cf5080a36cfa50f",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "5b182b3fdcc573d04c6c4d7ae7dd761000107137",
+      "closedAt": "2024-08-21T22:36:55Z",
+      "mergedAt": "2024-08-21T22:36:55Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "dd623f7e1f5804207e1ecfa2413e3e51c075a448"
+      },
       "comments": [],
       "reviews": [
         {
@@ -1250,6 +1252,118 @@
               "body": "This syntax is EDN elision, it seems low effort to include it, and it eliminates ambiguity in EDN",
               "createdAt": "2024-08-19T13:35:04Z",
               "updatedAt": "2024-08-19T13:35:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6GEOjq",
+          "commit": {
+            "abbreviatedOid": "7fbf511"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-20T23:06:46Z",
+          "updatedAt": "2024-08-20T23:06:47Z",
+          "comments": [
+            {
+              "originalPosition": 145,
+              "body": "> This syntax is EDN elision, it seems low effort to include it, and it eliminates ambiguity in EDN\r\n\r\nYou're saying the `\" + ... \"9c19\"` is EDN elision, and we should keep it?\r\n\r\nAre we intentionally making this complex? \ud83d\ude44 When would anyone concatenate portions of a guid? \r\nThe example isn't even accurate, as it should at least include the extra +, however, this is just not helpful\r\n TBD_3 : \"https://storage.example/244f\" + ... + \"9c19\"",
+              "createdAt": "2024-08-20T23:06:46Z",
+              "updatedAt": "2024-08-20T23:08:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6GESph",
+          "commit": {
+            "abbreviatedOid": "d62df6a"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-20T23:26:50Z",
+          "updatedAt": "2024-08-20T23:26:50Z",
+          "comments": [
+            {
+              "originalPosition": 145,
+              "body": "We got feedback on the list, for making the EDN easier to understand, and less confusing.\n\nI agree with the feedback.\n\nWe don't have better tools than EDN or CDDL.\n\nThe best we can do is use them correctly.\n\nSee https://datatracker.ietf.org/doc/html/draft-ietf-cbor-edn-literals-10#section-3.2\n\n\n\n\n\n\n\n",
+              "createdAt": "2024-08-20T23:26:50Z",
+              "updatedAt": "2024-08-20T23:26:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6GMadH",
+          "commit": {
+            "abbreviatedOid": "7fbf511"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-21T16:52:53Z",
+          "updatedAt": "2024-08-21T16:52:53Z",
+          "comments": [
+            {
+              "originalPosition": 145,
+              "body": "I've read the draft, and agree we should make the EDN easier, however, I don't think this does it. \r\nThat said, we can make the identifier shorter and avoid the entire discussion\r\n```suggestion\r\n        TBD_3 : \"https://storage.example/a24f9c19\"\r\n```",
+              "createdAt": "2024-08-21T16:52:53Z",
+              "updatedAt": "2024-08-21T16:52:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6GNNfW",
+          "commit": {
+            "abbreviatedOid": "dc35d9c"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Formatted a section on labels\r\nAdded DataTrails and DigiCert implementations",
+          "createdAt": "2024-08-21T18:34:40Z",
+          "updatedAt": "2024-08-21T19:08:02Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "Adding the boilerplate section above mixes the definitions of the header parameters, making it harder to read.\r\n\r\n```suggestion\r\n# Header Parameters\r\n\r\nTo represent a hash of a payload, the following headers are defined:\r\n```",
+              "createdAt": "2024-08-21T18:34:40Z",
+              "updatedAt": "2024-08-21T19:08:02Z"
+            },
+            {
+              "originalPosition": 127,
+              "body": "Reformating the paragraph into bullets\r\n```suggestion\r\n- Label `16` (typ) MAY be used to assign a content format or media type to the entire hash envelope.\r\n- Label `TBD_1` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.\r\n- Label `TBD_2` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.\r\n- Label `TBD_3` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.\r\n- Label `3` (content_type) MUST NOT be present in the protected or unprotected headers.\r\n\r\nLabel `3` is easily confused with label `TBD_2` payload_preimage_content_type.\r\nThe difference between content_type (3) and payload_preimage_content_type (TBD2) is content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.\r\n```",
+              "createdAt": "2024-08-21T18:49:54Z",
+              "updatedAt": "2024-08-21T19:08:02Z"
+            },
+            {
+              "originalPosition": 255,
+              "body": "```suggestion\r\n\r\n## DataTrails Preview\r\n\r\nOrganization: DataTrails\r\n\r\nName: https://github.com/datatrails/scitt-action\r\n\r\nDescription: A GitHub Action for registering statements about artifacts on a transparency service.\r\n\r\nMaturity: Preview\r\n\r\nCoverage: The current version ('main') implements this specification and demonstrates hash envelope signing with DataTrails implementation of SCITT.\r\n\r\nLicense: MIT\r\n\r\nImplementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.\r\n\r\nContact: Steve Lasker (steve.lasker@datatrails.ai)\r\n\r\n## DigiCert Preview\r\n\r\nOrganization: DigiCert\r\n\r\nName: https://github.com/digicert/scitt-action\r\n\r\nDescription: A GitHub Action for remote signing and registering statements about artifacts on a transparency service.\r\n\r\nMaturity: Preview\r\n\r\nCoverage: The current version ('main') implements this specification and demonstrates hash envelope signing with DigiCert Software Trust Manager.\r\n\r\nLicense: MIT\r\n\r\nImplementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.\r\n\r\nContact: Corey Bonnell (Corey.Bonnell@digicert.com>)\r\n```",
+              "createdAt": "2024-08-21T19:07:18Z",
+              "updatedAt": "2024-08-21T19:08:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6GPXxF",
+          "commit": {
+            "abbreviatedOid": "7905173"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-21T22:36:14Z",
+          "updatedAt": "2024-08-21T22:36:14Z",
+          "comments": [
+            {
+              "originalPosition": 291,
+              "body": "```suggestion\r\nContact: Corey Bonnell (Corey.Bonnell@digicert.com>)\r\n\r\n```",
+              "createdAt": "2024-08-21T22:36:14Z",
+              "updatedAt": "2024-08-21T22:36:14Z"
             }
           ]
         }
