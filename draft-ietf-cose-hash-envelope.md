@@ -286,7 +286,6 @@ Implementation Experience: Interop testing has been performed between DigiCert a
 Contact: Corey Bonnell (Corey.Bonnell@digicert.com)
 
 # Acknowledgments
-
 {:numbered="false"}
 
 The following individuals provided input into the final form of the document: Carsten Bormann, Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet.
