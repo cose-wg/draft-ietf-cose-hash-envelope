@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-22T00:31:57.760776+00:00",
+  "timestamp": "2024-08-25T00:35:37.331741+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -286,7 +286,7 @@
       "labels": [],
       "body": "For the content format / media type of the pre image... should it be restricted to only content format (forbid string media types).",
       "createdAt": "2024-08-16T14:02:12Z",
-      "updatedAt": "2024-08-17T01:14:19Z",
+      "updatedAt": "2024-08-23T15:30:52Z",
       "closedAt": null,
       "comments": [
         {
@@ -295,6 +295,13 @@
           "body": "There are several projects that haven't registered their mediatypes with iana. There are additional scenarios where companies create private/local mediatypes that are not intended to be registered. \r\nWhile best practice would be to register and use existing media types, it would exclude many intra-company usage scenarios, which are also IoT scenarios. \r\n\r\nTo avoid additional barriers to adoption, I do NOT believe we should require registered content types. ",
           "createdAt": "2024-08-17T01:12:41Z",
           "updatedAt": "2024-08-17T01:14:19Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Proposing we close this one. Any objection? ",
+          "createdAt": "2024-08-23T15:30:51Z",
+          "updatedAt": "2024-08-23T15:30:51Z"
         }
       ]
     },
@@ -1174,7 +1181,7 @@
       "labels": [],
       "body": "- remove named hash algorithm registry references\r\n- fix iana registrations\r\n- explain relationship to hash and then sign pre-protocol crypto.\r\n- add implementor report",
       "createdAt": "2024-08-16T23:06:12Z",
-      "updatedAt": "2024-08-21T22:37:23Z",
+      "updatedAt": "2024-08-22T11:36:04Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "9f7ab1009bbf5f933afab691402b44ad16e05c6a",
@@ -1366,8 +1373,54 @@
               "updatedAt": "2024-08-21T22:36:14Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6GXXAp",
+          "commit": {
+            "abbreviatedOid": "7fbf511"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-22T11:36:04Z",
+          "updatedAt": "2024-08-22T11:36:04Z",
+          "comments": [
+            {
+              "originalPosition": 145,
+              "body": "```\r\necho \"h'abcdef...1234'\" | edn-abnf - -tdiag\r\n888([h'ABCDEF', 888(null), h'1234'])\r\n```\r\n\r\n\"\u2026\" actually is an ellipsis that already translates. Either \"...\" or \"\u2026\" are okay.",
+              "createdAt": "2024-08-22T11:36:04Z",
+              "updatedAt": "2024-08-22T11:36:04Z"
+            }
+          ]
         }
       ]
+    },
+    {
+      "number": 24,
+      "id": "PR_kwDOKqKrRc55QqO7",
+      "title": "Spelling & Markdown Nits",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/24",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-08-23T15:30:58Z",
+      "updatedAt": "2024-08-23T15:36:24Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "dd623f7e1f5804207e1ecfa2413e3e51c075a448",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "steve/spelling-markdown-nits",
+      "headRefOid": "c4bdfe8b69226e514d8b1417b8e866d4b107bf5c",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
