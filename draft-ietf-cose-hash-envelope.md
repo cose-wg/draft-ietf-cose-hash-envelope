@@ -18,23 +18,23 @@ venue:
 
 author:
 
-  - fullname: Orie Steele
-    organization: Transmute
-    email: orie@transmute.industries
+- fullname: Orie Steele
+  organization: Transmute
+  email: orie@transmute.industries
 
-  - fullname: Steve Lasker
-    organization: DataTrails
-    email: steve.lasker@datatrails.ai
+- fullname: Steve Lasker
+  organization: DataTrails
+  email: steve.lasker@datatrails.ai
 
-  - ins: H. Birkholz
-    name: Henk Birkholz
-    org: Fraunhofer SIT
-    abbrev: Fraunhofer SIT
-    email: henk.birkholz@ietf.contact
-    street: Rheinstrasse 75
-    code: '64295'
-    city: Darmstadt
-    country: Germany
+- ins: H. Birkholz
+  name: Henk Birkholz
+  org: Fraunhofer SIT
+  abbrev: Fraunhofer SIT
+  email: henk.birkholz@ietf.contact
+  street: Rheinstrasse 75
+  code: '64295'
+  city: Darmstadt
+  country: Germany
 
 normative:
   RFC9052: COSE
@@ -66,7 +66,7 @@ Some signature algorithms such as ES256 or ES384 allow the "ToBeSigned" to be ha
 
 Other signature algorithms such as EdDSA with Ed25519, or ML-DSA do not expose such a capability.
 
-By producing the "ToBeSigned" on the client, and ensuring that the payload is always a hashed value, the total size of the message to be sent to the servce for signing is constrained.
+By producing the "ToBeSigned" on the client, and ensuring that the payload is always a hashed value, the total size of the message to be sent to the service for signing is constrained.
 
 It is still possible for the protected header to be large, but the payload will always be of a fixed size, associated with the hash function chosen.
 
@@ -283,7 +283,7 @@ License: MIT
 
 Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.
 
-Contact: Corey Bonnell (Corey.Bonnell@digicert.com>)
+Contact: Corey Bonnell (Corey.Bonnell@digicert.com)
 
 # Acknowledgments
 {:numbered="false"}
