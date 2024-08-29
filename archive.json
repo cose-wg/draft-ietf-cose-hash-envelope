@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-27T00:32:53.391899+00:00",
+  "timestamp": "2024-08-29T00:33:05.247977+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -279,15 +279,15 @@
       "id": "I_kwDOKqKrRc6TPmro",
       "title": "Require content formats",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/21",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "OR13",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "For the content format / media type of the pre image... should it be restricted to only content format (forbid string media types).",
       "createdAt": "2024-08-16T14:02:12Z",
-      "updatedAt": "2024-08-23T15:30:52Z",
-      "closedAt": null,
+      "updatedAt": "2024-08-27T14:24:01Z",
+      "closedAt": "2024-08-27T14:23:50Z",
       "comments": [
         {
           "author": "SteveLasker",
@@ -302,6 +302,13 @@
           "body": "Proposing we close this one. Any objection? ",
           "createdAt": "2024-08-23T15:30:51Z",
           "updatedAt": "2024-08-23T15:30:51Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We addressed this in editors draft",
+          "createdAt": "2024-08-27T14:24:00Z",
+          "updatedAt": "2024-08-27T14:24:00Z"
         }
       ]
     },
@@ -317,7 +324,7 @@
       "labels": [],
       "body": "https://mailarchive.ietf.org/arch/msg/cose/PCJQ7S7IMnZLWxjI677Wv-qeLaI/",
       "createdAt": "2024-08-16T14:03:40Z",
-      "updatedAt": "2024-08-19T13:31:43Z",
+      "updatedAt": "2024-08-28T13:50:23Z",
       "closedAt": null,
       "comments": [
         {
@@ -333,8 +340,47 @@
           "body": "No\r\n\r\n```\r\n- Should payload_hash_alg be required to be critical?\r\n```\r\n\r\nWe should write some text providing guidance for this... IMO better to say it MAY be marked critical.\r\n\r\n```\r\n- Assuming payload_hash_alg just causes content to be pre-hashed,\r\n  then how do payload_preimage_content_type and 'content type'\r\n  differ?\r\n```\r\n\r\nI think this one is addressed.\r\n\r\n\r\n```\r\n- Maybe add protected header for preimage length. So that applications\r\n  don't have to deal with over-large responses from HTTP servers (which\r\n  could cause problems).\r\n\r\n  Something like:\r\n\r\n  &(payload_preimage_content_length: TBD_4) => uint\r\n\r\n  If payload_hash_alg just causes prehashing, maybe call it\r\n  'content length' or something.\r\n```\r\n \r\n I don't understand this comment, we should get clarity on the list.\r\n \r\n ```\r\n - Picking the same hash function as the signature does not guarantee\r\n  equal strength, because some signatures have internal collision\r\n  mitigations (e.g., EdDSA, ML-DSA and SLH-DSA).\r\n```\r\n\r\nThis is missing the point of the original text, which just says \"align\" as in... dont use sha1 with P521... I tried to eleaborate on this with the ES384 example\r\n \r\n \r\n  ",
           "createdAt": "2024-08-19T13:31:41Z",
           "updatedAt": "2024-08-19T13:31:41Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This comment is relevant: https://mailarchive.ietf.org/arch/msg/cose/JonuJfnRwpR7wlmZ40Vyt-uuwoY/",
+          "createdAt": "2024-08-28T13:50:22Z",
+          "updatedAt": "2024-08-28T13:50:22Z"
         }
       ]
+    },
+    {
+      "number": 25,
+      "id": "I_kwDOKqKrRc6UiyVI",
+      "title": "Quoting FIPS204 regarding Hash strength",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/25",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "See Section 5.4 of FIPS204\r\n\r\n```\r\nIf the content to be signed is large, hashing of the content is often\r\nperformed at the application level.\r\nFor example, in the Cryptographic Message Syntax [29], a digest of the\r\ncontent may be computed, and\r\nthat digest is signed along with other attributes. If the content is not\r\nhashed at the application level, the\r\npre-hash version of ML-DSA signing may be used.\r\n\r\nIn order to maintain the same level of security strength when the content\r\nis hashed at the application level\r\nor using HashML-DSA , the digest that is signed needs to be generated using\r\nan approved hash function\r\nor XOF (e.g., from FIPS 180 [8] or FIPS 202 [7]) that provides at least \ud835\udf06\r\nbits of classical security strength\r\nagainst both collision and second preimage attacks ...\r\n```\r\n\r\n- https://mailarchive.ietf.org/arch/msg/cose/JonuJfnRwpR7wlmZ40Vyt-uuwoY/",
+      "createdAt": "2024-08-28T13:52:23Z",
+      "updatedAt": "2024-08-28T13:52:32Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 26,
+      "id": "I_kwDOKqKrRc6UizXi",
+      "title": "Explain the relationship between crypto layer pre-hash and protocol layer pre-hash",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/26",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This is confusing to think about when you have \"pre-hash\" in both the raw\r\ncrypto layer, and the protocol layer.\r\n\r\nI like to think about this problem from the perspective of what a client\r\ncan do.\r\n\r\nLet the message / payload be a 1 TB LLM model.\r\n\r\n# Case 1\r\n\r\nWith HashML-DSA-65-SHA-256 and \"normal cose-sign1\" the client can do the\r\nfollowing:\r\n\r\nSet the protected header to be { alg: HashML-DSA-65-SHA-256 } // crypto\r\nlayer pre-hash\r\nConstruct the Sig_structure as defined in\r\nhttps://datatracker.ietf.org/doc/html/rfc9052#section-4.4-4\r\nResult is Sig_structure = [ context : \"Signature1\", protected_header:\r\nbytes, payload : 1 TB LLM Model ]\r\nHash the Sig_structure with SHA-256\r\n\r\nSend the result to a remote KMS...\r\nA sha-256 hash moves over the network.\r\nServer does not see protocol metadata / Sig_structure... cannot enforce\r\npolicy on it.\r\n\r\nClient receives a raw HashML-DSA-65-SHA-256 signature...\r\nConstruct a complete cose-sign1\r\n\r\n# Case 2\r\n\r\nWith ML-DSA-65 and \"COSE Hash Envelope\" the client can do the following:\r\n\r\nHash the 1 TB payload to produce a sha-256 hash.\r\n\r\nSet the protected header to be { alg: ML-DSA-65, payload_hash: SHA-256 }\r\n// protocol layer pre-hash\r\nConstruct the Sig_structure as defined in\r\nhttps://datatracker.ietf.org/doc/html/rfc9052#section-4.4-4\r\nResult is Sig_structure = [ context : \"Signature1\", protected_header:\r\nbytes, payload : bytes (sha-256 hash) ]\r\n\r\nSend the result to a remote KMS...\r\nProtocol data structure moves over the network, and is larger than sha-256\r\nhash.\r\nServer sees the protocol metadata / Sig_structure... can enforce policy on\r\nit.\r\n\r\nClient receives a raw HashML-DSA-65 signature...\r\nConstruct a complete cose-sign1\r\n\r\n# Case 3\r\n\r\nWith HashML-DSA-65-SHA-256 and \"COSE Hash Envelope\" the client can do the\r\nfollowing:\r\n\r\nHash the 1 TB payload to produce a sha-256 hash.\r\n\r\nSet the protected header to be { alg: HashML-DSA-65-SHA-256, payload_hash:\r\nSHA-256 } // crypto and protocol layer pre hashing\r\nConstruct the Sig_structure as defined in\r\nhttps://datatracker.ietf.org/doc/html/rfc9052#section-4.4-4\r\nResult is Sig_structure = [ context : \"Signature1\", protected_header:\r\nbytes, payload : bytes (sha-256 hash) ]\r\nHash the Sig_structure with SHA-256\r\n\r\nSend the result to a remote KMS...\r\nA sha-256 hash moves over the network.\r\nServer does not see protocol metadata / Sig_structure... cannot enforce\r\npolicy on it.\r\n\r\nClient receives a raw HashML-DSA-65-SHA-256 signature...\r\nConstruct a complete cose-sign1\r\n\r\n- https://mailarchive.ietf.org/arch/msg/cose/JonuJfnRwpR7wlmZ40Vyt-uuwoY/",
+      "createdAt": "2024-08-28T13:53:55Z",
+      "updatedAt": "2024-08-28T13:53:56Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -1401,26 +1447,42 @@
       "id": "PR_kwDOKqKrRc55QqO7",
       "title": "Spelling & Markdown Nits",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/24",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-08-23T15:30:58Z",
-      "updatedAt": "2024-08-23T15:36:24Z",
+      "updatedAt": "2024-08-27T14:15:28Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "dd623f7e1f5804207e1ecfa2413e3e51c075a448",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "steve/spelling-markdown-nits",
       "headRefOid": "c4bdfe8b69226e514d8b1417b8e866d4b107bf5c",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-08-27T14:15:28Z",
+      "mergedAt": "2024-08-27T14:15:28Z",
+      "mergedBy": "OR13",
+      "mergeCommit": {
+        "oid": "3ce7d22c9049e7ee1b0794d2f9093aa20bc81fd0"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6G6o-8",
+          "commit": {
+            "abbreviatedOid": "c4bdfe8"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-08-27T14:15:21Z",
+          "updatedAt": "2024-08-27T14:15:21Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
