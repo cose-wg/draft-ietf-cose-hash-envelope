@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-17T00:28:33.275541+00:00",
+  "timestamp": "2024-09-19T00:34:49.441921+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -358,11 +358,13 @@
       "state": "OPEN",
       "author": "OR13",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "OR13"
+      ],
       "labels": [],
       "body": "See Section 5.4 of FIPS204\r\n\r\n```\r\nIf the content to be signed is large, hashing of the content is often\r\nperformed at the application level.\r\nFor example, in the Cryptographic Message Syntax [29], a digest of the\r\ncontent may be computed, and\r\nthat digest is signed along with other attributes. If the content is not\r\nhashed at the application level, the\r\npre-hash version of ML-DSA signing may be used.\r\n\r\nIn order to maintain the same level of security strength when the content\r\nis hashed at the application level\r\nor using HashML-DSA , the digest that is signed needs to be generated using\r\nan approved hash function\r\nor XOF (e.g., from FIPS 180 [8] or FIPS 202 [7]) that provides at least \ud835\udf06\r\nbits of classical security strength\r\nagainst both collision and second preimage attacks ...\r\n```\r\n\r\n- https://mailarchive.ietf.org/arch/msg/cose/JonuJfnRwpR7wlmZ40Vyt-uuwoY/",
       "createdAt": "2024-08-28T13:52:23Z",
-      "updatedAt": "2024-08-28T13:52:32Z",
+      "updatedAt": "2024-09-17T14:20:45Z",
       "closedAt": null,
       "comments": []
     },
@@ -374,13 +376,23 @@
       "state": "OPEN",
       "author": "OR13",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "OR13"
+      ],
       "labels": [],
       "body": "This is confusing to think about when you have \"pre-hash\" in both the raw\r\ncrypto layer, and the protocol layer.\r\n\r\nI like to think about this problem from the perspective of what a client\r\ncan do.\r\n\r\nLet the message / payload be a 1 TB LLM model.\r\n\r\n# Case 1\r\n\r\nWith HashML-DSA-65-SHA-256 and \"normal cose-sign1\" the client can do the\r\nfollowing:\r\n\r\nSet the protected header to be { alg: HashML-DSA-65-SHA-256 } // crypto\r\nlayer pre-hash\r\nConstruct the Sig_structure as defined in\r\nhttps://datatracker.ietf.org/doc/html/rfc9052#section-4.4-4\r\nResult is Sig_structure = [ context : \"Signature1\", protected_header:\r\nbytes, payload : 1 TB LLM Model ]\r\nHash the Sig_structure with SHA-256\r\n\r\nSend the result to a remote KMS...\r\nA sha-256 hash moves over the network.\r\nServer does not see protocol metadata / Sig_structure... cannot enforce\r\npolicy on it.\r\n\r\nClient receives a raw HashML-DSA-65-SHA-256 signature...\r\nConstruct a complete cose-sign1\r\n\r\n# Case 2\r\n\r\nWith ML-DSA-65 and \"COSE Hash Envelope\" the client can do the following:\r\n\r\nHash the 1 TB payload to produce a sha-256 hash.\r\n\r\nSet the protected header to be { alg: ML-DSA-65, payload_hash: SHA-256 }\r\n// protocol layer pre-hash\r\nConstruct the Sig_structure as defined in\r\nhttps://datatracker.ietf.org/doc/html/rfc9052#section-4.4-4\r\nResult is Sig_structure = [ context : \"Signature1\", protected_header:\r\nbytes, payload : bytes (sha-256 hash) ]\r\n\r\nSend the result to a remote KMS...\r\nProtocol data structure moves over the network, and is larger than sha-256\r\nhash.\r\nServer sees the protocol metadata / Sig_structure... can enforce policy on\r\nit.\r\n\r\nClient receives a raw HashML-DSA-65 signature...\r\nConstruct a complete cose-sign1\r\n\r\n# Case 3\r\n\r\nWith HashML-DSA-65-SHA-256 and \"COSE Hash Envelope\" the client can do the\r\nfollowing:\r\n\r\nHash the 1 TB payload to produce a sha-256 hash.\r\n\r\nSet the protected header to be { alg: HashML-DSA-65-SHA-256, payload_hash:\r\nSHA-256 } // crypto and protocol layer pre hashing\r\nConstruct the Sig_structure as defined in\r\nhttps://datatracker.ietf.org/doc/html/rfc9052#section-4.4-4\r\nResult is Sig_structure = [ context : \"Signature1\", protected_header:\r\nbytes, payload : bytes (sha-256 hash) ]\r\nHash the Sig_structure with SHA-256\r\n\r\nSend the result to a remote KMS...\r\nA sha-256 hash moves over the network.\r\nServer does not see protocol metadata / Sig_structure... cannot enforce\r\npolicy on it.\r\n\r\nClient receives a raw HashML-DSA-65-SHA-256 signature...\r\nConstruct a complete cose-sign1\r\n\r\n- https://mailarchive.ietf.org/arch/msg/cose/JonuJfnRwpR7wlmZ40Vyt-uuwoY/",
       "createdAt": "2024-08-28T13:53:55Z",
-      "updatedAt": "2024-08-28T13:53:56Z",
+      "updatedAt": "2024-09-17T14:22:08Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "body": "tag! @OR13 is it.",
+          "createdAt": "2024-09-17T14:22:06Z",
+          "updatedAt": "2024-09-17T14:22:06Z"
+        }
+      ]
     }
   ],
   "pulls": [
