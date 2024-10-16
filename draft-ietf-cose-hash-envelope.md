@@ -43,6 +43,7 @@ normative:
 
 informative:
   BCP205:
+---
 
 --- abstract
 
@@ -57,17 +58,11 @@ Additionally, hints of the detached payload's content format and availability ar
 COSE defined detached payloads in Section 2 of {{-COSE}}, using `nil` as the payload.
 In order to verify a signature over a detached payload, the verifier must have access to the payload content.
 Storing a hash of the content allows for small signature envelopes, that are easy to transport and verify independently.
-
 Additional hints in the protected header ensure cryptographic agility for the hashing & signing algorithms, and discoverability for the original content which could be prohibitively large to move over a network.
-
 When producing COSE_sign1 with remote signing services, such as a signing api exposed over HTTPS and backed by an HSM, the "ToBeSigned" bytes as described in {{Section 4.4 of RFC9052}} need to be transmitted to the HSM in order to be signed.
-
 Some signature algorithms such as ES256 or ES384 allow the "ToBeSigned" to be hashed on the client and sent to the server along with metadata in order to produce a signature.
-
 Other signature algorithms such as EdDSA with Ed25519, or ML-DSA do not expose such a capability.
-
 By producing the "ToBeSigned" on the client, and ensuring that the payload is always a hashed value, the total size of the message to be sent to the service for signing is constrained.
-
 It is still possible for the protected header to be large, but the payload will always be of a fixed size, associated with the hash function chosen.
 
 # Terminology
