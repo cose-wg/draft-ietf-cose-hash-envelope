@@ -43,6 +43,11 @@ normative:
 
 informative:
   BCP205:
+  RFC8032:
+  FIPS-204:
+    title: "Module-Lattice-Based Digital Signature Standard"
+    target: https://doi.org/10.6028/NIST.FIPS.204
+---
 
 --- abstract
 
@@ -57,17 +62,11 @@ Additionally, hints of the detached payload's content format and availability ar
 COSE defined detached payloads in Section 2 of {{-COSE}}, using `nil` as the payload.
 In order to verify a signature over a detached payload, the verifier must have access to the payload content.
 Storing a hash of the content allows for small signature envelopes, that are easy to transport and verify independently.
-
 Additional hints in the protected header ensure cryptographic agility for the hashing & signing algorithms, and discoverability for the original content which could be prohibitively large to move over a network.
-
 When producing COSE_sign1 with remote signing services, such as a signing api exposed over HTTPS and backed by an HSM, the "ToBeSigned" bytes as described in {{Section 4.4 of RFC9052}} need to be transmitted to the HSM in order to be signed.
-
 Some signature algorithms such as ES256 or ES384 allow the "ToBeSigned" to be hashed on the client and sent to the server along with metadata in order to produce a signature.
-
 Other signature algorithms such as EdDSA with Ed25519, or ML-DSA do not expose such a capability.
-
 By producing the "ToBeSigned" on the client, and ensuring that the payload is always a hashed value, the total size of the message to be sent to the service for signing is constrained.
-
 It is still possible for the protected header to be large, but the payload will always be of a fixed size, associated with the hash function chosen.
 
 # Terminology
@@ -141,6 +140,8 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 Label `3` is easily confused with label `TBD_2` payload_preimage_content_type.
 The difference between content_type (3) and payload_preimage_content_type (TBD2) is content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
 
+Profiles that rely on this specification MAY choose to mark TBD_1, TBD_2, TBD_3 (or other header parameters) critical, see {{Section C.1.3 of RFC9052}} for more details.
+
 # Envelope EDN
 
 A hashed payload functions equivalently to an attached payload, with the benefits of being compact in size and providing the ability to validate the signature.
@@ -155,7 +156,7 @@ A hashed payload functions equivalently to an attached payload, with the benefit
         / payload_hash_alg /
         TBD_1: -16 / sha-256 /
         / payload_preimage_content_type /
-        TBD_2: "application/example+json"
+        TBD_2: 51 / application/json-patch+json /
         / payload_location /
         TBD_3 : "https://storage.example/a24f9c19"
       }>>
@@ -166,7 +167,7 @@ A hashed payload functions equivalently to an attached payload, with the benefit
 )
 ~~~~
 
-In this example, the sha256 hash algorithm (-16) is used to hash the payload, which is of content type "application/example+json".
+In this example, the sha256 hash algorithm (-16) is used to hash the payload, which is of content type `application/json-patch+json` identified by the content format `51`.
 The full payload is located at "https://storage.example/244f...9c19".
 The COSE_sign1 is of type "application/example+cose".
 The sha256 hash is signed with ES384 which starts by taking the sha384 hash of the payload (which is a sha256 hash).
@@ -184,6 +185,9 @@ TODO Security
 
 It is RECOMMENDED to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
 For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.
+It is also possible to use this specification with signature algorithms that support pre-hashing such as Ed25519ph which is described in {{RFC8032}}, or HashML-DSA which is described in {{FIPS-204}}.
+Note that when using a pre-hash algorithm, the algorithm SHOULD be registered in the IANA COSE Algorithms registry, and should be distinguishable from non-pre hash variants that may also be present.
+The approach this specification takes is just one way to perform application agnostic pre-hashing, meaning the pre hashing is not done with binding or confisderation for a specific application context, while preforming application (cose) specific signing, meaning the to be signed bytes include the cose structures necessary to distinguish a cose signature from other digital signature formats.
 
 # IANA Considerations
 
