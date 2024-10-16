@@ -1358,7 +1358,7 @@ The difference between content_type (3) and payload_preimage_content_type (TBD2)
         / payload_hash_alg /
         TBD_1: -16 / sha-256 /
         / payload_preimage_content_type /
-        TBD_2: "application/example+json"
+        TBD_2: 51 / application/json-patch+json /
         / payload_location /
         TBD_3 : "https://storage.example/a24f9c19"
       }&gt;&gt;
@@ -1369,7 +1369,7 @@ The difference between content_type (3) and payload_preimage_content_type (TBD2)
 )
 </pre><a href="#section-5-2" class="pilcrow">¶</a>
 </div>
-<p id="section-5-3">In this example, the sha256 hash algorithm (-16) is used to hash the payload, which is of content type "application/example+json".
+<p id="section-5-3">In this example, the sha256 hash algorithm (-16) is used to hash the payload, which is of content type <code>application/json-patch+json</code> identified by the content format <code>51</code>.
 The full payload is located at "https://storage.example/244f...9c19".
 The COSE_sign1 is of type "application/example+cose".
 The sha256 hash is signed with ES384 which starts by taking the sha384 hash of the payload (which is a sha256 hash).<a href="#section-5-3" class="pilcrow">¶</a></p>
