@@ -156,7 +156,7 @@ A hashed payload functions equivalently to an attached payload, with the benefit
         / payload_hash_alg /
         TBD_1: -16 / sha-256 /
         / payload_preimage_content_type /
-        TBD_2: "application/example+json"
+        TBD_2: 51 / application/json-patch+json /
         / payload_location /
         TBD_3 : "https://storage.example/a24f9c19"
       }>>
@@ -167,7 +167,7 @@ A hashed payload functions equivalently to an attached payload, with the benefit
 )
 ~~~~
 
-In this example, the sha256 hash algorithm (-16) is used to hash the payload, which is of content type "application/example+json".
+In this example, the sha256 hash algorithm (-16) is used to hash the payload, which is of content type `application/json-patch+json` identified by the content format `51`.
 The full payload is located at "https://storage.example/244f...9c19".
 The COSE_sign1 is of type "application/example+cose".
 The sha256 hash is signed with ES384 which starts by taking the sha384 hash of the payload (which is a sha256 hash).
