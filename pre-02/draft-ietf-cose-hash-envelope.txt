@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 24 February 2025                                     DataTrails
+Expires: 19 April 2025                                        DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                          23 August 2024
+                                                         16 October 2024
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 February 2025.
+   This Internet-Draft will expire on 19 April 2025.
 
 Copyright Notice
 
@@ -103,32 +103,23 @@ Table of Contents
    as the payload.  In order to verify a signature over a detached
    payload, the verifier must have access to the payload content.
    Storing a hash of the content allows for small signature envelopes,
-   that are easy to transport and verify independently.
-
-   Additional hints in the protected header ensure cryptographic agility
-   for the hashing & signing algorithms, and discoverability for the
-   original content which could be prohibitively large to move over a
-   network.
-
+   that are easy to transport and verify independently.  Additional
+   hints in the protected header ensure cryptographic agility for the
+   hashing & signing algorithms, and discoverability for the original
+   content which could be prohibitively large to move over a network.
    When producing COSE_sign1 with remote signing services, such as a
    signing api exposed over HTTPS and backed by an HSM, the "ToBeSigned"
    bytes as described in Section 4.4 of [RFC9052] need to be transmitted
-   to the HSM in order to be signed.
-
-   Some signature algorithms such as ES256 or ES384 allow the
-   "ToBeSigned" to be hashed on the client and sent to the server along
-   with metadata in order to produce a signature.
-
-   Other signature algorithms such as EdDSA with Ed25519, or ML-DSA do
-   not expose such a capability.
-
-   By producing the "ToBeSigned" on the client, and ensuring that the
-   payload is always a hashed value, the total size of the message to be
-   sent to the service for signing is constrained.
-
-   It is still possible for the protected header to be large, but the
-   payload will always be of a fixed size, associated with the hash
-   function chosen.
+   to the HSM in order to be signed.  Some signature algorithms such as
+   ES256 or ES384 allow the "ToBeSigned" to be hashed on the client and
+   sent to the server along with metadata in order to produce a
+   signature.  Other signature algorithms such as EdDSA with Ed25519, or
+   ML-DSA do not expose such a capability.  By producing the
+   "ToBeSigned" on the client, and ensuring that the payload is always a
+   hashed value, the total size of the message to be sent to the service
+   for signing is constrained.  It is still possible for the protected
+   header to be large, but the payload will always be of a fixed size,
+   associated with the hash function chosen.
 
 2.  Terminology
 
@@ -216,6 +207,10 @@ Table of Contents
    payload_preimage_content_type is used to identify the content format
    of the bytes which are hashed to produce the payload.
 
+   Profiles that rely on this specification MAY choose to mark TBD_1,
+   TBD_2, TBD_3 (or other header parameters) critical, see
+   Appendix C.1.3 of [RFC9052] for more details.
+
 5.  Envelope EDN
 
    A hashed payload functions equivalently to an attached payload, with
@@ -264,7 +259,18 @@ Table of Contents
    It is RECOMMENDED to align the strength of the chosen hash function
    to the strength of the chosen signature algorithm.  For example, when
    signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the
-   payload.
+   payload.  It is also possible to use this specification with
+   signature algorithms that support pre-hashing such as Ed25519ph which
+   is described in [RFC8032], or HashML-DSA which is described in
+   [FIPS-204].  Note that when using a pre-hash algorithm, the algorithm
+   SHOULD be registered in the IANA COSE Algorithms registry, and should
+   be distinguishable from non-pre hash variants that may also be
+   present.  The approach this specification takes is just one way to
+   perform application agnostic pre-hashing, meaning the pre hashing is
+   not done with binding or confisderation for a specific application
+   context, while preforming application (cose) specific signing,
+   meaning the to be signed bytes include the cose structures necessary
+   to distinguish a cose signature from other digital signature formats.
 
 8.  IANA Considerations
 
@@ -321,9 +327,9 @@ Table of Contents
    [I-D.draft-ietf-cbor-edn-literals]
               Bormann, C., "CBOR Extended Diagnostic Notation (EDN)",
               Work in Progress, Internet-Draft, draft-ietf-cbor-edn-
-              literals-11, 21 August 2024,
+              literals-12, 1 September 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-cbor-
-              edn-literals-11>.
+              edn-literals-12>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -355,6 +361,14 @@ Table of Contents
               Code: The Implementation Status Section", BCP 205,
               RFC 7942, DOI 10.17487/RFC7942, July 2016,
               <https://www.rfc-editor.org/info/rfc7942>.
+
+   [FIPS-204] "Module-Lattice-Based Digital Signature Standard", n.d.,
+              <https://doi.org/10.6028/NIST.FIPS.204>.
+
+   [RFC8032]  Josefsson, S. and I. Liusvaara, "Edwards-Curve Digital
+              Signature Algorithm (EdDSA)", RFC 8032,
+              DOI 10.17487/RFC8032, January 2017,
+              <https://www.rfc-editor.org/rfc/rfc8032>.
 
 Appendix A.  Implementation Status
 
