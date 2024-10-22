@@ -107,7 +107,7 @@ Hash_Envelope_Protected_Header = {
     ; (content to be hashed) of the payload
     ; 50 for application/json,
     ; See https://datatracker.ietf.org/doc/html/rfc7252#section-12.3
-    &(payload_preimage_content_type: TBD_2) => int
+    &(payload_preimage_content_type: TBD_2) => int / tstr
 
     ; Location the content of the hashed payload is stored
     ; For example:
@@ -207,9 +207,11 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 
 - Name: payload_preimage_content_type
 - Label: TBD_2
-- Value type: int
-- Value registry: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats
+- Value type: int / tstr
+- Value registry when `int` is used: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats
 - Description: The content format associated with the bytes that were hashed to produce the payload.
+  `int` payload_preimage_content_types SHOULD be registered in the content-formats registry.
+  `str` values MAY be used when registered values may not yet be registered.
 
 ### Payload Location
 
