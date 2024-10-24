@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-22T00:37:00.847627+00:00",
+  "timestamp": "2024-10-24T00:36:20.692747+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -1570,6 +1570,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 28,
+      "id": "PR_kwDOKqKrRc5_hkhk",
+      "title": "add tstr support for pre_image_content_type",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/28",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Makes pre_image_content_type consistent with typ: https://www.rfc-editor.org/rfc/rfc9596.html#section-1-2",
+      "createdAt": "2024-10-22T23:20:01Z",
+      "updatedAt": "2024-10-22T23:29:23Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "aa0686b69f598d6f5dd7236123dd06a9b7dc6c62",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "steve/ctyp-str",
+      "headRefOid": "b9b3c18ae5b6b2e9024f4a02167ab66e8e3b1e1e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
