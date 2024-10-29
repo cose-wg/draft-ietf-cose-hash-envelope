@@ -131,21 +131,21 @@ Profiles that rely on this specification MAY choose to mark TBD_1, TBD_2, TBD_3 
 A hashed payload functions equivalently to an attached payload, with the benefits of being compact in size and providing the ability to validate the signature.
 
 ~~~~ cbor-diag
-18(                                      / COSE Sign 1               /
-    [
-      <<{
-        1:-35,                           / alg : ES384               /
-        4: h'75726e3a...32636573',       / kid                       /
-        16: "application/example+cose",  / typ                       /
-        TBD_1: -16                       / payload_hash_alg : sha-256/
-                                     / payload_preimage_content_type /
-        TBD_2: 51                    / "application/json-patch+json" /
-        TBD_3: "https://blob.example/a24f9c19"/ payload_location     /
-      }>>
-      {}                                 / Unprotected               /
-      h'935b5a91...e18a588a',            / Payload                   /
-      h'15280897...93ef39e5'             / Signature                 /
-    ]
+18(                                    / COSE Sign 1               /
+   [
+    <<{
+      1:-35,                          / alg : ES384                /
+      4: h'75726e3a...32636573',      / kid                        /
+      16: "application/example+cose", / typ                        /
+      TBD_1: -16                      / payload_hash_alg : sha-256 /
+                                   / payload_preimage_content_type /
+      TBD_2: 51                    / "application/json-patch+json" /
+      TBD_3: "https://blob.example/a24f9c19"/ payload_location     /
+    }>>
+    {}                                 / Unprotected               /
+    h'935b5a91...e18a588a',            / Payload                   /
+    h'15280897...93ef39e5'             / Signature                 /
+   ]
 )
 ~~~~
 
