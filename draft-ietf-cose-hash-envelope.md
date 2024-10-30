@@ -92,28 +92,11 @@ TBD_3:
 
 ~~~ cddl
 Hash_Envelope_Protected_Header = {
-    ; Cryptographic algorithm to use
     ? &(alg: 1) => int,
-
-    ; Type of the envelope
     ? &(typ: 16) => int / tstr
-
-    ; Hash algorithm used to produce the payload from content
-    ; -16 for SHA-256,
-    ; See https://www.iana.org/assignments/cose/cose.xhtml
     &(payload_hash_alg: TBD_1) => int
-
-    ; Content type of the preimage
-    ; (content to be hashed) of the payload
-    ; 50 for application/json,
-    ; See https://datatracker.ietf.org/doc/html/rfc7252#section-12.3
-    &(payload_preimage_content_type: TBD_2) => int
-
-    ; Location the content of the hashed payload is stored
-    ; For example:
-    ; storage.example/244f...9c19
+    &(payload_preimage_content_type: TBD_2) => int / tstr
     ? &(payload_location: TBD_3) => tstr
-
     * int / tstr => any
 }
 
@@ -131,6 +114,7 @@ Hash_Envelope_as_COSE_Sign1 = [
 Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 ~~~
 
+- Label `1` (alg)  Cryptographic algorithm to use
 - Label `16` (typ) MAY be used to assign a content format or media type to the entire hash envelope.
 - Label `TBD_1` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
 - Label `TBD_2` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.
@@ -147,23 +131,21 @@ Profiles that rely on this specification MAY choose to mark TBD_1, TBD_2, TBD_3 
 A hashed payload functions equivalently to an attached payload, with the benefits of being compact in size and providing the ability to validate the signature.
 
 ~~~~ cbor-diag
-18(                                 / COSE Sign 1                   /
-    [
-      <<{
-        / alg : ES384 / 1: -35,
-        / kid / 4: h'75726e3a...32636573',
-        / typ / 16: "application/example+cose"
-        / payload_hash_alg /
-        TBD_1: -16 / sha-256 /
-        / payload_preimage_content_type /
-        TBD_2: 51 / application/json-patch+json /
-        / payload_location /
-        TBD_3 : "https://storage.example/a24f9c19"
-      }>>
-      {}                            / Unprotected                   /
-      h'935b5a91...e18a588a',       / Payload                       /
-      h'15280897...93ef39e5'        / Signature                     /
-    ]
+18(                                    / COSE Sign 1               /
+   [
+    <<{
+      1:-35,                          / alg : ES384                /
+      4: h'75726e3a...32636573',      / kid                        /
+      16: "application/example+cose", / typ                        /
+      TBD_1: -16                      / payload_hash_alg : sha-256 /
+                                   / payload_preimage_content_type /
+      TBD_2: 51                    / "application/json-patch+json" /
+      TBD_3: "https://blob.example/a24f9c19"/ payload_location     /
+    }>>
+    {}                                 / Unprotected               /
+    h'935b5a91...e18a588a',            / Payload                   /
+    h'15280897...93ef39e5'             / Signature                 /
+   ]
 )
 ~~~~
 
@@ -201,7 +183,7 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 - Label: TBD_1
 - Value type: int
 - Value registry: https://www.iana.org/assignments/cose/cose.xhtml#algorithms
-- Description: Hash algorithm used to produce the payload.
+- Description: Hash algorithm used to produce the payload from pre-image content
 
 ### Payload Pre-image Content Type
 
