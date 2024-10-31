@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-29T00:37:28.795300+00:00",
+  "timestamp": "2024-10-31T00:37:09.619316+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -1583,45 +1583,82 @@
       "labels": [],
       "body": "Makes pre_image_content_type consistent with typ: https://www.rfc-editor.org/rfc/rfc9596.html#section-1-2",
       "createdAt": "2024-10-22T23:20:01Z",
-      "updatedAt": "2024-10-22T23:29:23Z",
+      "updatedAt": "2024-10-30T15:59:07Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
-      "baseRefOid": "aa0686b69f598d6f5dd7236123dd06a9b7dc6c62",
+      "baseRefOid": "7cdec911bb01f8e1554937df00a025adc9c5ab27",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "steve/ctyp-str",
-      "headRefOid": "b9b3c18ae5b6b2e9024f4a02167ab66e8e3b1e1e",
+      "headRefOid": "e34cbb516bde6b6fca23261e6f2eb92c15e7acd1",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6PK99N",
+          "commit": {
+            "abbreviatedOid": "b9b3c18"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-10-29T14:04:03Z",
+          "updatedAt": "2024-10-29T14:04:04Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "@henkbirkholz ; )",
+              "createdAt": "2024-10-29T14:04:04Z",
+              "updatedAt": "2024-10-29T14:04:04Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 29,
       "id": "PR_kwDOKqKrRc6AKsL7",
       "title": "Simplify cddl and edn",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/29",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Reduce CDDL and EDN comments that had duplicative information already in the descriptive text.",
       "createdAt": "2024-10-28T22:44:36Z",
-      "updatedAt": "2024-10-28T22:44:45Z",
+      "updatedAt": "2024-10-30T15:57:50Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "aa0686b69f598d6f5dd7236123dd06a9b7dc6c62",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "steve/edn-cddl-update",
-      "headRefOid": "edfd43166b438a4062df45c11804924bd92ffcad",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "a84eece92af4b6263aa402914a83e52a94d9e335",
+      "closedAt": "2024-10-30T15:57:50Z",
+      "mergedAt": "2024-10-30T15:57:50Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "7cdec911bb01f8e1554937df00a025adc9c5ab27"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6PK9m_",
+          "commit": {
+            "abbreviatedOid": "a84eece"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-29T14:03:36Z",
+          "updatedAt": "2024-10-29T14:03:36Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
