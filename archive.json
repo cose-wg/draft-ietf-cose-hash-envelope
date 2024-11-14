@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-12T00:35:32.159082+00:00",
+  "timestamp": "2024-11-14T00:36:25.407113+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -440,6 +440,22 @@
       "body": "As discussed in IETF 121, will provide non-normative text to suggest alternative approaches such as DEB (https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#name-detached-eat-bundles), where the COSE/CWT payload is a digest of a claims set.  ",
       "createdAt": "2024-11-08T13:40:19Z",
       "updatedAt": "2024-11-08T13:40:19Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 31,
+      "id": "I_kwDOKqKrRc6eGXVf",
+      "title": "Request for Pre-Allocation",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/31",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "From IETF 121, agreement to move forward with pre-allocations for:\r\n- payload_hash_alg: TBD_1  \r\nthe hash algorithm used to produce the payload.\r\n- payload_preimage_content_type: TBD_2  \r\nthe content type of the bytes that were hashed to produce the payload.\r\n- payload_location: TBD_3  \r\nan identifier enabling a verifier to retrieve the bytes which were hashed to produce the payload.\r\n",
+      "createdAt": "2024-11-12T15:05:38Z",
+      "updatedAt": "2024-11-12T15:05:39Z",
       "closedAt": null,
       "comments": []
     }
