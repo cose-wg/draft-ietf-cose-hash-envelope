@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 19 April 2025                                        DataTrails
+Expires: 23 May 2025                                          DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                         16 October 2024
+                                                        19 November 2024
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 April 2025.
+   This Internet-Draft will expire on 23 May 2025.
 
 Copyright Notice
 
@@ -147,28 +147,11 @@ Table of Contents
 4.  Hash Envelope CDDL
 
    Hash_Envelope_Protected_Header = {
-       ; Cryptographic algorithm to use
        ? &(alg: 1) => int,
-
-       ; Type of the envelope
        ? &(typ: 16) => int / tstr
-
-       ; Hash algorithm used to produce the payload from content
-       ; -16 for SHA-256,
-       ; See https://www.iana.org/assignments/cose/cose.xhtml
        &(payload_hash_alg: TBD_1) => int
-
-       ; Content type of the preimage
-       ; (content to be hashed) of the payload
-       ; 50 for application/json,
-       ; See https://datatracker.ietf.org/doc/html/rfc7252#section-12.3
-       &(payload_preimage_content_type: TBD_2) => int
-
-       ; Location the content of the hashed payload is stored
-       ; For example:
-       ; storage.example/244f...9c19
+       &(payload_preimage_content_type: TBD_2) => int / tstr
        ? &(payload_location: TBD_3) => tstr
-
        * int / tstr => any
    }
 
@@ -184,6 +167,8 @@ Table of Contents
    ]
 
    Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
+
+   *  Label 1 (alg) Cryptographic algorithm to use
 
    *  Label 16 (typ) MAY be used to assign a content format or media
       type to the entire hash envelope.
@@ -217,23 +202,21 @@ Table of Contents
    the benefits of being compact in size and providing the ability to
    validate the signature.
 
-   18(                                 / COSE Sign 1                   /
-       [
-         <<{
-           / alg : ES384 / 1: -35,
-           / kid / 4: h'75726e3a...32636573',
-           / typ / 16: "application/example+cose"
-           / payload_hash_alg /
-           TBD_1: -16 / sha-256 /
-           / payload_preimage_content_type /
-           TBD_2: 51 / application/json-patch+json /
-           / payload_location /
-           TBD_3 : "https://storage.example/a24f9c19"
-         }>>
-         {}                            / Unprotected                   /
-         h'935b5a91...e18a588a',       / Payload                       /
-         h'15280897...93ef39e5'        / Signature                     /
-       ]
+   18(                                    / COSE Sign 1               /
+      [
+       <<{
+         1:-35,                          / alg : ES384                /
+         4: h'75726e3a...32636573',      / kid                        /
+         16: "application/example+cose", / typ                        /
+         TBD_1: -16                      / payload_hash_alg : sha-256 /
+                                      / payload_preimage_content_type /
+         TBD_2: 51                    / "application/json-patch+json" /
+         TBD_3: "https://blob.example/a24f9c19"/ payload_location     /
+       }>>
+       {}                                 / Unprotected               /
+       h'935b5a91...e18a588a',            / Payload                   /
+       h'15280897...93ef39e5'             / Signature                 /
+      ]
    )
 
    In this example, the sha256 hash algorithm (-16) is used to hash the
@@ -253,8 +236,6 @@ Table of Contents
 
 7.  Security Considerations
 
-   TODO Security
-
 7.1.  Choice of Hash Function
 
    It is RECOMMENDED to align the strength of the chosen hash function
@@ -268,7 +249,7 @@ Table of Contents
    be distinguishable from non-pre hash variants that may also be
    present.  The approach this specification takes is just one way to
    perform application agnostic pre-hashing, meaning the pre hashing is
-   not done with binding or confisderation for a specific application
+   not done with binding or consideration for a specific application
    context, while preforming application (cose) specific signing,
    meaning the to be signed bytes include the cose structures necessary
    to distinguish a cose signature from other digital signature formats.
@@ -292,7 +273,8 @@ Table of Contents
    *  Value registry: https://www.iana.org/assignments/cose/
       cose.xhtml#algorithms
 
-   *  Description: Hash algorithm used to produce the payload.
+   *  Description: Hash algorithm used to produce the payload from pre-
+      image content
 
 8.1.2.  Payload Pre-image Content Type
 
@@ -328,9 +310,9 @@ Table of Contents
    [I-D.draft-ietf-cbor-edn-literals]
               Bormann, C., "CBOR Extended Diagnostic Notation (EDN)",
               Work in Progress, Internet-Draft, draft-ietf-cbor-edn-
-              literals-12, 1 September 2024,
+              literals-13, 3 November 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-cbor-
-              edn-literals-12>.
+              edn-literals-13>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
