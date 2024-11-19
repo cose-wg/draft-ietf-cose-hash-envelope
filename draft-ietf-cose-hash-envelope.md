@@ -161,15 +161,13 @@ These parameters SHOULD NOT be present in COSE_Encrypt headers unless this discl
 
 # Security Considerations
 
-TODO Security
-
 ## Choice of Hash Function
 
 It is RECOMMENDED to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
 For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.
 It is also possible to use this specification with signature algorithms that support pre-hashing such as Ed25519ph which is described in {{RFC8032}}, or HashML-DSA which is described in {{FIPS-204}}.
 Note that when using a pre-hash algorithm, the algorithm SHOULD be registered in the IANA COSE Algorithms registry, and should be distinguishable from non-pre hash variants that may also be present.
-The approach this specification takes is just one way to perform application agnostic pre-hashing, meaning the pre hashing is not done with binding or confisderation for a specific application context, while preforming application (cose) specific signing, meaning the to be signed bytes include the cose structures necessary to distinguish a cose signature from other digital signature formats.
+The approach this specification takes is just one way to perform application agnostic pre-hashing, meaning the pre hashing is not done with binding or consideration for a specific application context, while preforming application (cose) specific signing, meaning the to be signed bytes include the cose structures necessary to distinguish a cose signature from other digital signature formats.
 
 # IANA Considerations
 
