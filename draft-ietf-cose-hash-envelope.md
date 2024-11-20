@@ -47,9 +47,7 @@ informative:
   FIPS-204:
     title: "Module-Lattice-Based Digital Signature Standard"
     target: https://doi.org/10.6028/NIST.FIPS.204
-  RATS-EATS-Bundle:
-    title: "RATS: Detached EAT Bundles"
-    target: https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#name-detached-eat-bundles
+  I-D.draft-ietf-rats-eat#name-detached-eat-bundles: RATS-EATS-Bundle
 ---
 
 --- abstract
