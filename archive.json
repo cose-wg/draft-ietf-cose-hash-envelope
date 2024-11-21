@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-19T00:38:36.960042+00:00",
+  "timestamp": "2024-11-21T00:38:16.299555+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -456,6 +456,24 @@
       "body": "From IETF 121, agreement to move forward with pre-allocations for:\r\n- payload_hash_alg: TBD_1  \r\nthe hash algorithm used to produce the payload.\r\n- payload_preimage_content_type: TBD_2  \r\nthe content type of the bytes that were hashed to produce the payload.\r\n- payload_location: TBD_3  \r\nan identifier enabling a verifier to retrieve the bytes which were hashed to produce the payload.\r\n",
       "createdAt": "2024-11-12T15:05:38Z",
       "updatedAt": "2024-11-12T15:05:39Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 32,
+      "id": "I_kwDOKqKrRc6fTSG4",
+      "title": "Remove TODO in the security section",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/32",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "SteveLasker"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-11-19T15:40:01Z",
+      "updatedAt": "2024-11-19T15:40:02Z",
       "closedAt": null,
       "comments": []
     }
@@ -1689,6 +1707,99 @@
           "createdAt": "2024-10-29T14:03:36Z",
           "updatedAt": "2024-10-29T14:03:36Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 33,
+      "id": "PR_kwDOKqKrRc6CcbGM",
+      "title": "Remove TODO in the security section",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/33",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "resolves #32 ",
+      "createdAt": "2024-11-19T21:29:31Z",
+      "updatedAt": "2024-11-19T21:29:31Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "7cdec911bb01f8e1554937df00a025adc9c5ab27",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "steve/issue-32",
+      "headRefOid": "bab7e1329e72db95d7e04545e9c27a43749cb4b1",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 34,
+      "id": "PR_kwDOKqKrRc6CchT7",
+      "title": "Add RATS-EATS bundle reference",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/34",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #30 ",
+      "createdAt": "2024-11-19T21:48:43Z",
+      "updatedAt": "2024-11-20T00:32:30Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "7cdec911bb01f8e1554937df00a025adc9c5ab27",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "steve/issue-30",
+      "headRefOid": "1cc62f3c9b86abdce646f21dd8eaba787dbc90a2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6R1yib",
+          "commit": {
+            "abbreviatedOid": "c079417"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-19T22:40:44Z",
+          "updatedAt": "2024-11-19T22:40:44Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "This is not how drafts are cited, see:\r\n\r\nhttps://github.com/cose-wg/draft-ietf-cose-merkle-tree-proofs/blob/main/draft-ietf-cose-merkle-tree-proofs.md?plain=1#L57",
+              "createdAt": "2024-11-19T22:40:44Z",
+              "updatedAt": "2024-11-19T22:40:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6R25vj",
+          "commit": {
+            "abbreviatedOid": "c079417"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-20T00:31:53Z",
+          "updatedAt": "2024-11-20T00:31:53Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "yes, but is there a way to link to the #name-detached-eat-bundles section ?",
+              "createdAt": "2024-11-20T00:31:53Z",
+              "updatedAt": "2024-11-20T00:31:53Z"
+            }
+          ]
         }
       ]
     }
