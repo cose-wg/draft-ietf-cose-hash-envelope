@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 3 May 2025                                           DataTrails
+Expires: 26 May 2025                                          DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                         30 October 2024
+                                                        22 November 2024
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 May 2025.
+   This Internet-Draft will expire on 26 May 2025.
 
 Copyright Notice
 
@@ -236,8 +236,6 @@ Table of Contents
 
 7.  Security Considerations
 
-   TODO Security
-
 7.1.  Choice of Hash Function
 
    It is RECOMMENDED to align the strength of the chosen hash function
@@ -251,7 +249,7 @@ Table of Contents
    be distinguishable from non-pre hash variants that may also be
    present.  The approach this specification takes is just one way to
    perform application agnostic pre-hashing, meaning the pre hashing is
-   not done with binding or confisderation for a specific application
+   not done with binding or consideration for a specific application
    context, while preforming application (cose) specific signing,
    meaning the to be signed bytes include the cose structures necessary
    to distinguish a cose signature from other digital signature formats.
@@ -312,9 +310,9 @@ Table of Contents
    [I-D.draft-ietf-cbor-edn-literals]
               Bormann, C., "CBOR Extended Diagnostic Notation (EDN)",
               Work in Progress, Internet-Draft, draft-ietf-cbor-edn-
-              literals-12, 1 September 2024,
+              literals-13, 3 November 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-cbor-
-              edn-literals-12>.
+              edn-literals-13>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
