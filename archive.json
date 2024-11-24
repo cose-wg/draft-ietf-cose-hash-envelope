@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-21T00:38:16.299555+00:00",
+  "timestamp": "2024-11-24T00:41:38.853744+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -464,7 +464,7 @@
       "id": "I_kwDOKqKrRc6fTSG4",
       "title": "Remove TODO in the security section",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/32",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -473,8 +473,8 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-11-19T15:40:01Z",
-      "updatedAt": "2024-11-19T15:40:02Z",
-      "closedAt": null,
+      "updatedAt": "2024-11-22T16:42:14Z",
+      "closedAt": "2024-11-22T16:42:14Z",
       "comments": []
     }
   ],
@@ -1715,26 +1715,42 @@
       "id": "PR_kwDOKqKrRc6CcbGM",
       "title": "Remove TODO in the security section",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/33",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "resolves #32 ",
       "createdAt": "2024-11-19T21:29:31Z",
-      "updatedAt": "2024-11-19T21:29:31Z",
+      "updatedAt": "2024-11-22T16:42:13Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "7cdec911bb01f8e1554937df00a025adc9c5ab27",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "steve/issue-32",
       "headRefOid": "bab7e1329e72db95d7e04545e9c27a43749cb4b1",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-11-22T16:42:13Z",
+      "mergedAt": "2024-11-22T16:42:13Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "adf6380183fc97e95b1adae57a9b91a4152740a6"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6SVAGW",
+          "commit": {
+            "abbreviatedOid": "bab7e13"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-22T16:34:10Z",
+          "updatedAt": "2024-11-22T16:34:10Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 34,
@@ -1748,7 +1764,7 @@
       "labels": [],
       "body": "Fixes #30 ",
       "createdAt": "2024-11-19T21:48:43Z",
-      "updatedAt": "2024-11-20T00:32:30Z",
+      "updatedAt": "2024-11-22T16:37:11Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "7cdec911bb01f8e1554937df00a025adc9c5ab27",
@@ -1800,6 +1816,19 @@
               "updatedAt": "2024-11-20T00:31:53Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6SVEzE",
+          "commit": {
+            "abbreviatedOid": "1cc62f3"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "As discussed on the issue that spawned this PR, there should some informative text that accompanies reference and explains the reference.",
+          "createdAt": "2024-11-22T16:37:11Z",
+          "updatedAt": "2024-11-22T16:37:11Z",
+          "comments": []
         }
       ]
     }
