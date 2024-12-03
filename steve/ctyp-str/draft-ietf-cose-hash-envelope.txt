@@ -284,7 +284,7 @@ Table of Contents
 
    *  Label: TBD_2
 
-   *  Value type: int / tstr
+   *  Value type: uint / tstr
 
    *  Value registry when uint is used:
       https://www.iana.org/assignments/core-parameters/core-
