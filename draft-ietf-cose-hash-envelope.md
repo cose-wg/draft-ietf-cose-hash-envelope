@@ -192,7 +192,7 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 - Value type: uint / tstr
 - Value registry when `uint` is used: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats
 - Description: The content format associated with the bytes that were hashed to produce the payload.
-  `int` payload_preimage_content_types SHOULD be registered in the content-formats registry.
+  `uint` payload_preimage_content_types SHOULD be registered in the content-formats registry.
   `str` values MAY be used when registered values may not yet be registered.
 
 ### Payload Location
