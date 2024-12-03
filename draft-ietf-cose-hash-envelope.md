@@ -93,9 +93,9 @@ TBD_3:
 ~~~ cddl
 Hash_Envelope_Protected_Header = {
     ? &(alg: 1) => int,
-    ? &(typ: 16) => int / tstr
-    &(payload_hash_alg: TBD_1) => int
-    &(payload_preimage_content_type: TBD_2) => int / tstr
+    ? &(typ: 16) => uint / tstr
+    &(payload_hash_alg: TBD_1) => uint
+    &(payload_preimage_content_type: TBD_2) => uint / tstr
     ? &(payload_location: TBD_3) => tstr
     * int / tstr => any
 }
@@ -181,7 +181,7 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 
 - Name: payload_hash_alg
 - Label: TBD_1
-- Value type: int
+- Value type: uint
 - Value registry: https://www.iana.org/assignments/cose/cose.xhtml#algorithms
 - Description: Hash algorithm used to produce the payload from pre-image content
 
