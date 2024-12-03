@@ -189,7 +189,7 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 
 - Name: payload_preimage_content_type
 - Label: TBD_2
-- Value type: int / tstr
+- Value type: uint / tstr
 - Value registry when `uint` is used: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats
 - Description: The content format associated with the bytes that were hashed to produce the payload.
   `int` payload_preimage_content_types SHOULD be registered in the content-formats registry.
