@@ -148,9 +148,9 @@ Table of Contents
 
    Hash_Envelope_Protected_Header = {
        ? &(alg: 1) => int,
-       ? &(typ: 16) => int / tstr
-       &(payload_hash_alg: TBD_1) => int
-       &(payload_preimage_content_type: TBD_2) => int / tstr
+       ? &(typ: 16) => uint / tstr
+       &(payload_hash_alg: TBD_1) => uint
+       &(payload_preimage_content_type: TBD_2) => uint / tstr
        ? &(payload_location: TBD_3) => tstr
        * int / tstr => any
    }
@@ -270,7 +270,7 @@ Table of Contents
 
    *  Label: TBD_1
 
-   *  Value type: int
+   *  Value type: uint
 
    *  Value registry: https://www.iana.org/assignments/cose/
       cose.xhtml#algorithms

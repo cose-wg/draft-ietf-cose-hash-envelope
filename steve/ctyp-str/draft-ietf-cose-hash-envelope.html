@@ -1297,9 +1297,9 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <pre>
 Hash_Envelope_Protected_Header = {
     ? &amp;(alg: 1) =&gt; int,
-    ? &amp;(typ: 16) =&gt; int / tstr
-    &amp;(payload_hash_alg: TBD_1) =&gt; int
-    &amp;(payload_preimage_content_type: TBD_2) =&gt; int / tstr
+    ? &amp;(typ: 16) =&gt; uint / tstr
+    &amp;(payload_hash_alg: TBD_1) =&gt; uint
+    &amp;(payload_preimage_content_type: TBD_2) =&gt; uint / tstr
     ? &amp;(payload_location: TBD_3) =&gt; tstr
     * int / tstr =&gt; any
 }
@@ -1428,7 +1428,7 @@ The approach this specification takes is just one way to perform application agn
               <p id="section-8.1.1-1.2.1">Label: TBD_1<a href="#section-8.1.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-8.1.1-1.3">
-              <p id="section-8.1.1-1.3.1">Value type: int<a href="#section-8.1.1-1.3.1" class="pilcrow">¶</a></p>
+              <p id="section-8.1.1-1.3.1">Value type: uint<a href="#section-8.1.1-1.3.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-8.1.1-1.4">
               <p id="section-8.1.1-1.4.1">Value registry: https://www.iana.org/assignments/cose/cose.xhtml#algorithms<a href="#section-8.1.1-1.4.1" class="pilcrow">¶</a></p>
