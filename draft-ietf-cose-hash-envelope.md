@@ -181,7 +181,7 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 
 - Name: payload_hash_alg
 - Label: TBD_1
-- Value type: uint
+- Value type: int
 - Value registry: https://www.iana.org/assignments/cose/cose.xhtml#algorithms
 - Description: Hash algorithm used to produce the payload from pre-image content
 
