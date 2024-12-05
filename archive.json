@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-03T00:40:48.992687+00:00",
+  "timestamp": "2024-12-05T00:40:13.787998+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -432,16 +432,24 @@
       "id": "I_kwDOKqKrRc6dmY9q",
       "title": "Add informative text to document pointing to other approaches to include hashes as payloads",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/30",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gmandyam",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "As discussed in IETF 121, will provide non-normative text to suggest alternative approaches such as DEB (https://datatracker.ietf.org/doc/html/draft-ietf-rats-eat-31#name-detached-eat-bundles), where the COSE/CWT payload is a digest of a claims set.  ",
       "createdAt": "2024-11-08T13:40:19Z",
-      "updatedAt": "2024-11-08T13:40:19Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-12-03T15:39:35Z",
+      "closedAt": "2024-12-03T15:39:35Z",
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks for the suggestion. The authors have agreed to keep the doc as is for referencing other hash formats that exist.",
+          "createdAt": "2024-12-03T15:39:35Z",
+          "updatedAt": "2024-12-03T15:39:35Z"
+        }
+      ]
     },
     {
       "number": 31,
@@ -455,9 +463,17 @@
       "labels": [],
       "body": "From IETF 121, agreement to move forward with pre-allocations for:\r\n- payload_hash_alg: TBD_1  \r\nthe hash algorithm used to produce the payload.\r\n- payload_preimage_content_type: TBD_2  \r\nthe content type of the bytes that were hashed to produce the payload.\r\n- payload_location: TBD_3  \r\nan identifier enabling a verifier to retrieve the bytes which were hashed to produce the payload.\r\n",
       "createdAt": "2024-11-12T15:05:38Z",
-      "updatedAt": "2024-11-12T15:05:39Z",
+      "updatedAt": "2024-12-03T15:40:25Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Add a link here to the mail archive request when you send it.",
+          "createdAt": "2024-12-03T15:40:23Z",
+          "updatedAt": "2024-12-03T15:40:23Z"
+        }
+      ]
     },
     {
       "number": 32,
@@ -1633,18 +1649,33 @@
       "labels": [],
       "body": "Makes pre_image_content_type consistent with typ: https://www.rfc-editor.org/rfc/rfc9596.html#section-1-2",
       "createdAt": "2024-10-22T23:20:01Z",
-      "updatedAt": "2024-10-30T15:59:07Z",
+      "updatedAt": "2024-12-04T21:22:58Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "7cdec911bb01f8e1554937df00a025adc9c5ab27",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "steve/ctyp-str",
-      "headRefOid": "e34cbb516bde6b6fca23261e6f2eb92c15e7acd1",
+      "headRefOid": "67752a07fd9eac85671a2e8ef79bc800526dfe41",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Agreed to expand to include tstr, and change int to unit, including 16 typ",
+          "createdAt": "2024-12-03T15:33:05Z",
+          "updatedAt": "2024-12-03T15:38:31Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Changes from the meeting today are completed\r\nI also changed `payload_hash_alg` to unit for consistency",
+          "createdAt": "2024-12-03T22:46:47Z",
+          "updatedAt": "2024-12-03T22:46:47Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOKqKrRc6PK99N",
@@ -1665,6 +1696,132 @@
               "updatedAt": "2024-10-29T14:04:04Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6TlZZf",
+          "commit": {
+            "abbreviatedOid": "e34cbb5"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T15:32:42Z",
+          "updatedAt": "2024-12-03T15:32:42Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "```suggestion\r\n- Value type: uint / tstr\r\n```",
+              "createdAt": "2024-12-03T15:32:42Z",
+              "updatedAt": "2024-12-03T15:32:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6TlZlX",
+          "commit": {
+            "abbreviatedOid": "e34cbb5"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T15:32:59Z",
+          "updatedAt": "2024-12-03T15:32:59Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\n- Value registry when `uint` is used: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats\r\n```",
+              "createdAt": "2024-12-03T15:32:59Z",
+              "updatedAt": "2024-12-03T15:32:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6TlZ0s",
+          "commit": {
+            "abbreviatedOid": "e34cbb5"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T15:33:20Z",
+          "updatedAt": "2024-12-03T15:33:20Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\n  `uint` payload_preimage_content_types SHOULD be registered in the content-formats registry.\r\n```",
+              "createdAt": "2024-12-03T15:33:20Z",
+              "updatedAt": "2024-12-03T15:33:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6TlZ8I",
+          "commit": {
+            "abbreviatedOid": "e34cbb5"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T15:33:32Z",
+          "updatedAt": "2024-12-03T15:33:32Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "```suggestion\r\n  `tstr` values MAY be used when registered values may not yet be registered.\r\n```",
+              "createdAt": "2024-12-03T15:33:32Z",
+              "updatedAt": "2024-12-03T15:33:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6T0KQk",
+          "commit": {
+            "abbreviatedOid": "2b1a797"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-04T21:17:35Z",
+          "updatedAt": "2024-12-04T21:17:35Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6T0KwE",
+          "commit": {
+            "abbreviatedOid": "2b1a797"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-04T21:18:53Z",
+          "updatedAt": "2024-12-04T21:18:53Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "```suggestion\r\n- Value type: int\r\n```\r\n\r\nSee the negative numbers here: https://www.iana.org/assignments/cose/cose.xhtml#algorithms\r\n\r\nFor example -16 (sha256) is an int, not a uint.",
+              "createdAt": "2024-12-04T21:18:53Z",
+              "updatedAt": "2024-12-04T21:18:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6T0K7u",
+          "commit": {
+            "abbreviatedOid": "2b1a797"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "revert change to payload hash algorithm",
+          "createdAt": "2024-12-04T21:19:06Z",
+          "updatedAt": "2024-12-04T21:19:06Z",
+          "comments": []
         }
       ]
     },
@@ -1757,25 +1914,33 @@
       "id": "PR_kwDOKqKrRc6CchT7",
       "title": "Add RATS-EATS bundle reference",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/34",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Fixes #30 ",
       "createdAt": "2024-11-19T21:48:43Z",
-      "updatedAt": "2024-11-22T16:37:11Z",
+      "updatedAt": "2024-12-03T15:30:17Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "7cdec911bb01f8e1554937df00a025adc9c5ab27",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "steve/issue-30",
       "headRefOid": "1cc62f3c9b86abdce646f21dd8eaba787dbc90a2",
-      "closedAt": null,
+      "closedAt": "2024-12-03T15:30:17Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Agreement to not merge.",
+          "createdAt": "2024-12-03T15:30:17Z",
+          "updatedAt": "2024-12-03T15:30:17Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOKqKrRc6R1yib",
@@ -1828,6 +1993,19 @@
           "body": "As discussed on the issue that spawned this PR, there should some informative text that accompanies reference and explains the reference.",
           "createdAt": "2024-11-22T16:37:11Z",
           "updatedAt": "2024-11-22T16:37:11Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6TlV7m",
+          "commit": {
+            "abbreviatedOid": "1cc62f3"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-03T15:27:34Z",
+          "updatedAt": "2024-12-03T15:27:34Z",
           "comments": []
         }
       ]
