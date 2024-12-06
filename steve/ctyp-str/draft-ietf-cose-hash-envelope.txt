@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 7 June 2025                                          DataTrails
+Expires: 9 June 2025                                          DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                         4 December 2024
+                                                         6 December 2024
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 June 2025.
+   This Internet-Draft will expire on 9 June 2025.
 
 Copyright Notice
 
@@ -149,7 +149,7 @@ Table of Contents
    Hash_Envelope_Protected_Header = {
        ? &(alg: 1) => int,
        ? &(typ: 16) => uint / tstr
-       &(payload_hash_alg: TBD_1) => uint
+       &(payload_hash_alg: TBD_1) => int
        &(payload_preimage_content_type: TBD_2) => uint / tstr
        ? &(payload_location: TBD_3) => tstr
        * int / tstr => any
