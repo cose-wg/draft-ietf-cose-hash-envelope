@@ -93,9 +93,9 @@ TBD_3:
 ~~~ cddl
 Hash_Envelope_Protected_Header = {
     ? &(alg: 1) => int,
-    ? &(typ: 16) => int / tstr
+    ? &(typ: 16) => uint / tstr
     &(payload_hash_alg: TBD_1) => int
-    &(payload_preimage_content_type: TBD_2) => int / tstr
+    &(payload_preimage_content_type: TBD_2) => uint / tstr
     ? &(payload_location: TBD_3) => tstr
     * int / tstr => any
 }
@@ -187,9 +187,11 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 
 - Name: payload_preimage_content_type
 - Label: TBD_2
-- Value type: int
-- Value registry: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats
+- Value type: uint / tstr
+- Value registry when `uint` is used: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats
 - Description: The content format associated with the bytes that were hashed to produce the payload.
+  `uint` payload_preimage_content_types SHOULD be registered in the content-formats registry.
+  `tstr` values MAY be used when registered values may not yet be registered.
 
 ### Payload Location
 
