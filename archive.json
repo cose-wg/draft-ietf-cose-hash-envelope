@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-05T00:40:13.787998+00:00",
+  "timestamp": "2024-12-08T00:43:42.307905+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -1642,24 +1642,26 @@
       "id": "PR_kwDOKqKrRc5_hkhk",
       "title": "add tstr support for pre_image_content_type",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/28",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Makes pre_image_content_type consistent with typ: https://www.rfc-editor.org/rfc/rfc9596.html#section-1-2",
       "createdAt": "2024-10-22T23:20:01Z",
-      "updatedAt": "2024-12-04T21:22:58Z",
+      "updatedAt": "2024-12-06T16:27:55Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "7cdec911bb01f8e1554937df00a025adc9c5ab27",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "steve/ctyp-str",
-      "headRefOid": "67752a07fd9eac85671a2e8ef79bc800526dfe41",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "b16c68539a1384b2cbd8e78d9b077c8e464be5e3",
+      "closedAt": "2024-12-06T16:27:51Z",
+      "mergedAt": "2024-12-06T16:27:51Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "65087df4a4b5634d5ca0f34233c4c15c8bfd9fe0"
+      },
       "comments": [
         {
           "author": "SteveLasker",
@@ -1822,6 +1824,79 @@
           "createdAt": "2024-12-04T21:19:06Z",
           "updatedAt": "2024-12-04T21:19:06Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6UHk_y",
+          "commit": {
+            "abbreviatedOid": "2b1a797"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-06T14:39:12Z",
+          "updatedAt": "2024-12-06T14:39:12Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "Why was this marked as resolved? Seems to be a uint for payload_hash_alg. Did I miss something?",
+              "createdAt": "2024-12-06T14:39:12Z",
+              "updatedAt": "2024-12-06T14:40:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6UHx0K",
+          "commit": {
+            "abbreviatedOid": "2b1a797"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-06T15:00:44Z",
+          "updatedAt": "2024-12-06T15:00:44Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "Because it was merged, did you want something different? \ud83e\udd37 ",
+              "createdAt": "2024-12-06T15:00:44Z",
+              "updatedAt": "2024-12-06T15:00:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6UI0Z-",
+          "commit": {
+            "abbreviatedOid": "67752a0"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-06T16:26:02Z",
+          "updatedAt": "2024-12-06T16:26:02Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6UI0nk",
+          "commit": {
+            "abbreviatedOid": "67752a0"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-06T16:26:26Z",
+          "updatedAt": "2024-12-06T16:26:27Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\r\n    &(payload_hash_alg: TBD_1) => int\r\n```",
+              "createdAt": "2024-12-06T16:26:26Z",
+              "updatedAt": "2024-12-06T16:26:27Z"
+            }
+          ]
         }
       ]
     },
