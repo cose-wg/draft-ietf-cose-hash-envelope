@@ -181,15 +181,15 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 - Label: TBD_1
 - Value type: int
 - Value registry: https://www.iana.org/assignments/cose/cose.xhtml#algorithms
-- Description: Hash algorithm used to produce the payload from pre-image content
+- Description: Hash algorithm used to produce the payload of a COSE_Sign1.
 
 ### Payload Pre-image Content Type
 
 - Name: payload_preimage_content_type
 - Label: TBD_2
 - Value type: uint / tstr
-- Value registry when `uint` is used: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats
-- Description: The content format associated with the bytes that were hashed to produce the payload.
+- Value registry: [COAP Content-Formats](https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats) or [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml) registry.
+- Description: The content format or media type of data that has been hashed to produce the payload of a COSE_Sign1.
 
 ### Payload Location
 
