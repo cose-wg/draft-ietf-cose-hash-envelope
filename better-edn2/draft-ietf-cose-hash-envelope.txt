@@ -302,8 +302,8 @@ Table of Contents
 
    *  Value registry: none
 
-   *  Description: The string or URI hint for the location of the data
-      hashed to produce the payload of a COSE_Sign1.
+   *  Description: A string or URI as a hint for the location of the
+      payload
 
 9.  References
 
