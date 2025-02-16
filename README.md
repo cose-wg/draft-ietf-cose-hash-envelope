@@ -1,6 +1,6 @@
 # COSE Hash Envelope
 
-This is the working area for the IETF [COSE Working Group](https://datatracker.ietf.org/wg/cose/documents/) Internet-Draft, "COSE Hash Envelope".
+This is the working area for the IETF [COSE Working Group](https://datatracker.ietf.org/group/cose/documents/) Internet-Draft, "COSE Hash Envelope".
 
 * [Editor's Copy](https://cose-wg.github.io/draft-ietf-cose-hash-envelope/#go.draft-ietf-cose-hash-envelope.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-cose-hash-envelope)
