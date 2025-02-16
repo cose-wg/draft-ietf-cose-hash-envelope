@@ -186,8 +186,10 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 - Name: payload_preimage_content_type
 - Label: TBD_2
 - Value type: uint / tstr
-- Value registry: [COAP Content-Formats](https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats) or [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml) registry.
-- Description: The content format or media type of data that has been hashed to produce the payload of a COSE_Sign1.
+Value registry when `uint` is used: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats
+- Description: The content format associated with the bytes that were hashed to produce the payload.
+  `uint` payload_preimage_content_types SHOULD be registered in the content-formats registry.
+  `tstr` values MAY be used when registered values may not yet be registered.
 
 ### Payload Location
 
