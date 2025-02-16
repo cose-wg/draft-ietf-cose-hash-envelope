@@ -280,7 +280,9 @@ Table of Contents
 
    *  Label: TBD_2
 
-   *  Value type: uint / tstr Value registry when uint is used:
+   *  Value type: uint / tstr
+
+   *  Value registry when uint is used:
       https://www.iana.org/assignments/core-parameters/core-
       parameters.xhtml#content-formats
 
