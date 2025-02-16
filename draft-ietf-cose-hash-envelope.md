@@ -181,7 +181,7 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 - Label: TBD_1
 - Value type: int
 - Value registry: https://www.iana.org/assignments/cose/cose.xhtml#algorithms
-- Description: Hash algorithm used to produce the payload of a COSE_Sign1.
+- Description: The hash algorithm used to produce the payload of a COSE_Sign1.
 
 ### Payload Pre-image Content Type
 
@@ -197,7 +197,7 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 - Label: TBD_3
 - Value type: tstr
 - Value registry: none
-- Description: A string or URI as a hint for the location of the payload
+- Description: The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1.
 
 --- back
 
