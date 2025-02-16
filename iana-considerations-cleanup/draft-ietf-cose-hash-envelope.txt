@@ -273,7 +273,7 @@ Table of Contents
    *  Value registry: https://www.iana.org/assignments/cose/
       cose.xhtml#algorithms
 
-   *  Description: Hash algorithm used to produce the payload of a
+   *  Description: The hash algorithm used to produce the payload of a
       COSE_Sign1.
 
 8.1.2.  Payload Pre-image Content Type
@@ -303,8 +303,8 @@ Table of Contents
 
    *  Value registry: none
 
-   *  Description: A string or URI as a hint for the location of the
-      payload
+   *  Description: The string or URI hint for the location of the data
+      hashed to produce the payload of a COSE_Sign1.
 
 9.  References
 
