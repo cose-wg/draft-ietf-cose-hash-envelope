@@ -197,7 +197,7 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 - Label: TBD_3
 - Value type: tstr
 - Value registry: none
-- Description: The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1.
+- Description: A string or URI as a hint for the location of the payload
 
 --- back
 
