@@ -129,7 +129,7 @@ Profiles that rely on this specification MAY choose to mark TBD_1, TBD_2, TBD_3 
 
 # Envelope EDN
 
-The following informative example demonstrates how to construct a hash envelop for a resource which is already commonly referenced by its hash.
+The following informative example demonstrates how to construct a hash envelope for a resource already commonly referenced by its hash.
 
 ~~~~ cbor-diag
 18([ # cose-sign1
