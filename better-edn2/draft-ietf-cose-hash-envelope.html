@@ -439,7 +439,7 @@ dl {
     margin-bottom: 0;
   }
 }
-dl > dt {
+dl:not(.dlNewline) > dt {
   float: left;
   margin-right: 2ch;
   min-width: 8ch;
@@ -1352,7 +1352,7 @@ The difference between content_type (3) and payload_preimage_content_type (TBD2)
       <h2 id="name-envelope-edn">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-envelope-edn" class="section-name selfRef">Envelope EDN</a>
       </h2>
-<p id="section-5-1">The following informative example demonstrates how to construct a hash envelop for a resource which is already commonly referenced by its hash.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">The following informative example demonstrates how to construct a hash envelope for a resource already commonly referenced by its hash.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <div class="lang-cbor-diag sourcecode" id="section-5-2">
 <pre>
 18([ # cose-sign1
