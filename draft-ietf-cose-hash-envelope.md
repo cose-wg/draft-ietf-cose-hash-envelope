@@ -151,7 +151,7 @@ In this example, an spdx software bill of materials (sbom) in json format is alr
 
 The content type for `manifest.spdx.json` is already well known as `application/spdx+json`, and is registered with IANA [here](https://www.iana.org/assignments/media-types/application/spdx+json).
 
-The full json software bill of material is available at the URL `https://sbom.example/.../manifest.spdx.json`.
+The full JSON SBOM is available at a URL, such as `https://sbom.example/.../manifest.spdx.json`.
 
 The payload of this cose-sign1 is the sha256 hash of the `manifest.spdx.json`, which is sometimes found in an adjacent file called `manifest.spdx.json.sha256`.
 
