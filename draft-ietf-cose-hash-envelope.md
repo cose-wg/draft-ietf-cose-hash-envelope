@@ -60,7 +60,7 @@ Additionally, hints of the detached payload's content format and availability ar
 # Introduction
 
 COSE defined detached payloads in Section 2 of {{-COSE}}, using `nil` as the payload.
-In order to verify a signature over a detached payload, the signature checker requires access to the payload content.
+In order to verify a signature over a cose-sign1, the signature checker requires access to the payload content.
 Hashes are already used on a regular basis as identifiers for payload data, such as documents or software components.
 As hashes typically are smaller than the payload data they represent, they are simpler to transport.
 Additional hints in the protected header ensure cryptographic agility for the hashing and signing algorithms.
