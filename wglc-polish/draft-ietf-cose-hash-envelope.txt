@@ -100,18 +100,18 @@ Table of Contents
 1.  Introduction
 
    COSE defined detached payloads in Section 2 of [RFC9052], using nil
-   as the payload.  In order to verify a signature over a detached
-   payload, the signature checker requires access to the payload
-   content.  Hashes are already used on a regular basis as identifiers
-   for payload data, such as documents or software components.  As
-   hashes typically are smaller than the payload data they represent,
-   they are simpler to transport.  Additional hints in the protected
-   header ensure cryptographic agility for the hashing and signing
-   algorithms.  When hashes are used as identifiers, hints also improve
-   discoverability of original payload content the hashes represent.  In
-   some applications, such as remote signing procedures, conveyance of
-   hashes instead original payload content reduce the conveyed amount of
-   data drastically.
+   as the payload.  In order to verify a signature over a cose-sign1,
+   the signature checker requires access to the payload content.  Hashes
+   are already used on a regular basis as identifiers for payload data,
+   such as documents or software components.  As hashes typically are
+   smaller than the payload data they represent, they are simpler to
+   transport.  Additional hints in the protected header ensure
+   cryptographic agility for the hashing and signing algorithms.  When
+   hashes are used as identifiers, hints also improve discoverability of
+   original payload content the hashes represent.  In some applications,
+   such as remote signing procedures, conveyance of hashes instead
+   original payload content reduce the conveyed amount of data
+   drastically.
 
 2.  Terminology
 
