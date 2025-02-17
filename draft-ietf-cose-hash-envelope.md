@@ -185,7 +185,7 @@ IANA is requested to add the following entries to the [COSE Header Algorithm Par
 
 ### Payload Pre-image Content Type
 
-- Name: payload_preimage_content_type
+- Name: preimage content type
 - Label: TBD_2
 - Value type: uint / tstr
 - Value registry: [COAP Content-Formats](https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats) or [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml) registry.
