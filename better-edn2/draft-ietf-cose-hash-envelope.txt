@@ -216,7 +216,7 @@ Table of Contents
    ])
 
    In this example, an SPDX software bill of materials (SBOM) in JSON
-   format is already commonly identified by a SHA256 hash function.  For
+   format is already commonly identified by its SHA256 hash.  For
    example, some tooling generates a file, such as
    manifest.spdx.json.sha256, which contains the SHA256 hash of the
    corresponding manifest.spdx.json file.
