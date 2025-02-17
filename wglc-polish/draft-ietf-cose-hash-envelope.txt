@@ -111,8 +111,7 @@ Table of Contents
    distinguish resources.  Using a hash as an identifier for a resource
    has the advantage of enabling integrity checking.  In some
    applications, such as remote signing procedures, conveyance of hashes
-   instead original payload content reduce the conveyed amount of data
-   drastically.
+   instead original payload content reduce transmission time and costs.
 
 2.  Terminology
 
