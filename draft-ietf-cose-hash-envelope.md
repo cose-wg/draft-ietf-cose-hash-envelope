@@ -76,7 +76,7 @@ The terms COSE, CDDL, and EDN are defined in {{-COSE}}, {{-CDDL}}, {{-EDN}} resp
 
 # Header Parameters
 
-This document specifies the following new header parameters commonly used to identify resources that are hashed:
+This document specifies the following new header parameters commonly used alongside hashes to identify resources:
 
 TBD_1:
   : the hash algorithm used to produce the payload.
