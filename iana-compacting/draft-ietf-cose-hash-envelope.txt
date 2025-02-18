@@ -83,7 +83,7 @@ Table of Contents
    7.  Security Considerations
      7.1.  Choice of Hash Function
    8.  IANA Considerations
-     8.1.  COSE Header Algorithm Parameters
+     8.1.  COSE Header Parameters
    9.  References
      9.1.  Normative References
      9.2.  Informative References
@@ -253,7 +253,7 @@ Table of Contents
 
 8.  IANA Considerations
 
-8.1.  COSE Header Algorithm Parameters
+8.1.  COSE Header Parameters
 
    IANA is requested to add the following COSE header parameters defined
    in Section 3 to the "COSE Header Parameters" registry
