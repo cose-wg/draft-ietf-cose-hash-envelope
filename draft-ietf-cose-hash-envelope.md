@@ -173,7 +173,7 @@ The approach this specification takes is just one way to perform application agn
 
 # IANA Considerations
 
-## COSE Header Algorithm Parameters
+## COSE Header Parameters
 
 IANA is requested to add the following COSE header parameters defined in {{param-spec}} to the "COSE Header Parameters" registry {{!IANA.cose_header-parameters}}.
 
