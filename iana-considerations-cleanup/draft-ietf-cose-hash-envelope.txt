@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 21 August 2025                                       DataTrails
+Expires: 22 August 2025                                       DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                        17 February 2025
+                                                        18 February 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 August 2025.
+   This Internet-Draft will expire on 22 August 2025.
 
 Copyright Notice
 
