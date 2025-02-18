@@ -49,7 +49,7 @@ informative:
     target: https://doi.org/10.6028/NIST.FIPS.204
 
 entity:
-  SELD: "RFCthis"
+  SELF: "RFCthis"
 
 --- abstract
 
