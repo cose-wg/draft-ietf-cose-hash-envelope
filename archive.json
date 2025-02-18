@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-16T00:40:27.880310+00:00",
+  "timestamp": "2025-02-18T00:36:40.627575+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -2082,6 +2082,740 @@
           "createdAt": "2024-12-03T15:27:34Z",
           "updatedAt": "2024-12-03T15:27:34Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "id": "PR_kwDOKqKrRc6LYbcI",
+      "title": "Remove normative statements from IANA Considerations",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/35",
+      "state": "CLOSED",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-16T22:12:00Z",
+      "updatedAt": "2025-02-16T22:12:22Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "65087df4a4b5634d5ca0f34233c4c15c8bfd9fe0",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "feat/editorial-pass",
+      "headRefOid": "6582814b621687f7610a1c5f9c37dd2dc5b8a683",
+      "closedAt": "2025-02-16T22:12:22Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 36,
+      "id": "PR_kwDOKqKrRc6LYbw-",
+      "title": "Update tools",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/36",
+      "state": "MERGED",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-16T22:15:35Z",
+      "updatedAt": "2025-02-16T22:16:39Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "65087df4a4b5634d5ca0f34233c4c15c8bfd9fe0",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "update-tools",
+      "headRefOid": "30f159be954dbcc1d9e4346fd59e9f03e4a2f990",
+      "closedAt": "2025-02-16T22:16:39Z",
+      "mergedAt": "2025-02-16T22:16:39Z",
+      "mergedBy": "OR13",
+      "mergeCommit": {
+        "oid": "78e03d1a28ecd147b89bccb8fb6a42d72a7b9ee0"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 37,
+      "id": "PR_kwDOKqKrRc6LYb9m",
+      "title": "Remove normative statements from IANA description",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/37",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-16T22:17:46Z",
+      "updatedAt": "2025-02-17T18:40:40Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "78e03d1a28ecd147b89bccb8fb6a42d72a7b9ee0",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "iana-considerations-cleanup",
+      "headRefOid": "da93a24be94c6c477c804394182a89418a061bac",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6cJhyF",
+          "commit": {
+            "abbreviatedOid": "80bf833"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-16T22:57:20Z",
+          "updatedAt": "2025-02-16T22:57:21Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\n- Name: preimage content type\r\n```",
+              "createdAt": "2025-02-16T22:57:20Z",
+              "updatedAt": "2025-02-16T22:57:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRT1w",
+          "commit": {
+            "abbreviatedOid": "da93a24"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-17T18:40:40Z",
+          "updatedAt": "2025-02-17T18:40:40Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "id": "PR_kwDOKqKrRc6LYhwf",
+      "title": "Better EDN",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/38",
+      "state": "CLOSED",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-16T23:11:34Z",
+      "updatedAt": "2025-02-16T23:12:27Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "78e03d1a28ecd147b89bccb8fb6a42d72a7b9ee0",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "better-edn",
+      "headRefOid": "30dc83f2dabc45ec4840e8da25e3d060da59e98f",
+      "closedAt": "2025-02-16T23:12:27Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 39,
+      "id": "PR_kwDOKqKrRc6LYiHo",
+      "title": "Better example",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/39",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-16T23:15:42Z",
+      "updatedAt": "2025-02-17T18:39:42Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "78e03d1a28ecd147b89bccb8fb6a42d72a7b9ee0",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "better-edn2",
+      "headRefOid": "8f3c2124fd37619a3cd1e95756bf5eda24f5d23b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6cJi6E",
+          "commit": {
+            "abbreviatedOid": "a26942e"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-16T23:16:11Z",
+          "updatedAt": "2025-02-16T23:16:12Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "```suggestion\r\n- Description: Hash algorithm used to produce the payload from pre-image content\r\n```",
+              "createdAt": "2025-02-16T23:16:11Z",
+              "updatedAt": "2025-02-16T23:16:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cJi7R",
+          "commit": {
+            "abbreviatedOid": "9f3328d"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-16T23:16:32Z",
+          "updatedAt": "2025-02-16T23:16:33Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "```suggestion\r\nValue registry when `uint` is used: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats\r\n- Description: The content format associated with the bytes that were hashed to produce the payload.\r\n  `uint` payload_preimage_content_types SHOULD be registered in the content-formats registry.\r\n  `tstr` values MAY be used when registered values may not yet be registered.\r\n```",
+              "createdAt": "2025-02-16T23:16:32Z",
+              "updatedAt": "2025-02-16T23:16:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cJi8l",
+          "commit": {
+            "abbreviatedOid": "82f7e80"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-16T23:16:56Z",
+          "updatedAt": "2025-02-16T23:16:56Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "```suggestion\r\n- Value registry when `uint` is used: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats\r\n```",
+              "createdAt": "2025-02-16T23:16:56Z",
+              "updatedAt": "2025-02-16T23:16:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cJi9u",
+          "commit": {
+            "abbreviatedOid": "6e91a53"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-16T23:17:16Z",
+          "updatedAt": "2025-02-16T23:17:16Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "```suggestion\r\n- Description: A string or URI as a hint for the location of the payload\r\n```",
+              "createdAt": "2025-02-16T23:17:16Z",
+              "updatedAt": "2025-02-16T23:17:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cQHtC",
+          "commit": {
+            "abbreviatedOid": "a7c42a8"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T16:07:20Z",
+          "updatedAt": "2025-02-17T16:07:20Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\r\nThe following informative example demonstrates how to construct a hash envelope for a resource already commonly referenced by its hash.\r\n```",
+              "createdAt": "2025-02-17T16:07:20Z",
+              "updatedAt": "2025-02-17T16:07:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRPu3",
+          "commit": {
+            "abbreviatedOid": "dc6f2a1"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:26:50Z",
+          "updatedAt": "2025-02-17T18:26:51Z",
+          "comments": [
+            {
+              "originalPosition": 55,
+              "body": "```suggestion\r\nIn this example, an SPDX software bill of materials (SBOM) in JSON format is already commonly identified by a SHA256 hash function. For example, some tooling generates a file, such as `manifest.spdx.json.sha256`, which contains the SHA256 hash of the corresponding `manifest.spdx.json` file.\r\n```",
+              "createdAt": "2025-02-17T18:26:50Z",
+              "updatedAt": "2025-02-17T18:26:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRQFo",
+          "commit": {
+            "abbreviatedOid": "dc6f2a1"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:28:06Z",
+          "updatedAt": "2025-02-17T18:28:06Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "```suggestion\r\nThe full JSON SBOM is available at a URL, such as `https://sbom.example/.../manifest.spdx.json`.\r\n```\r\nwhy introduce acronyms and then not use them?",
+              "createdAt": "2025-02-17T18:28:06Z",
+              "updatedAt": "2025-02-17T18:28:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRQqs",
+          "commit": {
+            "abbreviatedOid": "4312a87"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:30:06Z",
+          "updatedAt": "2025-02-17T18:30:07Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "```suggestion\r\nThe payload of this cose-sign1 is the SHA256 hash of the `manifest.spdx.json`, which is sometimes found in an adjacent file called `manifest.spdx.json.sha256`.\r\n```",
+              "createdAt": "2025-02-17T18:30:06Z",
+              "updatedAt": "2025-02-17T18:30:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRQv7",
+          "commit": {
+            "abbreviatedOid": "4312a87"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:30:24Z",
+          "updatedAt": "2025-02-17T18:30:24Z",
+          "comments": [
+            {
+              "originalPosition": 55,
+              "body": "```suggestion\r\nIn this example, an SPDX software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash. For example, some tooling generates a file, such as `manifest.spdx.json.sha256`, which contains the SHA256 hash of the corresponding `manifest.spdx.json` file.\r\n```",
+              "createdAt": "2025-02-17T18:30:24Z",
+              "updatedAt": "2025-02-17T18:30:24Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRRyK",
+          "commit": {
+            "abbreviatedOid": "dc6f2a1"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:33:43Z",
+          "updatedAt": "2025-02-17T18:33:43Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "```suggestion\r\nThe payload of such COSE_Sign1 are the SHA256 hashes of the content data in files, such as  `manifest.spdx.json`. Such COSE_Sign1 documents are typically located adjacent corresponding SHA256 hash files, e.g., `manifest.spdx.json.sha256`.\r\n```\r\n\r\nTried to fix, but what? the payload of the COSE envelope is somtimes found in the hash file? Maybe I am reading this wrong.",
+              "createdAt": "2025-02-17T18:33:43Z",
+              "updatedAt": "2025-02-17T18:33:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRSQa",
+          "commit": {
+            "abbreviatedOid": "8f3c212"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:35:16Z",
+          "updatedAt": "2025-02-17T18:35:16Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "```suggestion\r\nThe payload of this COSE_Sign1 is the SHA256 hash of the `manifest.spdx.json`, which is typically found in an adjacent file, e.g., `manifest.spdx.json.sha256`.\r\n```",
+              "createdAt": "2025-02-17T18:35:16Z",
+              "updatedAt": "2025-02-17T18:35:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRSWE",
+          "commit": {
+            "abbreviatedOid": "8f3c212"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:35:36Z",
+          "updatedAt": "2025-02-17T18:35:36Z",
+          "comments": [
+            {
+              "originalPosition": 63,
+              "body": "```suggestion\r\nThe type of this COSE_Sign1 is `application/example+cose`, but other types may be used to establish more specific media types for signatures of hashes.\r\n```",
+              "createdAt": "2025-02-17T18:35:36Z",
+              "updatedAt": "2025-02-17T18:36:24Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRTE0",
+          "commit": {
+            "abbreviatedOid": "8f3c212"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:38:04Z",
+          "updatedAt": "2025-02-17T18:38:04Z",
+          "comments": [
+            {
+              "originalPosition": 69,
+              "body": "```suggestion\r\nWhen signed with a signature algorithm that is parameterized via a hash function, such as ECDSA with SHA384, the to be signed structure as described in Section 4.4 of RFC9052.\r\n```\r\n\r\nThis sentence no verb.",
+              "createdAt": "2025-02-17T18:38:04Z",
+              "updatedAt": "2025-02-17T18:38:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRTjd",
+          "commit": {
+            "abbreviatedOid": "8f3c212"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:39:42Z",
+          "updatedAt": "2025-02-17T18:39:42Z",
+          "comments": [
+            {
+              "originalPosition": 71,
+              "body": "```suggestion\r\nThe resulting signature is computed over the protected header and payload, providing integrity and authenticity for the hash algorithm, content type and location of the associated resource, in this case a software bill of materials.\r\n```\r\n\r\nIsn't location allowed to be in the unprotected header now?",
+              "createdAt": "2025-02-17T18:39:42Z",
+              "updatedAt": "2025-02-17T18:39:42Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "id": "PR_kwDOKqKrRc6LYmyl",
+      "title": "Massaging of Intro and early parts of the I-D in prep for WGLC",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/40",
+      "state": "OPEN",
+      "author": "henkbirkholz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-17T00:05:01Z",
+      "updatedAt": "2025-02-17T18:42:43Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "78e03d1a28ecd147b89bccb8fb6a42d72a7b9ee0",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "wglc-polish",
+      "headRefOid": "154a9288769f909af5c7c5e183c7417c42949cdf",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6cJmkp",
+          "commit": {
+            "abbreviatedOid": "5f9801a"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T00:10:29Z",
+          "updatedAt": "2025-02-17T00:10:29Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "```suggestion\r\nIn order to verify a signature over a cose-sign1, the signature checker requires access to the payload content.\r\n```",
+              "createdAt": "2025-02-17T00:10:29Z",
+              "updatedAt": "2025-02-17T00:10:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cJm2n",
+          "commit": {
+            "abbreviatedOid": "5f9801a"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T00:13:44Z",
+          "updatedAt": "2025-02-17T00:13:44Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "```suggestion\r\nHashes and other identifiers are commonly used as hints to discover and distinguish resources.\r\nUsing a hash as an identifier for a resource has the advantage of enabling integrity checking.\r\n```",
+              "createdAt": "2025-02-17T00:13:44Z",
+              "updatedAt": "2025-02-17T00:13:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cJm7r",
+          "commit": {
+            "abbreviatedOid": "5f9801a"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T00:14:34Z",
+          "updatedAt": "2025-02-17T00:14:34Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\r\nIn some applications, such as remote signing procedures, conveyance of hashes instead original payload content reduce transmission time and costs.\r\n```",
+              "createdAt": "2025-02-17T00:14:34Z",
+              "updatedAt": "2025-02-17T00:14:34Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cJnCu",
+          "commit": {
+            "abbreviatedOid": "5f9801a"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T00:15:51Z",
+          "updatedAt": "2025-02-17T00:15:51Z",
+          "comments": [
+            {
+              "originalPosition": 26,
+              "body": "```suggestion\r\nThis document specifies the following new header parameters commonly used alongside hashes to identify resources:\r\n```",
+              "createdAt": "2025-02-17T00:15:51Z",
+              "updatedAt": "2025-02-17T00:15:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cJnsu",
+          "commit": {
+            "abbreviatedOid": "5f9801a"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T00:22:03Z",
+          "updatedAt": "2025-02-17T00:22:04Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "Not sure the payload location should be prohibited from the unprotected header.\r\n\r\nI feel like we talked about this already... \r\n\r\nI think given these area all optional except for TBD_1, when present they should all be in the protected header, or they should all be allowed to be in either protected or unprotected, but not both.",
+              "createdAt": "2025-02-17T00:22:03Z",
+              "updatedAt": "2025-02-17T00:22:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cQDgX",
+          "commit": {
+            "abbreviatedOid": "0bd08a5"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T16:02:12Z",
+          "updatedAt": "2025-02-17T16:02:12Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "If a hint is unprotected, it also means someone could add it, redirecting the user to a hacked location. Protecting the location says the issuer states it is/was at that location, although the verifier may not have access to it. \r\n\r\nAs the unprotected header is stripped, it would render it minimally useful, and don't think we should suggest it could be in the unprotected header\r\n",
+              "createdAt": "2025-02-17T16:02:12Z",
+              "updatedAt": "2025-02-17T16:02:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cQFyC",
+          "commit": {
+            "abbreviatedOid": "0bd08a5"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T16:04:25Z",
+          "updatedAt": "2025-02-17T16:04:25Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "why is typ 16 removed?",
+              "createdAt": "2025-02-17T16:04:25Z",
+              "updatedAt": "2025-02-17T16:04:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cQHl4",
+          "commit": {
+            "abbreviatedOid": "0bd08a5"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T16:07:06Z",
+          "updatedAt": "2025-02-17T16:07:06Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "Its not needed in this document.\r\nThere are a bunch of other header parameters that are also not needed here, which can be found at:\r\n\r\nhttps://www.iana.org/assignments/cose/cose.xhtml#header-parameters (kid, crit, etc)...",
+              "createdAt": "2025-02-17T16:07:06Z",
+              "updatedAt": "2025-02-17T16:07:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cQJj5",
+          "commit": {
+            "abbreviatedOid": "5f9801a"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T16:10:58Z",
+          "updatedAt": "2025-02-17T16:10:58Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "You can't stop people from putting stuff in the unprotected header.\r\nThe proper security response to seeing some untrusted link, is not to click it.\r\n\r\nBy the same argument you give for location, I could trick a client that resolved the data to attempt to unzip it by setting the the content type to:\r\n\r\n[application/vnd.cncf.helm.chart.content.v1.tar+gzip](https://www.iana.org/assignments/media-types/application/vnd.cncf.helm.chart.content.v1.tar+gzip)",
+              "createdAt": "2025-02-17T16:10:58Z",
+              "updatedAt": "2025-02-17T16:10:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cROO3",
+          "commit": {
+            "abbreviatedOid": "154a928"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:21:59Z",
+          "updatedAt": "2025-02-17T18:21:59Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "Prescribing an optional item that is already in the header parameters list does not seem to add any value, but confusion why there is emphasis on this specific header parameter and not on all the other (e.g., by @OR13 kid, crit, etc.) ",
+              "createdAt": "2025-02-17T18:21:59Z",
+              "updatedAt": "2025-02-17T18:22:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cROn5",
+          "commit": {
+            "abbreviatedOid": "154a928"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:23:17Z",
+          "updatedAt": "2025-02-17T18:23:17Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "Is it better to not have a hint than an unprotected hint?",
+              "createdAt": "2025-02-17T18:23:17Z",
+              "updatedAt": "2025-02-17T18:23:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRQDl",
+          "commit": {
+            "abbreviatedOid": "5f9801a"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:28:00Z",
+          "updatedAt": "2025-02-17T18:28:00Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "its better to think about this from the perspective of:\r\n\r\nwhat information MUST be protected... and let everything else be allowed in unprotected header.\r\n\r\ngiven that content type and location are already optional, we admit that it is ok for them to be unprotected.",
+              "createdAt": "2025-02-17T18:28:00Z",
+              "updatedAt": "2025-02-17T18:28:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cRUlG",
+          "commit": {
+            "abbreviatedOid": "154a928"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-17T18:42:43Z",
+          "updatedAt": "2025-02-17T18:42:43Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "I am not going to die on this hill: but...\r\n\r\nsomething being optional does not imply that is not protection worthy, right? So there needs to be a better reason, I think.",
+              "createdAt": "2025-02-17T18:42:43Z",
+              "updatedAt": "2025-02-17T18:42:43Z"
+            }
+          ]
         }
       ]
     }
