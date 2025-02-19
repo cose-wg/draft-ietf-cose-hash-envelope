@@ -1379,7 +1379,7 @@ The difference between content_type (3) and payload_preimage_content_type (TBD2)
 <p id="section-5-9">This example is chosen to highlight that an existing system may use a hash algorithm such as sha256.
 This hash becomes the payload of a cose-sign1.
 When signed with a signature algorithm that is parameterized via a hash function, such as ECDSA with SHA384, the to be signed structure as described in Section 4.4 of RFC9052.<a href="#section-5-9" class="pilcrow">¶</a></p>
-<p id="section-5-10">The resulting signature is over the protected header and payload, providing integrity and authenticity for the hash algorithm, content type and location of the associated resource, in this case a software bill of materials.<a href="#section-5-10" class="pilcrow">¶</a></p>
+<p id="section-5-10">The resulting signature is computed over the protected header and payload, providing integrity and authenticity for the hash algorithm, content type and location of the associated resource, in this case a software bill of materials.<a href="#section-5-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="encrypted-hashes">
