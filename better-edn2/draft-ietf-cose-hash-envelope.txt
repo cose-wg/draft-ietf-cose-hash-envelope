@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 21 August 2025                                       DataTrails
+Expires: 23 August 2025                                       DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                        17 February 2025
+                                                        19 February 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 August 2025.
+   This Internet-Draft will expire on 23 August 2025.
 
 Copyright Notice
 
@@ -228,9 +228,9 @@ Table of Contents
    The full JSON SBOM is available at a URL, such as
    https://sbom.example/.../manifest.spdx.json.
 
-   The payload of this cose-sign1 is the SHA256 hash of the
-   manifest.spdx.json, which is sometimes found in an adjacent file
-   called manifest.spdx.json.sha256.
+   The payload of this COSE_Sign1 is the SHA256 hash of the
+   manifest.spdx.json, which is typically found in an adjacent file,
+   e.g., manifest.spdx.json.sha256.
 
    The type of this cose-sign1 is application/example+cose, but other
    types may be used to establish more specific media types for

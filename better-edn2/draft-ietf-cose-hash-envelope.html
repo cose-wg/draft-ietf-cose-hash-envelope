@@ -13,12 +13,12 @@
 This mechanism enables faster validation as access to the original payload is not required for signature validation.
 Additionally, hints of the detached payload's content format and availability are defined providing references to optional discovery mechanisms that can help to find original payload content. 
     " name="description">
-<meta content="xml2rfc 3.26.0" name="generator">
+<meta content="xml2rfc 3.27.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-cose-hash-envelope-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.26.0
-    Python 3.12.8
+  xml2rfc 3.27.0
+    Python 3.12.9
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
@@ -1052,7 +1052,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Steele, et al.</td>
-<td class="center">Expires 21 August 2025</td>
+<td class="center">Expires 23 August 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1065,12 +1065,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-cose-hash-envelope-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-02-17" class="published">17 February 2025</time>
+<time datetime="2025-02-19" class="published">19 February 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-08-21">21 August 2025</time></dd>
+<dd class="expires"><time datetime="2025-08-23">23 August 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1130,7 +1130,7 @@ Additionally, hints of the detached payload's content format and availability ar
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 21 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 23 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1373,7 +1373,7 @@ The difference between content_type (3) and payload_preimage_content_type (TBD2)
 <p id="section-5-3">In this example, an SPDX software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash. For example, some tooling generates a file, such as <code>manifest.spdx.json.sha256</code>, which contains the SHA256 hash of the corresponding <code>manifest.spdx.json</code> file.<a href="#section-5-3" class="pilcrow">¶</a></p>
 <p id="section-5-4">The content type for <code>manifest.spdx.json</code> is already well known as <code>application/spdx+json</code>, and is registered with IANA <a href="https://www.iana.org/assignments/media-types/application/spdx+json">here</a>.<a href="#section-5-4" class="pilcrow">¶</a></p>
 <p id="section-5-5">The full JSON SBOM is available at a URL, such as <code>https://sbom.example/.../manifest.spdx.json</code>.<a href="#section-5-5" class="pilcrow">¶</a></p>
-<p id="section-5-6">The payload of this cose-sign1 is the SHA256 hash of the <code>manifest.spdx.json</code>, which is sometimes found in an adjacent file called <code>manifest.spdx.json.sha256</code>.<a href="#section-5-6" class="pilcrow">¶</a></p>
+<p id="section-5-6">The payload of this COSE_Sign1 is the SHA256 hash of the <code>manifest.spdx.json</code>, which is typically found in an adjacent file, e.g., <code>manifest.spdx.json.sha256</code>.<a href="#section-5-6" class="pilcrow">¶</a></p>
 <p id="section-5-7">The type of this cose-sign1 is <code>application/example+cose</code>, but other types may be used to establish more specific media types for signatures of hashes.<a href="#section-5-7" class="pilcrow">¶</a></p>
 <p id="section-5-8">The signature is produced using ES384 which means using ECDSA with SHA384 hash function and P-384 elliptic curve.<a href="#section-5-8" class="pilcrow">¶</a></p>
 <p id="section-5-9">This example is chosen to highlight that an existing system may use a hash algorithm such as sha256.
