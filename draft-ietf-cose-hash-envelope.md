@@ -157,7 +157,7 @@ The content type for `manifest.spdx.json` is already well known as `application/
 
 The full JSON SBOM is available at a URL, such as `https://sbom.example/.../manifest.spdx.json`.
 
-The payload of this COSE_Sign1 is the SHA256 hash of the `manifest.spdx.json`, which is typically found in an adjacent file, e.g., `manifest.spdx.json.sha256`.
+The payload of this COSE_Sign1 is the SHA256 hash of the `manifest.spdx.json`, which is typically found in an adjacent file (`manifest.spdx.json.sha256`).
 
 The type of this COSE_Sign1 is `application/example+cose`, but other types may be used to establish more specific media types for signatures of hashes.
 
