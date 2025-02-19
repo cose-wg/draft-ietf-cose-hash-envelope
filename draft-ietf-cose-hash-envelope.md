@@ -164,7 +164,7 @@ The type of this COSE_Sign1 is `application/example+cose`, but other types may b
 The signature is produced using ES384 which means using ECDSA with SHA384 hash function and P-384 elliptic curve.
 
 This example is chosen to highlight that an existing system may use a hash algorithm such as sha256.
-This hash becomes the payload of a cose-sign1.
+This hash becomes the payload of a COSE-Sign1.
 When signed with a signature algorithm that is parameterized via a hash function, such as ECDSA with SHA384, the to be signed structure as described in Section 4.4 of RFC9052.
 
 The resulting signature is computed over the protected header and payload, providing integrity and authenticity for the hash algorithm, content type and location of the associated resource, in this case a software bill of materials.
