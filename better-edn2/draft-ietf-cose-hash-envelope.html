@@ -1357,20 +1357,24 @@ The difference between content_type (3) and payload_preimage_content_type (TBD2)
 <pre>
 18([ # cose-sign1
   &lt;&lt;{
-    / signature algorithm / 1: -35, # ES384
-    / key identifier      / 4: h'75726e3a...32636573',
-    / cose sign1 type     / 16: "application/example+cose",
-    / hash algorithm      / TBD_1: -16, # sha256
-    / media type          / TBD_2: "application/spdx+json",
-    / location            / TBD_3: "https://sbom.example/" + ... + "/manifest.spdx.json"
+    / signature alg   / 1: -35, # ES384
+    / key identifier  / 4: h'75726e3a...32636573',
+    / cose sign1 type / 16: "application/example+cose",
+    / hash algorithm  / TBD_1: -16, # sha256
+    / media type      / TBD_2: "application/spdx+json",
+    / location        /
+         TBD_3: "https://sbom.example/.../manifest.spdx.json"
   }&gt;&gt;
   / unprotected / {},
-  / payload     / h'935b5a91...e18a588a', # As seen in manifest.spdx.json.sha256
-  / signature   / h'15280897...93ef39e5'  # ECDSA Signature with SHA 384 and P-384
+  / payload     / h'935b5a91...e18a588a',
+         # As seen in manifest.spdx.json.sha256
+  / signature   / h'15280897...93ef39e5'
+         # ECDSA Signature with SHA 384 and P-384
 ])
 </pre><a href="#section-5-2" class="pilcrow">¶</a>
 </div>
-<p id="section-5-3">In this example, an SPDX software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash. For example, some tooling generates a file, such as <code>manifest.spdx.json.sha256</code>, which contains the SHA256 hash of the corresponding <code>manifest.spdx.json</code> file.<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-3">In this example, an SPDX software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash.
+For example, some tooling generates a file, such as <code>manifest.spdx.json.sha256</code>, which contains the SHA256 hash of the corresponding <code>manifest.spdx.json</code> file.<a href="#section-5-3" class="pilcrow">¶</a></p>
 <p id="section-5-4">The content type for <code>manifest.spdx.json</code> is already well known as <code>application/spdx+json</code>, and is registered with IANA <a href="https://www.iana.org/assignments/media-types/application/spdx+json">here</a>.<a href="#section-5-4" class="pilcrow">¶</a></p>
 <p id="section-5-5">The full JSON SBOM is available at a URL, such as <code>https://sbom.example/.../manifest.spdx.json</code>.<a href="#section-5-5" class="pilcrow">¶</a></p>
 <p id="section-5-6">The payload of this COSE_Sign1 is the SHA256 hash of the <code>manifest.spdx.json</code>, which is typically found in an adjacent file, e.g., <code>manifest.spdx.json.sha256</code>.<a href="#section-5-6" class="pilcrow">¶</a></p>
@@ -1585,7 +1589,8 @@ It is up to the individual working groups to use this information as they see fi
 <p id="appendix-A.1-4">Maturity: Prototype<a href="#appendix-A.1-4" class="pilcrow">¶</a></p>
 <p id="appendix-A.1-5">Coverage: The current version ('main') implements this specification and demonstrates hash envelope signing with Azure Key Vault and Google Cloud KMS in addition to supporting local keys.<a href="#appendix-A.1-5" class="pilcrow">¶</a></p>
 <p id="appendix-A.1-6">License: Apache-2.0<a href="#appendix-A.1-6" class="pilcrow">¶</a></p>
-<p id="appendix-A.1-7">Implementation Experience: No interop testing has been done yet. The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.1-7" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-7">Implementation Experience: No interop testing has been done yet.
+The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.1-7" class="pilcrow">¶</a></p>
 <p id="appendix-A.1-8">Contact: Orie Steele (orie@transmute.industries)<a href="#appendix-A.1-8" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1600,7 +1605,8 @@ It is up to the individual working groups to use this information as they see fi
 <p id="appendix-A.2-4">Maturity: Preview<a href="#appendix-A.2-4" class="pilcrow">¶</a></p>
 <p id="appendix-A.2-5">Coverage: The current version ('main') implements this specification and demonstrates hash envelope signing with DataTrails implementation of SCITT.<a href="#appendix-A.2-5" class="pilcrow">¶</a></p>
 <p id="appendix-A.2-6">License: MIT<a href="#appendix-A.2-6" class="pilcrow">¶</a></p>
-<p id="appendix-A.2-7">Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.2-7" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-7">Implementation Experience: Interop testing has been performed between DigiCert and DataTrails.
+The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.2-7" class="pilcrow">¶</a></p>
 <p id="appendix-A.2-8">Contact: Steve Lasker (steve.lasker@datatrails.ai)<a href="#appendix-A.2-8" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1615,7 +1621,8 @@ It is up to the individual working groups to use this information as they see fi
 <p id="appendix-A.3-4">Maturity: Preview<a href="#appendix-A.3-4" class="pilcrow">¶</a></p>
 <p id="appendix-A.3-5">Coverage: The current version ('main') implements this specification and demonstrates hash envelope signing with DigiCert Software Trust Manager.<a href="#appendix-A.3-5" class="pilcrow">¶</a></p>
 <p id="appendix-A.3-6">License: MIT<a href="#appendix-A.3-6" class="pilcrow">¶</a></p>
-<p id="appendix-A.3-7">Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.3-7" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-7">Implementation Experience: Interop testing has been performed between DigiCert and DataTrails.
+The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.3-7" class="pilcrow">¶</a></p>
 <p id="appendix-A.3-8">Contact: Corey Bonnell (Corey.Bonnell@digicert.com)<a href="#appendix-A.3-8" class="pilcrow">¶</a></p>
 </section>
 </div>

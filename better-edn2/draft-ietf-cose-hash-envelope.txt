@@ -203,16 +203,19 @@ Table of Contents
 
    18([ # cose-sign1
      <<{
-       / signature algorithm / 1: -35, # ES384
-       / key identifier      / 4: h'75726e3a...32636573',
-       / cose sign1 type     / 16: "application/example+cose",
-       / hash algorithm      / TBD_1: -16, # sha256
-       / media type          / TBD_2: "application/spdx+json",
-       / location            / TBD_3: "https://sbom.example/" + ... + "/manifest.spdx.json"
+       / signature alg   / 1: -35, # ES384
+       / key identifier  / 4: h'75726e3a...32636573',
+       / cose sign1 type / 16: "application/example+cose",
+       / hash algorithm  / TBD_1: -16, # sha256
+       / media type      / TBD_2: "application/spdx+json",
+       / location        /
+            TBD_3: "https://sbom.example/.../manifest.spdx.json"
      }>>
      / unprotected / {},
-     / payload     / h'935b5a91...e18a588a', # As seen in manifest.spdx.json.sha256
-     / signature   / h'15280897...93ef39e5'  # ECDSA Signature with SHA 384 and P-384
+     / payload     / h'935b5a91...e18a588a',
+            # As seen in manifest.spdx.json.sha256
+     / signature   / h'15280897...93ef39e5'
+            # ECDSA Signature with SHA 384 and P-384
    ])
 
    In this example, an SPDX software bill of materials (SBOM) in JSON
