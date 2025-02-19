@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 22 August 2025                                       DataTrails
+Expires: 23 August 2025                                       DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                        18 February 2025
+                                                        19 February 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 August 2025.
+   This Internet-Draft will expire on 23 August 2025.
 
 Copyright Notice
 
@@ -83,10 +83,7 @@ Table of Contents
    7.  Security Considerations
      7.1.  Choice of Hash Function
    8.  IANA Considerations
-     8.1.  COSE Header Algorithm Parameters
-       8.1.1.  Payload Hash Algorithm
-       8.1.2.  Payload Pre-image Content Type
-       8.1.3.  Payload Location
+     8.1.  COSE Header Parameters
    9.  References
      9.1.  Normative References
      9.2.  Informative References
@@ -256,55 +253,47 @@ Table of Contents
 
 8.  IANA Considerations
 
-8.1.  COSE Header Algorithm Parameters
+8.1.  COSE Header Parameters
 
-   IANA is requested to add the following entries to the COSE Header
-   Algorithm Parameters Registry (https://www.iana.org/assignments/cose/
-   cose.xhtml).
+   IANA is requested to add the COSE header parameters defined in
+   Section 3, as listed in Table 1, to the "COSE Header Parameters"
+   registry [IANA.cose_header-parameters] in the 'Integer values from
+   256 to 65535' range ('Specification Required' Registration
+   Procedure)..
 
-8.1.1.  Payload Hash Algorithm
+   All new entries use https://www.iana.org/assignments/cose/
+   cose.xhtml#algorithms as the value for the "Value Registry" column.
 
-   *  Name: payload_hash_alg
+    +==================+=============+=====+================+=========+
+    | Name             | Label       |Value| Description    |Reference|
+    |                  |             |Type |                |         |
+    +==================+=============+=====+================+=========+
+    | payload-hash-alg | TBD_1       |int  | The hash       |RFCthis, |
+    |                  | (requested  |     | algorithm used |Section 3|
+    |                  | assignment: |     | to produce the |         |
+    |                  | TBD)        |     | payload of a   |         |
+    |                  |             |     | COSE_Sign1     |         |
+    +------------------+-------------+-----+----------------+---------+
+    | preimage content | TBD_2       |uint | The content-   |RFCthis, |
+    | type             | (requested  |/    | format or      |Section 3|
+    |                  | assignment: |tstr | media-type of  |         |
+    |                  | TBD)        |     | data that has  |         |
+    |                  |             |     | been hashed to |         |
+    |                  |             |     | produce the    |         |
+    |                  |             |     | payload of the |         |
+    |                  |             |     | COSE_Sign1     |         |
+    +------------------+-------------+-----+----------------+---------+
+    | payload-location | TBD_3       |tstr | The string or  |RFCthis, |
+    |                  | (requested  |     | URI hint for   |Section 3|
+    |                  | assignment: |     | the location   |         |
+    |                  | TBD)        |     | of the data    |         |
+    |                  |             |     | hashed to      |         |
+    |                  |             |     | produce the    |         |
+    |                  |             |     | payload of a   |         |
+    |                  |             |     | COSE_Sign1     |         |
+    +------------------+-------------+-----+----------------+---------+
 
-   *  Label: TBD_1
-
-   *  Value type: int
-
-   *  Value registry: https://www.iana.org/assignments/cose/
-      cose.xhtml#algorithms
-
-   *  Description: The hash algorithm used to produce the payload of a
-      COSE_Sign1.
-
-8.1.2.  Payload Pre-image Content Type
-
-   *  Name: preimage content type
-
-   *  Label: TBD_2
-
-   *  Value type: uint / tstr
-
-   *  Value registry: COAP Content-Formats
-      (https://www.iana.org/assignments/core-parameters/core-
-      parameters.xhtml#content-formats) or Media Types
-      (https://www.iana.org/assignments/media-types/media-types.xhtml)
-      registry.
-
-   *  Description: The content format or media type of data that has
-      been hashed to produce the payload of a COSE_Sign1.
-
-8.1.3.  Payload Location
-
-   *  Name: payload_location
-
-   *  Label: TBD_3
-
-   *  Value type: tstr
-
-   *  Value registry: none
-
-   *  Description: The string or URI hint for the location of the data
-      hashed to produce the payload of a COSE_Sign1.
+              Table 1: Newly registered COSE Header Parameters
 
 9.  References
 
@@ -316,6 +305,10 @@ Table of Contents
               literals-16, 8 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-cbor-
               edn-literals-16>.
+
+   [IANA.cose_header-parameters]
+              IANA, "COSE Header Parameters",
+              <https://www.iana.org/assignments/cose>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
