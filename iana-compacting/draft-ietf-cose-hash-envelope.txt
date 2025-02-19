@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 22 August 2025                                       DataTrails
+Expires: 23 August 2025                                       DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                        18 February 2025
+                                                        19 February 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 August 2025.
+   This Internet-Draft will expire on 23 August 2025.
 
 Copyright Notice
 
@@ -255,47 +255,45 @@ Table of Contents
 
 8.1.  COSE Header Parameters
 
-   IANA is requested to add the following COSE header parameters defined
-   in Section 3 to the "COSE Header Parameters" registry
-   [IANA.cose_header-parameters].
+   IANA is requested to add the COSE header parameters defined in
+   Section 3, as listed in Table 1, to the "COSE Header Parameters"
+   registry [IANA.cose_header-parameters] in the 'Integer values from
+   256 to 65535' range ('Specification Required' Registration
+   Procedure)..
 
-   +========+===========+=====+======================================+===========+=========+
-   |Name    |Label      |Value|Value Registry                        |Description|Reference|
-   |        |           |Type |                                      |           |         |
-   +========+===========+=====+======================================+===========+=========+
-   |payload-|TBD_1      |int  |https://www.iana.org/assignments/cose/|The hash   |RFCthis, |
-   |hash-alg|(requested |     |cose.xhtml#algorithms                 |algorithm  |Section 3|
-   |        |assignment:|     |                                      |used to    |         |
-   |        |Integer    |     |                                      |produce the|         |
-   |        |values from|     |                                      |payload of |         |
-   |        |256 to     |     |                                      |a          |         |
-   |        |65535)     |     |                                      |COSE_Sign1 |         |
-   +--------+-----------+-----+--------------------------------------+-----------+---------+
-   |preimage|TBD_2      |uint |https://www.iana.org/assignments/core-|The        |RFCthis, |
-   |content |(requested |/    |parameters/core-                      |content-   |Section 3|
-   |type    |assignment:|tstr |parameters.xhtml#content-formats or   |format or  |         |
-   |        |Integer    |     |https://www.iana.org/assignments/     |media-type |         |
-   |        |values from|     |media-types/media-types.xhtml         |of data    |         |
-   |        |256 to     |     |                                      |that has   |         |
-   |        |65535)     |     |                                      |been hashed|         |
-   |        |           |     |                                      |to produce |         |
-   |        |           |     |                                      |the payload|         |
-   |        |           |     |                                      |of the     |         |
-   |        |           |     |                                      |COSE_Sign1 |         |
-   +--------+-----------+-----+--------------------------------------+-----------+---------+
-   |payload-|TBD_3      |tstr |none                                  |The string |RFCthis, |
-   |location|(requested |     |                                      |or URI hint|Section 3|
-   |        |assignment:|     |                                      |for the    |         |
-   |        |Integer    |     |                                      |location of|         |
-   |        |values from|     |                                      |the data   |         |
-   |        |256 to     |     |                                      |hashed to  |         |
-   |        |65535)     |     |                                      |produce the|         |
-   |        |           |     |                                      |payload of |         |
-   |        |           |     |                                      |a          |         |
-   |        |           |     |                                      |COSE_Sign1 |         |
-   +--------+-----------+-----+--------------------------------------+-----------+---------+
+   All new entries use https://www.iana.org/assignments/cose/
+   cose.xhtml#algorithms as the value for the "Value Registry" column.
 
-                                  Table 1
+    +==================+=============+=====+================+=========+
+    | Name             | Label       |Value| Description    |Reference|
+    |                  |             |Type |                |         |
+    +==================+=============+=====+================+=========+
+    | payload-hash-alg | TBD_1       |int  | The hash       |RFCthis, |
+    |                  | (requested  |     | algorithm used |Section 3|
+    |                  | assignment: |     | to produce the |         |
+    |                  | TBD)        |     | payload of a   |         |
+    |                  |             |     | COSE_Sign1     |         |
+    +------------------+-------------+-----+----------------+---------+
+    | preimage content | TBD_2       |uint | The content-   |RFCthis, |
+    | type             | (requested  |/    | format or      |Section 3|
+    |                  | assignment: |tstr | media-type of  |         |
+    |                  | TBD)        |     | data that has  |         |
+    |                  |             |     | been hashed to |         |
+    |                  |             |     | produce the    |         |
+    |                  |             |     | payload of the |         |
+    |                  |             |     | COSE_Sign1     |         |
+    +------------------+-------------+-----+----------------+---------+
+    | payload-location | TBD_3       |tstr | The string or  |RFCthis, |
+    |                  | (requested  |     | URI hint for   |Section 3|
+    |                  | assignment: |     | the location   |         |
+    |                  | TBD)        |     | of the data    |         |
+    |                  |             |     | hashed to      |         |
+    |                  |             |     | produce the    |         |
+    |                  |             |     | payload of a   |         |
+    |                  |             |     | COSE_Sign1     |         |
+    +------------------+-------------+-----+----------------+---------+
+
+              Table 1: Newly registered COSE Header Parameters
 
 9.  References
 
