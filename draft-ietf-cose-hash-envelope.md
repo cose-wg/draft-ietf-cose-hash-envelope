@@ -155,7 +155,7 @@ The full JSON SBOM is available at a URL, such as `https://sbom.example/.../mani
 
 The payload of this COSE_Sign1 is the SHA256 hash of the `manifest.spdx.json`, which is typically found in an adjacent file, e.g., `manifest.spdx.json.sha256`.
 
-The type of this cose-sign1 is `application/example+cose`, but other types may be used to establish more specific media types for signatures of hashes.
+The type of this COSE_Sign1 is `application/example+cose`, but other types may be used to establish more specific media types for signatures of hashes.
 
 The signature is produced using ES384 which means using ECDSA with SHA384 hash function and P-384 elliptic curve.
 
