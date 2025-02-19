@@ -82,7 +82,7 @@ TBD_1:
   : the hash algorithm used to produce the payload.
 
 TBD_2:
-  : the content type of the bytes that were hashed (preimage) to produce the payload.
+  : the content type of the bytes that were hashed (preimage) to produce the payload, given as a content-format number ({{Section 12.3 of RFC7252}}) or as a media-type name optionally with parameters ({{Section 8.3 of RFC 9110}}).
 
 TBD_3:
   : an identifier enabling retrieval of the original resource (preimage) identified by the payload.
