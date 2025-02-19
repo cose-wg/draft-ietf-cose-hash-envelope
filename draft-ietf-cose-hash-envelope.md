@@ -177,9 +177,7 @@ The approach this specification takes is just one way to perform application agn
 
 IANA is requested to add the COSE header parameters defined in {{param-spec}}, as listed in {{iana-header-params}}, to the "COSE Header Parameters" registry {{!IANA.cose_header-parameters}} in the 'Integer values from 256 to 65535' range ('Specification Required' Registration Procedure)..
 
-All new entries use
-https://www.iana.org/assignments/cose/cose.xhtml#algorithms
-as the value for the "Value Registry" column.
+All new entries use https://www.iana.org/assignments/cose/cose.xhtml#algorithms as the value for the "Value Registry" column.
 
 | Name                    | Label                             | Value Type  | Description                                                                                            | Reference             |
 |-------------------------|-----------------------------------|-------------|--------------------------------------------------------------------------------------------------------|-----------------------|
