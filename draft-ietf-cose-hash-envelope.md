@@ -157,17 +157,17 @@ The content type for `manifest.spdx.json` is already well known as `application/
 
 The full JSON SBOM is available at a URL, such as `https://sbom.example/.../manifest.spdx.json`.
 
-The payload of this cose-sign1 is the SHA256 hash of the `manifest.spdx.json`, which is sometimes found in an adjacent file called `manifest.spdx.json.sha256`.
+The payload of this COSE_Sign1 is the SHA256 hash of the `manifest.spdx.json`, which is typically found in an adjacent file, e.g., `manifest.spdx.json.sha256`.
 
-The type of this cose-sign1 is `application/example+cose`, but other types may be used to establish more specific media types for signatures of hashes.
+The type of this COSE_Sign1 is `application/example+cose`, but other types may be used to establish more specific media types for signatures of hashes.
 
 The signature is produced using ES384 which means using ECDSA with SHA384 hash function and P-384 elliptic curve.
 
 This example is chosen to highlight that an existing system may use a hash algorithm such as sha256.
 This hash becomes the payload of a cose-sign1.
-When signed with a signature algorithm that is paramaterized by hash function, such as ECDSA with SHA384, the to be signed structure as described in Section 4.4 of RFC9052.
+When signed with a signature algorithm that is parameterized via a hash function, such as ECDSA with SHA384, the to be signed structure as described in Section 4.4 of RFC9052.
 
-The resulting signature is over the protected header and payload, providing integrity and authenticity for the hash algorithm, content type and location of the associated resource, in this case a software bill of materials.
+The resulting signature is computed over the protected header and payload, providing integrity and authenticity for the hash algorithm, content type and location of the associated resource, in this case a software bill of materials.
 
 # Encrypted Hashes
 
