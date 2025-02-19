@@ -47,7 +47,9 @@ informative:
   FIPS-204:
     title: "Module-Lattice-Based Digital Signature Standard"
     target: https://doi.org/10.6028/NIST.FIPS.204
----
+
+entity:
+  SELF: "RFCthis"
 
 --- abstract
 
@@ -75,7 +77,7 @@ It is still possible for the protected header to be large, but the payload will 
 
 The terms COSE, CDDL, and EDN are defined in {{-COSE}}, {{-CDDL}}, {{-EDN}} respectively.
 
-# Header Parameters
+# Header Parameters {#param-spec}
 
 To represent a hash of a payload, the following headers are defined:
 
@@ -171,33 +173,19 @@ The approach this specification takes is just one way to perform application agn
 
 # IANA Considerations
 
-## COSE Header Algorithm Parameters
+## COSE Header Parameters
 
-IANA is requested to add the following entries to the [COSE Header Algorithm Parameters Registry](https://www.iana.org/assignments/cose/cose.xhtml).
+IANA is requested to add the COSE header parameters defined in {{param-spec}}, as listed in {{iana-header-params}}, to the "COSE Header Parameters" registry {{!IANA.cose_header-parameters}} in the 'Integer values from 256 to 65535' range ('Specification Required' Registration Procedure)..
 
-### Payload Hash Algorithm
+All new entries use https://www.iana.org/assignments/cose/cose.xhtml#algorithms as the value for the "Value Registry" column.
 
-- Name: payload_hash_alg
-- Label: TBD_1
-- Value type: int
-- Value registry: https://www.iana.org/assignments/cose/cose.xhtml#algorithms
-- Description: The hash algorithm used to produce the payload of a COSE_Sign1.
+| Name                    | Label                             | Value Type  | Description                                                                                            | Reference             |
+|-------------------------|-----------------------------------|-------------|--------------------------------------------------------------------------------------------------------|-----------------------|
+| `payload-hash-alg`      | TBD_1 (requested assignment: TBD) | int         | The hash algorithm used to produce the payload of a COSE_Sign1                                         | {{&SELF}}, {{param-spec}} |
+| `preimage content type` | TBD_2 (requested assignment: TBD) | uint / tstr | The content-format or media-type of data that has been hashed to produce the payload of the COSE_Sign1 | {{&SELF}}, {{param-spec}} |
+| `payload-location`      | TBD_3 (requested assignment: TBD) | tstr        | The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1      | {{&SELF}}, {{param-spec}} |
+{: #iana-header-params title="Newly registered COSE Header Parameters"}
 
-### Payload Pre-image Content Type
-
-- Name: preimage content type
-- Label: TBD_2
-- Value type: uint / tstr
-- Value registry: [COAP Content-Formats](https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats) or [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml) registry.
-- Description: The content format or media type of data that has been hashed to produce the payload of a COSE_Sign1.
-
-### Payload Location
-
-- Name: payload_location
-- Label: TBD_3
-- Value type: tstr
-- Value registry: none
-- Description: The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1.
 --- back
 
 # Implementation Status
