@@ -242,8 +242,8 @@ Table of Contents
    This example is chosen to highlight that an existing system may use a
    hash algorithm such as sha256.  This hash becomes the payload of a
    cose-sign1.  When signed with a signature algorithm that is
-   paramaterized by hash function, such as ECDSA with SHA384, the to be
-   signed structure as described in Section 4.4 of RFC9052.
+   parameterized via a hash function, such as ECDSA with SHA384, the to
+   be signed structure as described in Section 4.4 of RFC9052.
 
    The resulting signature is over the protected header and payload,
    providing integrity and authenticity for the hash algorithm, content
