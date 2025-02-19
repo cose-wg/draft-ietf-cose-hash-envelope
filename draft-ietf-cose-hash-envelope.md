@@ -37,8 +37,10 @@ author:
   country: Germany
 
 normative:
-  RFC9052: COSE
+  RFC7252: COAP
   RFC8610: CDDL
+  RFC9052: COSE
+  RFC9110: HTTP-Semantics
   I-D.draft-ietf-cbor-edn-literals: EDN
 
 informative:
@@ -82,7 +84,7 @@ TBD_1:
   : the hash algorithm used to produce the payload.
 
 TBD_2:
-  : the content type of the bytes that were hashed (preimage) to produce the payload, given as a content-format number ({{Section 12.3 of RFC7252}}) or as a media-type name optionally with parameters ({{Section 8.3 of RFC 9110}}).
+  : the content type of the bytes that were hashed (preimage) to produce the payload, given as a content-format number ({{Section 12.3 of RFC7252}}) or as a media-type name optionally with parameters ({{Section 8.3 of RFC9110}}).
 
 TBD_3:
   : an identifier enabling retrieval of the original resource (preimage) identified by the payload.
