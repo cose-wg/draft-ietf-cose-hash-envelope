@@ -153,7 +153,7 @@ The following informative example demonstrates how to construct a hash envelope 
 In this example, an SPDX software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash.
 For example, some tooling generates a file, such as `manifest.spdx.json.sha256`, which contains the SHA256 hash of the corresponding `manifest.spdx.json` file.
 
-The content type for `manifest.spdx.json` is already well known as `application/spdx+json`, and is registered with IANA [here](https://www.iana.org/assignments/media-types/application/spdx+json).
+The content type for `manifest.spdx.json` is already well known as `application/spdx+json`, and is [registered with IANA](https://www.iana.org/assignments/media-types/application/spdx+json).
 
 The full JSON SBOM is available at a URL, such as `https://sbom.example/.../manifest.spdx.json`.
 
