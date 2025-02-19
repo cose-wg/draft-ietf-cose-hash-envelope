@@ -225,15 +225,15 @@ Table of Contents
    corresponding manifest.spdx.json file.
 
    The content type for manifest.spdx.json is already well known as
-   application/spdx+json, and is registered with IANA here
+   application/spdx+json, and is registered with IANA
    (https://www.iana.org/assignments/media-types/application/spdx+json).
 
    The full JSON SBOM is available at a URL, such as
    https://sbom.example/.../manifest.spdx.json.
 
    The payload of this COSE_Sign1 is the SHA256 hash of the
-   manifest.spdx.json, which is typically found in an adjacent file,
-   e.g., manifest.spdx.json.sha256.
+   manifest.spdx.json, which is typically found in an adjacent file
+   (manifest.spdx.json.sha256).
 
    The type of this COSE_Sign1 is application/example+cose, but other
    types may be used to establish more specific media types for
