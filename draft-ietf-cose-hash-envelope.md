@@ -134,20 +134,24 @@ The following informative example demonstrates how to construct a hash envelope 
 ~~~~ cbor-diag
 18([ # cose-sign1
   <<{
-    / signature algorithm / 1: -35, # ES384
-    / key identifier      / 4: h'75726e3a...32636573',
-    / cose sign1 type     / 16: "application/example+cose",
-    / hash algorithm      / TBD_1: -16, # sha256
-    / media type          / TBD_2: "application/spdx+json",
-    / location            / TBD_3: "https://sbom.example/" + ... + "/manifest.spdx.json"
+    / signature alg   / 1: -35, # ES384
+    / key identifier  / 4: h'75726e3a...32636573',
+    / cose sign1 type / 16: "application/example+cose",
+    / hash algorithm  / TBD_1: -16, # sha256
+    / media type      / TBD_2: "application/spdx+json",
+    / location        /
+         TBD_3: "https://sbom.example/.../manifest.spdx.json"
   }>>
   / unprotected / {},
-  / payload     / h'935b5a91...e18a588a', # As seen in manifest.spdx.json.sha256
-  / signature   / h'15280897...93ef39e5'  # ECDSA Signature with SHA 384 and P-384
+  / payload     / h'935b5a91...e18a588a',
+         # As seen in manifest.spdx.json.sha256
+  / signature   / h'15280897...93ef39e5'
+         # ECDSA Signature with SHA 384 and P-384
 ])
 ~~~~
 
-In this example, an SPDX software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash. For example, some tooling generates a file, such as `manifest.spdx.json.sha256`, which contains the SHA256 hash of the corresponding `manifest.spdx.json` file.
+In this example, an SPDX software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash.
+For example, some tooling generates a file, such as `manifest.spdx.json.sha256`, which contains the SHA256 hash of the corresponding `manifest.spdx.json` file.
 
 The content type for `manifest.spdx.json` is already well known as `application/spdx+json`, and is registered with IANA [here](https://www.iana.org/assignments/media-types/application/spdx+json).
 
@@ -242,7 +246,8 @@ Coverage: The current version ('main') implements this specification and demonst
 
 License: Apache-2.0
 
-Implementation Experience: No interop testing has been done yet. The code works as proof of concept, but is not yet production ready.
+Implementation Experience: No interop testing has been done yet.
+The code works as proof of concept, but is not yet production ready.
 
 Contact: Orie Steele (orie@transmute.industries)
 
@@ -260,7 +265,8 @@ Coverage: The current version ('main') implements this specification and demonst
 
 License: MIT
 
-Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.
+Implementation Experience: Interop testing has been performed between DigiCert and DataTrails.
+The code works as proof of concept, but is not yet production ready.
 
 Contact: Steve Lasker (steve.lasker@datatrails.ai)
 
@@ -278,7 +284,8 @@ Coverage: The current version ('main') implements this specification and demonst
 
 License: MIT
 
-Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.
+Implementation Experience: Interop testing has been performed between DigiCert and DataTrails.
+The code works as proof of concept, but is not yet production ready.
 
 Contact: Corey Bonnell (Corey.Bonnell@digicert.com)
 
