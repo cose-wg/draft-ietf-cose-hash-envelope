@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-18T00:36:40.627575+00:00",
+  "timestamp": "2025-02-20T00:37:27.704754+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -2144,24 +2144,26 @@
       "id": "PR_kwDOKqKrRc6LYb9m",
       "title": "Remove normative statements from IANA description",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/37",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "OR13",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-02-16T22:17:46Z",
-      "updatedAt": "2025-02-17T18:40:40Z",
+      "updatedAt": "2025-02-18T18:38:02Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "78e03d1a28ecd147b89bccb8fb6a42d72a7b9ee0",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "iana-considerations-cleanup",
-      "headRefOid": "da93a24be94c6c477c804394182a89418a061bac",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "c0e85a80cd8950d2557cb9f595704ddac779c0ad",
+      "closedAt": "2025-02-18T18:38:02Z",
+      "mergedAt": "2025-02-18T18:38:02Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "3d8e45c595ff92f132b30dd17da53c923d4b315f"
+      },
       "comments": [],
       "reviews": [
         {
@@ -2195,6 +2197,39 @@
           "body": "",
           "createdAt": "2025-02-17T18:40:40Z",
           "updatedAt": "2025-02-17T18:40:40Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cb7se",
+          "commit": {
+            "abbreviatedOid": "da93a24"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-18T18:36:50Z",
+          "updatedAt": "2025-02-18T18:36:50Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2025-02-18T18:36:50Z",
+              "updatedAt": "2025-02-18T18:36:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cb79w",
+          "commit": {
+            "abbreviatedOid": "c0e85a8"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2025-02-18T18:37:14Z",
+          "updatedAt": "2025-02-18T18:37:14Z",
           "comments": []
         }
       ]
@@ -2237,13 +2272,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-02-16T23:15:42Z",
-      "updatedAt": "2025-02-17T18:39:42Z",
+      "updatedAt": "2025-02-19T23:03:05Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "78e03d1a28ecd147b89bccb8fb6a42d72a7b9ee0",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "better-edn2",
-      "headRefOid": "8f3c2124fd37619a3cd1e95756bf5eda24f5d23b",
+      "headRefOid": "8bad2fb41b5d28d6cbb12bdad266c137db61c3a2",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -2529,6 +2564,139 @@
               "updatedAt": "2025-02-17T18:39:42Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cplal",
+          "commit": {
+            "abbreviatedOid": "8f3c212"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T22:49:21Z",
+          "updatedAt": "2025-02-19T22:49:21Z",
+          "comments": [
+            {
+              "originalPosition": 69,
+              "body": ">This sentence no verb.\r\nSays the german to the american....",
+              "createdAt": "2025-02-19T22:49:21Z",
+              "updatedAt": "2025-02-19T22:49:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cpl3D",
+          "commit": {
+            "abbreviatedOid": "8f3c212"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T22:50:42Z",
+          "updatedAt": "2025-02-19T22:50:42Z",
+          "comments": [
+            {
+              "originalPosition": 71,
+              "body": "> Isn't location allowed to be in the unprotected header now? \r\n\ud83d\udc4e \r\n\r\nHowever, the updated text doesn't reflect one way or another.",
+              "createdAt": "2025-02-19T22:50:42Z",
+              "updatedAt": "2025-02-19T22:50:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cpmab",
+          "commit": {
+            "abbreviatedOid": "789d4b5"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T22:52:27Z",
+          "updatedAt": "2025-02-19T22:52:28Z",
+          "comments": [
+            {
+              "originalPosition": 47,
+              "body": "this reformatting doesn't fit in the 70 characters. \r\nI'll do a quick fixup..., ",
+              "createdAt": "2025-02-19T22:52:27Z",
+              "updatedAt": "2025-02-19T22:52:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cpo5Y",
+          "commit": {
+            "abbreviatedOid": "1836587"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T22:59:57Z",
+          "updatedAt": "2025-02-19T22:59:58Z",
+          "comments": [
+            {
+              "originalPosition": 61,
+              "body": "```suggestion\r\nThe content type for `manifest.spdx.json` is already well known as `application/spdx+json`, and is [registered with IANA](https://www.iana.org/assignments/media-types/application/spdx+json).\r\n```",
+              "createdAt": "2025-02-19T22:59:57Z",
+              "updatedAt": "2025-02-19T22:59:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cppIS",
+          "commit": {
+            "abbreviatedOid": "1836587"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T23:00:42Z",
+          "updatedAt": "2025-02-19T23:00:42Z",
+          "comments": [
+            {
+              "originalPosition": 65,
+              "body": "```suggestion\r\nThe payload of this COSE_Sign1 is the SHA256 hash of the `manifest.spdx.json`, which is typically found in an adjacent file (`manifest.spdx.json.sha256`).\r\n```",
+              "createdAt": "2025-02-19T23:00:42Z",
+              "updatedAt": "2025-02-19T23:00:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cppUZ",
+          "commit": {
+            "abbreviatedOid": "1836587"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T23:01:18Z",
+          "updatedAt": "2025-02-19T23:01:19Z",
+          "comments": [
+            {
+              "originalPosition": 72,
+              "body": "```suggestion\r\nThis hash becomes the payload of a COSE-Sign1.\r\n```",
+              "createdAt": "2025-02-19T23:01:19Z",
+              "updatedAt": "2025-02-19T23:01:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cpp0-",
+          "commit": {
+            "abbreviatedOid": "8bad2fb"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2025-02-19T23:03:05Z",
+          "updatedAt": "2025-02-19T23:03:05Z",
+          "comments": []
         }
       ]
     },
@@ -2544,18 +2712,26 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-02-17T00:05:01Z",
-      "updatedAt": "2025-02-17T18:42:43Z",
+      "updatedAt": "2025-02-19T22:46:57Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "78e03d1a28ecd147b89bccb8fb6a42d72a7b9ee0",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "wglc-polish",
-      "headRefOid": "154a9288769f909af5c7c5e183c7417c42949cdf",
+      "headRefOid": "7dd033ae7e13a517f29375d75976fc7e485b1803",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I pushed https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/40/commits/7dd033ae7e13a517f29375d75976fc7e485b1803 to fix the missing RFC references, fixing the build",
+          "createdAt": "2025-02-19T22:46:56Z",
+          "updatedAt": "2025-02-19T22:46:56Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOKqKrRc6cJmkp",
@@ -2816,8 +2992,251 @@
               "updatedAt": "2025-02-17T18:42:43Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6coxRa",
+          "commit": {
+            "abbreviatedOid": "154a928"
+          },
+          "author": "cabo",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T20:40:06Z",
+          "updatedAt": "2025-02-19T20:40:06Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "If we define a header parameter, we can say what it is intended to be used for.\r\nIf we don't want it to be in the unprotected header, we can say so.\r\nThis should encourage implementations to not accept it there.\r\n(This can be extended to a \"MUST be ignored\" in the unprotected header.)",
+              "createdAt": "2025-02-19T20:40:06Z",
+              "updatedAt": "2025-02-19T20:40:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6coyzJ",
+          "commit": {
+            "abbreviatedOid": "154a928"
+          },
+          "author": "cabo",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T20:43:35Z",
+          "updatedAt": "2025-02-19T20:43:35Z",
+          "comments": [
+            {
+              "originalPosition": 34,
+              "body": "```suggestion\r\n  : the content type of the bytes that were hashed (preimage) to produce the payload, given as a content-format number ({{Section 12.3 of RFC7252}}) or as a media-type name optionally with parameters ({{Section 8.3 of RFC 9110}}).\r\n```",
+              "createdAt": "2025-02-19T20:43:35Z",
+              "updatedAt": "2025-02-19T20:44:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6co0bM",
+          "commit": {
+            "abbreviatedOid": "bcd3746"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T20:47:17Z",
+          "updatedAt": "2025-02-19T20:47:18Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "Is there any such apatite for such strong normative language? I don't think that we want to be restrictive in such a manner here. Any counter indications?",
+              "createdAt": "2025-02-19T20:47:18Z",
+              "updatedAt": "2025-02-19T20:47:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cpg3j",
+          "commit": {
+            "abbreviatedOid": "bcd3746"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T22:35:16Z",
+          "updatedAt": "2025-02-19T22:35:17Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "> given that content type and location are already optional, we admit that it is ok for them to be unprotected.\r\nBeing optional doesn't preclude being protected, so I admin nothing :)\r\n\r\nI'd vote for leaving the text as-is, por favor\r\n",
+              "createdAt": "2025-02-19T22:35:16Z",
+              "updatedAt": "2025-02-19T22:35:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6cphN1",
+          "commit": {
+            "abbreviatedOid": "bcd3746"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/40/commits/bcd3746e0cd6c9e6c3468b6de857e272170549e0",
+          "createdAt": "2025-02-19T22:36:22Z",
+          "updatedAt": "2025-02-19T22:36:22Z",
+          "comments": []
         }
       ]
+    },
+    {
+      "number": 41,
+      "id": "PR_kwDOKqKrRc6LqW51",
+      "title": "Preperation of Early Allocation (IANA)",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/41",
+      "state": "MERGED",
+      "author": "henkbirkholz",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "made it a table, compacted content and style",
+      "createdAt": "2025-02-18T21:11:27Z",
+      "updatedAt": "2025-02-19T19:21:47Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "3d8e45c595ff92f132b30dd17da53c923d4b315f",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "iana-compacting",
+      "headRefOid": "8b384711347522886689bcfafc17d6f0f4c8d80c",
+      "closedAt": "2025-02-19T19:21:46Z",
+      "mergedAt": "2025-02-19T19:21:46Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "df09aa12ef4fbfadd60c4d5c70b2bcd128b13728"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6cd1sK",
+          "commit": {
+            "abbreviatedOid": "c1adba3"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-18T21:26:25Z",
+          "updatedAt": "2025-02-18T21:26:25Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "id": "PR_kwDOKqKrRc6Lx3fV",
+      "title": "Better use of table",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/42",
+      "state": "MERGED",
+      "author": "cabo",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-19T16:49:27Z",
+      "updatedAt": "2025-02-19T19:20:58Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "iana-compacting",
+      "baseRefOid": "44fef30521bdb7264b4d3f111cc4f8be9ae123ed",
+      "headRepository": "cabo/draft-ietf-cose-hash-envelope",
+      "headRefName": "fix-iana",
+      "headRefOid": "89c727851dc3370613df6a9139756fa2ef3dc309",
+      "closedAt": "2025-02-19T19:20:58Z",
+      "mergedAt": "2025-02-19T19:20:58Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "8b384711347522886689bcfafc17d6f0f4c8d80c"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6coF1S",
+          "commit": {
+            "abbreviatedOid": "4c39485"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T19:17:30Z",
+          "updatedAt": "2025-02-19T19:17:30Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\nIANA is requested to add the COSE header parameters defined in {{param-spec}}, as listed in {{iana-header-params}}, to the \"COSE Header Parameters\" registry {{!IANA.cose_header-parameters}} in the 'Integer values from 256 to 65535' range ('Specification Required' Registration Procedure)..\r\n```",
+              "createdAt": "2025-02-19T19:17:30Z",
+              "updatedAt": "2025-02-19T19:17:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6coGz6",
+          "commit": {
+            "abbreviatedOid": "4f1a63e"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-19T19:19:30Z",
+          "updatedAt": "2025-02-19T19:19:30Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\nAll new entries use https://www.iana.org/assignments/cose/cose.xhtml#algorithms as the value for the \"Value Registry\" column.\r\n```",
+              "createdAt": "2025-02-19T19:19:30Z",
+              "updatedAt": "2025-02-19T19:19:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6coHAD",
+          "commit": {
+            "abbreviatedOid": "89c7278"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "thanks!",
+          "createdAt": "2025-02-19T19:19:53Z",
+          "updatedAt": "2025-02-19T19:19:53Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "id": "PR_kwDOKqKrRc6LzY4k",
+      "title": "IANA Considerations: Different value type registries",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/43",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-02-19T20:32:30Z",
+      "updatedAt": "2025-02-19T20:32:30Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "df09aa12ef4fbfadd60c4d5c70b2bcd128b13728",
+      "headRepository": "cabo/draft-ietf-cose-hash-envelope",
+      "headRefName": "fix-iana",
+      "headRefOid": "b5d1b7fb25295e435535c91cf0482cfd6164cb2f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
