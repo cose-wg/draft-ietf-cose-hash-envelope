@@ -50,6 +50,7 @@ informative:
 
 entity:
   SELF: "RFCthis"
+  br: "&#x2028;"
 
 --- abstract
 
@@ -177,12 +178,15 @@ The approach this specification takes is just one way to perform application agn
 
 IANA is requested to add the COSE header parameters defined in {{param-spec}}, as listed in {{iana-header-params}}, to the "COSE Header Parameters" registry {{!IANA.cose_header-parameters}}, in the 'Integer values from 256 to 65535' range ('Specification Required' Registration Procedure).
 
-| Name                    | Label                             | Value Type  | Value Registry: https://www.iana.org/<br>assignments/...  | Description                                                                                                                       | Reference             |
-|-------------------------|-----------------------------------|-------------|--------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| `payload-hash-alg`      | TBD_1 (requested assignment: TBD) | int         | cose/cose.xhtml<br>#algorithms                            | The hash algorithm used to produce the payload of a COSE_Sign1                                                                    | {{&SELF}}, {{param-spec}} |
-| `preimage content type` | TBD_2 (requested assignment: TBD) | uint / tstr | core-parameters/core-parameters.xhtml<br>#content-formats | The content-format number or content-type (media-type name) of data that has been hashed to produce the payload of the COSE_Sign1 | {{&SELF}}, {{param-spec}} |
-| `payload-location`      | TBD_3 (requested assignment: TBD) | tstr        | (none)                                                 | The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1                                 | {{&SELF}}, {{param-spec}} |
-{: #iana-header-params title="Newly registered COSE Header Parameters"}
+| Name                    | Label | Value Type  | (1)    | Description                                                                                                                       | Reference             |
+|-------------------------|-------|-------------|--------|-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| `payload-hash-alg`      | TBD_1 | int         | (2)    | The hash algorithm used to produce the payload of a COSE_Sign1                                                                    | {{&SELF}}, {{param-spec}} |
+| `preimage content type` | TBD_2 | uint / tstr | (3)    | The content-format number or content-type (media-type name) of data that has been hashed to produce the payload of the COSE_Sign1 | {{&SELF}}, {{param-spec}} |
+| `payload-location`      | TBD_3 | tstr        | (none) | The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1                                 | {{&SELF}}, {{param-spec}} |
+{: #iana-header-params title="Newly registered COSE Header Parameters
+&br;(1): Value Registry
+&br;(2): https://www.iana.org/assignments/cose/cose.xhtml#algorithms
+&br;(3): https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats"}
 
 --- back
 
