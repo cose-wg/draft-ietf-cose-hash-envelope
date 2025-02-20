@@ -37,9 +37,11 @@ author:
   country: Germany
 
 normative:
-  RFC9052: COSE
+  RFC7252: COAP
   RFC8610: CDDL
-
+  RFC9052: COSE
+  RFC9110: HTTP-Semantics
+  I-D.draft-ietf-cbor-edn-literals: EDN
 
 informative:
   I-D.draft-ietf-cbor-edn-literals: EDN
@@ -48,7 +50,9 @@ informative:
   FIPS-204:
     title: "Module-Lattice-Based Digital Signature Standard"
     target: https://doi.org/10.6028/NIST.FIPS.204
----
+
+entity:
+  SELF: "RFCthis"
 
 --- abstract
 
@@ -61,14 +65,13 @@ Additionally, hints of the detached payload's content format and availability ar
 # Introduction
 
 COSE defined detached payloads in Section 2 of {{-COSE}}, using `nil` as the payload.
-In order to verify a signature over a detached payload, the verifier must have access to the payload content.
-Storing a hash of the content allows for small signature envelopes, that are easy to transport and verify independently.
-Additional hints in the protected header ensure cryptographic agility for the hashing & signing algorithms, and discoverability for the original content which could be prohibitively large to move over a network.
-When producing COSE_sign1 with remote signing services, such as a signing api exposed over HTTPS and backed by an HSM, the "ToBeSigned" bytes as described in {{Section 4.4 of RFC9052}} need to be transmitted to the HSM in order to be signed.
-Some signature algorithms such as ES256 or ES384 allow the "ToBeSigned" to be hashed on the client and sent to the server along with metadata in order to produce a signature.
-Other signature algorithms such as EdDSA with Ed25519, or ML-DSA do not expose such a capability.
-By producing the "ToBeSigned" on the client, and ensuring that the payload is always a hashed value, the total size of the message to be sent to the service for signing is constrained.
-It is still possible for the protected header to be large, but the payload will always be of a fixed size, associated with the hash function chosen.
+In order to verify a signature over a cose-sign1, the signature checker requires access to the payload content.
+Hashes are already used on a regular basis as identifiers for payload data, such as documents or software components.
+As hashes typically are smaller than the payload data they represent, they are simpler to transport.
+Additional hints in the protected header ensure cryptographic agility for the hashing and signing algorithms.
+Hashes and other identifiers are commonly used as hints to discover and distinguish resources.
+Using a hash as an identifier for a resource has the advantage of enabling integrity checking.
+In some applications, such as remote signing procedures, conveyance of hashes instead original payload content reduce transmission time and costs.
 
 # Terminology
 
@@ -76,26 +79,25 @@ It is still possible for the protected header to be large, but the payload will 
 
 The terms COSE, CDDL, and EDN are defined in {{-COSE}}, {{-CDDL}}, {{-EDN}} respectively.
 
-# Header Parameters
+# Header Parameters {#param-spec}
 
-To represent a hash of a payload, the following headers are defined:
+This document specifies the following new header parameters commonly used alongside hashes to identify resources:
 
 TBD_1:
   : the hash algorithm used to produce the payload.
 
 TBD_2:
-  : the content type of the bytes that were hashed to produce the payload.
+  : the content type of the bytes that were hashed (preimage) to produce the payload, given as a content-format number ({{Section 12.3 of RFC7252}}) or as a media-type name optionally with parameters ({{Section 8.3 of RFC9110}}).
 
 TBD_3:
-  : an identifier enabling a verifier to retrieve the bytes which were hashed to produce the payload.
+  : an identifier enabling retrieval of the original resource (preimage) identified by the payload.
 
 # Hash Envelope CDDL
 
 ~~~ cddl
 Hash_Envelope_Protected_Header = {
     ? &(alg: 1) => int,
-    ? &(typ: 16) => uint / tstr
-    &(payload_hash_alg: TBD_1) => int
+    ? &(payload_hash_alg: TBD_1) => int
     &(payload_preimage_content_type: TBD_2) => uint / tstr
     ? &(payload_location: TBD_3) => tstr
     * int / tstr => any
@@ -115,8 +117,7 @@ Hash_Envelope_as_COSE_Sign1 = [
 Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 ~~~
 
-- Label `1` (alg)  Cryptographic algorithm to use
-- Label `16` (typ) MAY be used to assign a content format or media type to the entire hash envelope.
+- Label `1` (alg) Cryptographic algorithm to use
 - Label `TBD_1` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
 - Label `TBD_2` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.
 - Label `TBD_3` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
@@ -186,35 +187,18 @@ The approach this specification takes is just one way to perform application agn
 
 # IANA Considerations
 
-## COSE Header Algorithm Parameters
+## COSE Header Parameters
 
-IANA is requested to add the following entries to the [COSE Header Algorithm Parameters Registry](https://www.iana.org/assignments/cose/cose.xhtml).
+IANA is requested to add the COSE header parameters defined in {{param-spec}}, as listed in {{iana-header-params}}, to the "COSE Header Parameters" registry {{!IANA.cose_header-parameters}} in the 'Integer values from 256 to 65535' range ('Specification Required' Registration Procedure)..
 
-### Payload Hash Algorithm
+All new entries use https://www.iana.org/assignments/cose/cose.xhtml#algorithms as the value for the "Value Registry" column.
 
-- Name: payload_hash_alg
-- Label: TBD_1
-- Value type: int
-- Value registry: https://www.iana.org/assignments/cose/cose.xhtml#algorithms
-- Description: Hash algorithm used to produce the payload from pre-image content
-
-### Payload Pre-image Content Type
-
-- Name: payload_preimage_content_type
-- Label: TBD_2
-- Value type: uint / tstr
-- Value registry when `uint` is used: https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats
-- Description: The content format associated with the bytes that were hashed to produce the payload.
-  `uint` payload_preimage_content_types SHOULD be registered in the content-formats registry.
-  `tstr` values MAY be used when registered values may not yet be registered.
-
-### Payload Location
-
-- Name: payload_location
-- Label: TBD_3
-- Value type: tstr
-- Value registry: none
-- Description: A string or URI as a hint for the location of the payload
+| Name                    | Label                             | Value Type  | Description                                                                                            | Reference             |
+|-------------------------|-----------------------------------|-------------|--------------------------------------------------------------------------------------------------------|-----------------------|
+| `payload-hash-alg`      | TBD_1 (requested assignment: TBD) | int         | The hash algorithm used to produce the payload of a COSE_Sign1                                         | {{&SELF}}, {{param-spec}} |
+| `preimage content type` | TBD_2 (requested assignment: TBD) | uint / tstr | The content-format or media-type of data that has been hashed to produce the payload of the COSE_Sign1 | {{&SELF}}, {{param-spec}} |
+| `payload-location`      | TBD_3 (requested assignment: TBD) | tstr        | The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1      | {{&SELF}}, {{param-spec}} |
+{: #iana-header-params title="Newly registered COSE Header Parameters"}
 
 --- back
 
