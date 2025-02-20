@@ -1052,7 +1052,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Steele, et al.</td>
-<td class="center">Expires 23 August 2025</td>
+<td class="center">Expires 24 August 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1065,12 +1065,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-cose-hash-envelope-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-02-19" class="published">19 February 2025</time>
+<time datetime="2025-02-20" class="published">20 February 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-08-23">23 August 2025</time></dd>
+<dd class="expires"><time datetime="2025-08-24">24 August 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1130,7 +1130,7 @@ Additionally, hints of the detached payload's content format and availability ar
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 23 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1234,14 +1234,13 @@ Additionally, hints of the detached payload's content format and availability ar
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">COSE defined detached payloads in Section 2 of <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>, using <code>nil</code> as the payload.
-In order to verify a signature over a detached payload, the verifier must have access to the payload content.
-Storing a hash of the content allows for small signature envelopes, that are easy to transport and verify independently.
-Additional hints in the protected header ensure cryptographic agility for the hashing &amp; signing algorithms, and discoverability for the original content which could be prohibitively large to move over a network.
-When producing COSE_sign1 with remote signing services, such as a signing api exposed over HTTPS and backed by an HSM, the "ToBeSigned" bytes as described in <span><a href="https://rfc-editor.org/rfc/rfc9052#section-4.4" class="relref">Section 4.4</a> of [<a href="#RFC9052" class="cite xref">RFC9052</a>]</span> need to be transmitted to the HSM in order to be signed.
-Some signature algorithms such as ES256 or ES384 allow the "ToBeSigned" to be hashed on the client and sent to the server along with metadata in order to produce a signature.
-Other signature algorithms such as EdDSA with Ed25519, or ML-DSA do not expose such a capability.
-By producing the "ToBeSigned" on the client, and ensuring that the payload is always a hashed value, the total size of the message to be sent to the service for signing is constrained.
-It is still possible for the protected header to be large, but the payload will always be of a fixed size, associated with the hash function chosen.<a href="#section-1-1" class="pilcrow">¶</a></p>
+In order to verify a signature over a cose-sign1, the signature checker requires access to the payload content.
+Hashes are already used on a regular basis as identifiers for payload data, such as documents or software components.
+As hashes typically are smaller than the payload data they represent, they are simpler to transport.
+Additional hints in the protected header ensure cryptographic agility for the hashing and signing algorithms.
+Hashes and other identifiers are commonly used as hints to discover and distinguish resources.
+Using a hash as an identifier for a resource has the advantage of enabling integrity checking.
+In some applications, such as remote signing procedures, conveyance of hashes instead original payload content reduce transmission time and costs.<a href="#section-1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="terminology">
@@ -1261,7 +1260,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-header-parameters">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-header-parameters" class="section-name selfRef">Header Parameters</a>
       </h2>
-<p id="section-3-1">To represent a hash of a payload, the following headers are defined:<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">This document specifies the following new header parameters commonly used alongside hashes to identify resources:<a href="#section-3-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3-2">
         <dt id="section-3-2.1">TBD_1:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.2">
@@ -1270,12 +1269,12 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
         <dd class="break"></dd>
 <dt id="section-3-2.3">TBD_2:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.4">
-          <p id="section-3-2.4.1">the content type of the bytes that were hashed to produce the payload.<a href="#section-3-2.4.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.4.1">the content type of the bytes that were hashed (preimage) to produce the payload, given as a content-format number (<span><a href="https://rfc-editor.org/rfc/rfc7252#section-12.3" class="relref">Section 12.3</a> of [<a href="#RFC7252" class="cite xref">RFC7252</a>]</span>) or as a media-type name optionally with parameters (<span><a href="https://rfc-editor.org/rfc/rfc9110#section-8.3" class="relref">Section 8.3</a> of [<a href="#RFC9110" class="cite xref">RFC9110</a>]</span>).<a href="#section-3-2.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-3-2.5">TBD_3:</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.6">
-          <p id="section-3-2.6.1">an identifier enabling a verifier to retrieve the bytes which were hashed to produce the payload.<a href="#section-3-2.6.1" class="pilcrow">¶</a></p>
+          <p id="section-3-2.6.1">an identifier enabling retrieval of the original resource (preimage) identified by the payload.<a href="#section-3-2.6.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1290,8 +1289,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <pre>
 Hash_Envelope_Protected_Header = {
     ? &amp;(alg: 1) =&gt; int,
-    ? &amp;(typ: 16) =&gt; uint / tstr
-    &amp;(payload_hash_alg: TBD_1) =&gt; int
+    ? &amp;(payload_hash_alg: TBD_1) =&gt; int
     &amp;(payload_preimage_content_type: TBD_2) =&gt; uint / tstr
     ? &amp;(payload_location: TBD_3) =&gt; tstr
     * int / tstr =&gt; any
@@ -1313,22 +1311,19 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 </div>
 <ul class="normal">
 <li class="normal" id="section-4-2.1">
-          <p id="section-4-2.1.1">Label <code>1</code> (alg)  Cryptographic algorithm to use<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.1.1">Label <code>1</code> (alg) Cryptographic algorithm to use<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-2.2">
-          <p id="section-4-2.2.1">Label <code>16</code> (typ) <span class="bcp14">MAY</span> be used to assign a content format or media type to the entire hash envelope.<a href="#section-4-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.2.1">Label <code>TBD_1</code> (payload hash alg) <span class="bcp14">MUST</span> be present in the protected header and <span class="bcp14">MUST NOT</span> be present in the unprotected header.<a href="#section-4-2.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-2.3">
-          <p id="section-4-2.3.1">Label <code>TBD_1</code> (payload hash alg) <span class="bcp14">MUST</span> be present in the protected header and <span class="bcp14">MUST NOT</span> be present in the unprotected header.<a href="#section-4-2.3.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.3.1">Label <code>TBD_2</code> (content type of the preimage of the payload) <span class="bcp14">MAY</span> be present in the protected header or unprotected header.<a href="#section-4-2.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-2.4">
-          <p id="section-4-2.4.1">Label <code>TBD_2</code> (content type of the preimage of the payload) <span class="bcp14">MAY</span> be present in the protected header or unprotected header.<a href="#section-4-2.4.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.4.1">Label <code>TBD_3</code> (payload_location) <span class="bcp14">MAY</span> be added to the protected header and <span class="bcp14">MUST NOT</span> be presented in the unprotected header.<a href="#section-4-2.4.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-2.5">
-          <p id="section-4-2.5.1">Label <code>TBD_3</code> (payload_location) <span class="bcp14">MAY</span> be added to the protected header and <span class="bcp14">MUST NOT</span> be presented in the unprotected header.<a href="#section-4-2.5.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="section-4-2.6">
-          <p id="section-4-2.6.1">Label <code>3</code> (content_type) <span class="bcp14">MUST NOT</span> be present in the protected or unprotected headers.<a href="#section-4-2.6.1" class="pilcrow">¶</a></p>
+          <p id="section-4-2.5.1">Label <code>3</code> (content_type) <span class="bcp14">MUST NOT</span> be present in the protected or unprotected headers.<a href="#section-4-2.5.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-4-3">Label <code>3</code> is easily confused with label <code>TBD_2</code> payload_preimage_content_type.
@@ -1484,6 +1479,10 @@ The approach this specification takes is just one way to perform application agn
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC7252">[RFC7252]</dt>
+        <dd>
+<span class="refAuthor">Shelby, Z.</span>, <span class="refAuthor">Hartke, K.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"The Constrained Application Protocol (CoAP)"</span>, <span class="seriesInfo">RFC 7252</span>, <span class="seriesInfo">DOI 10.17487/RFC7252</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7252">https://www.rfc-editor.org/rfc/rfc7252</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
@@ -1493,8 +1492,12 @@ The approach this specification takes is just one way to perform application agn
 <span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8610">https://www.rfc-editor.org/rfc/rfc8610</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9052">[RFC9052]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Schaad, J.</span>, <span class="refTitle">"CBOR Object Signing and Encryption (COSE): Structures and Process"</span>, <span class="seriesInfo">STD 96</span>, <span class="seriesInfo">RFC 9052</span>, <span class="seriesInfo">DOI 10.17487/RFC9052</span>, <time datetime="2022-08" class="refDate">August 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9052">https://www.rfc-editor.org/rfc/rfc9052</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9110">[RFC9110]</dt>
+      <dd>
+<span class="refAuthor">Fielding, R., Ed.</span>, <span class="refAuthor">Nottingham, M., Ed.</span>, and <span class="refAuthor">J. Reschke, Ed.</span>, <span class="refTitle">"HTTP Semantics"</span>, <span class="seriesInfo">STD 97</span>, <span class="seriesInfo">RFC 9110</span>, <span class="seriesInfo">DOI 10.17487/RFC9110</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9110">https://www.rfc-editor.org/rfc/rfc9110</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
