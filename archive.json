@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-20T00:37:27.704754+00:00",
+  "timestamp": "2025-02-23T00:40:23.241904+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -2272,18 +2272,26 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-02-16T23:15:42Z",
-      "updatedAt": "2025-02-19T23:03:05Z",
+      "updatedAt": "2025-02-20T23:09:22Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
-      "baseRefOid": "78e03d1a28ecd147b89bccb8fb6a42d72a7b9ee0",
+      "baseRefOid": "ef75a1089556fe013e8197345946ab766769c799",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "better-edn2",
-      "headRefOid": "8bad2fb41b5d28d6cbb12bdad266c137db61c3a2",
+      "headRefOid": "0c675f26ff3cb1943e130824075e557c2339dedf",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@OR13, @henkbirkholz are you good with the latest changes? If so, we can merge. ",
+          "createdAt": "2025-02-20T20:17:26Z",
+          "updatedAt": "2025-02-20T20:17:26Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOKqKrRc6cJi6E",
@@ -2705,24 +2713,26 @@
       "id": "PR_kwDOKqKrRc6LYmyl",
       "title": "Massaging of Intro and early parts of the I-D in prep for WGLC",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/40",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "henkbirkholz",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-02-17T00:05:01Z",
-      "updatedAt": "2025-02-19T22:46:57Z",
+      "updatedAt": "2025-02-20T23:08:16Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "78e03d1a28ecd147b89bccb8fb6a42d72a7b9ee0",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "wglc-polish",
       "headRefOid": "7dd033ae7e13a517f29375d75976fc7e485b1803",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-02-20T23:03:26Z",
+      "mergedAt": "2025-02-20T23:03:26Z",
+      "mergedBy": "henkbirkholz",
+      "mergeCommit": {
+        "oid": "ef75a1089556fe013e8197345946ab766769c799"
+      },
       "comments": [
         {
           "author": "SteveLasker",
@@ -3085,6 +3095,26 @@
           "createdAt": "2025-02-19T22:36:22Z",
           "updatedAt": "2025-02-19T22:36:22Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6c0siH",
+          "commit": {
+            "abbreviatedOid": "5f9801a"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-20T20:18:34Z",
+          "updatedAt": "2025-02-20T20:18:35Z",
+          "comments": [
+            {
+              "originalPosition": 59,
+              "body": "Resolving based on the above discussion. Please activate/block if you feel differently.",
+              "createdAt": "2025-02-20T20:18:35Z",
+              "updatedAt": "2025-02-20T20:18:35Z"
+            }
+          ]
         }
       ]
     },
@@ -3224,19 +3254,62 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-02-19T20:32:30Z",
-      "updatedAt": "2025-02-19T20:32:30Z",
+      "updatedAt": "2025-02-21T15:12:22Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "df09aa12ef4fbfadd60c4d5c70b2bcd128b13728",
       "headRepository": "cabo/draft-ietf-cose-hash-envelope",
       "headRefName": "fix-iana",
-      "headRefOid": "b5d1b7fb25295e435535c91cf0482cfd6164cb2f",
+      "headRefOid": "055e25c7679c84c41087ebe9b059bbec31a3a5ef",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks, @cabo \r\nThe forth column makes this quite difficult to read when formatted:\r\nIs there a different format? Perhaps a bulleted listing?\r\n![image](https://github.com/user-attachments/assets/df954baf-c71c-4437-ab33-92eac2e28067)\r\n",
+          "createdAt": "2025-02-20T20:59:13Z",
+          "updatedAt": "2025-02-20T20:59:13Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Well, it was a list before, and that is even less readable.\r\nDue to the limited-intelligence table formatter in xml2rfc, we'd need to reduce the minimum with of the other columns to get more space for \"Description\".\r\n\"Label\" will shrink when the actual value goes there (3 characters wide), going down to the width of \"Label\".  We could replace the URLs in \"Value registry\" by notes, making this much less wide.",
+          "createdAt": "2025-02-20T23:02:41Z",
+          "updatedAt": "2025-02-20T23:02:41Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Oh, and it looks much better in the actual RFC fonts, but I'll try the above.",
+          "createdAt": "2025-02-20T23:06:58Z",
+          "updatedAt": "2025-02-20T23:06:58Z"
+        },
+        {
+          "author": "cabo",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "<img width=\"849\" alt=\"image\" src=\"https://github.com/user-attachments/assets/30cf5b90-355a-4302-b8e3-73c89d76bc08\" />\r\n\r\n(With RFC editor fonts)",
+          "createdAt": "2025-02-20T23:25:52Z",
+          "updatedAt": "2025-02-20T23:25:52Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6c9dh4",
+          "commit": {
+            "abbreviatedOid": "055e25c"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM\r\nThanks, @cabo ",
+          "createdAt": "2025-02-21T15:12:22Z",
+          "updatedAt": "2025-02-21T15:12:22Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
