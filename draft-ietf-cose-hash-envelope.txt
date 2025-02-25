@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 24 August 2025                                       DataTrails
+Expires: 29 August 2025                                       DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                        20 February 2025
+                                                        25 February 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 August 2025.
+   This Internet-Draft will expire on 29 August 2025.
 
 Copyright Notice
 
@@ -248,43 +248,46 @@ Table of Contents
 
    IANA is requested to add the COSE header parameters defined in
    Section 3, as listed in Table 1, to the "COSE Header Parameters"
-   registry [IANA.cose_header-parameters] in the 'Integer values from
+   registry [IANA.cose_header-parameters], in the 'Integer values from
    256 to 65535' range ('Specification Required' Registration
-   Procedure)..
+   Procedure).
 
-   All new entries use https://www.iana.org/assignments/cose/
-   cose.xhtml#algorithms as the value for the "Value Registry" column.
+   +==================+=====+=====+======+================+===========+
+   | Name             |Label|Value|(1)   | Description    | Reference |
+   |                  |     |Type |      |                |           |
+   +==================+=====+=====+======+================+===========+
+   | payload-hash-alg |TBD_1|int  |(2)   | The hash       | RFCthis,  |
+   |                  |     |     |      | algorithm used | Section 3 |
+   |                  |     |     |      | to produce the |           |
+   |                  |     |     |      | payload of a   |           |
+   |                  |     |     |      | COSE_Sign1     |           |
+   +------------------+-----+-----+------+----------------+-----------+
+   | preimage content |TBD_2|uint |(3)   | The content-   | RFCthis,  |
+   | type             |     |/    |      | format number  | Section 3 |
+   |                  |     |tstr |      | or content-    |           |
+   |                  |     |     |      | type (media-   |           |
+   |                  |     |     |      | type name) of  |           |
+   |                  |     |     |      | data that has  |           |
+   |                  |     |     |      | been hashed to |           |
+   |                  |     |     |      | produce the    |           |
+   |                  |     |     |      | payload of the |           |
+   |                  |     |     |      | COSE_Sign1     |           |
+   +------------------+-----+-----+------+----------------+-----------+
+   | payload-location |TBD_3|tstr |(none)| The string or  | RFCthis,  |
+   |                  |     |     |      | URI hint for   | Section 3 |
+   |                  |     |     |      | the location   |           |
+   |                  |     |     |      | of the data    |           |
+   |                  |     |     |      | hashed to      |           |
+   |                  |     |     |      | produce the    |           |
+   |                  |     |     |      | payload of a   |           |
+   |                  |     |     |      | COSE_Sign1     |           |
+   +------------------+-----+-----+------+----------------+-----------+
 
-    +==================+=============+=====+================+=========+
-    | Name             | Label       |Value| Description    |Reference|
-    |                  |             |Type |                |         |
-    +==================+=============+=====+================+=========+
-    | payload-hash-alg | TBD_1       |int  | The hash       |RFCthis, |
-    |                  | (requested  |     | algorithm used |Section 3|
-    |                  | assignment: |     | to produce the |         |
-    |                  | TBD)        |     | payload of a   |         |
-    |                  |             |     | COSE_Sign1     |         |
-    +------------------+-------------+-----+----------------+---------+
-    | preimage content | TBD_2       |uint | The content-   |RFCthis, |
-    | type             | (requested  |/    | format or      |Section 3|
-    |                  | assignment: |tstr | media-type of  |         |
-    |                  | TBD)        |     | data that has  |         |
-    |                  |             |     | been hashed to |         |
-    |                  |             |     | produce the    |         |
-    |                  |             |     | payload of the |         |
-    |                  |             |     | COSE_Sign1     |         |
-    +------------------+-------------+-----+----------------+---------+
-    | payload-location | TBD_3       |tstr | The string or  |RFCthis, |
-    |                  | (requested  |     | URI hint for   |Section 3|
-    |                  | assignment: |     | the location   |         |
-    |                  | TBD)        |     | of the data    |         |
-    |                  |             |     | hashed to      |         |
-    |                  |             |     | produce the    |         |
-    |                  |             |     | payload of a   |         |
-    |                  |             |     | COSE_Sign1     |         |
-    +------------------+-------------+-----+----------------+---------+
-
-              Table 1: Newly registered COSE Header Parameters
+             Table 1: Newly registered COSE Header Parameters
+                           (1): Value Registry
+     (2): https://www.iana.org/assignments/cose/cose.xhtml#algorithms
+       (3): https://www.iana.org/assignments/core-parameters/core-
+                     parameters.xhtml#content-formats
 
 9.  References
 

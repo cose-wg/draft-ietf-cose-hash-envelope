@@ -1052,7 +1052,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Steele, et al.</td>
-<td class="center">Expires 24 August 2025</td>
+<td class="center">Expires 29 August 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1065,12 +1065,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-cose-hash-envelope-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-02-20" class="published">20 February 2025</time>
+<time datetime="2025-02-25" class="published">25 February 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-08-24">24 August 2025</time></dd>
+<dd class="expires"><time datetime="2025-08-29">29 August 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1130,7 +1130,7 @@ Additionally, hints of the detached payload's content format and availability ar
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 29 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1401,19 +1401,19 @@ The approach this specification takes is just one way to perform application agn
         <h3 id="name-cose-header-parameters">
 <a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-cose-header-parameters" class="section-name selfRef">COSE Header Parameters</a>
         </h3>
-<p id="section-8.1-1">IANA is requested to add the COSE header parameters defined in <a href="#param-spec" class="auto internal xref">Section 3</a>, as listed in <a href="#iana-header-params" class="auto internal xref">Table 1</a>, to the "COSE Header Parameters" registry <span>[<a href="#IANA.cose_header-parameters" class="cite xref">IANA.cose_header-parameters</a>]</span> in the 'Integer values from 256 to 65535' range ('Specification Required' Registration Procedure)..<a href="#section-8.1-1" class="pilcrow">¶</a></p>
-<p id="section-8.1-2">All new entries use https://www.iana.org/assignments/cose/cose.xhtml#algorithms as the value for the "Value Registry" column.<a href="#section-8.1-2" class="pilcrow">¶</a></p>
+<p id="section-8.1-1">IANA is requested to add the COSE header parameters defined in <a href="#param-spec" class="auto internal xref">Section 3</a>, as listed in <a href="#iana-header-params" class="auto internal xref">Table 1</a>, to the "COSE Header Parameters" registry <span>[<a href="#IANA.cose_header-parameters" class="cite xref">IANA.cose_header-parameters</a>]</span>, in the 'Integer values from 256 to 65535' range ('Specification Required' Registration Procedure).<a href="#section-8.1-1" class="pilcrow">¶</a></p>
 <span id="name-newly-registered-cose-heade"></span><div id="iana-header-params">
 <table class="center" id="table-1">
           <caption>
 <a href="#table-1" class="selfRef">Table 1</a>:
-<a href="#name-newly-registered-cose-heade" class="selfRef">Newly registered COSE Header Parameters</a>
+<a href="#name-newly-registered-cose-heade" class="selfRef">Newly registered COSE Header Parameters <br>(1): Value Registry <br>(2): https://www.iana.org/assignments/cose/cose.xhtml#algorithms <br>(3): https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats</a>
           </caption>
 <thead>
             <tr>
               <th class="text-left" rowspan="1" colspan="1">Name</th>
               <th class="text-left" rowspan="1" colspan="1">Label</th>
               <th class="text-left" rowspan="1" colspan="1">Value Type</th>
+              <th class="text-left" rowspan="1" colspan="1">(1)</th>
               <th class="text-left" rowspan="1" colspan="1">Description</th>
               <th class="text-left" rowspan="1" colspan="1">Reference</th>
             </tr>
@@ -1423,8 +1423,9 @@ The approach this specification takes is just one way to perform application agn
               <td class="text-left" rowspan="1" colspan="1">
                 <code>payload-hash-alg</code>
 </td>
-              <td class="text-left" rowspan="1" colspan="1">TBD_1 (requested assignment: TBD)</td>
+              <td class="text-left" rowspan="1" colspan="1">TBD_1</td>
               <td class="text-left" rowspan="1" colspan="1">int</td>
+              <td class="text-left" rowspan="1" colspan="1">(2)</td>
               <td class="text-left" rowspan="1" colspan="1">The hash algorithm used to produce the payload of a COSE_Sign1</td>
               <td class="text-left" rowspan="1" colspan="1">RFCthis, <a href="#param-spec" class="auto internal xref">Section 3</a>
 </td>
@@ -1433,9 +1434,10 @@ The approach this specification takes is just one way to perform application agn
               <td class="text-left" rowspan="1" colspan="1">
                 <code>preimage content type</code>
 </td>
-              <td class="text-left" rowspan="1" colspan="1">TBD_2 (requested assignment: TBD)</td>
+              <td class="text-left" rowspan="1" colspan="1">TBD_2</td>
               <td class="text-left" rowspan="1" colspan="1">uint / tstr</td>
-              <td class="text-left" rowspan="1" colspan="1">The content-format or media-type of data that has been hashed to produce the payload of the COSE_Sign1</td>
+              <td class="text-left" rowspan="1" colspan="1">(3)</td>
+              <td class="text-left" rowspan="1" colspan="1">The content-format number or content-type (media-type name) of data that has been hashed to produce the payload of the COSE_Sign1</td>
               <td class="text-left" rowspan="1" colspan="1">RFCthis, <a href="#param-spec" class="auto internal xref">Section 3</a>
 </td>
             </tr>
@@ -1443,8 +1445,9 @@ The approach this specification takes is just one way to perform application agn
               <td class="text-left" rowspan="1" colspan="1">
                 <code>payload-location</code>
 </td>
-              <td class="text-left" rowspan="1" colspan="1">TBD_3 (requested assignment: TBD)</td>
+              <td class="text-left" rowspan="1" colspan="1">TBD_3</td>
               <td class="text-left" rowspan="1" colspan="1">tstr</td>
+              <td class="text-left" rowspan="1" colspan="1">(none)</td>
               <td class="text-left" rowspan="1" colspan="1">The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1</td>
               <td class="text-left" rowspan="1" colspan="1">RFCthis, <a href="#param-spec" class="auto internal xref">Section 3</a>
 </td>
