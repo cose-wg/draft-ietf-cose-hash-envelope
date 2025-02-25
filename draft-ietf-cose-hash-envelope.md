@@ -45,10 +45,6 @@ normative:
 informative:
   I-D.draft-ietf-cbor-edn-literals: EDN
   BCP205:
-  RFC8032:
-  FIPS-204:
-    title: "Module-Lattice-Based Digital Signature Standard"
-    target: https://doi.org/10.6028/NIST.FIPS.204
 
 entity:
   SELF: "RFCthis"
@@ -97,7 +93,7 @@ TBD_3:
 ~~~ cddl
 Hash_Envelope_Protected_Header = {
     ? &(alg: 1) => int,
-    ? &(payload_hash_alg: TBD_1) => int
+    &(payload_hash_alg: TBD_1) => int
     &(payload_preimage_content_type: TBD_2) => uint / tstr
     ? &(payload_location: TBD_3) => tstr
     * int / tstr => any
@@ -170,20 +166,19 @@ When signed with a signature algorithm that is parameterized via a hash function
 
 The resulting signature is computed over the protected header and payload, providing integrity and authenticity for the hash algorithm, content type and location of the associated resource, in this case a software bill of materials.
 
-# Encrypted Hashes
-
-When present in COSE_Encrypt, the header parameters registered in this document leak information about the ciphertext.
-These parameters SHOULD NOT be present in COSE_Encrypt headers unless this disclosure is acceptable.
-
 # Security Considerations
 
 ## Choice of Hash Function
 
 It is RECOMMENDED to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
 For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.
-It is also possible to use this specification with signature algorithms that support pre-hashing such as Ed25519ph which is described in {{RFC8032}}, or HashML-DSA which is described in {{FIPS-204}}.
 Note that when using a pre-hash algorithm, the algorithm SHOULD be registered in the IANA COSE Algorithms registry, and should be distinguishable from non-pre hash variants that may also be present.
 The approach this specification takes is just one way to perform application agnostic pre-hashing, meaning the pre hashing is not done with binding or consideration for a specific application context, while preforming application (cose) specific signing, meaning the to be signed bytes include the cose structures necessary to distinguish a cose signature from other digital signature formats.
+
+## Encrypted Hashes
+
+When present in COSE_Encrypt, the header parameters registered in this document leak information about the ciphertext.
+These parameters SHOULD NOT be present in COSE_Encrypt headers unless this disclosure is acceptable.
 
 # IANA Considerations
 
