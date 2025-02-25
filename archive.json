@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-23T00:40:23.241904+00:00",
+  "timestamp": "2025-02-25T00:38:15.696324+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -491,6 +491,22 @@
       "createdAt": "2024-11-19T15:40:01Z",
       "updatedAt": "2024-11-22T16:42:14Z",
       "closedAt": "2024-11-22T16:42:14Z",
+      "comments": []
+    },
+    {
+      "number": 44,
+      "id": "I_kwDOKqKrRc6rbeGj",
+      "title": "Ilari's review for -02",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/44",
+      "state": "OPEN",
+      "author": "OR13",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/cose/eWRIhMnZjTkUxmESzjNV0nSBvPQ/",
+      "createdAt": "2025-02-24T20:42:24Z",
+      "updatedAt": "2025-02-24T20:42:24Z",
+      "closedAt": null,
       "comments": []
     }
   ],
