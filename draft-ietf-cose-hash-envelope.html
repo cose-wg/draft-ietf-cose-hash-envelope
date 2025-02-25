@@ -1336,31 +1336,38 @@ The difference between content_type (3) and payload_preimage_content_type (TBD2)
       <h2 id="name-envelope-edn">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-envelope-edn" class="section-name selfRef">Envelope EDN</a>
       </h2>
-<p id="section-5-1">A hashed payload functions equivalently to an attached payload, with the benefits of being compact in size and providing the ability to validate the signature.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">The following informative example demonstrates how to construct a hash envelope for a resource already commonly referenced by its hash.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <div class="lang-cbor-diag sourcecode" id="section-5-2">
 <pre>
-18(                                    / COSE Sign 1               /
-   [
-    &lt;&lt;{
-      1:-35,                          / alg : ES384                /
-      4: h'75726e3a...32636573',      / kid                        /
-      16: "application/example+cose", / typ                        /
-      TBD_1: -16                      / payload_hash_alg : sha-256 /
-                                   / payload_preimage_content_type /
-      TBD_2: 51                    / "application/json-patch+json" /
-      TBD_3: "https://blob.example/a24f9c19"/ payload_location     /
-    }&gt;&gt;
-    {}                                 / Unprotected               /
-    h'935b5a91...e18a588a',            / Payload                   /
-    h'15280897...93ef39e5'             / Signature                 /
-   ]
-)
+18([ # cose-sign1
+  &lt;&lt;{
+    / signature alg   / 1: -35, # ES384
+    / key identifier  / 4: h'75726e3a...32636573',
+    / cose sign1 type / 16: "application/example+cose",
+    / hash algorithm  / TBD_1: -16, # sha256
+    / media type      / TBD_2: "application/spdx+json",
+    / location        /
+         TBD_3: "https://sbom.example/.../manifest.spdx.json"
+  }&gt;&gt;
+  / unprotected / {},
+  / payload     / h'935b5a91...e18a588a',
+         # As seen in manifest.spdx.json.sha256
+  / signature   / h'15280897...93ef39e5'
+         # ECDSA Signature with SHA 384 and P-384
+])
 </pre><a href="#section-5-2" class="pilcrow">¶</a>
 </div>
-<p id="section-5-3">In this example, the sha256 hash algorithm (-16) is used to hash the payload, which is of content type <code>application/json-patch+json</code> identified by the content format <code>51</code>.
-The full payload is located at "https://storage.example/244f...9c19".
-The COSE_sign1 is of type "application/example+cose".
-The sha256 hash is signed with ES384 which starts by taking the sha384 hash of the payload (which is a sha256 hash).<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-3">In this example, an SPDX software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash.
+For example, some tooling generates a file, such as <code>manifest.spdx.json.sha256</code>, which contains the SHA256 hash of the corresponding <code>manifest.spdx.json</code> file.<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-5-4">The content type for <code>manifest.spdx.json</code> is already well known as <code>application/spdx+json</code>, and is <a href="https://www.iana.org/assignments/media-types/application/spdx+json">registered with IANA</a>.<a href="#section-5-4" class="pilcrow">¶</a></p>
+<p id="section-5-5">The full JSON SBOM is available at a URL, such as <code>https://sbom.example/.../manifest.spdx.json</code>.<a href="#section-5-5" class="pilcrow">¶</a></p>
+<p id="section-5-6">The payload of this COSE_Sign1 is the SHA256 hash of the <code>manifest.spdx.json</code>, which is typically found in an adjacent file (<code>manifest.spdx.json.sha256</code>).<a href="#section-5-6" class="pilcrow">¶</a></p>
+<p id="section-5-7">The type of this COSE_Sign1 is <code>application/example+cose</code>, but other types may be used to establish more specific media types for signatures of hashes.<a href="#section-5-7" class="pilcrow">¶</a></p>
+<p id="section-5-8">The signature is produced using ES384 which means using ECDSA with SHA384 hash function and P-384 elliptic curve.<a href="#section-5-8" class="pilcrow">¶</a></p>
+<p id="section-5-9">This example is chosen to highlight that an existing system may use a hash algorithm such as sha256.
+This hash becomes the payload of a COSE-Sign1.
+When signed with a signature algorithm that is parameterized via a hash function, such as ECDSA with SHA384, the to be signed structure as described in Section 4.4 of RFC9052.<a href="#section-5-9" class="pilcrow">¶</a></p>
+<p id="section-5-10">The resulting signature is computed over the protected header and payload, providing integrity and authenticity for the hash algorithm, content type and location of the associated resource, in this case a software bill of materials.<a href="#section-5-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="encrypted-hashes">
@@ -1470,10 +1477,6 @@ The approach this specification takes is just one way to perform application agn
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
-<dt id="I-D.draft-ietf-cbor-edn-literals">[I-D.draft-ietf-cbor-edn-literals]</dt>
-        <dd>
-<span class="refAuthor">Bormann, C.</span>, <span class="refTitle">"CBOR Extended Diagnostic Notation (EDN)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-cbor-edn-literals-16</span>, <time datetime="2025-01-08" class="refDate">8 January 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-cbor-edn-literals-16">https://datatracker.ietf.org/doc/html/draft-ietf-cbor-edn-literals-16</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="IANA.cose_header-parameters">[IANA.cose_header-parameters]</dt>
         <dd>
 <span class="refAuthor">IANA</span>, <span class="refTitle">"COSE Header Parameters"</span>, <span>&lt;<a href="https://www.iana.org/assignments/cose">https://www.iana.org/assignments/cose</a>&gt;</span>. </dd>
@@ -1523,6 +1526,10 @@ The approach this specification takes is just one way to perform application agn
         <dd>
 <span class="refTitle">"Module-Lattice-Based Digital Signature Standard"</span>, <span>n.d.</span>, <span>&lt;<a href="https://doi.org/10.6028/NIST.FIPS.204">https://doi.org/10.6028/NIST.FIPS.204</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="I-D.draft-ietf-cbor-edn-literals">[I-D.draft-ietf-cbor-edn-literals]</dt>
+        <dd>
+<span class="refAuthor">Bormann, C.</span>, <span class="refTitle">"CBOR Extended Diagnostic Notation (EDN)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-cbor-edn-literals-16</span>, <time datetime="2025-01-08" class="refDate">8 January 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-cbor-edn-literals-16">https://datatracker.ietf.org/doc/html/draft-ietf-cbor-edn-literals-16</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8032">[RFC8032]</dt>
       <dd>
 <span class="refAuthor">Josefsson, S.</span> and <span class="refAuthor">I. Liusvaara</span>, <span class="refTitle">"Edwards-Curve Digital Signature Algorithm (EdDSA)"</span>, <span class="seriesInfo">RFC 8032</span>, <span class="seriesInfo">DOI 10.17487/RFC8032</span>, <time datetime="2017-01" class="refDate">January 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8032">https://www.rfc-editor.org/rfc/rfc8032</a>&gt;</span>. </dd>
@@ -1557,7 +1564,8 @@ It is up to the individual working groups to use this information as they see fi
 <p id="appendix-A.1-4">Maturity: Prototype<a href="#appendix-A.1-4" class="pilcrow">¶</a></p>
 <p id="appendix-A.1-5">Coverage: The current version ('main') implements this specification and demonstrates hash envelope signing with Azure Key Vault and Google Cloud KMS in addition to supporting local keys.<a href="#appendix-A.1-5" class="pilcrow">¶</a></p>
 <p id="appendix-A.1-6">License: Apache-2.0<a href="#appendix-A.1-6" class="pilcrow">¶</a></p>
-<p id="appendix-A.1-7">Implementation Experience: No interop testing has been done yet. The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.1-7" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-7">Implementation Experience: No interop testing has been done yet.
+The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.1-7" class="pilcrow">¶</a></p>
 <p id="appendix-A.1-8">Contact: Orie Steele (orie@transmute.industries)<a href="#appendix-A.1-8" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1572,7 +1580,8 @@ It is up to the individual working groups to use this information as they see fi
 <p id="appendix-A.2-4">Maturity: Preview<a href="#appendix-A.2-4" class="pilcrow">¶</a></p>
 <p id="appendix-A.2-5">Coverage: The current version ('main') implements this specification and demonstrates hash envelope signing with DataTrails implementation of SCITT.<a href="#appendix-A.2-5" class="pilcrow">¶</a></p>
 <p id="appendix-A.2-6">License: MIT<a href="#appendix-A.2-6" class="pilcrow">¶</a></p>
-<p id="appendix-A.2-7">Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.2-7" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-7">Implementation Experience: Interop testing has been performed between DigiCert and DataTrails.
+The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.2-7" class="pilcrow">¶</a></p>
 <p id="appendix-A.2-8">Contact: Steve Lasker (steve.lasker@datatrails.ai)<a href="#appendix-A.2-8" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1587,7 +1596,8 @@ It is up to the individual working groups to use this information as they see fi
 <p id="appendix-A.3-4">Maturity: Preview<a href="#appendix-A.3-4" class="pilcrow">¶</a></p>
 <p id="appendix-A.3-5">Coverage: The current version ('main') implements this specification and demonstrates hash envelope signing with DigiCert Software Trust Manager.<a href="#appendix-A.3-5" class="pilcrow">¶</a></p>
 <p id="appendix-A.3-6">License: MIT<a href="#appendix-A.3-6" class="pilcrow">¶</a></p>
-<p id="appendix-A.3-7">Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.3-7" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-7">Implementation Experience: Interop testing has been performed between DigiCert and DataTrails.
+The code works as proof of concept, but is not yet production ready.<a href="#appendix-A.3-7" class="pilcrow">¶</a></p>
 <p id="appendix-A.3-8">Contact: Corey Bonnell (Corey.Bonnell@digicert.com)<a href="#appendix-A.3-8" class="pilcrow">¶</a></p>
 </section>
 </div>
