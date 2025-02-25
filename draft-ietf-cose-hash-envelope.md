@@ -41,7 +41,6 @@ normative:
   RFC8610: CDDL
   RFC9052: COSE
   RFC9110: HTTP-Semantics
-  I-D.draft-ietf-cbor-edn-literals: EDN
 
 informative:
   I-D.draft-ietf-cbor-edn-literals: EDN
