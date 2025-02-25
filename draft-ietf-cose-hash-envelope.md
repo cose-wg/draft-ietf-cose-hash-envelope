@@ -41,9 +41,9 @@ normative:
   RFC8610: CDDL
   RFC9052: COSE
   RFC9110: HTTP-Semantics
-  I-D.draft-ietf-cbor-edn-literals: EDN
 
 informative:
+  I-D.draft-ietf-cbor-edn-literals: EDN
   BCP205:
   RFC8032:
   FIPS-204:
@@ -130,31 +130,45 @@ Profiles that rely on this specification MAY choose to mark TBD_1, TBD_2, TBD_3 
 
 # Envelope EDN
 
-A hashed payload functions equivalently to an attached payload, with the benefits of being compact in size and providing the ability to validate the signature.
+The following informative example demonstrates how to construct a hash envelope for a resource already commonly referenced by its hash.
 
 ~~~~ cbor-diag
-18(                                    / COSE Sign 1               /
-   [
-    <<{
-      1:-35,                          / alg : ES384                /
-      4: h'75726e3a...32636573',      / kid                        /
-      16: "application/example+cose", / typ                        /
-      TBD_1: -16                      / payload_hash_alg : sha-256 /
-                                   / payload_preimage_content_type /
-      TBD_2: 51                    / "application/json-patch+json" /
-      TBD_3: "https://blob.example/a24f9c19"/ payload_location     /
-    }>>
-    {}                                 / Unprotected               /
-    h'935b5a91...e18a588a',            / Payload                   /
-    h'15280897...93ef39e5'             / Signature                 /
-   ]
-)
+18([ # cose-sign1
+  <<{
+    / signature alg   / 1: -35, # ES384
+    / key identifier  / 4: h'75726e3a...32636573',
+    / cose sign1 type / 16: "application/example+cose",
+    / hash algorithm  / TBD_1: -16, # sha256
+    / media type      / TBD_2: "application/spdx+json",
+    / location        /
+         TBD_3: "https://sbom.example/.../manifest.spdx.json"
+  }>>
+  / unprotected / {},
+  / payload     / h'935b5a91...e18a588a',
+         # As seen in manifest.spdx.json.sha256
+  / signature   / h'15280897...93ef39e5'
+         # ECDSA Signature with SHA 384 and P-384
+])
 ~~~~
 
-In this example, the sha256 hash algorithm (-16) is used to hash the payload, which is of content type `application/json-patch+json` identified by the content format `51`.
-The full payload is located at "https://storage.example/244f...9c19".
-The COSE_sign1 is of type "application/example+cose".
-The sha256 hash is signed with ES384 which starts by taking the sha384 hash of the payload (which is a sha256 hash).
+In this example, an SPDX software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash.
+For example, some tooling generates a file, such as `manifest.spdx.json.sha256`, which contains the SHA256 hash of the corresponding `manifest.spdx.json` file.
+
+The content type for `manifest.spdx.json` is already well known as `application/spdx+json`, and is [registered with IANA](https://www.iana.org/assignments/media-types/application/spdx+json).
+
+The full JSON SBOM is available at a URL, such as `https://sbom.example/.../manifest.spdx.json`.
+
+The payload of this COSE_Sign1 is the SHA256 hash of the `manifest.spdx.json`, which is typically found in an adjacent file (`manifest.spdx.json.sha256`).
+
+The type of this COSE_Sign1 is `application/example+cose`, but other types may be used to establish more specific media types for signatures of hashes.
+
+The signature is produced using ES384 which means using ECDSA with SHA384 hash function and P-384 elliptic curve.
+
+This example is chosen to highlight that an existing system may use a hash algorithm such as sha256.
+This hash becomes the payload of a COSE-Sign1.
+When signed with a signature algorithm that is parameterized via a hash function, such as ECDSA with SHA384, the to be signed structure as described in Section 4.4 of RFC9052.
+
+The resulting signature is computed over the protected header and payload, providing integrity and authenticity for the hash algorithm, content type and location of the associated resource, in this case a software bill of materials.
 
 # Encrypted Hashes
 
@@ -217,7 +231,8 @@ Coverage: The current version ('main') implements this specification and demonst
 
 License: Apache-2.0
 
-Implementation Experience: No interop testing has been done yet. The code works as proof of concept, but is not yet production ready.
+Implementation Experience: No interop testing has been done yet.
+The code works as proof of concept, but is not yet production ready.
 
 Contact: Orie Steele (orie@transmute.industries)
 
@@ -235,7 +250,8 @@ Coverage: The current version ('main') implements this specification and demonst
 
 License: MIT
 
-Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.
+Implementation Experience: Interop testing has been performed between DigiCert and DataTrails.
+The code works as proof of concept, but is not yet production ready.
 
 Contact: Steve Lasker (steve.lasker@datatrails.ai)
 
@@ -253,7 +269,8 @@ Coverage: The current version ('main') implements this specification and demonst
 
 License: MIT
 
-Implementation Experience: Interop testing has been performed between DigiCert and DataTrails. The code works as proof of concept, but is not yet production ready.
+Implementation Experience: Interop testing has been performed between DigiCert and DataTrails.
+The code works as proof of concept, but is not yet production ready.
 
 Contact: Corey Bonnell (Corey.Bonnell@digicert.com)
 
