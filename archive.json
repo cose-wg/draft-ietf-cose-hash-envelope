@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-25T00:38:15.696324+00:00",
+  "timestamp": "2025-02-27T00:37:48.768133+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -459,11 +459,13 @@
       "state": "OPEN",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "henkbirkholz"
+      ],
       "labels": [],
       "body": "From IETF 121, agreement to move forward with pre-allocations for:\r\n- payload_hash_alg: TBD_1  \r\nthe hash algorithm used to produce the payload.\r\n- payload_preimage_content_type: TBD_2  \r\nthe content type of the bytes that were hashed to produce the payload.\r\n- payload_location: TBD_3  \r\nan identifier enabling a verifier to retrieve the bytes which were hashed to produce the payload.\r\n",
       "createdAt": "2024-11-12T15:05:38Z",
-      "updatedAt": "2024-12-03T15:40:25Z",
+      "updatedAt": "2025-02-25T15:09:09Z",
       "closedAt": null,
       "comments": [
         {
@@ -2281,24 +2283,26 @@
       "id": "PR_kwDOKqKrRc6LYiHo",
       "title": "Better example",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/39",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "OR13",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-02-16T23:15:42Z",
-      "updatedAt": "2025-02-20T23:09:22Z",
+      "updatedAt": "2025-02-25T15:08:46Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "ef75a1089556fe013e8197345946ab766769c799",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "better-edn2",
-      "headRefOid": "0c675f26ff3cb1943e130824075e557c2339dedf",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "f8f1f5515636f7fd1580f1feaad855c6e35037a7",
+      "closedAt": "2025-02-25T15:08:46Z",
+      "mergedAt": "2025-02-25T15:08:46Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "c843e640fac94878b3a78f2650633c51ee131ef5"
+      },
       "comments": [
         {
           "author": "SteveLasker",
@@ -2720,6 +2724,19 @@
           "body": "LGTM",
           "createdAt": "2025-02-19T23:03:05Z",
           "updatedAt": "2025-02-19T23:03:05Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6dcSi9",
+          "commit": {
+            "abbreviatedOid": "f8f1f55"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-25T15:08:12Z",
+          "updatedAt": "2025-02-25T15:08:12Z",
           "comments": []
         }
       ]
@@ -3263,24 +3280,26 @@
       "id": "PR_kwDOKqKrRc6LzY4k",
       "title": "IANA Considerations: Different value type registries",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/43",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "cabo",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-02-19T20:32:30Z",
-      "updatedAt": "2025-02-21T15:12:22Z",
+      "updatedAt": "2025-02-25T15:07:29Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "df09aa12ef4fbfadd60c4d5c70b2bcd128b13728",
       "headRepository": "cabo/draft-ietf-cose-hash-envelope",
       "headRefName": "fix-iana",
       "headRefOid": "055e25c7679c84c41087ebe9b059bbec31a3a5ef",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-02-25T15:07:28Z",
+      "mergedAt": "2025-02-25T15:07:28Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "6a30d02c0553ef6ab17b69977878776e05fc7a1c"
+      },
       "comments": [
         {
           "author": "SteveLasker",
@@ -3324,8 +3343,47 @@
           "createdAt": "2025-02-21T15:12:22Z",
           "updatedAt": "2025-02-21T15:12:22Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6dcRRj",
+          "commit": {
+            "abbreviatedOid": "055e25c"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-25T15:06:55Z",
+          "updatedAt": "2025-02-25T15:06:55Z",
+          "comments": []
         }
       ]
+    },
+    {
+      "number": 45,
+      "id": "PR_kwDOKqKrRc6Mhf5p",
+      "title": "Incorporate feedback from Ilari",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/45",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #44 ",
+      "createdAt": "2025-02-25T19:34:57Z",
+      "updatedAt": "2025-02-25T19:34:57Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "c843e640fac94878b3a78f2650633c51ee131ef5",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "draft-02-feedback",
+      "headRefOid": "7aaa0eff3e6107ad44df7b4f90e17ecaeae5e029",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
