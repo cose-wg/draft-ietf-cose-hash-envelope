@@ -180,6 +180,8 @@ The approach this specification takes is just one way to perform application agn
 When present in COSE_Encrypt, the header parameters registered in this document leak information about the ciphertext.
 These parameters SHOULD NOT be present in COSE_Encrypt headers unless this disclosure is acceptable.
 
+When present in a protected header, the semantics are the same as for a COSE_Sign1: decrypted payload is expected to be the output of the hash function specified in the protected header.
+
 # IANA Considerations
 
 ## COSE Header Parameters
