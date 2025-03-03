@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 29 August 2025                                       DataTrails
+Expires: 4 September 2025                                     DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                        25 February 2025
+                                                            3 March 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 August 2025.
+   This Internet-Draft will expire on 4 September 2025.
 
 Copyright Notice
 
@@ -79,14 +79,14 @@ Table of Contents
    3.  Header Parameters
    4.  Hash Envelope CDDL
    5.  Envelope EDN
-   6.  Encrypted Hashes
-   7.  Security Considerations
-     7.1.  Choice of Hash Function
-   8.  IANA Considerations
-     8.1.  COSE Header Parameters
-   9.  References
-     9.1.  Normative References
-     9.2.  Informative References
+   6.  Security Considerations
+     6.1.  Choice of Hash Function
+     6.2.  Encrypted Hashes
+   7.  IANA Considerations
+     7.1.  COSE Header Parameters
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Appendix A.  Implementation Status
      A.1.  Transmute Prototype
      A.2.  DataTrails Preview
@@ -140,7 +140,7 @@ Table of Contents
 
    Hash_Envelope_Protected_Header = {
        ? &(alg: 1) => int,
-       ? &(payload_hash_alg: TBD_1) => int
+       &(payload_hash_alg: TBD_1) => int
        &(payload_preimage_content_type: TBD_2) => uint / tstr
        ? &(payload_location: TBD_3) => tstr
        * int / tstr => any
@@ -241,24 +241,14 @@ Table of Contents
    content type and location of the associated resource, in this case a
    software bill of materials.
 
-6.  Encrypted Hashes
+6.  Security Considerations
 
-   When present in COSE_Encrypt, the header parameters registered in
-   this document leak information about the ciphertext.  These
-   parameters SHOULD NOT be present in COSE_Encrypt headers unless this
-   disclosure is acceptable.
-
-7.  Security Considerations
-
-7.1.  Choice of Hash Function
+6.1.  Choice of Hash Function
 
    It is RECOMMENDED to align the strength of the chosen hash function
    to the strength of the chosen signature algorithm.  For example, when
    signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the
-   payload.  It is also possible to use this specification with
-   signature algorithms that support pre-hashing such as Ed25519ph which
-   is described in [RFC8032], or HashML-DSA which is described in
-   [FIPS-204].  Note that when using a pre-hash algorithm, the algorithm
+   payload.  Note that when using a pre-hash algorithm, the algorithm
    SHOULD be registered in the IANA COSE Algorithms registry, and should
    be distinguishable from non-pre hash variants that may also be
    present.  The approach this specification takes is just one way to
@@ -268,9 +258,20 @@ Table of Contents
    meaning the to be signed bytes include the cose structures necessary
    to distinguish a cose signature from other digital signature formats.
 
-8.  IANA Considerations
+6.2.  Encrypted Hashes
 
-8.1.  COSE Header Parameters
+   When present in COSE_Encrypt, the header parameters registered in
+   this document leak information about the ciphertext.  These
+   parameters SHOULD NOT be present in COSE_Encrypt headers unless this
+   disclosure is acceptable.
+
+   When present in a protected header, the semantics are the same as for
+   a COSE_Sign1: decrypted payload is expected to be the output of the
+   hash function specified in the protected header.
+
+7.  IANA Considerations
+
+7.1.  COSE Header Parameters
 
    IANA is requested to add the COSE header parameters defined in
    Section 3, as listed in Table 1, to the "COSE Header Parameters"
@@ -315,9 +316,9 @@ Table of Contents
        (3): https://www.iana.org/assignments/core-parameters/core-
                      parameters.xhtml#content-formats
 
-9.  References
+8.  References
 
-9.1.  Normative References
+8.1.  Normative References
 
    [IANA.cose_header-parameters]
               IANA, "COSE Header Parameters",
@@ -353,7 +354,7 @@ Table of Contents
               DOI 10.17487/RFC9110, June 2022,
               <https://www.rfc-editor.org/rfc/rfc9110>.
 
-9.2.  Informative References
+8.2.  Informative References
 
    [BCP205]   Best Current Practice 205,
               <https://www.rfc-editor.org/info/bcp205>.
@@ -364,20 +365,12 @@ Table of Contents
               RFC 7942, DOI 10.17487/RFC7942, July 2016,
               <https://www.rfc-editor.org/info/rfc7942>.
 
-   [FIPS-204] "Module-Lattice-Based Digital Signature Standard", n.d.,
-              <https://doi.org/10.6028/NIST.FIPS.204>.
-
    [I-D.draft-ietf-cbor-edn-literals]
               Bormann, C., "CBOR Extended Diagnostic Notation (EDN)",
               Work in Progress, Internet-Draft, draft-ietf-cbor-edn-
               literals-16, 8 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-cbor-
               edn-literals-16>.
-
-   [RFC8032]  Josefsson, S. and I. Liusvaara, "Edwards-Curve Digital
-              Signature Algorithm (EdDSA)", RFC 8032,
-              DOI 10.17487/RFC8032, January 2017,
-              <https://www.rfc-editor.org/rfc/rfc8032>.
 
 Appendix A.  Implementation Status
 
