@@ -87,13 +87,13 @@ TBD_1:
   : the hash algorithm used to produce the payload.
 
 TBD_2:
-  : the content type of the bytes that were hashed (preimage) to produce the payload, given as a content-format number ({{Section 12.3 of RFC7252}}) or as a media-type name optionally with parameters ({{Section 8.3 of RFC9110}}).
+  : the length of the bytes that were hashed (pre-image) to produce the payload.
 
 TBD_3:
-  : an identifier enabling retrieval of the original resource (preimage) identified by the payload.
+  : the content type of the bytes that were hashed (preimage) to produce the payload, given as a content-format number ({{Section 12.3 of RFC7252}}) or as a media-type name optionally with parameters ({{Section 8.3 of RFC9110}}).
 
 TBD_4:
-  : the length of the bytes that were hashed (pre-image) to produce the payload.
+  : an identifier enabling retrieval of the original resource (preimage) identified by the payload.
 
 # Hash Envelope CDDL
 
@@ -101,9 +101,9 @@ TBD_4:
 Hash_Envelope_Protected_Header = {
     ? &(alg: 1) => int,
     ? &(payload_hash_alg: TBD_1) => int
-    &(payload_preimage_content_type: TBD_2) => uint / tstr
-    &(payload_preimage_length: TBD_4) => int
-    ? &(payload_location: TBD_3) => tstr
+    &(payload_preimage_length: TBD_2) => int
+    &(payload_preimage_content_type: TBD_3) => uint / tstr
+    ? &(payload_location: TBD_4) => tstr
     * int / tstr => any
 }
 
@@ -123,15 +123,15 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 
 - Label `1` (alg) Cryptographic algorithm to use
 - Label `TBD_1` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
-- Label `TBD_2` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.
-- Label `TBD_3` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
-- Label `TBD_4` (payload_preimage_length) MUST be added to the protected header and MUST NOT be presented in the unprotected header.
+- Label `TBD_2` (payload_preimage_length) MUST be added to the protected header and MUST NOT be presented in the unprotected header.
+- Label `TBD_3` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.
+- Label `TBD_4` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
 - Label `3` (content_type) MUST NOT be present in the protected or unprotected headers.
 
-Label `3` is easily confused with label `TBD_2` payload_preimage_content_type.
+Label `3` is easily confused with label `TBD_3` payload_preimage_content_type.
 The difference between content_type (3) and payload_preimage_content_type (TBD2) is content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
 
-Profiles that rely on this specification MAY choose to mark TBD_1, TBD_2, TBD_3 (or other header parameters) critical, see {{Section C.1.3 of RFC9052}} for more details.
+Profiles that rely on this specification MAY choose to mark TBD_1, TBD_3, TBD_4 (or other header parameters) critical, see {{Section C.1.3 of RFC9052}} for more details.
 
 # Envelope EDN
 
@@ -144,10 +144,10 @@ The following informative example demonstrates how to construct a hash envelope 
     / key identifier          / 4: h'75726e3a...32636573',
     / cose sign1 type         / 16: "application/example+cose",
     / hash algorithm          / TBD_1: -16, # sha256
-    / media type              / TBD_2: "application/spdx+json",
-    / payload preimage length / TBD_4: 1482,
+    / payload preimage length / TBD_2: 1482,
+    / media type              / TBD_3: "application/spdx+json",
     / location                /
-         TBD_3: "https://sbom.example/.../manifest.spdx.json"
+         TBD_4: "https://sbom.example/.../manifest.spdx.json"
   }>>
   / unprotected / {},
   / payload     / h'935b5a91...e18a588a',
@@ -200,13 +200,14 @@ IANA is requested to add the COSE header parameters defined in {{param-spec}}, a
 | Name                     | Label | Value Type  | (1)    | Description                                                                                                                       | Reference             |
 |--------------------------|-------|-------------|--------|-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
 | `payload-hash-alg`       | TBD_1 | int         | (2)    | The hash algorithm used to produce the payload of a COSE_Sign1                                                                    | {{&SELF}}, {{param-spec}} |
-| `preimage-content-type`  | TBD_2 | uint / tstr | (3)    | The content-format number or content-type (media-type name) of data that has been hashed to produce the payload of the COSE_Sign1 | {{&SELF}}, {{param-spec}} |
-| `payload-location`       | TBD_3 | tstr        | (none) | The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1                                 | {{&SELF}}, {{param-spec}} |
-| `payload-preimage-length`| TBD_4 | int         | (?)    | the length of the bytes that were hashed (pre-image) to produce the payload. of the COSE_Sign1                                    | {{&SELF}}, {{param-spec}} |
+| `payload-preimage-length`| TBD_2 | int         | (3)    | the length of the bytes that were hashed (pre-image) to produce the payload. of the COSE_Sign1                                    | {{&SELF}}, {{param-spec}} |
+| `preimage-content-type`  | TBD_3 | uint / tstr | (4)    | The content-format number or content-type (media-type name) of data that has been hashed to produce the payload of the COSE_Sign1 | {{&SELF}}, {{param-spec}} |
+| `payload-location`       | TBD_4 | tstr        | (none) | The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1                                 | {{&SELF}}, {{param-spec}} |
 {: #iana-header-params title="Newly registered COSE Header Parameters
 &br;(1): Value Registry
 &br;(2): https://www.iana.org/assignments/cose/cose.xhtml#algorithms
-&br;(3): https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats"}
+&br;(3): https://www.iana.org/assignments/cose/cose.xhtml#header-parameters
+&br;(4): https://www.iana.org/assignments/core-parameters/core-parameters.xhtml#content-formats"}
 
 --- back
 
