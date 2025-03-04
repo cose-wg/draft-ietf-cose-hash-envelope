@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-02T00:41:00.770279+00:00",
+  "timestamp": "2025-03-04T00:38:35.243202+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -500,15 +500,17 @@
       "id": "I_kwDOKqKrRc6rbeGj",
       "title": "Ilari's review for -02",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/44",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "OR13",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "has-pr"
+      ],
       "body": "https://mailarchive.ietf.org/arch/msg/cose/eWRIhMnZjTkUxmESzjNV0nSBvPQ/",
       "createdAt": "2025-02-24T20:42:24Z",
-      "updatedAt": "2025-02-24T20:42:24Z",
-      "closedAt": null,
+      "updatedAt": "2025-03-03T21:55:50Z",
+      "closedAt": "2025-03-03T21:55:50Z",
       "comments": []
     }
   ],
@@ -3364,26 +3366,82 @@
       "id": "PR_kwDOKqKrRc6Mhf5p",
       "title": "Incorporate feedback from Ilari",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/45",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Fixes #44 ",
       "createdAt": "2025-02-25T19:34:57Z",
-      "updatedAt": "2025-02-25T19:34:57Z",
+      "updatedAt": "2025-03-03T21:55:49Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "c843e640fac94878b3a78f2650633c51ee131ef5",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "draft-02-feedback",
-      "headRefOid": "7aaa0eff3e6107ad44df7b4f90e17ecaeae5e029",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "04bfb00b61a309b5d4177296bf6eaf5dfc261a9f",
+      "closedAt": "2025-03-03T21:55:49Z",
+      "mergedAt": "2025-03-03T21:55:49Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "895a6923ef473a6a5522f6779033097cc0d14b7a"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6eOwjf",
+          "commit": {
+            "abbreviatedOid": "7aaa0ef"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-03T16:40:45Z",
+          "updatedAt": "2025-03-03T16:40:45Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "This is essential, as the hash algorithm MUST be signed to prevent hash algorithm substitution attacks.\r\n\r\nThe hash algorithm also conveys the length of the payload, for sha256, the payload will be 32 bytes.\r\n\r\nThe size of the preimage, is not relevant, assuming you trust the hash function.",
+              "createdAt": "2025-03-03T16:40:45Z",
+              "updatedAt": "2025-03-03T16:40:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6eOxzc",
+          "commit": {
+            "abbreviatedOid": "7aaa0ef"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-03T16:42:53Z",
+          "updatedAt": "2025-03-03T16:42:54Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "```suggestion\r\nThese parameters SHOULD NOT be present in COSE_Encrypt headers unless this disclosure is acceptable.\r\n\r\nWhen present in a protected header, the semantics are the same as for a COSE_Sign1: decrypted payload is expected to be the output of the hash function specified in the protected header.\r\n```",
+              "createdAt": "2025-03-03T16:42:54Z",
+              "updatedAt": "2025-03-03T18:35:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6eOyRI",
+          "commit": {
+            "abbreviatedOid": "7aaa0ef"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-03T16:43:42Z",
+          "updatedAt": "2025-03-03T16:43:42Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 46,
@@ -3395,21 +3453,103 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "Resolves #44 \r\n\r\nLeaving as a draft as there's a bit more feedback to incorporate, including which registry content-length already exists or needs to be added.",
+      "body": "Resolves #44 \r\n",
       "createdAt": "2025-02-28T20:23:08Z",
-      "updatedAt": "2025-02-28T20:23:17Z",
+      "updatedAt": "2025-03-03T21:34:34Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "c843e640fac94878b3a78f2650633c51ee131ef5",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "issue-44",
-      "headRefOid": "dc88171147dc01a90db4afd0c968704690027d96",
+      "headRefOid": "b1172b415e3cba20573aa7bbf8f1ba5b0422bd99",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Adding some notes from the meeting:\r\n- it's useful to be able to verify the length, and not have a DOS attack for sending a 2tb payload to verify\r\n- it's minimally burdensome to the creator of the hash-envelope as they have the size/length at the time they create the hash. They just need to set the property\r\n- we do need to register the property in the COSE registry",
+          "createdAt": "2025-03-03T19:51:35Z",
+          "updatedAt": "2025-03-03T19:51:35Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6eObmF",
+          "commit": {
+            "abbreviatedOid": "b1172b4"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-03T16:08:22Z",
+          "updatedAt": "2025-03-03T16:08:22Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "No, we don't need to include length.\r\nThe purpose of a hash function is to compress an arbitrary length to a fixed length.\r\nThe purpose of the hash algorithm is to define that fixed length and the security of the hash function algorithm (for example md5 / sha1 .... vs sha256)",
+              "createdAt": "2025-03-03T16:08:22Z",
+              "updatedAt": "2025-03-03T16:34:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6eObys",
+          "commit": {
+            "abbreviatedOid": "b1172b4"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-03T16:08:40Z",
+          "updatedAt": "2025-03-03T16:08:41Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "No, what? Can you provide some constructive insight?",
+              "createdAt": "2025-03-03T16:08:41Z",
+              "updatedAt": "2025-03-03T16:09:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6eOdAs",
+          "commit": {
+            "abbreviatedOid": "b1172b4"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "Lets not add length.",
+          "createdAt": "2025-03-03T16:10:10Z",
+          "updatedAt": "2025-03-03T16:10:10Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6eRi4d",
+          "commit": {
+            "abbreviatedOid": "b1172b4"
+          },
+          "author": "robinbryce",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-03T21:34:33Z",
+          "updatedAt": "2025-03-03T21:34:34Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "@OR13 I get that the creator of the envelope knows the length, but how would a verifier know how much content to fetch from a remote location in order to check the hash ?",
+              "createdAt": "2025-03-03T21:34:33Z",
+              "updatedAt": "2025-03-03T21:35:17Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
