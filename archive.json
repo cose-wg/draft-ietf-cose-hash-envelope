@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-04T00:38:35.243202+00:00",
+  "timestamp": "2025-03-06T00:38:26.253765+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -3455,7 +3455,7 @@
       "labels": [],
       "body": "Resolves #44 \r\n",
       "createdAt": "2025-02-28T20:23:08Z",
-      "updatedAt": "2025-03-03T21:34:34Z",
+      "updatedAt": "2025-03-04T03:00:07Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "c843e640fac94878b3a78f2650633c51ee131ef5",
@@ -3546,6 +3546,26 @@
               "body": "@OR13 I get that the creator of the envelope knows the length, but how would a verifier know how much content to fetch from a remote location in order to check the hash ?",
               "createdAt": "2025-03-03T21:34:33Z",
               "updatedAt": "2025-03-03T21:35:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6eTF4e",
+          "commit": {
+            "abbreviatedOid": "b1172b4"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-04T03:00:06Z",
+          "updatedAt": "2025-03-04T03:00:07Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "This would make the hash over a partial of the original file...\n\nIn the case that the file was a large image, a hash over part of it, has little utility.\n\nA clever adversary could then modify all the bytes after the length, without impacting the hash.\n\nI don't support the proposed changes, and I need more information to understand how this is supposed to improve the security of the draft.",
+              "createdAt": "2025-03-04T03:00:07Z",
+              "updatedAt": "2025-03-04T03:00:07Z"
             }
           ]
         }
