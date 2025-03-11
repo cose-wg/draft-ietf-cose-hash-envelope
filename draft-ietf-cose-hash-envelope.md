@@ -191,7 +191,7 @@ IANA is requested to add the COSE header parameters defined in {{param-spec}}, a
 | Name                    | Label | Value Type  | (1)    | Description                                                                                                                       | Reference             |
 |-------------------------|-------|-------------|--------|-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
 | `payload-hash-alg`      | 258 | int         | (2)    | The hash algorithm used to produce the payload of a COSE_Sign1                                                                    | {{&SELF}}, {{param-spec}} |
-| `preimage content type` | 259 | uint / tstr | (3)    | The content-format number or content-type (media-type name) of data that has been hashed to produce the payload of the COSE_Sign1 | {{&SELF}}, {{param-spec}} |
+| `preimage-content-type` | 259 | uint / tstr | (3)    | The content-format number or content-type (media-type name) of data that has been hashed to produce the payload of the COSE_Sign1 | {{&SELF}}, {{param-spec}} |
 | `payload-location`      | 260 | tstr        | (none) | The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1                                 | {{&SELF}}, {{param-spec}} |
 {: #iana-header-params title="Newly registered COSE Header Parameters
 &br;(1): Value Registry
