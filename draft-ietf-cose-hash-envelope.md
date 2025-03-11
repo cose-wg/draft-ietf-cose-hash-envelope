@@ -79,13 +79,13 @@ The terms COSE, CDDL, and EDN are defined in {{-COSE}}, {{-CDDL}}, {{-EDN}} resp
 
 This document specifies the following new header parameters commonly used alongside hashes to identify resources:
 
-TBD_1:
+258:
   : the hash algorithm used to produce the payload.
 
-TBD_2:
+259:
   : the content type of the bytes that were hashed (preimage) to produce the payload, given as a content-format number ({{Section 12.3 of RFC7252}}) or as a media-type name optionally with parameters ({{Section 8.3 of RFC9110}}).
 
-TBD_3:
+260:
   : an identifier enabling retrieval of the original resource (preimage) identified by the payload.
 
 # Hash Envelope CDDL
@@ -93,9 +93,9 @@ TBD_3:
 ~~~ cddl
 Hash_Envelope_Protected_Header = {
     ? &(alg: 1) => int,
-    &(payload_hash_alg: TBD_1) => int
-    &(payload_preimage_content_type: TBD_2) => uint / tstr
-    ? &(payload_location: TBD_3) => tstr
+    &(payload_hash_alg: 258) => int
+    &(payload_preimage_content_type: 259) => uint / tstr
+    ? &(payload_location: 260) => tstr
     * int / tstr => any
 }
 
@@ -114,15 +114,15 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 ~~~
 
 - Label `1` (alg) Cryptographic algorithm to use
-- Label `TBD_1` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
-- Label `TBD_2` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.
-- Label `TBD_3` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
+- Label `258` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
+- Label `259` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.
+- Label `260` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
 - Label `3` (content_type) MUST NOT be present in the protected or unprotected headers.
 
-Label `3` is easily confused with label `TBD_2` payload_preimage_content_type.
+Label `3` is easily confused with label `259` payload_preimage_content_type.
 The difference between content_type (3) and payload_preimage_content_type (TBD2) is content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
 
-Profiles that rely on this specification MAY choose to mark TBD_1, TBD_2, TBD_3 (or other header parameters) critical, see {{Section C.1.3 of RFC9052}} for more details.
+Profiles that rely on this specification MAY choose to mark 258, 259, 260 (or other header parameters) critical, see {{Section C.1.3 of RFC9052}} for more details.
 
 # Envelope EDN
 
@@ -134,10 +134,10 @@ The following informative example demonstrates how to construct a hash envelope 
     / signature alg   / 1: -35, # ES384
     / key identifier  / 4: h'75726e3a...32636573',
     / cose sign1 type / 16: "application/example+cose",
-    / hash algorithm  / TBD_1: -16, # sha256
-    / media type      / TBD_2: "application/spdx+json",
+    / hash algorithm  / 258: -16, # sha256
+    / media type      / 259: "application/spdx+json",
     / location        /
-         TBD_3: "https://sbom.example/.../manifest.spdx.json"
+         260: "https://sbom.example/.../manifest.spdx.json"
   }>>
   / unprotected / {},
   / payload     / h'935b5a91...e18a588a',
@@ -190,9 +190,9 @@ IANA is requested to add the COSE header parameters defined in {{param-spec}}, a
 
 | Name                    | Label | Value Type  | (1)    | Description                                                                                                                       | Reference             |
 |-------------------------|-------|-------------|--------|-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| `payload-hash-alg`      | TBD_1 | int         | (2)    | The hash algorithm used to produce the payload of a COSE_Sign1                                                                    | {{&SELF}}, {{param-spec}} |
-| `preimage content type` | TBD_2 | uint / tstr | (3)    | The content-format number or content-type (media-type name) of data that has been hashed to produce the payload of the COSE_Sign1 | {{&SELF}}, {{param-spec}} |
-| `payload-location`      | TBD_3 | tstr        | (none) | The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1                                 | {{&SELF}}, {{param-spec}} |
+| `payload-hash-alg`      | 258 | int         | (2)    | The hash algorithm used to produce the payload of a COSE_Sign1                                                                    | {{&SELF}}, {{param-spec}} |
+| `preimage content type` | 259 | uint / tstr | (3)    | The content-format number or content-type (media-type name) of data that has been hashed to produce the payload of the COSE_Sign1 | {{&SELF}}, {{param-spec}} |
+| `payload-location`      | 260 | tstr        | (none) | The string or URI hint for the location of the data hashed to produce the payload of a COSE_Sign1                                 | {{&SELF}}, {{param-spec}} |
 {: #iana-header-params title="Newly registered COSE Header Parameters
 &br;(1): Value Registry
 &br;(2): https://www.iana.org/assignments/cose/cose.xhtml#algorithms
