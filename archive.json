@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-11T00:38:40.129347+00:00",
+  "timestamp": "2025-03-13T00:39:08.517985+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -456,7 +456,7 @@
       "id": "I_kwDOKqKrRc6eGXVf",
       "title": "Request for Pre-Allocation",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/31",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -465,8 +465,8 @@
       "labels": [],
       "body": "From IETF 121, agreement to move forward with pre-allocations for:\r\n- payload_hash_alg: TBD_1  \r\nthe hash algorithm used to produce the payload.\r\n- payload_preimage_content_type: TBD_2  \r\nthe content type of the bytes that were hashed to produce the payload.\r\n- payload_location: TBD_3  \r\nan identifier enabling a verifier to retrieve the bytes which were hashed to produce the payload.\r\n",
       "createdAt": "2024-11-12T15:05:38Z",
-      "updatedAt": "2025-02-25T15:09:09Z",
-      "closedAt": null,
+      "updatedAt": "2025-03-11T14:55:26Z",
+      "closedAt": "2025-03-11T14:55:26Z",
       "comments": [
         {
           "author": "OR13",
@@ -3455,7 +3455,7 @@
       "labels": [],
       "body": "Resolves #44 \r\n",
       "createdAt": "2025-02-28T20:23:08Z",
-      "updatedAt": "2025-03-04T03:00:07Z",
+      "updatedAt": "2025-03-11T15:10:23Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "c843e640fac94878b3a78f2650633c51ee131ef5",
@@ -3473,6 +3473,13 @@
           "body": "Adding some notes from the meeting:\r\n- it's useful to be able to verify the length, and not have a DOS attack for sending a 2tb payload to verify\r\n- it's minimally burdensome to the creator of the hash-envelope as they have the size/length at the time they create the hash. They just need to set the property\r\n- we do need to register the property in the COSE registry",
           "createdAt": "2025-03-03T19:51:35Z",
           "updatedAt": "2025-03-03T19:51:35Z"
+        },
+        {
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We now have 2 example protocols that use size and hash.\r\n\r\n- OCI - hash, content type, size\r\n- GIT LFS - hash, size\r\n\r\nBoth of them advocate for checking the size as part of trusting the artifact.\r\nI think for a security spec, it is better to just check the hash, and leave it to the transfer protocol to handle the size issues.",
+          "createdAt": "2025-03-11T15:10:21Z",
+          "updatedAt": "2025-03-11T15:10:21Z"
         }
       ],
       "reviews": [
@@ -3568,6 +3575,81 @@
               "updatedAt": "2025-03-04T03:00:07Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "id": "PR_kwDOKqKrRc6OLmW-",
+      "title": "Update draft-ietf-cose-hash-envelope.md",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/47",
+      "state": "MERGED",
+      "author": "achamayou",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Allocation happened in https://www.iana.org/assignments/cose/cose.xhtml, closes #31.",
+      "createdAt": "2025-03-11T14:50:21Z",
+      "updatedAt": "2025-03-11T14:55:25Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "895a6923ef473a6a5522f6779033097cc0d14b7a",
+      "headRepository": "achamayou/draft-ietf-cose-hash-envelope",
+      "headRefName": "patch-1",
+      "headRefOid": "79c8d01523eb89c82c167c487e2745c211e4372d",
+      "closedAt": "2025-03-11T14:55:25Z",
+      "mergedAt": "2025-03-11T14:55:25Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "cc8b27579f60bcf45daff4ec6d2fea3594a2e04a"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6fb_SP",
+          "commit": {
+            "abbreviatedOid": "cc7cafc"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-11T14:52:17Z",
+          "updatedAt": "2025-03-11T14:52:17Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6fcAj8",
+          "commit": {
+            "abbreviatedOid": "cc7cafc"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-11T14:53:37Z",
+          "updatedAt": "2025-03-11T14:53:38Z",
+          "comments": [
+            {
+              "originalPosition": 73,
+              "body": "```suggestion\r\n| `preimage-content-type` | 259 | uint / tstr | (3)    | The content-format number or content-type (media-type name) of data that has been hashed to produce the payload of the COSE_Sign1 | {{&SELF}}, {{param-spec}} |\r\n```",
+              "createdAt": "2025-03-11T14:53:37Z",
+              "updatedAt": "2025-03-11T14:53:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6fcBPI",
+          "commit": {
+            "abbreviatedOid": "79c8d01"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM, thanks @henkbirkholz ",
+          "createdAt": "2025-03-11T14:54:18Z",
+          "updatedAt": "2025-03-11T14:54:18Z",
+          "comments": []
         }
       ]
     }
