@@ -120,7 +120,7 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 - Label `3` (content_type) MUST NOT be present in the protected or unprotected headers.
 
 Label `3` is easily confused with label `259` payload_preimage_content_type.
-The difference between content_type (3) and payload_preimage_content_type (TBD2) is content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
+The difference between content_type (3) and payload_preimage_content_type (259) is content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
 
 Profiles that rely on this specification MAY choose to mark 258, 259, 260 (or other header parameters) critical, see {{Section C.1.3 of RFC9052}} for more details.
 
