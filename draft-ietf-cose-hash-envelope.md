@@ -115,7 +115,7 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 
 - Label `1` (alg) Cryptographic algorithm to use
 - Label `258` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
-- Label `259` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.
+- Label `259` (content type of the preimage of the payload) MUST be present in the protected header and MUST NOT be present in the unprotected header.
 - Label `260` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
 - Label `3` (content_type) MUST NOT be present in the protected or unprotected headers.
 
