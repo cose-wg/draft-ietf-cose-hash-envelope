@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 20 August 2025                                       DataTrails
+Expires: 20 September 2025                                    DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                        16 February 2025
+                                                           19 March 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 August 2025.
+   This Internet-Draft will expire on 20 September 2025.
 
 Copyright Notice
 
@@ -79,17 +79,14 @@ Table of Contents
    3.  Header Parameters
    4.  Hash Envelope CDDL
    5.  Envelope EDN
-   6.  Encrypted Hashes
-   7.  Security Considerations
-     7.1.  Choice of Hash Function
-   8.  IANA Considerations
-     8.1.  COSE Header Algorithm Parameters
-       8.1.1.  Payload Hash Algorithm
-       8.1.2.  Payload Pre-image Content Type
-       8.1.3.  Payload Location
-   9.  References
-     9.1.  Normative References
-     9.2.  Informative References
+   6.  Security Considerations
+     6.1.  Choice of Hash Function
+     6.2.  Encrypted Hashes
+   7.  IANA Considerations
+     7.1.  COSE Header Parameters
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Appendix A.  Implementation Status
      A.1.  Transmute Prototype
      A.2.  DataTrails Preview
@@ -100,26 +97,18 @@ Table of Contents
 1.  Introduction
 
    COSE defined detached payloads in Section 2 of [RFC9052], using nil
-   as the payload.  In order to verify a signature over a detached
-   payload, the verifier must have access to the payload content.
-   Storing a hash of the content allows for small signature envelopes,
-   that are easy to transport and verify independently.  Additional
-   hints in the protected header ensure cryptographic agility for the
-   hashing & signing algorithms, and discoverability for the original
-   content which could be prohibitively large to move over a network.
-   When producing COSE_sign1 with remote signing services, such as a
-   signing api exposed over HTTPS and backed by an HSM, the "ToBeSigned"
-   bytes as described in Section 4.4 of [RFC9052] need to be transmitted
-   to the HSM in order to be signed.  Some signature algorithms such as
-   ES256 or ES384 allow the "ToBeSigned" to be hashed on the client and
-   sent to the server along with metadata in order to produce a
-   signature.  Other signature algorithms such as EdDSA with Ed25519, or
-   ML-DSA do not expose such a capability.  By producing the
-   "ToBeSigned" on the client, and ensuring that the payload is always a
-   hashed value, the total size of the message to be sent to the service
-   for signing is constrained.  It is still possible for the protected
-   header to be large, but the payload will always be of a fixed size,
-   associated with the hash function chosen.
+   as the payload.  In order to verify a signature over a cose-sign1,
+   the signature checker requires access to the payload content.  Hashes
+   are already used on a regular basis as identifiers for payload data,
+   such as documents or software components.  As hashes typically are
+   smaller than the payload data they represent, they are simpler to
+   transport.  Additional hints in the protected header ensure
+   cryptographic agility for the hashing and signing algorithms.  Hashes
+   and other identifiers are commonly used as hints to discover and
+   distinguish resources.  Using a hash as an identifier for a resource
+   has the advantage of enabling integrity checking.  In some
+   applications, such as remote signing procedures, conveyance of hashes
+   instead original payload content reduce transmission time and costs.
 
 2.  Terminology
 
@@ -134,24 +123,26 @@ Table of Contents
 
 3.  Header Parameters
 
-   To represent a hash of a payload, the following headers are defined:
+   This document specifies the following new header parameters commonly
+   used alongside hashes to identify resources:
 
-   TBD_1:  the hash algorithm used to produce the payload.
+   258:  the hash algorithm used to produce the payload.
 
-   TBD_2:  the content type of the bytes that were hashed to produce the
-      payload.
+   259:  the content type of the bytes that were hashed (preimage) to
+      produce the payload, given as a content-format number
+      (Section 12.3 of [RFC7252]) or as a media-type name optionally
+      with parameters (Section 8.3 of [RFC9110]).
 
-   TBD_3:  an identifier enabling a verifier to retrieve the bytes which
-      were hashed to produce the payload.
+   260:  an identifier enabling retrieval of the original resource
+      (preimage) identified by the payload.
 
 4.  Hash Envelope CDDL
 
    Hash_Envelope_Protected_Header = {
        ? &(alg: 1) => int,
-       ? &(typ: 16) => uint / tstr
-       &(payload_hash_alg: TBD_1) => int
-       &(payload_preimage_content_type: TBD_2) => uint / tstr
-       ? &(payload_location: TBD_3) => tstr
+       &(payload_hash_alg: 258) => int
+       &(payload_preimage_content_type: 259) => uint / tstr
+       ? &(payload_location: 260) => tstr
        * int / tstr => any
    }
 
@@ -170,79 +161,95 @@ Table of Contents
 
    *  Label 1 (alg) Cryptographic algorithm to use
 
-   *  Label 16 (typ) MAY be used to assign a content format or media
-      type to the entire hash envelope.
-
-   *  Label TBD_1 (payload hash alg) MUST be present in the protected
+   *  Label 258 (payload hash alg) MUST be present in the protected
       header and MUST NOT be present in the unprotected header.
 
-   *  Label TBD_2 (content type of the preimage of the payload) MAY be
-      present in the protected header or unprotected header.
+   *  Label 259 (content type of the preimage of the payload) MUST be
+      present in the protected header and MUST NOT be present in the
+      unprotected header.
 
-   *  Label TBD_3 (payload_location) MAY be added to the protected
-      header and MUST NOT be presented in the unprotected header.
+   *  Label 260 (payload_location) MAY be added to the protected header
+      and MUST NOT be presented in the unprotected header.
 
    *  Label 3 (content_type) MUST NOT be present in the protected or
       unprotected headers.
 
-   Label 3 is easily confused with label TBD_2
+   Label 3 is easily confused with label 259
    payload_preimage_content_type.  The difference between content_type
-   (3) and payload_preimage_content_type (TBD2) is content_type is used
+   (3) and payload_preimage_content_type (259) is content_type is used
    to identify the content format associated with payload, whereas
    payload_preimage_content_type is used to identify the content format
    of the bytes which are hashed to produce the payload.
 
-   Profiles that rely on this specification MAY choose to mark TBD_1,
-   TBD_2, TBD_3 (or other header parameters) critical, see
-   Appendix C.1.3 of [RFC9052] for more details.
+   Profiles that rely on this specification MAY choose to mark 258, 259,
+   260 (or other header parameters) critical, see Appendix C.1.3 of
+   [RFC9052] for more details.
 
 5.  Envelope EDN
 
-   A hashed payload functions equivalently to an attached payload, with
-   the benefits of being compact in size and providing the ability to
-   validate the signature.
+   The following informative example demonstrates how to construct a
+   hash envelope for a resource already commonly referenced by its hash.
 
    18([ # cose-sign1
      <<{
-       / signature algorithm / 1:-35,
-       / kid /4: h'75726e3a...32636573',
-       / cose sign1 type /  16: "application/example+cose",
-       / hash alg / TBD_1: -16  # sha256
-
-       / media type / TBD_2: 51 # application/json-patch+json"
-       / location   / TBD_3: "https://blob.example/a24f9c19"
+       / signature alg   / 1: -35, # ES384
+       / key identifier  / 4: h'75726e3a...32636573',
+       / cose sign1 type / 16: "application/example+cose",
+       / hash algorithm  / 258: -16, # sha256
+       / media type      / 259: "application/spdx+json",
+       / location        /
+            260: "https://sbom.example/.../manifest.spdx.json"
      }>>
      / unprotected / {},
-     / payload     / h'935b5a91...e18a588a', # a sha256 hash
+     / payload     / h'935b5a91...e18a588a',
+            # As seen in manifest.spdx.json.sha256
      / signature   / h'15280897...93ef39e5'
+            # ECDSA Signature with SHA 384 and P-384
    ])
 
-   In this example, the sha256 hash algorithm (-16) is used to hash the
-   payload, which is of content type application/json-patch+json
-   identified by the content format 51.  The full payload is located at
-   "https://storage.example/244f...9c19".  The COSE_sign1 is of type
-   "application/example+cose".  The sha256 hash is signed with ES384
-   which starts by taking the sha384 hash of the payload (which is a
-   sha256 hash).
+   In this example, an SPDX software bill of materials (SBOM) in JSON
+   format is already commonly identified by its SHA256 hash.  For
+   example, some tooling generates a file, such as
+   manifest.spdx.json.sha256, which contains the SHA256 hash of the
+   corresponding manifest.spdx.json file.
 
-6.  Encrypted Hashes
+   The content type for manifest.spdx.json is already well known as
+   application/spdx+json, and is registered with IANA
+   (https://www.iana.org/assignments/media-types/application/spdx+json).
 
-   When present in COSE_Encrypt, the header parameters registered in
-   this document leak information about the ciphertext.  These
-   parameters SHOULD NOT be present in COSE_Encrypt headers unless this
-   disclosure is acceptable.
+   The full JSON SBOM is available at a URL, such as
+   https://sbom.example/.../manifest.spdx.json.
 
-7.  Security Considerations
+   The payload of this COSE_Sign1 is the SHA256 hash of the
+   manifest.spdx.json, which is typically found in an adjacent file
+   (manifest.spdx.json.sha256).
 
-7.1.  Choice of Hash Function
+   The type of this COSE_Sign1 is application/example+cose, but other
+   types may be used to establish more specific media types for
+   signatures of hashes.
+
+   The signature is produced using ES384 which means using ECDSA with
+   SHA384 hash function and P-384 elliptic curve.
+
+   This example is chosen to highlight that an existing system may use a
+   hash algorithm such as sha256.  This hash becomes the payload of a
+   COSE-Sign1.  When signed with a signature algorithm that is
+   parameterized via a hash function, such as ECDSA with SHA384, the to
+   be signed structure as described in Section 4.4 of RFC9052.
+
+   The resulting signature is computed over the protected header and
+   payload, providing integrity and authenticity for the hash algorithm,
+   content type and location of the associated resource, in this case a
+   software bill of materials.
+
+6.  Security Considerations
+
+6.1.  Choice of Hash Function
 
    It is RECOMMENDED to align the strength of the chosen hash function
    to the strength of the chosen signature algorithm.  For example, when
    signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the
-   payload.  It is also possible to use this specification with
-   signature algorithms that support pre-hashing such as Ed25519ph which
-   is described in [RFC8032], or HashML-DSA which is described in
-   [FIPS-204].  Note that when using a pre-hash algorithm, the algorithm
+   payload.  Note that when using a pre-hash algorithm, the algorithm
    SHOULD be registered in the IANA COSE Algorithms registry, and should
    be distinguishable from non-pre hash variants that may also be
    present.  The approach this specification takes is just one way to
@@ -252,73 +259,81 @@ Table of Contents
    meaning the to be signed bytes include the cose structures necessary
    to distinguish a cose signature from other digital signature formats.
 
-8.  IANA Considerations
+6.2.  Encrypted Hashes
 
-8.1.  COSE Header Algorithm Parameters
+   When present in COSE_Encrypt, the header parameters registered in
+   this document leak information about the ciphertext.  These
+   parameters SHOULD NOT be present in COSE_Encrypt headers unless this
+   disclosure is acceptable.
 
-   IANA is requested to add the following entries to the COSE Header
-   Algorithm Parameters Registry (https://www.iana.org/assignments/cose/
-   cose.xhtml).
+   When present in a protected header, the semantics are the same as for
+   a COSE_Sign1: decrypted payload is expected to be the output of the
+   hash function specified in the protected header.
 
-8.1.1.  Payload Hash Algorithm
+7.  IANA Considerations
 
-   *  Name: payload_hash_alg
+7.1.  COSE Header Parameters
 
-   *  Label: TBD_1
+   IANA is requested to add the COSE header parameters defined in
+   Section 3, as listed in Table 1, to the "COSE Header Parameters"
+   registry [IANA.cose_header-parameters], in the 'Integer values from
+   256 to 65535' range ('Specification Required' Registration
+   Procedure).
 
-   *  Value type: int
+    +=====================+=====+=====+======+==============+=========+
+    |Name                 |Label|Value|(1)   |Description   |Reference|
+    |                     |     |Type |      |              |         |
+    +=====================+=====+=====+======+==============+=========+
+    |payload-hash-alg     |258  |int  |(2)   |The hash      |RFCthis, |
+    |                     |     |     |      |algorithm used|Section 3|
+    |                     |     |     |      |to produce the|         |
+    |                     |     |     |      |payload of a  |         |
+    |                     |     |     |      |COSE_Sign1    |         |
+    +---------------------+-----+-----+------+--------------+---------+
+    |preimage-content-type|259  |uint |(3)   |The content-  |RFCthis, |
+    |                     |     |/    |      |format number |Section 3|
+    |                     |     |tstr |      |or content-   |         |
+    |                     |     |     |      |type (media-  |         |
+    |                     |     |     |      |type name) of |         |
+    |                     |     |     |      |data that has |         |
+    |                     |     |     |      |been hashed to|         |
+    |                     |     |     |      |produce the   |         |
+    |                     |     |     |      |payload of the|         |
+    |                     |     |     |      |COSE_Sign1    |         |
+    +---------------------+-----+-----+------+--------------+---------+
+    |payload-location     |260  |tstr |(none)|The string or |RFCthis, |
+    |                     |     |     |      |URI hint for  |Section 3|
+    |                     |     |     |      |the location  |         |
+    |                     |     |     |      |of the data   |         |
+    |                     |     |     |      |hashed to     |         |
+    |                     |     |     |      |produce the   |         |
+    |                     |     |     |      |payload of a  |         |
+    |                     |     |     |      |COSE_Sign1    |         |
+    +---------------------+-----+-----+------+--------------+---------+
 
-   *  Value registry: https://www.iana.org/assignments/cose/
-      cose.xhtml#algorithms
+              Table 1: Newly registered COSE Header Parameters
+                            (1): Value Registry
+      (2): https://www.iana.org/assignments/cose/cose.xhtml#algorithms
+        (3): https://www.iana.org/assignments/core-parameters/core-
+                      parameters.xhtml#content-formats
 
-   *  Description: The hash algorithm used to produce the payload of a
-      COSE_Sign1.
+8.  References
 
-8.1.2.  Payload Pre-image Content Type
+8.1.  Normative References
 
-   *  Name: payload_preimage_content_type
-
-   *  Label: TBD_2
-
-   *  Value type: uint / tstr
-
-   *  Value registry: COAP Content-Formats
-      (https://www.iana.org/assignments/core-parameters/core-
-      parameters.xhtml#content-formats) or Media Types
-      (https://www.iana.org/assignments/media-types/media-types.xhtml)
-      registry.
-
-   *  Description: The content format or media type of data that has
-      been hashed to produce the payload of a COSE_Sign1.
-
-8.1.3.  Payload Location
-
-   *  Name: payload_location
-
-   *  Label: TBD_3
-
-   *  Value type: tstr
-
-   *  Value registry: none
-
-   *  Description: The string or URI hint for the location of the data
-      hashed to produce the payload of a COSE_Sign1.
-
-9.  References
-
-9.1.  Normative References
-
-   [I-D.draft-ietf-cbor-edn-literals]
-              Bormann, C., "CBOR Extended Diagnostic Notation (EDN)",
-              Work in Progress, Internet-Draft, draft-ietf-cbor-edn-
-              literals-16, 8 January 2025,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-cbor-
-              edn-literals-16>.
+   [IANA.cose_header-parameters]
+              IANA, "COSE Header Parameters",
+              <https://www.iana.org/assignments/cose>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC7252]  Shelby, Z., Hartke, K., and C. Bormann, "The Constrained
+              Application Protocol (CoAP)", RFC 7252,
+              DOI 10.17487/RFC7252, June 2014,
+              <https://www.rfc-editor.org/rfc/rfc7252>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -335,7 +350,12 @@ Table of Contents
               DOI 10.17487/RFC9052, August 2022,
               <https://www.rfc-editor.org/rfc/rfc9052>.
 
-9.2.  Informative References
+   [RFC9110]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "HTTP Semantics", STD 97, RFC 9110,
+              DOI 10.17487/RFC9110, June 2022,
+              <https://www.rfc-editor.org/rfc/rfc9110>.
+
+8.2.  Informative References
 
    [BCP205]   Best Current Practice 205,
               <https://www.rfc-editor.org/info/bcp205>.
@@ -346,13 +366,12 @@ Table of Contents
               RFC 7942, DOI 10.17487/RFC7942, July 2016,
               <https://www.rfc-editor.org/info/rfc7942>.
 
-   [FIPS-204] "Module-Lattice-Based Digital Signature Standard", n.d.,
-              <https://doi.org/10.6028/NIST.FIPS.204>.
-
-   [RFC8032]  Josefsson, S. and I. Liusvaara, "Edwards-Curve Digital
-              Signature Algorithm (EdDSA)", RFC 8032,
-              DOI 10.17487/RFC8032, January 2017,
-              <https://www.rfc-editor.org/rfc/rfc8032>.
+   [I-D.draft-ietf-cbor-edn-literals]
+              Bormann, C., "CBOR Extended Diagnostic Notation (EDN)",
+              Work in Progress, Internet-Draft, draft-ietf-cbor-edn-
+              literals-16, 8 January 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-cbor-
+              edn-literals-16>.
 
 Appendix A.  Implementation Status
 
