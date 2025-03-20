@@ -94,7 +94,7 @@ This document specifies the following new header parameters commonly used alongs
 Hash_Envelope_Protected_Header = {
     ? &(alg: 1) => int,
     &(payload_hash_alg: 258) => int
-    &(payload_preimage_content_type: 259) => uint / tstr
+    ? &(payload_preimage_content_type: 259) => uint / tstr
     ? &(payload_location: 260) => tstr
     * int / tstr => any
 }
