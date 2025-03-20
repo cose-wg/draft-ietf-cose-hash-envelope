@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-18T00:38:48.840136+00:00",
+  "timestamp": "2025-03-20T00:38:31.473617+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -511,6 +511,24 @@
       "createdAt": "2025-02-24T20:42:24Z",
       "updatedAt": "2025-03-03T21:55:50Z",
       "closedAt": "2025-03-03T21:55:50Z",
+      "comments": []
+    },
+    {
+      "number": 49,
+      "id": "I_kwDOKqKrRc6uprw_",
+      "title": "Clarify behavior of preimage-content-type",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/49",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "has-pr"
+      ],
+      "body": "From: https://github.com/veraison/go-cose/pull/212#discussion_r2002203019\n> What happens if PreimageContentType exists in both the protected and unprotected headers? Is it a valid case? If it is valid, what happens if they have different values? This scenario is not defined in the draft.\n\nFrom draft 04:\n> Label 259 (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.\n\nToDo: clarify expected behavior:\n\n[ ] - Protected Header takes priority\n[ ] - Unprotected Header takes priority (seems very risky)\n[ ] - Update to be consistent with Label 258 (payload hash alg)\n> MUST be present in the protected header and MUST NOT be present in the unprotected header.",
+      "createdAt": "2025-03-19T01:11:46Z",
+      "updatedAt": "2025-03-19T01:26:35Z",
+      "closedAt": null,
       "comments": []
     }
   ],
@@ -3448,21 +3466,21 @@
       "id": "PR_kwDOKqKrRc6M_A9x",
       "title": "Add content-length",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/46",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Resolves #44 \r\n",
       "createdAt": "2025-02-28T20:23:08Z",
-      "updatedAt": "2025-03-11T15:10:23Z",
+      "updatedAt": "2025-03-18T06:25:40Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "c843e640fac94878b3a78f2650633c51ee131ef5",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "issue-44",
       "headRefOid": "b1172b415e3cba20573aa7bbf8f1ba5b0422bd99",
-      "closedAt": null,
+      "closedAt": "2025-03-18T06:25:40Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -3480,6 +3498,13 @@
           "body": "We now have 2 example protocols that use size and hash.\r\n\r\n- OCI - hash, content type, size\r\n- GIT LFS - hash, size\r\n\r\nBoth of them advocate for checking the size as part of trusting the artifact.\r\nI think for a security spec, it is better to just check the hash, and leave it to the transfer protocol to handle the size issues.",
           "createdAt": "2025-03-11T15:10:21Z",
           "updatedAt": "2025-03-11T15:10:21Z"
+        },
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing as we've discussed quite a bit.\r\n\r\n- Is size/length used as a checksum, meaning if the file once pulled doesn't match the length, it should fail\r\n- Is the size/length used to block a DOS attack for downloading a 2 TB+ file? In this case, the underlying protocol should handle querying the length/size to decide how to continue.\r\n\r\nThe belief is the underlying protocol for the location should deal with any length/size questions.",
+          "createdAt": "2025-03-18T06:25:40Z",
+          "updatedAt": "2025-03-18T06:25:40Z"
         }
       ],
       "reviews": [
@@ -3649,6 +3674,88 @@
           "body": "LGTM, thanks @henkbirkholz ",
           "createdAt": "2025-03-11T14:54:18Z",
           "updatedAt": "2025-03-11T14:54:18Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 48,
+      "id": "PR_kwDOKqKrRc6PD_sy",
+      "title": "Fix a missing TBD replacement",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/48",
+      "state": "MERGED",
+      "author": "achamayou",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Missed in #47",
+      "createdAt": "2025-03-18T08:56:30Z",
+      "updatedAt": "2025-03-18T09:16:52Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "cc8b27579f60bcf45daff4ec6d2fea3594a2e04a",
+      "headRepository": "achamayou/draft-ietf-cose-hash-envelope",
+      "headRefName": "patch-2",
+      "headRefOid": "bb39be6e30aa68ee3a36788b6e68903c683bddba",
+      "closedAt": "2025-03-18T09:16:52Z",
+      "mergedAt": "2025-03-18T09:16:52Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "02b2679e913a77ef64d918d3c5aabe114d822ae6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6gjUMy",
+          "commit": {
+            "abbreviatedOid": "bb39be6"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2025-03-18T09:16:45Z",
+          "updatedAt": "2025-03-18T09:16:45Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 50,
+      "id": "PR_kwDOKqKrRc6PMaRh",
+      "title": "Clarify preimage-content-type must be in the protected header",
+      "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/50",
+      "state": "OPEN",
+      "author": "SteveLasker",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #49 ",
+      "createdAt": "2025-03-19T01:26:11Z",
+      "updatedAt": "2025-03-19T02:48:34Z",
+      "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "baseRefName": "main",
+      "baseRefOid": "02b2679e913a77ef64d918d3c5aabe114d822ae6",
+      "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
+      "headRefName": "issue-49",
+      "headRefOid": "6fd20d2f4c67e45d10b33060a51c695de65f9e47",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOKqKrRc6gvWAA",
+          "commit": {
+            "abbreviatedOid": "6fd20d2"
+          },
+          "author": "aj-stein",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-19T02:48:34Z",
+          "updatedAt": "2025-03-19T02:48:34Z",
           "comments": []
         }
       ]
