@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 21 September 2025                                    DataTrails
+Expires: 22 September 2025                                    DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                           20 March 2025
+                                                           21 March 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 September 2025.
+   This Internet-Draft will expire on 22 September 2025.
 
 Copyright Notice
 
@@ -168,8 +168,8 @@ Table of Contents
       present in the protected header and MUST NOT be present in the
       unprotected header.
 
-   *  Label 260 (payload_location) MAY be added to the protected header
-      and MUST NOT be presented in the unprotected header.
+   *  Label 260 (payload_location) MAY be present in the protected
+      header and MUST NOT be present in the unprotected header.
 
    *  Label 3 (content_type) MUST NOT be present in the protected or
       unprotected headers.
