@@ -164,7 +164,7 @@ Table of Contents
    *  Label 258 (payload hash alg) MUST be present in the protected
       header and MUST NOT be present in the unprotected header.
 
-   *  Label 259 (content type of the preimage of the payload) MUST be
+   *  Label 259 (content type of the preimage of the payload) MAY be
       present in the protected header and MUST NOT be present in the
       unprotected header.
 
