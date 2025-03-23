@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-20T00:38:31.473617+00:00",
+  "timestamp": "2025-03-23T00:42:46.618250+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -3732,18 +3732,26 @@
       "labels": [],
       "body": "Fixes #49 ",
       "createdAt": "2025-03-19T01:26:11Z",
-      "updatedAt": "2025-03-19T02:48:34Z",
+      "updatedAt": "2025-03-21T06:41:07Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "02b2679e913a77ef64d918d3c5aabe114d822ae6",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "issue-49",
-      "headRefOid": "6fd20d2f4c67e45d10b33060a51c695de65f9e47",
+      "headRefOid": "c7ff42d47d98ed2f8d599bb022db262749530674",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Patiently waiting for \"the one and only @henkbirkholz\"",
+          "createdAt": "2025-03-21T06:41:06Z",
+          "updatedAt": "2025-03-21T06:41:06Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOKqKrRc6gvWAA",
@@ -3756,6 +3764,139 @@
           "body": "",
           "createdAt": "2025-03-19T02:48:34Z",
           "updatedAt": "2025-03-19T02:48:34Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6hCeww",
+          "commit": {
+            "abbreviatedOid": "6fd20d2"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2025-03-20T09:05:24Z",
+          "updatedAt": "2025-03-20T09:05:33Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\n- Label `259` (content type of the preimage of the payload) MAY be present in the protected header and MUST NOT be present in the unprotected header.\n```\n",
+              "createdAt": "2025-03-20T09:05:24Z",
+              "updatedAt": "2025-03-20T09:05:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6hCfdx",
+          "commit": {
+            "abbreviatedOid": "6fd20d2"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-20T09:06:35Z",
+          "updatedAt": "2025-03-20T09:06:35Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Your proposed change makes this parameter required.\n\nYour intention is to make it optional, but only allowed in the protected header.",
+              "createdAt": "2025-03-20T09:06:35Z",
+              "updatedAt": "2025-03-20T09:06:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6hDBzy",
+          "commit": {
+            "abbreviatedOid": "6fd20d2"
+          },
+          "author": "SteveLasker",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-20T09:47:14Z",
+          "updatedAt": "2025-03-20T09:47:14Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "the CDDL shows required, so which do we want to be consistent with?\r\n\r\nhttps://cose-wg.github.io/draft-ietf-cose-hash-envelope/draft-ietf-cose-hash-envelope.html#section-4",
+              "createdAt": "2025-03-20T09:47:14Z",
+              "updatedAt": "2025-03-20T09:47:14Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6hE3vN",
+          "commit": {
+            "abbreviatedOid": "6fd20d2"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-20T12:01:16Z",
+          "updatedAt": "2025-03-20T12:01:16Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "We don't want anything other than hash algorithm to be required.",
+              "createdAt": "2025-03-20T12:01:16Z",
+              "updatedAt": "2025-03-20T12:01:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6hFIb4",
+          "commit": {
+            "abbreviatedOid": "21418a4"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-20T12:14:27Z",
+          "updatedAt": "2025-03-20T12:14:27Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "I fixed the CDDL above",
+              "createdAt": "2025-03-20T12:14:27Z",
+              "updatedAt": "2025-03-20T12:14:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6hFJQ8",
+          "commit": {
+            "abbreviatedOid": "21418a4"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-20T12:15:10Z",
+          "updatedAt": "2025-03-20T12:15:10Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "```suggestion\r\n- Label `260` (payload_location) MAY be present in the protected header and MUST NOT be present in the unprotected header.\r\n```",
+              "createdAt": "2025-03-20T12:15:10Z",
+              "updatedAt": "2025-03-20T12:19:34Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6hNSRR",
+          "commit": {
+            "abbreviatedOid": "c7ff42d"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-21T03:07:07Z",
+          "updatedAt": "2025-03-21T03:07:07Z",
           "comments": []
         }
       ]
