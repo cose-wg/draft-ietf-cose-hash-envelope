@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                 Transmute
 Intended status: Standards Track                               S. Lasker
-Expires: 19 September 2025                                    DataTrails
+Expires: 29 September 2025                                    DataTrails
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                           18 March 2025
+                                                           28 March 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 September 2025.
+   This Internet-Draft will expire on 29 September 2025.
 
 Copyright Notice
 
@@ -141,7 +141,7 @@ Table of Contents
    Hash_Envelope_Protected_Header = {
        ? &(alg: 1) => int,
        &(payload_hash_alg: 258) => int
-       &(payload_preimage_content_type: 259) => uint / tstr
+       ? &(payload_preimage_content_type: 259) => uint / tstr
        ? &(payload_location: 260) => tstr
        * int / tstr => any
    }
@@ -165,10 +165,11 @@ Table of Contents
       header and MUST NOT be present in the unprotected header.
 
    *  Label 259 (content type of the preimage of the payload) MAY be
-      present in the protected header or unprotected header.
+      present in the protected header and MUST NOT be present in the
+      unprotected header.
 
-   *  Label 260 (payload_location) MAY be added to the protected header
-      and MUST NOT be presented in the unprotected header.
+   *  Label 260 (payload_location) MAY be present in the protected
+      header and MUST NOT be present in the unprotected header.
 
    *  Label 3 (content_type) MUST NOT be present in the protected or
       unprotected headers.
