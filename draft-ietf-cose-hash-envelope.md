@@ -94,7 +94,7 @@ This document specifies the following new header parameters commonly used alongs
 Hash_Envelope_Protected_Header = {
     ? &(alg: 1) => int,
     &(payload_hash_alg: 258) => int
-    &(payload_preimage_content_type: 259) => uint / tstr
+    ? &(payload_preimage_content_type: 259) => uint / tstr
     ? &(payload_location: 260) => tstr
     * int / tstr => any
 }
@@ -115,8 +115,8 @@ Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 
 - Label `1` (alg) Cryptographic algorithm to use
 - Label `258` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
-- Label `259` (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.
-- Label `260` (payload_location) MAY be added to the protected header and MUST NOT be presented in the unprotected header.
+- Label `259` (content type of the preimage of the payload) MAY be present in the protected header and MUST NOT be present in the unprotected header.
+- Label `260` (payload_location) MAY be present in the protected header and MUST NOT be present in the unprotected header.
 - Label `3` (content_type) MUST NOT be present in the protected or unprotected headers.
 
 Label `3` is easily confused with label `259` payload_preimage_content_type.
