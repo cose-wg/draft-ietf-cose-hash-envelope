@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-27T00:39:32.276286+00:00",
+  "timestamp": "2025-03-30T00:43:26.729537+00:00",
   "repo": "cose-wg/draft-ietf-cose-hash-envelope",
   "labels": [
     {
@@ -518,7 +518,7 @@
       "id": "I_kwDOKqKrRc6uprw_",
       "title": "Clarify behavior of preimage-content-type",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/issues/49",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -527,8 +527,8 @@
       ],
       "body": "From: https://github.com/veraison/go-cose/pull/212#discussion_r2002203019\n> What happens if PreimageContentType exists in both the protected and unprotected headers? Is it a valid case? If it is valid, what happens if they have different values? This scenario is not defined in the draft.\n\nFrom draft 04:\n> Label 259 (content type of the preimage of the payload) MAY be present in the protected header or unprotected header.\n\nToDo: clarify expected behavior:\n\n[ ] - Protected Header takes priority\n[ ] - Unprotected Header takes priority (seems very risky)\n[ ] - Update to be consistent with Label 258 (payload hash alg)\n> MUST be present in the protected header and MUST NOT be present in the unprotected header.",
       "createdAt": "2025-03-19T01:11:46Z",
-      "updatedAt": "2025-03-19T01:26:35Z",
-      "closedAt": null,
+      "updatedAt": "2025-03-28T09:43:03Z",
+      "closedAt": "2025-03-28T09:43:03Z",
       "comments": []
     }
   ],
@@ -3725,24 +3725,26 @@
       "id": "PR_kwDOKqKrRc6PMaRh",
       "title": "Clarify preimage-content-type must be in the protected header",
       "url": "https://github.com/cose-wg/draft-ietf-cose-hash-envelope/pull/50",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "SteveLasker",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Fixes #49 ",
       "createdAt": "2025-03-19T01:26:11Z",
-      "updatedAt": "2025-03-21T06:41:07Z",
+      "updatedAt": "2025-03-28T09:43:08Z",
       "baseRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "baseRefName": "main",
       "baseRefOid": "02b2679e913a77ef64d918d3c5aabe114d822ae6",
       "headRepository": "cose-wg/draft-ietf-cose-hash-envelope",
       "headRefName": "issue-49",
       "headRefOid": "c7ff42d47d98ed2f8d599bb022db262749530674",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-03-28T09:43:02Z",
+      "mergedAt": "2025-03-28T09:43:02Z",
+      "mergedBy": "SteveLasker",
+      "mergeCommit": {
+        "oid": "865aeaad3683bd4a2c02f25ce708a4840147212a"
+      },
       "comments": [
         {
           "author": "SteveLasker",
@@ -3897,6 +3899,19 @@
           "body": "",
           "createdAt": "2025-03-21T03:07:07Z",
           "updatedAt": "2025-03-21T03:07:07Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOKqKrRc6iaA7V",
+          "commit": {
+            "abbreviatedOid": "c7ff42d"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "okay",
+          "createdAt": "2025-03-28T08:55:58Z",
+          "updatedAt": "2025-03-28T08:55:58Z",
           "comments": []
         }
       ]
