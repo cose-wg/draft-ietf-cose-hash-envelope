@@ -19,12 +19,10 @@ venue:
 author:
 
 - fullname: Orie Steele
-  organization: Transmute
-  email: orie@transmute.industries
+  email: orie@or13.io
 
 - fullname: Steve Lasker
-  organization: DataTrails
-  email: steve.lasker@datatrails.ai
+  email: stevenlasker@hotmail.com
 
 - ins: H. Birkholz
   name: Henk Birkholz
@@ -231,7 +229,7 @@ License: Apache-2.0
 Implementation Experience: No interop testing has been done yet.
 The code works as proof of concept, but is not yet production ready.
 
-Contact: Orie Steele (orie@transmute.industries)
+Contact: Orie Steele (orie@or13.io)
 
 ## DataTrails Preview
 
@@ -250,7 +248,7 @@ License: MIT
 Implementation Experience: Interop testing has been performed between DigiCert and DataTrails.
 The code works as proof of concept, but is not yet production ready.
 
-Contact: Steve Lasker (steve.lasker@datatrails.ai)
+Contact: Steve Lasker (stevenlasker@hotmail.com)
 
 ## DigiCert Preview
 
