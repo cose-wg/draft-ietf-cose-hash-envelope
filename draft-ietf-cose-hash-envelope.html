@@ -1285,26 +1285,26 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       </h2>
 <div class="lang-cddl sourcecode" id="section-4-1">
 <pre>
+Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
+
+Hash_Envelope_as_COSE_Sign1 = [
+    protected: bstr .cbor Hash_Envelope_Protected_Header,
+    unprotected: Hash_Envelope_Unprotected_Header,
+    payload: bstr / nil,
+    signature: bstr
+]
+
 Hash_Envelope_Protected_Header = {
     ? &amp;(alg: 1) =&gt; int,
     &amp;(payload_hash_alg: 258) =&gt; int
     ? &amp;(payload_preimage_content_type: 259) =&gt; uint / tstr
     ? &amp;(payload_location: 260) =&gt; tstr
-    * int / tstr =&gt; any
+    * (int / tstr) =&gt; any
 }
 
 Hash_Envelope_Unprotected_Header = {
-    * int / tstr =&gt; any
+    * (int / tstr) =&gt; any
 }
-
-Hash_Envelope_as_COSE_Sign1 = [
-    protected : bstr .cbor Hash_Envelope_Protected_Header,
-    unprotected : Hash_Envelope_Unprotected_Header,
-    payload: bstr / nil,
-    signature : bstr
-]
-
-Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 </pre><a href="#section-4-1" class="pilcrow">¶</a>
 </div>
 <ul class="normal">
