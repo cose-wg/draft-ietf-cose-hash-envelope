@@ -3,12 +3,12 @@
 
 
 Network Working Group                                          O. Steele
-Internet-Draft                                                 Transmute
+Internet-Draft                                                          
 Intended status: Standards Track                               S. Lasker
-Expires: 29 September 2025                                    DataTrails
+Expires: 22 January 2026                                                
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                           28 March 2025
+                                                            21 July 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 September 2025.
+   This Internet-Draft will expire on 22 January 2026.
 
 Copyright Notice
 
@@ -369,9 +369,9 @@ Table of Contents
    [I-D.draft-ietf-cbor-edn-literals]
               Bormann, C., "CBOR Extended Diagnostic Notation (EDN)",
               Work in Progress, Internet-Draft, draft-ietf-cbor-edn-
-              literals-16, 8 January 2025,
+              literals-18, 7 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-cbor-
-              edn-literals-16>.
+              edn-literals-18>.
 
 Appendix A.  Implementation Status
 
@@ -418,7 +418,7 @@ A.1.  Transmute Prototype
    Implementation Experience: No interop testing has been done yet.  The
    code works as proof of concept, but is not yet production ready.
 
-   Contact: Orie Steele (orie@transmute.industries)
+   Contact: Orie Steele (orie@or13.io)
 
 A.2.  DataTrails Preview
 
@@ -441,7 +441,7 @@ A.2.  DataTrails Preview
    DigiCert and DataTrails.  The code works as proof of concept, but is
    not yet production ready.
 
-   Contact: Steve Lasker (steve.lasker@datatrails.ai)
+   Contact: Steve Lasker (stevenlasker@hotmail.com)
 
 A.3.  DigiCert Preview
 
@@ -475,13 +475,11 @@ Acknowledgments
 Authors' Addresses
 
    Orie Steele
-   Transmute
-   Email: orie@transmute.industries
+   Email: orie@or13.io
 
 
    Steve Lasker
-   DataTrails
-   Email: steve.lasker@datatrails.ai
+   Email: stevenlasker@hotmail.com
 
 
    Henk Birkholz
