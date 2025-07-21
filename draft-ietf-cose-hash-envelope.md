@@ -89,26 +89,26 @@ This document specifies the following new header parameters commonly used alongs
 # Hash Envelope CDDL
 
 ~~~ cddl
+Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
+
+Hash_Envelope_as_COSE_Sign1 = [
+    protected: bstr .cbor Hash_Envelope_Protected_Header,
+    unprotected: Hash_Envelope_Unprotected_Header,
+    payload: bstr / nil,
+    signature: bstr
+]
+
 Hash_Envelope_Protected_Header = {
     ? &(alg: 1) => int,
     &(payload_hash_alg: 258) => int
     ? &(payload_preimage_content_type: 259) => uint / tstr
     ? &(payload_location: 260) => tstr
-    * int / tstr => any
+    * (int / tstr) => any
 }
 
 Hash_Envelope_Unprotected_Header = {
-    * int / tstr => any
+    * (int / tstr) => any
 }
-
-Hash_Envelope_as_COSE_Sign1 = [
-    protected : bstr .cbor Hash_Envelope_Protected_Header,
-    unprotected : Hash_Envelope_Unprotected_Header,
-    payload: bstr / nil,
-    signature : bstr
-]
-
-Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 ~~~
 
 - Label `1` (alg) Cryptographic algorithm to use
