@@ -121,7 +121,7 @@ The difference between content_type (3) and payload_preimage_content_type (259) 
 
 Profiles that rely on this specification MAY choose to mark 258, 259, 260 (or other header parameters) critical, see {{Section C.1.3 of RFC9052}} for more details.
 
-# Envelope CBOR diagnostic notation
+Envelope Extended Diagnostic Notation ({{Appendix G of RFC8610}}).
 
 The following informative example demonstrates how to construct a hash envelope for a resource already commonly referenced by its hash.
 
