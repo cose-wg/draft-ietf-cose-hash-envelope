@@ -41,7 +41,6 @@ normative:
   RFC9110: HTTP-Semantics
 
 informative:
-  I-D.draft-ietf-cbor-edn-literals: EDN
   BCP205:
 
 entity:
@@ -71,7 +70,7 @@ In some applications, such as remote signing procedures, conveyance of hashes in
 
 {::boilerplate bcp14-tagged}
 
-The terms COSE, CDDL, and EDN are defined in {{-COSE}}, {{-CDDL}}, {{-EDN}} respectively.
+The terms COSE and CDDL are defined in {{-COSE}} and {{-CDDL}} respectively.
 
 # Header Parameters {#param-spec}
 
@@ -122,7 +121,7 @@ The difference between content_type (3) and payload_preimage_content_type (259) 
 
 Profiles that rely on this specification MAY choose to mark 258, 259, 260 (or other header parameters) critical, see {{Section C.1.3 of RFC9052}} for more details.
 
-# Envelope EDN
+# Envelope CBOR diagnostic notation
 
 The following informative example demonstrates how to construct a hash envelope for a resource already commonly referenced by its hash.
 
