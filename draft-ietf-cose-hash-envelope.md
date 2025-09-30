@@ -59,7 +59,7 @@ Additionally, hints of the detached payload's content format and availability ar
 # Introduction
 
 COSE defined detached payloads in Section 2 of {{-COSE}}, using `nil` as the payload.
-In order to verify a signature over a cose-sign1, the signature checker requires access to the payload content.
+In order to verify a signature over a COSE_Sign1, the signature checker requires access to the payload content.
 Hashes are already used on a regular basis as identifiers for payload data, such as documents or software components.
 As hashes typically are smaller than the payload data they represent, they are simpler to transport.
 Additional hints in the protected header ensure cryptographic agility for the hashing and signing algorithms.
@@ -127,11 +127,11 @@ Profiles that rely on this specification MAY choose to mark 258, 259, 260 (or ot
 The following informative example demonstrates how to construct a hash envelope for a resource already commonly referenced by its hash.
 
 ~~~~ cbor-diag
-18([ # cose-sign1
+18([ # COSE_Sign1
   <<{
     / signature alg   / 1: -35, # ES384
     / key identifier  / 4: h'75726e3a...32636573',
-    / cose sign1 type / 16: "application/example+cose",
+    / COSE_Sign1 type / 16: "application/example+cose",
     / hash algorithm  / 258: -16, # sha256
     / media type      / 259: "application/spdx+json",
     / location        /
@@ -171,7 +171,7 @@ The resulting signature is computed over the protected header and payload, provi
 It is RECOMMENDED to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
 For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.
 Note that when using a pre-hash algorithm, the algorithm SHOULD be registered in the IANA COSE Algorithms registry, and should be distinguishable from non-pre hash variants that may also be present.
-The approach this specification takes is just one way to perform application agnostic pre-hashing, meaning the pre hashing is not done with binding or consideration for a specific application context, while preforming application (cose) specific signing, meaning the to be signed bytes include the cose structures necessary to distinguish a cose signature from other digital signature formats.
+The approach this specification takes is just one way to perform application agnostic pre-hashing, meaning the pre hashing is not done with binding or consideration for a specific application context, while performing application (COSE) specific signing, meaning the to be signed bytes include the COSE structures necessary to distinguish a COSE signature from other digital signature formats.
 
 ## Encrypted Hashes
 
