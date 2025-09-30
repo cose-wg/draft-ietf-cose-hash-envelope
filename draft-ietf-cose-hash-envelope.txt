@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                          
 Intended status: Standards Track                               S. Lasker
-Expires: 22 January 2026                                                
+Expires: 3 April 2026                                                   
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                            21 July 2025
+                                                       30 September 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 January 2026.
+   This Internet-Draft will expire on 3 April 2026.
 
 Copyright Notice
 
@@ -235,7 +235,7 @@ Table of Contents
    hash algorithm such as sha256.  This hash becomes the payload of a
    COSE-Sign1.  When signed with a signature algorithm that is
    parameterized via a hash function, such as ECDSA with SHA384, the to
-   be signed structure as described in Section 4.4 of RFC9052.
+   be signed structure is as described in Section 4.4 of RFC9052.
 
    The resulting signature is computed over the protected header and
    payload, providing integrity and authenticity for the hash algorithm,
