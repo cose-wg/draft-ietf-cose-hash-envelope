@@ -268,6 +268,25 @@ The code works as proof of concept, but is not yet production ready.
 
 Contact: Corey Bonnell (Corey.Bonnell@digicert.com)
 
+## Microsoft CoseSignTool
+
+Organization: Microsoft
+
+Name: https://github.com/microsoft/CoseSignTool
+
+Description: A platform-agnostic command line application to create and validate COSE signatures.
+
+Maturity: This is an alpha release.
+
+Coverage: The current version (1.6.5) implements this specification through the 'indirect-sign' and 'indirect-verify' plugins.
+
+License: MIT
+
+Implementation Experience: Tests are run with CDDL schema-validated inputs and outputs.
+No direct interoperability testing with other implementations has been performed so far.
+
+Contact: The COSE Sign Tool team, via GitHub Issues (https://github.com/microsoft/CoseSignTool/issues)
+
 # Acknowledgments
 {:numbered="false"}
 
