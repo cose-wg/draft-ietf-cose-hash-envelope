@@ -42,6 +42,10 @@ normative:
 
 informative:
   BCP205:
+  SPDX:
+    target: https://spdx.dev/use/specifications/
+    title: SPDX Specification
+  RFC7518:
 
 entity:
   SELF: "RFCthis"
@@ -50,14 +54,14 @@ entity:
 --- abstract
 
 This document defines new COSE header parameters for signaling a payload as an output of a hash function.
-This mechanism enables faster validation as access to the original payload is not required for signature validation.
-Additionally, hints of the detached payload's content format and availability are defined providing references to optional discovery mechanisms that can help to find original payload content.
+This mechanism enables faster validation, as access to the original payload is not required for signature validation.
+Additionally, hints of the detached payload's content format and availability are defined, providing references to optional discovery mechanisms that can help to find original payload content.
 
 --- middle
 
 # Introduction
 
-COSE defined detached payloads in Section 2 of {{-COSE}}, using `nil` as the payload.
+COSE defined detached payloads in {{Section 2 of RFC9052}}, using `nil` as the payload.
 In order to verify a signature over a COSE_Sign1, the signature checker requires access to the payload content.
 Hashes are already used on a regular basis as identifiers for payload data, such as documents or software components.
 As hashes typically are smaller than the payload data they represent, they are simpler to transport.
@@ -144,7 +148,7 @@ The following informative example demonstrates how to construct a hash envelope 
 ])
 ~~~~
 
-In this example, an SPDX software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash.
+In this example, an {{SPDX}} software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash.
 For example, some tooling generates a file, such as `manifest.spdx.json.sha256`, which contains the SHA256 hash of the corresponding `manifest.spdx.json` file.
 
 The content type for `manifest.spdx.json` is already well known as `application/spdx+json`, and is [registered with IANA](https://www.iana.org/assignments/media-types/application/spdx+json).
@@ -155,10 +159,10 @@ The payload of this COSE_Sign1 is the SHA256 hash of the `manifest.spdx.json`, w
 
 The type of this COSE_Sign1 is `application/example+cose`, but other types may be used to establish more specific media types for signatures of hashes.
 
-The signature is produced using ES384 which means using ECDSA with SHA384 hash function and P-384 elliptic curve.
+The signature is produced using ES384, as defined in {{Section 3.4 of RFC7518}}, which means using ECDSA with the SHA384 hash function and P-384 elliptic curve.
 
-This example is chosen to highlight that an existing system may use a hash algorithm such as sha256.
-This hash becomes the payload of a COSE-Sign1.
+This example is chosen to highlight that an existing system may use a hash algorithm such as SHA256.
+This hash becomes the payload of a COSE_Sign1.
 When signed with a signature algorithm that is parameterized via a hash function, such as ECDSA with SHA384, the to be signed structure is as described in Section 4.4 of RFC9052.
 
 The resulting signature is computed over the protected header and payload, providing integrity and authenticity for the hash algorithm, content type and location of the associated resource, in this case a software bill of materials.
@@ -170,7 +174,7 @@ The resulting signature is computed over the protected header and payload, provi
 It is RECOMMENDED to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
 For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.
 Note that when using a pre-hash algorithm, the algorithm SHOULD be registered in the IANA COSE Algorithms registry, and should be distinguishable from non-pre hash variants that may also be present.
-The approach this specification takes is just one way to perform application agnostic pre-hashing, meaning the pre hashing is not done with binding or consideration for a specific application context, while performing application (COSE) specific signing, meaning the to be signed bytes include the COSE structures necessary to distinguish a COSE signature from other digital signature formats.
+The approach this specification takes is just one way to perform application-agnostic pre-hashing, meaning the pre hashing is not done with binding or consideration for a specific application context, while performing application (COSE) specific signing, meaning the to be signed bytes include the COSE structures necessary to distinguish a COSE signature from other digital signature formats.
 
 ## Encrypted Hashes
 
