@@ -68,7 +68,8 @@ As hashes typically are smaller than the payload data they represent, they are s
 Additional hints in the protected header ensure cryptographic agility for the hashing and signing algorithms.
 Hashes and other identifiers are commonly used as hints to discover and distinguish resources.
 Using a hash as an identifier for a resource has the advantage of enabling integrity checking.
-In some applications, such as remote signing procedures, conveyance of hashes instead original payload content reduce transmission time and costs.
+
+In some applications, such as remote signing procedures, conveyance of hashes instead of original payload content reduces transmission time and costs.
 
 # Terminology
 
@@ -113,17 +114,18 @@ Hash_Envelope_Unprotected_Header = {
     * (int / tstr) => any
 }
 ~~~
+{: sourcecode-markers="true"}
 
-- Label `1` (alg) Cryptographic algorithm to use
+- Label `1` (alg) Cryptographic algorithm to use.
 - Label `258` (payload hash alg) MUST be present in the protected header and MUST NOT be present in the unprotected header.
 - Label `259` (content type of the preimage of the payload) MAY be present in the protected header and MUST NOT be present in the unprotected header.
 - Label `260` (payload_location) MAY be present in the protected header and MUST NOT be present in the unprotected header.
 - Label `3` (content_type) MUST NOT be present in the protected or unprotected headers.
 
 Label `3` is easily confused with label `259` payload_preimage_content_type.
-The difference between content_type (3) and payload_preimage_content_type (259) is content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
+The difference between content_type (3) and payload_preimage_content_type (259) is that content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
 
-Profiles that rely on this specification MAY choose to mark 258, 259, 260 (or other header parameters) critical, see {{Section C.1.3 of RFC9052}} for more details.
+Profiles that rely on this specification MAY choose to mark 258, 259, 260 (or other header parameters) critical. Refer to {{Section C.1.3 of RFC9052}} for an example of signature with criticality.
 
 Envelope Extended Diagnostic Notation ({{Appendix G of RFC8610}}).
 
@@ -178,7 +180,7 @@ The approach this specification takes is just one way to perform application-agn
 
 ## Encrypted Hashes
 
-When present in COSE_Encrypt, the header parameters registered in this document leak information about the ciphertext.
+When present in COSE_Encrypt ({{Section 5.1 of !RFC9052}}), the header parameters registered in this document leak information about the ciphertext.
 These parameters SHOULD NOT be present in COSE_Encrypt headers unless this disclosure is acceptable.
 
 When present in a protected header, the semantics are the same as for a COSE_Sign1: decrypted payload is expected to be the output of the hash function specified in the protected header.
@@ -294,4 +296,4 @@ Contact: The COSE Sign Tool team, via GitHub Issues (https://github.com/microsof
 # Acknowledgments
 {:numbered="false"}
 
-The following individuals provided input into the final form of the document: Carsten Bormann, Henk Birkholz, Antoine Delignat-Lavaud, Cedric Fournet.
+The following individuals provided input into the final form of the document: Carsten Bormann, Antoine Delignat-Lavaud, Cedric Fournet.
