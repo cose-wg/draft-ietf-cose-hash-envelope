@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                          
 Intended status: Standards Track                               S. Lasker
-Expires: 4 April 2026                                                   
+Expires: 20 April 2026                                                  
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                          1 October 2025
+                                                         17 October 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 April 2026.
+   This Internet-Draft will expire on 20 April 2026.
 
 Copyright Notice
 
@@ -106,9 +106,11 @@ Table of Contents
    cryptographic agility for the hashing and signing algorithms.  Hashes
    and other identifiers are commonly used as hints to discover and
    distinguish resources.  Using a hash as an identifier for a resource
-   has the advantage of enabling integrity checking.  In some
-   applications, such as remote signing procedures, conveyance of hashes
-   instead original payload content reduce transmission time and costs.
+   has the advantage of enabling integrity checking.
+
+   In some applications, such as remote signing procedures, conveyance
+   of hashes instead of original payload content reduces transmission
+   time and costs.
 
 2.  Terminology
 
@@ -138,6 +140,7 @@ Table of Contents
 
 4.  Hash Envelope CDDL
 
+   <CODE BEGINS>
    Hash_Envelope = #6.18(Hash_Envelope_as_COSE_Sign1)
 
    Hash_Envelope_as_COSE_Sign1 = [
@@ -158,8 +161,9 @@ Table of Contents
    Hash_Envelope_Unprotected_Header = {
        * (int / tstr) => any
    }
+   <CODE ENDS>
 
-   *  Label 1 (alg) Cryptographic algorithm to use
+   *  Label 1 (alg) Cryptographic algorithm to use.
 
    *  Label 258 (payload hash alg) MUST be present in the protected
       header and MUST NOT be present in the unprotected header.
@@ -176,14 +180,14 @@ Table of Contents
 
    Label 3 is easily confused with label 259
    payload_preimage_content_type.  The difference between content_type
-   (3) and payload_preimage_content_type (259) is content_type is used
-   to identify the content format associated with payload, whereas
+   (3) and payload_preimage_content_type (259) is that content_type is
+   used to identify the content format associated with payload, whereas
    payload_preimage_content_type is used to identify the content format
    of the bytes which are hashed to produce the payload.
 
    Profiles that rely on this specification MAY choose to mark 258, 259,
-   260 (or other header parameters) critical, see Appendix C.1.3 of
-   [RFC9052] for more details.
+   260 (or other header parameters) critical.  Refer to Appendix C.1.3
+   of [RFC9052] for an example of signature with criticality.
 
    Envelope Extended Diagnostic Notation (Appendix G of [RFC8610]).
 
@@ -262,10 +266,10 @@ Table of Contents
 
 5.2.  Encrypted Hashes
 
-   When present in COSE_Encrypt, the header parameters registered in
-   this document leak information about the ciphertext.  These
-   parameters SHOULD NOT be present in COSE_Encrypt headers unless this
-   disclosure is acceptable.
+   When present in COSE_Encrypt (Section 5.1 of [RFC9052]), the header
+   parameters registered in this document leak information about the
+   ciphertext.  These parameters SHOULD NOT be present in COSE_Encrypt
+   headers unless this disclosure is acceptable.
 
    When present in a protected header, the semantics are the same as for
    a COSE_Sign1: decrypted payload is expected to be the output of the
@@ -493,8 +497,7 @@ A.4.  Microsoft CoseSignTool
 Acknowledgments
 
    The following individuals provided input into the final form of the
-   document: Carsten Bormann, Henk Birkholz, Antoine Delignat-Lavaud,
-   Cedric Fournet.
+   document: Carsten Bormann, Antoine Delignat-Lavaud, Cedric Fournet.
 
 Authors' Addresses
 
