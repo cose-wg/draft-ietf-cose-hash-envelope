@@ -186,11 +186,6 @@ Note that when using a pre-hash algorithm, the algorithm SHOULD be registered in
 
 Only COSE_Sign/COSE_Sign1 and COSE_Mac/COSE_Mac0 are in scope for this document. COSE_Encrypt/COSE_Encrypt0 is out of the scope of this document.
 
-When present in COSE_Encrypt ({{Section 5.1 of !RFC9052}}), the header parameters registered in this document leak information about the ciphertext.
-These parameters SHOULD NOT be present in COSE_Encrypt headers unless this disclosure is acceptable.
-
-When present in a protected header, the semantics are the same as for a COSE_Sign1: decrypted payload is expected to be the output of the hash function specified in the protected header.
-
 # IANA Considerations
 
 ## COSE Header Parameters
