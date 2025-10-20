@@ -1398,9 +1398,6 @@ Note that when using a pre-hash algorithm, the algorithm <span class="bcp14">SHO
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-cose_encrypt" class="section-name selfRef">COSE_Encrypt</a>
         </h3>
 <p id="section-5.2-1">Only COSE_Sign/COSE_Sign1 and COSE_Mac/COSE_Mac0 are in scope for this document. COSE_Encrypt/COSE_Encrypt0 is out of the scope of this document.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<p id="section-5.2-2">When present in COSE_Encrypt (<span><a href="https://rfc-editor.org/rfc/rfc9052#section-5.1" class="relref">Section 5.1</a> of [<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>), the header parameters registered in this document leak information about the ciphertext.
-These parameters <span class="bcp14">SHOULD NOT</span> be present in COSE_Encrypt headers unless this disclosure is acceptable.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
-<p id="section-5.2-3">When present in a protected header, the semantics are the same as for a COSE_Sign1: decrypted payload is expected to be the output of the hash function specified in the protected header.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
