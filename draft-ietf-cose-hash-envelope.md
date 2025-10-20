@@ -61,8 +61,8 @@ Additionally, hints of the detached payload's content format and availability ar
 
 # Introduction
 
-COSE defined detached payloads in {{Section 2 of RFC9052}}, using `nil` as the payload.
-In order to verify a signature over a COSE_Sign1, the signature checker requires access to the payload content.
+COSE defined detached payloads in {{Section 2 of !RFC9052}}, using `nil` as the payload.
+In order to verify a COSE_Sign or a COSE_MAC, the recipient requires access to the payload content.
 Hashes are already used on a regular basis as identifiers for payload data, such as documents or software components.
 As hashes typically are smaller than the payload data they represent, they are simpler to transport.
 Additional hints in the protected header ensure cryptographic agility for the hashing and signing algorithms.
@@ -76,6 +76,9 @@ In some applications, such as remote signing procedures, conveyance of hashes in
 {::boilerplate bcp14-tagged}
 
 The terms COSE and CDDL are defined in {{-COSE}} and {{-CDDL}} respectively.
+The term payload is defined in {{Section 4.1 of RFC9052}} for COSE_Sign, and in {{Section 6.1 of RFC9052}} for COSE_Mac.
+The term preimage refers to the set of input values to a function that produce a given output, called the image.
+A hash function applied to a message (preimage) produces a digest value (image).
 
 # Header Parameters {#param-spec}
 
