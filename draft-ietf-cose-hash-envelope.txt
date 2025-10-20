@@ -80,7 +80,7 @@ Table of Contents
    4.  Hash Envelope CDDL
    5.  Security Considerations
      5.1.  Choice of Hash Function
-     5.2.  Encrypted Hashes
+     5.2.  COSE_Encrypt
    6.  IANA Considerations
      6.1.  COSE Header Parameters
    7.  References
@@ -269,7 +269,11 @@ Table of Contents
    meaning the to be signed bytes include the COSE structures necessary
    to distinguish a COSE signature from other digital signature formats.
 
-5.2.  Encrypted Hashes
+5.2.  COSE_Encrypt
+
+   Only COSE_Sign/COSE_Sign1 and COSE_Mac/COSE_Mac0 are in scope for
+   this document.  COSE_Encrypt/COSE_Encrypt0 is out of the scope of
+   this document.
 
    When present in COSE_Encrypt (Section 5.1 of [RFC9052]), the header
    parameters registered in this document leak information about the
