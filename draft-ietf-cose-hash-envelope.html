@@ -1236,7 +1236,7 @@ Additionally, hints of the detached payload's content format and availability ar
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">COSE defined detached payloads in <span><a href="https://rfc-editor.org/rfc/rfc9052#section-2" class="relref">Section 2</a> of [<a href="#RFC9052" class="cite xref">RFC9052</a>]</span>, using <code>nil</code> as the payload.
-In order to verify a signature over a COSE_Sign1, the signature checker requires access to the payload content.
+In order to verify a COSE_Sign or a COSE_MAC, the recipient requires access to the payload content.
 Hashes are already used on a regular basis as identifiers for payload data, such as documents or software components.
 As hashes typically are smaller than the payload data they represent, they are simpler to transport.
 Additional hints in the protected header ensure cryptographic agility for the hashing and signing algorithms.
@@ -1254,7 +1254,10 @@ Using a hash as an identifier for a resource has the advantage of enabling integ
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">The terms COSE and CDDL are defined in <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span> and <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> respectively.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-2">The terms COSE and CDDL are defined in <span>[<a href="#RFC9052" class="cite xref">RFC9052</a>]</span> and <span>[<a href="#RFC8610" class="cite xref">RFC8610</a>]</span> respectively.
+The term payload is defined in <span><a href="https://rfc-editor.org/rfc/rfc9052#section-4.1" class="relref">Section 4.1</a> of [<a href="#RFC9052" class="cite xref">RFC9052</a>]</span> for COSE_Sign, and in <span><a href="https://rfc-editor.org/rfc/rfc9052#section-6.1" class="relref">Section 6.1</a> of [<a href="#RFC9052" class="cite xref">RFC9052</a>]</span> for COSE_Mac.
+The term preimage refers to the set of input values to a function that produce a given output, called the image.
+A hash function applied to a message (preimage) produces a digest value (image).<a href="#section-2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="param-spec">
