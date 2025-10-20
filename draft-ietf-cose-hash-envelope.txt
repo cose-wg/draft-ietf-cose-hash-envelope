@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                          
 Intended status: Standards Track                               S. Lasker
-Expires: 20 April 2026                                                  
+Expires: 23 April 2026                                                  
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                         17 October 2025
+                                                         20 October 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 April 2026.
+   This Internet-Draft will expire on 23 April 2026.
 
 Copyright Notice
 
@@ -80,7 +80,7 @@ Table of Contents
    4.  Hash Envelope CDDL
    5.  Security Considerations
      5.1.  Choice of Hash Function
-     5.2.  Encrypted Hashes
+     5.2.  COSE_Encrypt
    6.  IANA Considerations
      6.1.  COSE Header Parameters
    7.  References
@@ -264,16 +264,10 @@ Table of Contents
    meaning the to be signed bytes include the COSE structures necessary
    to distinguish a COSE signature from other digital signature formats.
 
-5.2.  Encrypted Hashes
+5.2.  COSE_Encrypt
 
-   When present in COSE_Encrypt (Section 5.1 of [RFC9052]), the header
-   parameters registered in this document leak information about the
-   ciphertext.  These parameters SHOULD NOT be present in COSE_Encrypt
-   headers unless this disclosure is acceptable.
-
-   When present in a protected header, the semantics are the same as for
-   a COSE_Sign1: decrypted payload is expected to be the output of the
-   hash function specified in the protected header.
+   Only COSE_Sign and COSE_Mac are in scope for this document,
+   COSE_Encrypt is out of scope.
 
 6.  IANA Considerations
 
