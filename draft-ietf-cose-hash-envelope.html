@@ -1375,8 +1375,7 @@ When signed with a signature algorithm that is parameterized via a hash function
         </h3>
 <p id="section-5.1-1">It is <span class="bcp14">RECOMMENDED</span> to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
 For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.
-Note that when using a pre-hash algorithm, the algorithm <span class="bcp14">SHOULD</span> be registered in the IANA COSE Algorithms registry, and should be distinguishable from non-pre hash variants that may also be present.
-The approach this specification takes is just one way to perform application-agnostic pre-hashing, meaning the pre hashing is not done with binding or consideration for a specific application context, while performing application (COSE) specific signing, meaning the to be signed bytes include the COSE structures necessary to distinguish a COSE signature from other digital signature formats.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+Note that when using a pre-hash algorithm, the algorithm <span class="bcp14">SHOULD</span> be registered in the IANA COSE Algorithms registry, and should be distinguishable from non-pre hash variants that may also be present.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="coseencrypt">
