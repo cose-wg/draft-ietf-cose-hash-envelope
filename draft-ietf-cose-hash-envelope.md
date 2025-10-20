@@ -180,7 +180,9 @@ For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to has
 Note that when using a pre-hash algorithm, the algorithm SHOULD be registered in the IANA COSE Algorithms registry, and should be distinguishable from non-pre hash variants that may also be present.
 The approach this specification takes is just one way to perform application-agnostic pre-hashing, meaning the pre hashing is not done with binding or consideration for a specific application context, while performing application (COSE) specific signing, meaning the to be signed bytes include the COSE structures necessary to distinguish a COSE signature from other digital signature formats.
 
-## Encrypted Hashes
+## COSE_Encrypt
+
+Only COSE_Sign/COSE_Sign1 and COSE_Mac/COSE_Mac0 are in scope for this document. COSE_Encrypt/COSE_Encrypt0 is out of the scope of this document.
 
 When present in COSE_Encrypt ({{Section 5.1 of !RFC9052}}), the header parameters registered in this document leak information about the ciphertext.
 These parameters SHOULD NOT be present in COSE_Encrypt headers unless this disclosure is acceptable.
