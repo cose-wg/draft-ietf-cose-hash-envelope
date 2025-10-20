@@ -129,7 +129,7 @@ For example, when the actual content is a bstr, a Verifier appraising a content-
 
 Profiles that rely on this specification MAY choose to mark 258, 259, 260 (or other header parameters) critical. Refer to {{Section C.1.3 of RFC9052}} for an example of signature with criticality.
 
-Envelope Extended Diagnostic Notation ({{Appendix G of RFC8610}}).
+## Envelope Extended Diagnostic Notation ({{Appendix G of RFC8610}}).
 
 The following informative example demonstrates how to construct a hash envelope for a resource already commonly referenced by its hash.
 
