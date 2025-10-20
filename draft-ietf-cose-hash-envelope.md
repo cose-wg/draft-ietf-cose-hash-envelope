@@ -125,6 +125,8 @@ Hash_Envelope_Unprotected_Header = {
 Label `3` is easily confused with label `259` payload_preimage_content_type.
 The difference between content_type (3) and payload_preimage_content_type (259) is that content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
 
+For example, when the actual content is a bstr, a Verifier appraising a content-type bstr has to decicde if that bstr describes the digest bytes or the preimage bytes. Setting preimage-content-type to bstr, makes it clear that the preimage bytes themselves were a bstr.
+
 Profiles that rely on this specification MAY choose to mark 258, 259, 260 (or other header parameters) critical. Refer to {{Section C.1.3 of RFC9052}} for an example of signature with criticality.
 
 Envelope Extended Diagnostic Notation ({{Appendix G of RFC8610}}).
