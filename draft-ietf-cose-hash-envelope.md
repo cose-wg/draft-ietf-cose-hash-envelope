@@ -128,7 +128,7 @@ Hash_Envelope_Unprotected_Header = {
 Label `3` is easily confused with label `259` payload_preimage_content_type.
 The difference between content_type (3) and payload_preimage_content_type (259) is that content_type is used to identify the content format associated with payload, whereas payload_preimage_content_type is used to identify the content format of the bytes which are hashed to produce the payload.
 
-For example, when the actual content is a bstr, a Verifier appraising a content-type bstr has to decicde if that bstr describes the digest bytes or the preimage bytes. Setting preimage-content-type to bstr, makes it clear that the preimage bytes themselves were a bstr.
+For example, when the actual content is a bstr, a Verifier appraising a content-type bstr has to decide if that bstr describes the digest bytes or the preimage bytes. Setting preimage-content-type to bstr, makes it clear that the preimage bytes themselves were a bstr.
 
 ## Envelope Extended Diagnostic Notation ({{Appendix G of RFC8610}}).
 
@@ -176,8 +176,8 @@ The resulting signature is computed over the protected header and payload, provi
 
 ## Choice of Hash Function
 
-It is RECOMMENDED to align the strength of the chosen hash function to the strength of the chosen signature algorithm.
-For example, when signing with ECDSA using P-256 and SHA-256, use SHA-256 to hash the payload.
+The hash/signature algorithm combination is RECOMMENDED to be equal or stronger to that of the payload hash algorithm.
+For example, if the payload was produced with SHA-256, and is signed with ECDSA, use at least P-256 and SHA-256.
 Note that when using a pre-hash algorithm, the algorithm SHOULD be registered in the IANA COSE Algorithms registry, and should be distinguishable from non-pre hash variants that may also be present.
 
 ## COSE_Encrypt
