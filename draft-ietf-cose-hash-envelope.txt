@@ -273,7 +273,7 @@ Table of Contents
    If a payload-location is specified, a verifier can choose to fetch
    the content, and confirm that the digest of it, produced with the
    function defined by payload-hash-alg, matches the payload bytes.
-   Verifiers that not have access to the internet and obtain the
+   Verifiers that do not have access to the internet and obtain the
    preimage via other means will not be able to perform that check, nor
    to derive utility from it.
 
