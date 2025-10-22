@@ -147,20 +147,18 @@ The following informative example demonstrates how to construct a hash envelope 
   }>>
   / unprotected / {},
   / payload     / h'935b5a91...e18a588a',
-         # As seen in manifest.spdx.json.sha256
+         # SHA256 digest of manifest.spdx.json"
   / signature   / h'15280897...93ef39e5'
-         # ECDSA Signature with SHA 384 and P-384
+         # ECDSA Signature with SHA384 and P-384
 ])
 ~~~~
 
 In this example, an {{SPDX}} software bill of materials (SBOM) in JSON format is already commonly identified by its SHA256 hash.
-For example, some tooling generates a file, such as `manifest.spdx.json.sha256`, which contains the SHA256 hash of the corresponding `manifest.spdx.json` file.
-
 The content type for `manifest.spdx.json` is already well known as `application/spdx+json`, and is [registered with IANA](https://www.iana.org/assignments/media-types/application/spdx+json).
 
 The full JSON SBOM is available at a URL, such as `https://sbom.example/.../manifest.spdx.json`.
 
-The payload of this COSE_Sign1 is the SHA256 hash of the `manifest.spdx.json`, which is typically found in an adjacent file (`manifest.spdx.json.sha256`).
+The payload of this COSE_Sign1 is the SHA256 hash of the `manifest.spdx.json`.
 
 The type of this COSE_Sign1 is `application/example+cose`, but other types may be used to establish more specific media types for signatures of hashes.
 
