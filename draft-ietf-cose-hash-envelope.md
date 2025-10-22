@@ -186,7 +186,7 @@ Only COSE_Sign/COSE_Sign1 and COSE_Mac/COSE_Mac0 are in scope for this document.
 
 ## Payload Verification
 
-If a payload-location is specified, a verifier can choose to fetch the content, and confirm that the digest of it, produced with the function defined by payload-hash-alg, matches the payload bytes. Verifiers that not have access to the internet and obtain the preimage via other means will not be able to perform that check, nor to derive utility from it.
+If a payload-location is specified, a verifier can choose to fetch the content, and confirm that the digest of it, produced with the function defined by payload-hash-alg, matches the payload bytes. Verifiers that do not have access to the internet and obtain the preimage via other means will not be able to perform that check, nor to derive utility from it.
 
 # IANA Considerations
 
