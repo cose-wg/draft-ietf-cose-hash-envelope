@@ -180,7 +180,7 @@ Note that when using a pre-hash algorithm, the algorithm SHOULD be registered in
 
 ## COSE_Encrypt
 
-Only COSE_Sign/COSE_Sign1 and COSE_Mac/COSE_Mac0 are in scope for this document. COSE_Encrypt/COSE_Encrypt0 is out of the scope of this document.
+Only COSE_Sign/COSE_Sign1 and COSE_Mac/COSE_Mac0 are in scope for this document. COSE_Encrypt/COSE_Encrypt0 is out of the scope of this document: there is no known use case for it. It may be covered by a future extension, which would need to address whether the hash function is applied before or after encryption, and clarify privacy considerations arising from that decision.
 
 ## Payload Verification
 
