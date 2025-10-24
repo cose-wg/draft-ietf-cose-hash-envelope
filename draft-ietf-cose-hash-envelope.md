@@ -176,7 +176,7 @@ The resulting signature is computed over the protected header and payload, provi
 
 The hash/signature algorithm combination is RECOMMENDED to be equal or stronger to that of the payload hash algorithm.
 For example, if the payload was produced with SHA-256, and is signed with ECDSA, use at least P-256 and SHA-256.
-Note that when using a pre-hash algorithm, the algorithm SHOULD be registered in the IANA COSE Algorithms registry, and should be distinguishable from non-pre hash variants that may also be present.
+Note that when using a pre-hash algorithm, the algorithm MUST be registered in the IANA [COSE Algorithms registry](https://www.iana.org/assignments/cose/cose.xhtml#algorithms), and MUST be distinguishable from non-pre hash variants that may also be present.
 
 ## COSE_Encrypt
 
