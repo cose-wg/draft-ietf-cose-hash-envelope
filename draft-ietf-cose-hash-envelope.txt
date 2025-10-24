@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                          
 Intended status: Standards Track                               S. Lasker
-Expires: 25 April 2026                                                  
+Expires: 27 April 2026                                                  
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                         22 October 2025
+                                                         24 October 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 April 2026.
+   This Internet-Draft will expire on 27 April 2026.
 
 Copyright Notice
 
@@ -266,7 +266,10 @@ Table of Contents
 
    Only COSE_Sign/COSE_Sign1 and COSE_Mac/COSE_Mac0 are in scope for
    this document.  COSE_Encrypt/COSE_Encrypt0 is out of the scope of
-   this document.
+   this document, because there is no known use case for it.  It may be
+   covered by a future extension, which would need to address whether
+   the hash function is applied before or after encryption, and clarify
+   privacy considerations arising from that decision.
 
 5.3.  Payload Verification
 
