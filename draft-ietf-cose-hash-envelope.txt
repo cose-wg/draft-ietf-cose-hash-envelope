@@ -5,10 +5,10 @@
 Network Working Group                                          O. Steele
 Internet-Draft                                                          
 Intended status: Standards Track                               S. Lasker
-Expires: 27 April 2026                                                  
+Expires: 28 April 2026                                                  
                                                              H. Birkholz
                                                           Fraunhofer SIT
-                                                         24 October 2025
+                                                         25 October 2025
 
 
                            COSE Hash Envelope
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 April 2026.
+   This Internet-Draft will expire on 28 April 2026.
 
 Copyright Notice
 
@@ -262,8 +262,9 @@ Table of Contents
    or stronger to that of the payload hash algorithm.  For example, if
    the payload was produced with SHA-256, and is signed with ECDSA, use
    at least P-256 and SHA-256.  Note that when using a pre-hash
-   algorithm, the algorithm SHOULD be registered in the IANA COSE
-   Algorithms registry, and should be distinguishable from non-pre hash
+   algorithm, the algorithm MUST be registered in the IANA COSE
+   Algorithms registry (https://www.iana.org/assignments/cose/
+   cose.xhtml#algorithms), and MUST be distinguishable from non-pre hash
    variants that may also be present.
 
 5.2.  COSE_Encrypt
